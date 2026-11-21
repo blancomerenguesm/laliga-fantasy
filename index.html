@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Mánager LaLiga Fantasy</title>
+    <style>
+        :root { --bg: #121212; --panel: #1e1e1e; --text: #ffffff; --accent: #d4af37; --accent-hover: #b5952f; --gray: #888; --danger: #dc3545; --success: #28a745; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 15px; }
+        h1 { text-align: center; color: var(--accent); font-size: 1.5em; }
+        
+        .nav { display: flex; justify-content: center; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
+        button { background-color: var(--panel); color: var(--text); border: 1px solid var(--accent); padding: 10px 15px; cursor: pointer; border-radius: 5px; font-weight: bold; transition: all 0.2s ease; }
+        button:hover, button.active { background-color: var(--accent); color: var(--bg); }
+        
+        .tab-content { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        .teams-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        .card { background-color: var(--panel); border: 1px solid #333; border-radius: 8px; padding: 15px; transition: transform 0.2s ease; }
+        .team-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 10px; }
+        .team-title { font-size: 1.2em; margin: 0; }
+        
+        .player-item { display: flex; justify-content: space-between; align-items: center; background: #2a2a2a; padding: 8px; margin-bottom: 5px; border-radius: 4px; }
+        .player-info { display: flex; flex-direction: column; }
+        .player-name { font-weight: bold; font-size: 0.9em; }
+        .player-team { font-size: 0.75em; color: var(--gray); }
+        .points-container { display: flex; align-items: center; gap: 5px; }
+        .points-input { width: 45px; padding: 5px; background: #121212; color: white; border: 1px solid #555; border-radius: 4px; text-align: center; font-weight: bold; }
+        .points-input:focus { border-color: var(--accent); outline: none; }
+        .captain-tag { color: var(--accent); font-weight: bold; font-size: 0.8em; border: 1px solid var(--accent); border-radius: 50%; width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; margin-left: 5px; }
+        .coach-item { border-left: 3px solid var(--accent); margin-top: 10px; background: #222; }
+
+        .sort-nav { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; }
+        .sort-btn { padding: 6px 12px; font-size: 0.85em; border-radius: 4px; border: 1px solid #555; background: #222; color: #fff; cursor: pointer; }
+        .sort-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+        
+        table { width: 100%; border-collapse: collapse; max-width: 600px; margin: 0 auto; background: var(--panel); border-radius: 8px; overflow: hidden; }
+        th, td { padding: 10px 5px; text-align: left; border-bottom: 1px solid #333; font-size: 0.9em; }
+        th { color: var(--accent); background: #222; }
+        
+        .ranking-row { cursor: pointer; transition: background 0.2s; }
+        .ranking-row:hover { background-color: #2a2a2a; }
+        
+        .bg-red { background-color: rgba(220, 53, 69, 0.2) !important; }
+        .bg-red:hover { background-color: rgba(220, 53, 69, 0.35) !important; }
+        .bg-dark-red { background-color: rgba(220, 53, 69, 0.5) !important; }
+        .bg-dark-red:hover { background-color: rgba(220, 53, 69, 0.65) !important; }
+
+        .ranking-details { background-color: #161616; border-bottom: 2px solid var(--accent); }
+        .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 5px; font-size: 0.85em; }
+        .detail-item { display: flex; justify-content: space-between; padding: 6px 10px; background: #222; border-radius: 4px; border-left: 3px solid #555; align-items: center;}
+        .detail-item.played { border-left-color: #4caf50; background: #1e2b1e; } 
+        .detail-item.coach { border-left-color: var(--accent); }
+        
+        .match-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .match-teams { display: flex; justify-content: space-between; gap: 10px; margin-top: 10px; }
+        .match-half { width: 50%; }
+        .match-half h4 { color: var(--accent); margin: 0 0 5px 0; font-size: 0.9em; }
+        .match-player { display: flex; justify-content: space-between; align-items: center; font-size: 0.85em; background: #2a2a2a; padding: 6px; margin-bottom: 5px; border-radius: 4px; }
+        .match-player.coach { border-left: 2px solid var(--accent); }
+        .match-player-info { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
+        .match-points-input { width: 35px; padding: 4px; background: #121212; color: white; border: 1px solid #555; border-radius: 4px; text-align: center; font-weight: bold; }
+        .match-points-input:focus { border-color: var(--accent); outline: none; }
+        .owner-tag { color: var(--gray); font-style: italic; font-size: 0.9em; }
+
+        .config-section { background: var(--panel); padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #333; }
+        .config-row { display: flex; gap: 10px; margin-bottom: 10px; align-items: center; }
+        .config-input { flex: 1; padding: 8px; background: #121212; color: white; border: 1px solid #555; border-radius: 4px; }
+        .save-btn { background: var(--accent); color: var(--bg); width: 100%; margin-top: 10px; padding: 12px; font-size: 1.1em; border: none; cursor: pointer; border-radius: 4px; font-weight: bold; }
+        select.config-input { cursor: pointer; }
+        .radio-cell { display: flex; align-items: center; justify-content: center; width: 40px; }
+        input[type="radio"] { width: 20px; height: 20px; cursor: pointer; accent-color: var(--accent); }
+
+        .debt-tag { color: var(--danger); font-weight: bold; background: rgba(220, 53, 69, 0.15); padding: 2px 5px; border-radius: 4px; border: 1px solid var(--danger); white-space: nowrap; }
+        .no-debt { color: var(--success); font-weight: bold; }
+
+        .toast { visibility: hidden; min-width: 250px; background-color: #333; color: #fff; text-align: center; border-radius: 8px; padding: 12px 20px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-weight: bold; box-shadow: 0px 4px 12px rgba(0,0,0,0.5); border: 1px solid var(--accent); opacity: 0; transition: opacity 0.3s, bottom 0.3s; }
+        .toast.show { visibility: visible; opacity: 1; bottom: 40px; }
+    </style>
+</head>
+<body>
+
+    <h1>⚙️ Panel Mánager LaLiga</h1>
+    
+    <div class="nav">
+        <button onclick="switchTab('jornada')" class="active">⚽ Partidos</button>
+        <button onclick="switchTab('plantillas')">📋 Puntos</button>
+        <button onclick="switchTab('clasificacion')">📊 Jornada</button>
+        <button onclick="switchTab('general')">🏆 General</button>
+        <button onclick="switchTab('configuracion')">⚙️ Ajustes</button>
+    </div>
+
+    <div style="text-align:center; margin-bottom:15px; font-size:0.85em; color:var(--gray);">
+        <span id="syncStatus">⏳ Esperando sincronización con puntos.json...</span>
+        <button onclick="sincronizarPuntosEnDirecto()" style="padding:4px 10px; font-size:0.85em; margin-left:8px;">🔄 Actualizar ahora</button>
+    </div>
+
+    <div id="toast" class="toast">Notificación</div>
+
+    <!-- Pestaña Jornada -->
+    <div id="jornada" class="tab-content active">
+        <p style="text-align:center; color:var(--gray); font-size: 0.9em; margin-top: 0;">Introduce los puntos directamente durante el partido.</p>
+        <div class="match-grid" id="matchesContainer"></div>
+    </div>
+
+    <!-- Pestaña Plantillas -->
+    <div id="plantillas" class="tab-content">
+        <div class="teams-grid" id="teamsContainer"></div>
+    </div>
+
+    <!-- Pestaña Clasificación (Jornada Actual) -->
+    <div id="clasificacion" class="tab-content">
+        <p style="text-align:center; color:var(--gray); font-size: 0.9em; margin-top: 0;">Clasificación de la jornada en curso.</p>
+        <div class="sort-nav">
+            <button id="btnSortPoints" class="sort-btn active" onclick="setSortMode('points')">Orden: Puntos</button>
+            <button id="btnSortCoef" class="sort-btn" onclick="setSortMode('coef')">Orden: Coeficiente</button>
+        </div>
+        <table>
+            <thead><tr><th>Pos</th><th>Manager</th><th style="text-align:center;">Faltan</th><th style="text-align:center;">Coef</th><th style="text-align:center;">Paga hoy</th><th>Puntos</th></tr></thead>
+            <tbody id="rankingBody"></tbody>
+        </table>
+    </div>
+
+    <!-- Pestaña Clasificación GENERAL -->
+    <div id="general" class="tab-content">
+        <p style="text-align:center; color:var(--gray); font-size: 0.9em; margin-top: 0;">Clasificación histórica y deudas acumuladas.</p>
+        <div class="sort-nav">
+            <button id="btnSortGenPoints" class="sort-btn active" onclick="setGeneralSortMode('points')">🏆 Orden: Puntos</button>
+            <button id="btnSortGenDebt" class="sort-btn" onclick="setGeneralSortMode('debt')">💸 Orden: Deuda</button>
+        </div>
+        <table>
+            <thead><tr><th>Pos</th><th>Manager</th><th style="text-align:center;">Pts Jornada</th><th>Total Pts</th><th>Deuda</th></tr></thead>
+            <tbody id="generalBody"></tbody>
+        </table>
+    </div>
+
+    <!-- Pestaña Configuración -->
+    <div id="configuracion" class="tab-content">
+        
+        <div class="config-section" style="border-color: var(--success); background: rgba(40, 167, 69, 0.05);">
+            <h3 style="color:var(--success); margin-top:0;">1. Cerrar Jornada Actual</h3>
+            <p style="font-size:0.85em; color:var(--gray);">Suma los puntos a la General, <b>calcula las deudas (3€, 2€, 2€)</b> de esta jornada y pone las plantillas a 0 para empezar la siguiente.</p>
+            <button class="save-btn" style="background:var(--success); color:white; border: 1px solid #1e7e34;" onclick="cerrarJornada()">✅ Cerrar Jornada y Repartir Deudas</button>
+        </div>
+
+        <div class="config-section">
+            <h3 style="color:var(--accent); margin-top:0;">2. Copia de Seguridad</h3>
+            <div style="display:flex; gap:10px;">
+                <button class="save-btn" style="background:#2a2a2a; border:1px solid #555; color:white;" onclick="exportData()">⬇️ Descargar</button>
+                <label class="save-btn" style="background:#2a2a2a; border:1px solid #555; color:white; text-align:center; display:flex; align-items:center; justify-content:center; margin:0;">
+                    ⬆️ Subir
+                    <input type="file" style="display:none;" accept=".json" onchange="importData(event)">
+                </label>
+            </div>
+        </div>
+
+        <div class="config-section">
+            <h3 style="color:var(--accent); margin-top:0;">3. Modificar Histórico (General)</h3>
+            <p style="font-size:0.85em; color:var(--gray);">Usa esto para meter los puntos y las deudas que ya teníais acumulados de jornadas anteriores.</p>
+            <div id="historicInputsContainer"></div>
+            <button class="save-btn" onclick="saveHistoricData()">💾 Guardar Datos Históricos</button>
+        </div>
+
+        <div class="config-section">
+            <h3 style="color:var(--accent); margin-top:0;">4. Editar Partidos</h3>
+            <div id="editMatchesContainer"></div>
+            <button class="save-btn" onclick="saveMatches()">💾 Guardar Partidos</button>
+        </div>
+
+        <div class="config-section">
+            <h3 style="color:var(--accent); margin-top:0;">5. Editar Plantillas</h3>
+            <select id="managerSelect" class="config-input" onchange="loadSquadEditor()" style="margin-bottom: 15px;">
+                <option value="">Selecciona un mánager...</option>
+            </select>
+            <div id="editSquadContainer" style="display:none;">
+                <div style="display:flex; margin-bottom:5px; font-weight:bold; font-size:0.85em; color:var(--gray);">
+                    <div style="flex:1;">Jugador</div><div style="flex:1;">Equipo</div><div style="width:40px; text-align:center;">Cap</div>
+                </div>
+                <div id="squadInputs"></div>
+                <div style="display:flex; margin: 15px 0 5px 0; font-weight:bold; font-size:0.85em; color:var(--accent); border-top: 1px solid #333; padding-top:10px;">
+                    Entrenador
+                </div>
+                <div id="coachInput"></div>
+                <button class="save-btn" onclick="saveSquad()">💾 Guardar Plantilla</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const equiposLaLiga = ["Alavés", "Athletic", "Atleti", "Barcelona", "Betis", "Celta", "Deportivo", "Elche", "Espanyol", "Getafe", "Levante", "Málaga", "Osasuna", "Racing", "Rayo", "Real Madrid", "Real Sociedad", "Sevilla", "Valencia", "Villarreal", "Otros"];
+
+        let partidosJornada = JSON.parse(localStorage.getItem('lf_partidos_v4')) || [];
+        let fantasyData = JSON.parse(localStorage.getItem('lf_datos_v4')) || [];
+        
+        const coloresManagers = ['#ff7675', '#74b9ff', '#55efc4', '#ffeaa7', '#a29bfe', '#fdcb6e', '#00b894', '#e84393', '#00cec9', '#b2bec3'];
+        
+        let currentSortMode = 'points';
+        let currentGeneralSortMode = 'points';
+
+        function initLegacyData() {
+            if(fantasyData.length > 0) {
+                let needsSave = false;
+                fantasyData.forEach(team => {
+                    if (!team.coach) { team.coach = { n: "", t: equiposLaLiga[0], p: "" }; needsSave = true; }
+                    if (typeof team.historicPoints === 'undefined') { team.historicPoints = 0; needsSave = true; }
+                    if (typeof team.debt === 'undefined') { team.debt = 0; needsSave = true; }
+                    if (typeof team.isRetired === 'undefined') { team.isRetired = false; needsSave = true; }
+                });
+
+                if (!fantasyData.some(t => t.manager === 'Galián')) {
+                    let emptyPlayers = [];
+                    for(let i=0; i<11; i++) emptyPlayers.push({n: "", t: equiposLaLiga[0], c: false, p: ""});
+                    
+                    fantasyData.push({
+                        manager: 'Galián',
+                        players: emptyPlayers,
+                        coach: { n: "", t: equiposLaLiga[0], p: "" },
+                        historicPoints: 0,
+                        debt: 0,
+                        total: 0,
+                        isRetired: true
+                    });
+                    needsSave = true;
+                }
+
+                if(needsSave) localStorage.setItem('lf_datos_v4', JSON.stringify(fantasyData));
+            }
+        }
+
+        initLegacyData();
+
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            toast.innerText = message;
+            toast.classList.add("show");
+            setTimeout(() => { toast.classList.remove("show"); }, 3000);
+        }
+
+        function buildTeamOptions(selectedTeam) {
+            return equiposLaLiga.map(eq => `<option value="${eq}" ${eq === selectedTeam ? 'selected' : ''}>${eq}</option>`).join('');
+        }
+
+        function calculateTeamTotal(team) {
+            let total = team.players.reduce((acc, p) => acc + (p.p === "" ? 0 : (p.c ? p.p * 2 : p.p)), 0);
+            if (team.coach && team.coach.p !== "") total += team.coach.p;
+            return total;
+        }
+
+        function saveDataToLocal() {
+            localStorage.setItem('lf_partidos_v4', JSON.stringify(partidosJornada));
+            localStorage.setItem('lf_datos_v4', JSON.stringify(fantasyData));
+            renderAll();
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav button').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            if(tabId === 'plantillas') renderPlantillas();
+            if(tabId === 'jornada') renderJornada();
+            if(tabId === 'general') renderGeneral();
+        }
+
+        function renderAll() {
+            if(fantasyData.length > 0) {
+                renderPlantillas();
+                renderRanking();
+                renderGeneral();
+                renderJornada();
+                populateConfigForms();
+            }
+        }
+
+        function renderPlantillas() {
+            let html = '';
+            fantasyData.forEach((team, mIndex) => {
+                if (team.isRetired) return; 
+
+                let playersHtml = team.players.map((p, pIndex) => `
+                    <div class="player-item">
+                        <div class="player-info">
+                            <span class="player-name">${p.n || 'Vacío'} ${p.c ? '<span class="captain-tag">C</span>' : ''}</span>
+                            <span class="player-team">${p.t || '-'}</span>
+                        </div>
+                        <div class="points-container">
+                            <input type="number" class="points-input" value="${p.p !== "" ? p.p : ''}" placeholder="-" oninput="updatePoints(${mIndex}, ${pIndex}, this.value)">
+                        </div>
+                    </div>`).join('');
+                
+                let coachHtml = `
+                    <div class="player-item coach-item">
+                        <div class="player-info">
+                            <span class="player-name">👔 ${team.coach.n || 'Sin Entrenador'}</span>
+                            <span class="player-team">${team.coach.t || '-'}</span>
+                        </div>
+                        <div class="points-container">
+                            <input type="number" class="points-input" value="${team.coach.p !== "" ? team.coach.p : ''}" placeholder="-" oninput="updateCoachPoints(${mIndex}, this.value)">
+                        </div>
+                    </div>`;
+
+                html += `
+                    <div class="card">
+                        <div class="team-header">
+                            <h2 class="team-title" style="color: ${coloresManagers[mIndex]};">${team.manager}</h2>
+                            <strong style="font-size:1.3em;" id="total-${mIndex}">${team.total}</strong>
+                        </div>
+                        <div>${playersHtml}${coachHtml}</div>
+                    </div>`;
+            });
+            document.getElementById('teamsContainer').innerHTML = html;
+        }
+
+        function updatePoints(mIndex, pIndex, value) {
+            fantasyData[mIndex].players[pIndex].p = value === "" ? "" : parseInt(value);
+            fantasyData[mIndex].total = calculateTeamTotal(fantasyData[mIndex]);
+            updateUIAfterPoints(mIndex);
+        }
+
+        function updateCoachPoints(mIndex, value) {
+            fantasyData[mIndex].coach.p = value === "" ? "" : parseInt(value);
+            fantasyData[mIndex].total = calculateTeamTotal(fantasyData[mIndex]);
+            updateUIAfterPoints(mIndex);
+        }
+
+        function updateUIAfterPoints(mIndex) {
+            const totalEl = document.getElementById(`total-${mIndex}`);
+            if(totalEl) totalEl.innerText = fantasyData[mIndex].total;
+            localStorage.setItem('lf_datos_v4', JSON.stringify(fantasyData)); 
+            renderRanking();
+            renderGeneral();
+        }
+
+        function setSortMode(mode) {
+            currentSortMode = mode;
+            document.getElementById('btnSortPoints').classList.toggle('active', mode === 'points');
+            document.getElementById('btnSortCoef').classList.toggle('active', mode === 'coef');
+            renderRanking();
+        }
+
+        function setGeneralSortMode(mode) {
+            currentGeneralSortMode = mode;
+            document.getElementById('btnSortGenPoints').classList.toggle('active', mode === 'points');
+            document.getElementById('btnSortGenDebt').classList.toggle('active', mode === 'debt');
+            renderGeneral();
+        }
+
+        function renderRanking() {
+            let processed = [...fantasyData].map((t, i) => {
+                let playedCount = t.players.filter(p => p.p !== "").length;
+                if(t.coach && t.coach.p !== "") playedCount++;
+                let coef = playedCount > 0 ? (t.total / playedCount) : 0;
+                return { ...t, originalIndex: i, playedCount, coef };
+            }).filter(t => !t.isRetired);
+
+            let sorted = processed.sort((a, b) => {
+                if (currentSortMode === 'points') {
+                    if (b.total === a.total) return b.coef - a.coef;
+                    return b.total - a.total;
+                } else {
+                    return b.coef - a.coef;
+                }
+            });
+            
+            let projectedDebts = {};
+            let totalPointsThisJornada = processed.reduce((acc, t) => acc + t.total, 0);
+
+            if (totalPointsThisJornada > 0) {
+                let scoreGroups = {};
+                sorted.forEach(t => {
+                    if(!scoreGroups[t.total]) scoreGroups[t.total] = [];
+                    scoreGroups[t.total].push(t.originalIndex);
+                });
+                
+                let sortedUniqueScores = Object.keys(scoreGroups).map(Number).sort((a,b) => a - b);
+                let penalties = [3, 2, 2];
+                let penaltyIndex = 0;
+                
+                for(let score of sortedUniqueScores) {
+                    if(penaltyIndex >= penalties.length) break; 
+                    
+                    let group = scoreGroups[score];
+                    let penaltiesToApply = [];
+                    
+                    for(let i = 0; i < group.length && penaltyIndex < penalties.length; i++) {
+                        penaltiesToApply.push(penalties[penaltyIndex]);
+                        penaltyIndex++;
+                    }
+                    
+                    let totalPenalty = penaltiesToApply.reduce((a,b) => a+b, 0);
+                    let penaltyPerPerson = totalPenalty / group.length;
+                    
+                    group.forEach(idx => { projectedDebts[idx] = penaltyPerPerson; });
+                }
+            }
+
+            let uniqueScoresAsc = [...new Set(sorted.map(t => t.total))].sort((a,b) => a - b);
+            let lastPlaceScore = uniqueScoresAsc[0];
+
+            let html = '';
+            
+            sorted.forEach((t, index) => {
+                let pendingCount = 12 - t.playedCount; 
+                let rowClass = "ranking-row";
+                let paysAmount = projectedDebts[t.originalIndex] || 0;
+                
+                if (paysAmount > 0) {
+                    if (t.total === lastPlaceScore) rowClass += " bg-dark-red";
+                    else rowClass += " bg-red";
+                }
+                
+                let pagaHtml = paysAmount > 0 
+                    ? `<span class="debt-tag">+${paysAmount.toFixed(2)}€</span>` 
+                    : `<span style="color:var(--gray);">-</span>`;
+                
+                html += `
+                <tr class="${rowClass}" onclick="toggleDetails(${t.originalIndex})">
+                    <td>${index + 1}</td>
+                    <td style="color: ${coloresManagers[t.originalIndex]};"><strong>${t.manager}</strong></td>
+                    <td style="text-align:center;">${pendingCount}</td>
+                    <td style="text-align:center; color:var(--gray);">${t.coef.toFixed(1)}</td>
+                    <td style="text-align:center; font-size: 0.9em;">${pagaHtml}</td>
+                    <td style="font-weight:bold;">${t.total}</td>
+                </tr>
+                <tr id="details-${t.originalIndex}" class="ranking-details" style="display:none;">
+                    <td colspan="6">
+                        <div class="detail-grid">
+                            ${t.players.map(p => `
+                                <div class="detail-item ${p.p !== "" ? 'played' : ''}">
+                                    <span>${p.n} ${p.c ? '<span class="captain-tag">C</span>' : ''}</span>
+                                    <strong style="color: ${p.p !== "" ? '#fff' : 'var(--gray)'};">${p.p !== "" ? p.p : '-'}</strong>
+                                </div>
+                            `).join('')}
+                            <div class="detail-item coach ${t.coach.p !== "" ? 'played' : ''}">
+                                <span>👔 ${t.coach.n || 'Míster'}</span>
+                                <strong style="color: ${t.coach.p !== "" ? '#fff' : 'var(--gray)'};">${t.coach.p !== "" ? t.coach.p : '-'}</strong>
+                            </div>
+                        </div>
+                    </td>
+                </tr>`;
+            });
+            document.getElementById('rankingBody').innerHTML = html;
+        }
+
+        function renderGeneral() {
+            let sorted = [...fantasyData].sort((a, b) => {
+                if (currentGeneralSortMode === 'points') {
+                    let totalA = a.historicPoints + a.total;
+                    let totalB = b.historicPoints + b.total;
+                    return totalB - totalA;
+                } else {
+                    return a.debt - b.debt; 
+                }
+            });
+            
+            let html = '';
+            sorted.forEach((t, index) => {
+                let color = coloresManagers[fantasyData.findIndex(x => x.manager === t.manager)];
+                let debtHTML = t.debt > 0 ? `<span class="debt-tag">${t.debt.toFixed(2)} €</span>` : `<span class="no-debt">0.00 €</span>`;
+                
+                let isRetiredStyle = t.isRetired ? 'opacity: 0.6; background: #161616;' : '';
+                let nameLabel = t.manager + (t.isRetired ? ' <em>(Ret.)</em>' : '');
+                let pointsLabel = t.isRetired ? '-' : (t.total > 0 ? '+' + t.total : '0');
+
+                html += `
+                <tr class="ranking-row" style="${isRetiredStyle}">
+                    <td>${index + 1}</td>
+                    <td style="color: ${color};"><strong>${nameLabel}</strong></td>
+                    <td style="text-align:center; color:var(--gray);">${pointsLabel}</td>
+                    <td style="font-weight:bold; font-size:1.1em;">${t.historicPoints + (t.isRetired ? 0 : t.total)}</td>
+                    <td>${debtHTML}</td>
+                </tr>`;
+            });
+            document.getElementById('generalBody').innerHTML = html;
+        }
+
+        function toggleDetails(originalIndex) {
+            const el = document.getElementById(`details-${originalIndex}`);
+            el.style.display = el.style.display === 'none' ? 'table-row' : 'none';
+        }
+
+        function renderJornada() {
+            let html = '';
+            partidosJornada.forEach(partido => {
+                let loc = [], vis = [];
+                fantasyData.forEach((team, mIndex) => {
+                    if (team.isRetired) return; 
+
+                    team.players.forEach((p, pIndex) => {
+                        let playerHtml = `
+                            <div class="match-player">
+                                <div class="match-player-info">
+                                    <span>${p.n}</span>
+                                    ${p.c ? '<span class="captain-tag" style="margin:0 2px;">C</span>' : ''}
+                                    <span class="owner-tag" style="color: ${coloresManagers[mIndex]}; font-weight: bold; font-style: normal;">${team.manager}</span>
+                                </div>
+                                <input type="number" class="match-points-input" value="${p.p !== "" ? p.p : ''}" placeholder="-" oninput="updatePoints(${mIndex}, ${pIndex}, this.value)">
+                            </div>`;
+                        if (p.t === partido.local) loc.push(playerHtml);
+                        if (p.t === partido.visitante) vis.push(playerHtml);
+                    });
+
+                    if (team.coach) {
+                        let coachHtml = `
+                            <div class="match-player coach">
+                                <div class="match-player-info">
+                                    <span>👔 ${team.coach.n}</span>
+                                    <span class="owner-tag" style="color: ${coloresManagers[mIndex]}; font-weight: bold; font-style: normal;">${team.manager}</span>
+                                </div>
+                                <input type="number" class="match-points-input" value="${team.coach.p !== "" ? team.coach.p : ''}" placeholder="-" oninput="updateCoachPoints(${mIndex}, this.value)">
+                            </div>`;
+                        if (team.coach.t === partido.local) loc.push(coachHtml);
+                        if (team.coach.t === partido.visitante) vis.push(coachHtml);
+                    }
+                });
+                
+                html += `
+                    <div class="card">
+                        <div style="text-align:center; border-bottom:1px solid #444; padding-bottom:5px; color:var(--accent); font-weight:bold;">
+                            ${partido.local} vs ${partido.visitante}
+                        </div>
+                        <div class="match-teams">
+                            <div class="match-half">
+                                <h4>${partido.local}</h4>
+                                ${loc.join('') || '<div class="owner-tag">Nadie</div>'}
+                            </div>
+                            <div class="match-half">
+                                <h4>${partido.visitante}</h4>
+                                ${vis.join('') || '<div class="owner-tag">Nadie</div>'}
+                            </div>
+                        </div>
+                    </div>`;
+            });
+            document.getElementById('matchesContainer').innerHTML = html;
+        }
+
+        function populateConfigForms() {
+            if(partidosJornada.length === 0) return;
+            
+            document.getElementById('editMatchesContainer').innerHTML = partidosJornada.map((p, i) => `
+                <div class="config-row">
+                    <select id="m-loc-${i}" class="config-input">${buildTeamOptions(p.local)}</select>
+                    <span>vs</span>
+                    <select id="m-vis-${i}" class="config-input">${buildTeamOptions(p.visitante)}</select>
+                </div>`).join('');
+
+            document.getElementById('historicInputsContainer').innerHTML = fantasyData.map((t, i) => `
+                <div class="config-row" style="background:#222; padding:8px; border-radius:4px; margin-bottom:8px; ${t.isRetired ? 'border-left: 3px solid var(--danger);' : ''}">
+                    <div style="width:80px; font-weight:bold; color:${coloresManagers[i]}">${t.manager} ${t.isRetired ? '<br><span style="font-size:0.7em; color:var(--danger);">(Ret.)</span>' : ''}</div>
+                    <div style="display:flex; flex-direction:column; gap:4px; flex:1;">
+                        <div style="display:flex; align-items:center; gap:5px;">
+                            <label style="font-size:0.8em; color:var(--gray); width:50px;">Puntos:</label>
+                            <input type="number" id="hist-pts-${i}" class="config-input" style="padding:4px;" value="${t.historicPoints}" ${t.isRetired ? 'disabled' : ''}>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:5px;">
+                            <label style="font-size:0.8em; color:var(--gray); width:50px;">Deuda(€):</label>
+                            <input type="number" step="0.01" id="hist-debt-${i}" class="config-input" style="padding:4px;" value="${t.debt}">
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            const select = document.getElementById('managerSelect');
+            if(select.options.length <= 1) {
+                fantasyData.forEach((t, i) => {
+                    if (!t.isRetired) select.add(new Option(t.manager, i));
+                });
+            }
+        }
+
+        function saveHistoricData() {
+            fantasyData.forEach((t, i) => {
+                if (!t.isRetired) {
+                    t.historicPoints = parseInt(document.getElementById(`hist-pts-${i}`).value) || 0;
+                }
+                t.debt = parseFloat(document.getElementById(`hist-debt-${i}`).value) || 0;
+            });
+            saveDataToLocal();
+            showToast("✔️ Datos históricos actualizados");
+        }
+
+        function saveMatches() {
+            for (let i = 0; i < partidosJornada.length; i++) {
+                partidosJornada[i].local = document.getElementById(`m-loc-${i}`).value;
+                partidosJornada[i].visitante = document.getElementById(`m-vis-${i}`).value;
+            }
+            saveDataToLocal();
+            showToast("✔️ Partidos guardados correctamente");
+        }
+
+        function loadSquadEditor() {
+            const mIndex = document.getElementById('managerSelect').value;
+            if (mIndex === "") { document.getElementById('editSquadContainer').style.display = 'none'; return; }
+            
+            document.getElementById('editSquadContainer').style.display = 'block';
+            let team = fantasyData[mIndex];
+            
+            let html = '';
+            team.players.forEach((p, i) => {
+                html += `
+                <div class="config-row">
+                    <input type="text" id="p-name-${mIndex}-${i}" class="config-input" value="${p.n}" placeholder="Jugador">
+                    <select id="p-team-${mIndex}-${i}" class="config-input">${buildTeamOptions(p.t)}</select>
+                    <div class="radio-cell">
+                        <input type="radio" name="capitan-${mIndex}" id="p-cap-${mIndex}-${i}" ${p.c ? 'checked' : ''}>
+                    </div>
+                </div>`;
+            });
+            document.getElementById('squadInputs').innerHTML = html;
+
+            let coachHtml = `
+                <div class="config-row">
+                    <input type="text" id="c-name-${mIndex}" class="config-input" value="${team.coach.n}" placeholder="Nombre Entrenador">
+                    <select id="c-team-${mIndex}" class="config-input">${buildTeamOptions(team.coach.t)}</select>
+                    <div class="radio-cell"></div>
+                </div>`;
+            document.getElementById('coachInput').innerHTML = coachHtml;
+        }
+
+        function saveSquad() {
+            const mIndex = document.getElementById('managerSelect').value;
+            
+            for (let i = 0; i < 11; i++) {
+                fantasyData[mIndex].players[i].n = document.getElementById(`p-name-${mIndex}-${i}`).value;
+                fantasyData[mIndex].players[i].t = document.getElementById(`p-team-${mIndex}-${i}`).value;
+                fantasyData[mIndex].players[i].c = document.getElementById(`p-cap-${mIndex}-${i}`).checked;
+            }
+            
+            fantasyData[mIndex].coach.n = document.getElementById(`c-name-${mIndex}`).value;
+            fantasyData[mIndex].coach.t = document.getElementById(`c-team-${mIndex}`).value;
+
+            fantasyData[mIndex].total = calculateTeamTotal(fantasyData[mIndex]);
+            saveDataToLocal();
+            showToast("✔️ Plantilla guardada");
+            loadSquadEditor();
+        }
+
+        function cerrarJornada() {
+            let activeTeams = fantasyData.map((team, index) => ({ index, total: team.total, isRetired: team.isRetired })).filter(t => !t.isRetired);
+            
+            let totalPointsThisJornada = activeTeams.reduce((acc, t) => acc + t.total, 0);
+            if (totalPointsThisJornada === 0) {
+                alert("No hay puntos registrados en esta jornada. Carga algunos puntos antes de cerrar.");
+                return;
+            }
+
+            if(confirm("⚠️ ¿Terminar la jornada actual? Esto sumará los puntos a la General, calculará las deudas y pondrá los marcadores a 0 para la siguiente.")) {
+                
+                let scoreGroups = {};
+                activeTeams.forEach(s => {
+                    if(!scoreGroups[s.total]) scoreGroups[s.total] = [];
+                    scoreGroups[s.total].push(s.index); 
+                });
+                
+                let sortedUniqueScores = Object.keys(scoreGroups).map(Number).sort((a,b) => a - b);
+                
+                let penalties = [3, 2, 2]; 
+                let penaltyIndex = 0;
+                
+                for(let score of sortedUniqueScores) {
+                    if(penaltyIndex >= penalties.length) break; 
+                    
+                    let group = scoreGroups[score];
+                    let penaltiesToApply = [];
+                    
+                    for(let i = 0; i < group.length && penaltyIndex < penalties.length; i++) {
+                        penaltiesToApply.push(penalties[penaltyIndex]);
+                        penaltyIndex++;
+                    }
+                    
+                    let totalPenalty = penaltiesToApply.reduce((a,b) => a+b, 0);
+                    let penaltyPerPerson = totalPenalty / group.length;
+                    
+                    group.forEach(managerIndex => {
+                        fantasyData[managerIndex].debt += penaltyPerPerson;
+                    });
+                }
+
+                fantasyData.forEach(team => {
+                    if(!team.isRetired) team.historicPoints += team.total; 
+                    
+                    team.players.forEach(p => p.p = ""); 
+                    if (team.coach) team.coach.p = "";   
+                    team.total = 0;                      
+                });
+                
+                saveDataToLocal();
+                showToast("🔄 Jornada cerrada. Puntos y deudas actualizados.");
+            }
+        }
+
+        function exportData() {
+            const data = { partidos: partidosJornada, datos: fantasyData };
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "laliga_fantasy_backup.json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+            showToast("⬇️ Copia descargada");
+        }
+
+        function importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const imported = JSON.parse(e.target.result);
+                    if (imported.partidos && imported.datos) {
+                        partidosJornada = imported.partidos;
+                        fantasyData = imported.datos;
+                        
+                        initLegacyData(); 
+                        saveDataToLocal();
+                        showToast("⬆️ Datos importados correctamente");
+                        sincronizarPuntosEnDirecto();
+                    } else {
+                        alert("El archivo no tiene el formato correcto.");
+                    }
+                } catch (err) {
+                    alert("Error al leer el archivo.");
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // --- AUTOCARGA DESDE laliga_fantasy_backup.json EN GITHUB PAGES ---
+        async function cargarBackupInicialSiVacio() {
+            if (fantasyData.length === 0) {
+                try {
+                    const res = await fetch('laliga_fantasy_backup.json?t=' + Date.now());
+                    if (res.ok) {
+                        const imported = await res.json();
+                        if (imported.partidos && imported.datos) {
+                            partidosJornada = imported.partidos;
+                            fantasyData = imported.datos;
+                            initLegacyData();
+                            saveDataToLocal();
+                        }
+                    }
+                } catch (e) {
+                    console.log("No se encontró laliga_fantasy_backup.json inicial.");
+                }
+            } else {
+                fantasyData.forEach(t => t.total = calculateTeamTotal(t));
+                renderAll();
+            }
+        }
+
+        // --- SINCRONIZACIÓN EN DIRECTO CON puntos.json ---
+        function normalizarTexto(texto) {
+            return (texto || "")
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .trim();
+        }
+
+        function buscarPuntosJugador(nombreBackup, mapaPuntos) {
+            const normBackup = normalizarTexto(nombreBackup);
+            if (!normBackup) return null;
+
+            if (Object.prototype.hasOwnProperty.call(mapaPuntos, normBackup)) {
+                return mapaPuntos[normBackup];
+            }
+
+            const clavesComuniate = Object.keys(mapaPuntos);
+
+            const matchInicial = normBackup.match(/^([a-z])\.\s*(.+)$/);
+            if (matchInicial) {
+                const inicial = matchInicial[1];
+                const apellido = matchInicial[2];
+                const encontrado = clavesComuniate.find(k => k.startsWith(inicial) && k.endsWith(apellido));
+                if (encontrado) return mapaPuntos[encontrado];
+            }
+
+            if (!normBackup.includes(" ")) {
+                const coincidencias = clavesComuniate.filter(k => k.split(" ").includes(normBackup));
+                if (coincidencias.length === 1) {
+                    return mapaPuntos[coincidencias[0]];
+                }
+            }
+
+            return null;
+        }
+
+        async function sincronizarPuntosEnDirecto() {
+            const statusEl = document.getElementById("syncStatus");
+            try {
+                const res = await fetch('puntos.json?t=' + Date.now());
+                if (!res.ok) throw new Error("No se encontró puntos.json");
+                const dataRaw = await res.json();
+
+                const jugadoresRaw = dataRaw.jugadores ? dataRaw.jugadores : dataRaw;
+                const entrenadoresRaw = dataRaw.entrenadores ? dataRaw.entrenadores : {};
+
+                const mapaPuntos = {};
+                for (const [nombre, pts] of Object.entries(jugadoresRaw)) {
+                    mapaPuntos[normalizarTexto(nombre)] = pts;
+                }
+
+                const mapaEntrenadores = {};
+                for (const [equipo, pts] of Object.entries(entrenadoresRaw)) {
+                    mapaEntrenadores[normalizarTexto(equipo)] = pts;
+                }
+
+                let cambios = 0;
+                fantasyData.forEach(team => {
+                    if (team.isRetired) return;
+
+                    team.players.forEach(p => {
+                        const pts = buscarPuntosJugador(p.n, mapaPuntos);
+                        if (pts !== null && p.p !== pts) {
+                            p.p = pts;
+                            cambios++;
+                        }
+                    });
+
+                    if (team.coach && team.coach.t) {
+                        const normEquipo = normalizarTexto(team.coach.t);
+                        if (Object.prototype.hasOwnProperty.call(mapaEntrenadores, normEquipo)) {
+                            const ptsCoach = mapaEntrenadores[normEquipo];
+                            if (team.coach.p !== ptsCoach) {
+                                team.coach.p = ptsCoach;
+                                cambios++;
+                            }
+                        }
+                    }
+
+                    team.total = calculateTeamTotal(team);
+                });
+
+                if (cambios > 0) {
+                    saveDataToLocal();
+                }
+
+                const hora = new Date().toLocaleTimeString();
+                const numJug = Object.keys(jugadoresRaw).length;
+                const numEnt = Object.keys(entrenadoresRaw).length;
+                if (statusEl) statusEl.innerText = `🟢 Sincronizado a las ${hora} (${numJug} jugadores, ${numEnt} entrenadores)`;
+            } catch (err) {
+                if (statusEl) statusEl.innerText = `🔴 Sin conexión con puntos.json`;
+            }
+        }
+
+        // Arranque inicial
+        (async () => {
+            await cargarBackupInicialSiVacio();
+            await sincronizarPuntosEnDirecto();
+            setInterval(sincronizarPuntosEnDirecto, 60000);
+        })();
+    </script>
+</body>
+</html>
