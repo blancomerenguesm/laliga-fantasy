@@ -1,1 +1,35 @@
+name: Actualizar Puntos LaLiga Fantasy
 
+on:
+  schedule:
+    - cron: '*/5 * * * *' # Cada 5 minutos
+  workflow_dispatch:       # Permite lanzarlo a mano desde GitHub
+
+permissions:
+  contents: write
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: pip install requests beautifulsoup4
+
+      - name: Ejecutar extractor de puntos
+        run: python extractor_github.py
+
+      - name: Guardar cambios en puntos.json
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add puntos.json
+          git diff --staged --quiet || git commit -m "Actualización automática de puntos"
+          git push
