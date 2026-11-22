@@ -139,6 +139,28 @@
     <!-- Pestaña Configuración -->
     <div id="configuracion" class="tab-content">
         
+        <div class="config-section" style="border-color: #74b9ff; background: rgba(116, 185, 255, 0.05);">
+            <h3 style="color:#74b9ff; margin-top:0;">☁️ Sincronización Nube (PC ↔ Móvil)</h3>
+            <p style="font-size:0.85em; color:var(--gray); margin-top:0;">Guarda o descarga plantillas, partidos, histórico y deudas directamente desde GitHub para no tener que editarlo dos veces.</p>
+            <div style="display:flex; gap:10px; margin-bottom:10px;">
+                <button class="save-btn" style="background:#218838; color:white; margin:0;" onclick="subirBackupAGitHub()">☁️ Subir cambios a GitHub</button>
+                <button class="save-btn" style="background:#0069d9; color:white; margin:0;" onclick="cargarBackupDesdeGitHub(true)">⬇️ Traer de GitHub</button>
+            </div>
+            <details style="margin-top:8px; font-size:0.85em; color:var(--gray);">
+                <summary style="cursor:pointer; color:var(--accent); font-weight:bold;">🔑 Configurar Token de GitHub (solo necesario para subir)</summary>
+                <div style="margin-top:8px;">
+                    <div class="config-row" style="margin-bottom:6px;">
+                        <input type="text" id="ghOwner" class="config-input" placeholder="Usuario (ej: blancomerenguesm)">
+                        <input type="text" id="ghRepo" class="config-input" placeholder="Repositorio (ej: laliga-fantasy)">
+                    </div>
+                    <div class="config-row" style="margin-bottom:6px;">
+                        <input type="password" id="ghToken" class="config-input" placeholder="Pega aquí tu Personal Access Token (github_pat_...)">
+                    </div>
+                    <button class="save-btn" style="padding:8px; font-size:0.95em; margin-top:0;" onclick="guardarConfigGitHub()">💾 Guardar credenciales en este dispositivo</button>
+                </div>
+            </details>
+        </div>
+
         <div class="config-section" style="border-color: var(--success); background: rgba(40, 167, 69, 0.05);">
             <h3 style="color:var(--success); margin-top:0;">1. Cerrar Jornada Actual</h3>
             <p style="font-size:0.85em; color:var(--gray);">Suma los puntos a la General, <b>calcula las deudas (3€, 2€, 2€)</b> de esta jornada y pone las plantillas a 0 para empezar la siguiente.</p>
@@ -146,11 +168,11 @@
         </div>
 
         <div class="config-section">
-            <h3 style="color:var(--accent); margin-top:0;">2. Copia de Seguridad</h3>
+            <h3 style="color:var(--accent); margin-top:0;">2. Copia de Seguridad Local (Archivo)</h3>
             <div style="display:flex; gap:10px;">
-                <button class="save-btn" style="background:#2a2a2a; border:1px solid #555; color:white;" onclick="exportData()">⬇️ Descargar</button>
+                <button class="save-btn" style="background:#2a2a2a; border:1px solid #555; color:white;" onclick="exportData()">⬇️ Descargar JSON</button>
                 <label class="save-btn" style="background:#2a2a2a; border:1px solid #555; color:white; text-align:center; display:flex; align-items:center; justify-content:center; margin:0;">
-                    ⬆️ Subir
+                    ⬆️ Subir JSON
                     <input type="file" style="display:none;" accept=".json" onchange="importData(event)">
                 </label>
             </div>
@@ -235,7 +257,7 @@
             const toast = document.getElementById("toast");
             toast.innerText = message;
             toast.classList.add("show");
-            setTimeout(() => { toast.classList.remove("show"); }, 3000);
+            setTimeout(() => { toast.classList.remove("show"); }, 3500);
         }
 
         function buildTeamOptions(selectedTeam) {
@@ -263,6 +285,7 @@
             if(tabId === 'plantillas') renderPlantillas();
             if(tabId === 'jornada') renderJornada();
             if(tabId === 'general') renderGeneral();
+            if(tabId === 'configuracion') cargarConfigGitHubUI();
         }
 
         function renderAll() {
@@ -579,7 +602,7 @@
                 t.debt = parseFloat(document.getElementById(`hist-debt-${i}`).value) || 0;
             });
             saveDataToLocal();
-            showToast("✔️ Datos históricos actualizados");
+            showToast("✔️ Datos históricos guardados");
         }
 
         function saveMatches() {
@@ -634,8 +657,9 @@
 
             fantasyData[mIndex].total = calculateTeamTotal(fantasyData[mIndex]);
             saveDataToLocal();
-            showToast("✔️ Plantilla guardada");
+            showToast("✔️ Plantilla guardada en local (pulsa Subir a GitHub para compartir)");
             loadSquadEditor();
+            sincronizarPuntosEnDirecto();
         }
 
         function cerrarJornada() {
@@ -729,23 +753,152 @@
             reader.readAsText(file);
         }
 
-        // --- AUTOCARGA DESDE laliga_fantasy_backup.json EN GITHUB PAGES ---
+        // --- SINCRONIZACIÓN CON GITHUB (laliga_fantasy_backup.json) ---
+        function getGitHubConfig() {
+            return {
+                owner: localStorage.getItem('lf_gh_owner') || 'blancomerenguesm',
+                repo: localStorage.getItem('lf_gh_repo') || 'laliga-fantasy',
+                token: localStorage.getItem('lf_gh_token') || ''
+            };
+        }
+
+        function cargarConfigGitHubUI() {
+            const cfg = getGitHubConfig();
+            const o = document.getElementById('ghOwner');
+            const r = document.getElementById('ghRepo');
+            const t = document.getElementById('ghToken');
+            if (o) o.value = cfg.owner;
+            if (r) r.value = cfg.repo;
+            if (t) t.value = cfg.token;
+        }
+
+        function guardarConfigGitHub() {
+            const owner = document.getElementById('ghOwner').value.trim();
+            const repo = document.getElementById('ghRepo').value.trim();
+            const token = document.getElementById('ghToken').value.trim();
+            if (!owner || !repo || !token) {
+                alert("Rellena usuario, repositorio y token.");
+                return;
+            }
+            localStorage.setItem('lf_gh_owner', owner);
+            localStorage.setItem('lf_gh_repo', repo);
+            localStorage.setItem('lf_gh_token', token);
+            showToast("🔑 Credenciales de GitHub guardadas en este navegador");
+        }
+
+        function utf8ToBase64(str) {
+            const bytes = new TextEncoder().encode(str);
+            let binary = '';
+            for (let i = 0; i < bytes.byteLength; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return btoa(binary);
+        }
+
+        function base64ToUtf8(b64) {
+            const binary = atob(b64.replace(/\s/g, ''));
+            const bytes = new Uint8Array(binary.length);
+            for (let i = 0; i < binary.length; i++) {
+                bytes[i] = binary.charCodeAt(i);
+            }
+            return new TextDecoder().decode(bytes);
+        }
+
+        async function subirBackupAGitHub() {
+            const cfg = getGitHubConfig();
+            if (!cfg.token) {
+                alert("Primero configura tu Token de GitHub en el desplegable 'Configurar Token de GitHub'.");
+                return;
+            }
+
+            const apiUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/laliga_fantasy_backup.json`;
+            const headers = {
+                'Authorization': `Bearer ${cfg.token}`,
+                'Accept': 'application/vnd.github+json',
+                'Content-Type': 'application/json'
+            };
+
+            try {
+                showToast("⏳ Subiendo cambios a GitHub...");
+                // 1. Obtener SHA actual del archivo (si existe)
+                let sha = null;
+                const getRes = await fetch(apiUrl + '?t=' + Date.now(), { headers });
+                if (getRes.ok) {
+                    const fileInfo = await getRes.json();
+                    sha = fileInfo.sha;
+                }
+
+                // 2. Preparar JSON limpio (sin puntos temporales si no hace falta, o tal cual)
+                const payloadData = { partidos: partidosJornada, datos: fantasyData };
+                const jsonString = JSON.stringify(payloadData, null, 2);
+                const contentB64 = utf8ToBase64(jsonString);
+
+                const body = {
+                    message: "Actualización de plantillas/datos desde el panel web",
+                    content: contentB64
+                };
+                if (sha) body.sha = sha;
+
+                const putRes = await fetch(apiUrl, {
+                    method: 'PUT',
+                    headers,
+                    body: JSON.stringify(body)
+                });
+
+                if (!putRes.ok) {
+                    const errData = await putRes.json();
+                    throw new Error(errData.message || "Error al subir a GitHub");
+                }
+
+                showToast("☁️ ¡Subido a GitHub! Ya puedes traerlo desde el otro dispositivo");
+            } catch (err) {
+                alert("❌ Error al subir a GitHub: " + err.message);
+            }
+        }
+
+        async function cargarBackupDesdeGitHub(manual = false) {
+            const cfg = getGitHubConfig();
+            try {
+                if (manual) showToast("⏳ Descargando última versión de GitHub...");
+                let imported = null;
+
+                // Intentar vía API de GitHub (evita caché de CDN de GitHub Pages)
+                const apiUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/laliga_fantasy_backup.json?t=${Date.now()}`;
+                const headers = { 'Accept': 'application/vnd.github+json' };
+                if (cfg.token) headers['Authorization'] = `Bearer ${cfg.token}`;
+
+                const apiRes = await fetch(apiUrl, { headers });
+                if (apiRes.ok) {
+                    const fileObj = await apiRes.json();
+                    if (fileObj.content) {
+                        imported = JSON.parse(base64ToUtf8(fileObj.content));
+                    }
+                }
+
+                // Fallback al archivo relativo (útil en local o si falla la API)
+                if (!imported) {
+                    const res = await fetch('laliga_fantasy_backup.json?t=' + Date.now());
+                    if (res.ok) imported = await res.json();
+                }
+
+                if (imported && imported.partidos && imported.datos) {
+                    partidosJornada = imported.partidos;
+                    fantasyData = imported.datos;
+                    initLegacyData();
+                    saveDataToLocal();
+                    await sincronizarPuntosEnDirecto();
+                    if (manual) showToast("✅ Plantillas y datos actualizados desde GitHub");
+                } else if (manual) {
+                    alert("No se pudo leer laliga_fantasy_backup.json desde GitHub.");
+                }
+            } catch (e) {
+                if (manual) alert("❌ Error al traer datos de GitHub: " + e.message);
+            }
+        }
+
         async function cargarBackupInicialSiVacio() {
             if (fantasyData.length === 0) {
-                try {
-                    const res = await fetch('laliga_fantasy_backup.json?t=' + Date.now());
-                    if (res.ok) {
-                        const imported = await res.json();
-                        if (imported.partidos && imported.datos) {
-                            partidosJornada = imported.partidos;
-                            fantasyData = imported.datos;
-                            initLegacyData();
-                            saveDataToLocal();
-                        }
-                    }
-                } catch (e) {
-                    console.log("No se encontró laliga_fantasy_backup.json inicial.");
-                }
+                await cargarBackupDesdeGitHub(false);
             } else {
                 fantasyData.forEach(t => t.total = calculateTeamTotal(t));
                 renderAll();
@@ -765,12 +918,14 @@
             const normBackup = normalizarTexto(nombreBackup);
             if (!normBackup) return null;
 
+            // 1. Coincidencia exacta sin tildes (ej: "Denis Suarez" -> "Denis Suárez")
             if (Object.prototype.hasOwnProperty.call(mapaPuntos, normBackup)) {
                 return mapaPuntos[normBackup];
             }
 
             const clavesComuniate = Object.keys(mapaPuntos);
 
+            // 2. Inicial + Apellido (ej: "T. Martínez" -> "Toni Martínez")
             const matchInicial = normBackup.match(/^([a-z])\.\s*(.+)$/);
             if (matchInicial) {
                 const inicial = matchInicial[1];
@@ -779,10 +934,36 @@
                 if (encontrado) return mapaPuntos[encontrado];
             }
 
+            // 3. Palabra suelta / Apellido único o apodo (ej: "Blanco" -> "Antonio Blanco", "Williams" -> "Iñaki Williams")
             if (!normBackup.includes(" ")) {
                 const coincidencias = clavesComuniate.filter(k => k.split(" ").includes(normBackup));
                 if (coincidencias.length === 1) {
                     return mapaPuntos[coincidencias[0]];
+                }
+                const prefijos = clavesComuniate.filter(k => k.startsWith(normBackup + " "));
+                if (prefijos.length === 1) {
+                    return mapaPuntos[prefijos[0]];
+                }
+            }
+
+            // 4. Todas las palabras del backup presentes en la clave de Comuniate
+            const palabrasBackup = normBackup.split(" ").filter(Boolean);
+            if (palabrasBackup.length >= 2) {
+                const subconjunto = clavesComuniate.filter(k => {
+                    const palabrasClave = k.split(" ");
+                    return palabrasBackup.every(pb => palabrasClave.includes(pb));
+                });
+                if (subconjunto.length === 1) {
+                    return mapaPuntos[subconjunto[0]];
+                }
+            }
+
+            // 5. Fallback por último término (apellido/apodo) si hay coincidencia única
+            const ultimoTermino = palabrasBackup[palabrasBackup.length - 1];
+            if (ultimoTermino && ultimoTermino.length >= 4) {
+                const porApellido = clavesComuniate.filter(k => k.split(" ").includes(ultimoTermino));
+                if (porApellido.length === 1) {
+                    return mapaPuntos[porApellido[0]];
                 }
             }
 
@@ -848,11 +1029,11 @@
             }
         }
 
-        // Arranque inicial
         (async () => {
+            cargarConfigGitHubUI();
             await cargarBackupInicialSiVacio();
             await sincronizarPuntosEnDirecto();
-            setInterval(sincronizarPuntosEnDirecto, 60000);
+            setInterval(sincronizarPuntosEnDirecto, 30000);
         })();
     </script>
 </body>
