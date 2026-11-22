@@ -1,5 +1,6 @@
 {
   "jornada": "13",
+  "actualizado_en": "22/11 16:29:53",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -199,19 +200,19 @@
     "Canales": 0,
     "Íñigo Vicente": 0,
     "Iván Martín": 0,
-    "Iker Luque": 0,
-    "Zabiri": 0,
-    "Alex Remiro": 0,
-    "Héctor Fort": 0,
-    "Zubeldia": 0,
-    "Mamadou Sarr": 0,
-    "Sergio Gómez": 0,
-    "Sucic": 0,
-    "Gorrotxategi": 0,
-    "Carlos Soler": 0,
-    "Oyarzabal": 0,
-    "Oskarsson": 0,
-    "Guedes": 0
+    "Iker Luque": 5,
+    "Zabiri": 9,
+    "Alex Remiro": -2,
+    "Héctor Fort": -2,
+    "Zubeldia": -2,
+    "Mamadou Sarr": -1,
+    "Sergio Gómez": -2,
+    "Sucic": -1,
+    "Gorrotxategi": -1,
+    "Carlos Soler": -1,
+    "Oyarzabal": -1,
+    "Oskarsson": -1,
+    "Guedes": -1
   },
   "jugadores_equipos": {
     "Unai Simón": "Athletic",
@@ -439,8 +440,8 @@
     "Celta": 0,
     "Barcelona": 5,
     "Villarreal": 0,
-    "Racing": 2,
-    "Real Sociedad": 2
+    "Racing": 5,
+    "Real Sociedad": 0
   },
   "partidos": [
     {
