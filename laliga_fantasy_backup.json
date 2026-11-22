@@ -44,7 +44,7 @@
   "datos": [
     {
       "manager": "Marcos",
-      "total": 61,
+      "total": 66,
       "players": [
         {
           "n": "M. Dituro",
@@ -109,14 +109,14 @@
         {
           "n": "Iker Luque",
           "t": "Racing",
-          "p": 5,
+          "p": 8,
           "c": false
         }
       ],
       "coach": {
         "n": "Arrasate",
         "t": "Osasuna",
-        "p": ""
+        "p": 2
       },
       "historicPoints": 857,
       "debt": 4.5,
@@ -124,7 +124,7 @@
     },
     {
       "manager": "Álex",
-      "total": 20,
+      "total": 25,
       "players": [
         {
           "n": "Radu",
@@ -139,15 +139,15 @@
           "c": false
         },
         {
-          "n": "Jon",
+          "n": "Jon Martín",
           "t": "Real Sociedad",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
           "n": "José Salinas",
           "t": "Málaga",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
@@ -165,7 +165,7 @@
         {
           "n": "Carlos Soler",
           "t": "Real Sociedad",
-          "p": -1,
+          "p": 4,
           "c": false
         },
         {
@@ -204,7 +204,7 @@
     },
     {
       "manager": "Roy",
-      "total": 24,
+      "total": 47,
       "players": [
         {
           "n": "Gulácsi",
@@ -227,19 +227,19 @@
         {
           "n": "Sergio Gómez",
           "t": "Real Sociedad",
-          "p": -2,
+          "p": 9,
           "c": false
         },
         {
           "n": "Canales",
           "t": "Athletic",
-          "p": 0,
+          "p": 8,
           "c": false
         },
         {
           "n": "Sucic",
           "t": "Real Sociedad",
-          "p": -1,
+          "p": 3,
           "c": false
         },
         {
@@ -313,7 +313,7 @@
         {
           "n": "Diego Rico",
           "t": "Osasuna",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
@@ -391,9 +391,9 @@
           "c": false
         },
         {
-          "n": "V. Rosier",
+          "n": "Rosier",
           "t": "Osasuna",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
@@ -444,24 +444,24 @@
     },
     {
       "manager": "Javi",
-      "total": 40,
+      "total": 43,
       "players": [
         {
           "n": "Herrera",
           "t": "Osasuna",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
           "n": "Catena",
           "t": "Osasuna",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
           "n": "Pablo Ramón",
           "t": "Racing",
-          "p": 0,
+          "p": 3,
           "c": false
         },
         {
@@ -477,9 +477,9 @@
           "c": false
         },
         {
-          "n": "Pedro Martinez",
+          "n": "Pablo Martínez",
           "t": "Málaga",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
@@ -524,12 +524,12 @@
     },
     {
       "manager": "Puebla",
-      "total": 47,
+      "total": 51,
       "players": [
         {
           "n": "Agirrezabala",
           "t": "Racing",
-          "p": 0,
+          "p": 4,
           "c": false
         },
         {
@@ -553,7 +553,7 @@
         {
           "n": "Dotor",
           "t": "Málaga",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
@@ -583,7 +583,7 @@
         {
           "n": "Niño",
           "t": "Málaga",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
@@ -604,7 +604,7 @@
     },
     {
       "manager": "Poty",
-      "total": 25,
+      "total": 47,
       "players": [
         {
           "n": "Joan García",
@@ -615,7 +615,7 @@
         {
           "n": "Pedro Felipe",
           "t": "Racing",
-          "p": 0,
+          "p": 4,
           "c": false
         },
         {
@@ -639,7 +639,7 @@
         {
           "n": "Rubén García",
           "t": "Osasuna",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
@@ -651,7 +651,7 @@
         {
           "n": "Gorrotxategi",
           "t": "Real Sociedad",
-          "p": -1,
+          "p": 7,
           "c": false
         },
         {
@@ -663,13 +663,13 @@
         {
           "n": "Íñigo Vicente",
           "t": "Racing",
-          "p": 0,
+          "p": 3,
           "c": false
         },
         {
           "n": "Zabiri",
           "t": "Racing",
-          "p": 9,
+          "p": 16,
           "c": false
         }
       ],
@@ -737,7 +737,7 @@
         {
           "n": "Rafa Rodríguez",
           "t": "Málaga",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
