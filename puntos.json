@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "22/11 22:01:15",
+  "actualizado_en": "22/11 22:05:46",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -255,7 +255,7 @@
     "Juan Cruz": 2,
     "David Soria": 1,
     "Djené": -2,
-    "Andrés García": 0,
+    "Andrés García": 1,
     "Zaid Romero": -2,
     "Jean Ives Valou": -2,
     "Johan Mojica": -2,
@@ -264,6 +264,7 @@
     "Ramón Terrats": -1,
     "Iván Azón": -1,
     "Enes Ünal": -1,
+    "Kiko Femenía": 0,
     "Oblak": 1,
     "Marcos Llorente": 0,
     "Le Normand": 0,
@@ -539,6 +540,7 @@
     "Ramón Terrats": "Getafe",
     "Iván Azón": "Getafe",
     "Enes Ünal": "Getafe",
+    "Kiko Femenía": "Getafe",
     "Oblak": "Atleti",
     "Marcos Llorente": "Atleti",
     "Le Normand": "Atleti",
