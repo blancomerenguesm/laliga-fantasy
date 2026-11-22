@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "22/11 21:11:08",
+  "actualizado_en": "22/11 21:15:58",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -272,10 +272,10 @@
     "Grimaldo": 0,
     "Koke": 0,
     "Giuliano Simeone": 0,
-    "Álex Baena": 0,
+    "Álex Baena": 5,
     "Pablo Barrios": 0,
     "Johnny Cardoso": 0,
-    "Julián Álvarez": 0
+    "Julián Álvarez": 3
   },
   "jugadores_equipos": {
     "Unai Simón": "Athletic",
@@ -570,8 +570,8 @@
     "Real Sociedad": 0,
     "Osasuna": 5,
     "Málaga": 0,
-    "Getafe": 2,
-    "Atleti": 2
+    "Getafe": 0,
+    "Atleti": 5
   },
   "partidos": [
     {
