@@ -150,6 +150,7 @@ def ejecutar_una_vez():
     print(f"Extrayendo datos de Temporada {TEMPORADA}, Jornada {jornada_actual}...")
     partidos = descubrir_partidos_jornada(jornada_actual)
     jugadores = {}
+    jugadores_equipos = {}
     entrenadores = {}
     partidos_limpios = []
 
@@ -174,7 +175,8 @@ def ejecutar_una_vez():
             if not filas:
                 continue
 
-            for fila in filas:
+            columnas = soup.select("div.col-md-6.col-xs-6")
+            for col_idx, fila in enumerate(filas):
                 nombre_el = fila.select_one(".playerName")
                 puntos_el = fila.select_one(".playerPoints")
                 if nombre_el and puntos_el:
@@ -184,6 +186,21 @@ def ejecutar_una_vez():
                     except ValueError:
                         puntos = 0
                     jugadores[nombre] = puntos
+
+                    # Intentar detectar equipo de la fila o de la columna local/visitante
+                    equipo_detectado = None
+                    eq_el = fila.select_one(".playerTeam, .teamName, [data-team]")
+                    if eq_el:
+                        raw_eq = eq_el.get("data-team") or eq_el.get_text(strip=True)
+                        if raw_eq:
+                            equipo_detectado = normalizar_equipo(raw_eq)
+                    if not equipo_detectado and len(columnas) >= 2:
+                        if fila in columnas[0].select(".playerRow"):
+                            equipo_detectado = p["local"]
+                        elif fila in columnas[1].select(".playerRow"):
+                            equipo_detectado = p["visitante"]
+                    if equipo_detectado:
+                        jugadores_equipos[nombre] = equipo_detectado
 
             columnas = soup.select("div.col-md-6.col-xs-6")
             if len(columnas) >= 2:
@@ -207,6 +224,7 @@ def ejecutar_una_vez():
     salida = {
         "jornada": jornada_actual,
         "jugadores": jugadores,
+        "jugadores_equipos": jugadores_equipos,
         "entrenadores": entrenadores,
         "partidos": partidos_limpios
     }

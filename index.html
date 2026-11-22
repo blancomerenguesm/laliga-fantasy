@@ -226,14 +226,25 @@
 
         <div class="config-section">
             <h3 style="color:var(--accent); margin-top:0;">5. Editar Plantillas</h3>
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:10px; flex-wrap:wrap;">
+                <span id="catalogoJugadoresStatus" style="font-size:0.8em; color:var(--gray);">📚 Catálogo: esperando puntos.json...</span>
+                <button type="button" style="padding:5px 10px; font-size:0.8em;" onclick="cargarCatalogoJugadoresDesdePuntosJson(true)">📚 Actualizar catálogo</button>
+            </div>
+            <datalist id="catalogoJugadoresList"></datalist>
             <select id="managerSelect" class="config-input" onchange="loadSquadEditor()" style="margin-bottom: 15px;">
                 <option value="">Selecciona un mánager...</option>
             </select>
             <div id="editSquadContainer" style="display:none;">
                 <div style="display:flex; margin-bottom:5px; font-weight:bold; font-size:0.85em; color:var(--gray);">
-                    <div style="flex:1;">Jugador</div><div style="flex:1;">Equipo</div><div style="width:40px; text-align:center;">Cap</div>
+                    <div style="flex:1.3;">Jugador (autocompleta)</div><div style="flex:1;">Equipo (auto)</div><div style="width:40px; text-align:center;">Cap</div>
                 </div>
                 <div id="squadInputs"></div>
+                <details style="margin-top:10px; background:#181818; border:1px solid #383838; border-radius:6px; padding:10px;">
+                    <summary style="cursor:pointer; color:var(--accent); font-size:0.85em; font-weight:bold;">⚡ Pegado rápido (1 jugador por línea)</summary>
+                    <p style="font-size:0.78em; color:var(--gray); margin:6px 0;">Pega hasta 11 líneas con el nombre del jugador (o <code>Jugador - Equipo</code>). Se autocompletará el equipo desde el catálogo y podrás retocar cualquier campo arriba antes de guardar.</p>
+                    <textarea id="quickPasteSquad" class="config-input" rows="5" style="width:100%; box-sizing:border-box; font-size:0.82em;" placeholder="Ej:&#10;Pedri&#10;Bellingham - Real Madrid&#10;Lamine Yamal"></textarea>
+                    <button type="button" class="save-btn" style="padding:8px; font-size:0.9em; margin-top:8px;" onclick="aplicarPegadoRapidoPlantilla()">✨ Rellenar huecos desde texto</button>
+                </details>
                 <div style="display:flex; margin: 15px 0 5px 0; font-weight:bold; font-size:0.85em; color:var(--accent); border-top: 1px solid #333; padding-top:10px;">
                     Entrenador
                 </div>
@@ -705,7 +716,7 @@
             team.players.forEach((p, i) => {
                 html += `
                 <div class="config-row">
-                    <input type="text" id="p-name-${mIndex}-${i}" class="config-input" value="${p.n}" placeholder="Jugador">
+                    <input type="text" id="p-name-${mIndex}-${i}" list="catalogoJugadoresList" class="config-input" value="${p.n}" placeholder="Jugador" oninput="autocompletarEquipoJugador(${mIndex}, ${i}, this.value)">
                     <select id="p-team-${mIndex}-${i}" class="config-input">${buildTeamOptions(p.t)}</select>
                     <div class="radio-cell">
                         <input type="radio" name="capitan-${mIndex}" id="p-cap-${mIndex}-${i}" ${p.c ? 'checked' : ''}>
@@ -1157,52 +1168,161 @@
                 .trim();
         }
 
+        let catalogoJugadores = JSON.parse(localStorage.getItem('lf_catalogo_jugadores')) || {};
+
+        function guardarCatalogoLocal(nuevoCatalogo) {
+            catalogoJugadores = { ...catalogoJugadores, ...nuevoCatalogo };
+            localStorage.setItem('lf_catalogo_jugadores', JSON.stringify(catalogoJugadores));
+            actualizarDatalistCatalogo();
+        }
+
+        function actualizarDatalistCatalogo() {
+            const dl = document.getElementById('catalogoJugadoresList');
+            const st = document.getElementById('catalogoJugadoresStatus');
+            const nombres = Object.keys(catalogoJugadores).sort((a, b) => a.localeCompare(b, 'es'));
+            if (dl) {
+                dl.innerHTML = nombres.map(n => `<option value="${n.replace(/"/g, '&quot;')}"></option>`).join('');
+            }
+            if (st) {
+                st.innerText = nombres.length > 0
+                    ? `📚 Catálogo: ${nombres.length} jugadores memorizados`
+                    : `📚 Catálogo: vacío (se rellena con puntos.json)`;
+            }
+        }
+
+        function buscarEquipoEnCatalogo(nombreJugador) {
+            const norm = normalizarTexto(nombreJugador);
+            if (!norm) return null;
+            for (const [nombreCanónico, eq] of Object.entries(catalogoJugadores)) {
+                if (normalizarTexto(nombreCanónico) === norm && eq) {
+                    return eq;
+                }
+            }
+            return null;
+        }
+
+        function autocompletarEquipoJugador(mIndex, pIndex, valorNombre) {
+            const eq = buscarEquipoEnCatalogo(valorNombre);
+            if (!eq) return;
+            const sel = document.getElementById(`p-team-${mIndex}-${pIndex}`);
+            if (sel && equiposLaLiga.includes(eq)) {
+                sel.value = eq;
+            }
+        }
+
+        function aplicarPegadoRapidoPlantilla() {
+            const mIndex = document.getElementById('managerSelect').value;
+            if (mIndex === "") return;
+            const area = document.getElementById('quickPasteSquad');
+            if (!area) return;
+
+            const lineas = area.value
+                .split(/\r?\n/)
+                .map(l => l.trim())
+                .filter(Boolean)
+                .slice(0, 11);
+
+            if (lineas.length === 0) {
+                alert("Pega al menos un nombre de jugador en el cuadro de texto.");
+                return;
+            }
+
+            lineas.forEach((linea, idx) => {
+                let nombrePart = linea;
+                let equipoPart = null;
+                if (linea.includes(" - ")) {
+                    const partes = linea.split(" - ");
+                    nombrePart = partes[0].trim();
+                    equipoPart = partes[1].trim();
+                }
+
+                const inputEl = document.getElementById(`p-name-${mIndex}-${idx}`);
+                const selectEl = document.getElementById(`p-team-${mIndex}-${idx}`);
+                if (inputEl) inputEl.value = nombrePart;
+
+                const eqAuto = equipoPart || buscarEquipoEnCatalogo(nombrePart);
+                if (selectEl && eqAuto) {
+                    const matchEq = equiposLaLiga.find(e => normalizarTexto(e) === normalizarTexto(eqAuto));
+                    if (matchEq) selectEl.value = matchEq;
+                }
+            });
+
+            showToast(`✨ ${lineas.length} huecos rellenados. Revisa y pulsa Guardar Plantilla.`);
+        }
+
+        async function cargarCatalogoJugadoresDesdePuntosJson(manual = false) {
+            try {
+                const res = await fetch('puntos.json?t=' + Date.now());
+                if (!res.ok) throw new Error("No se encontró puntos.json");
+                const dataRaw = await res.json();
+                const jugadoresRaw = dataRaw.jugadores || {};
+                const equiposRaw = dataRaw.jugadores_equipos || {};
+
+                const mapaEquipoPorJugadorNorm = {};
+                if (Array.isArray(dataRaw.partidos)) {
+                    // Fallback si no hay jugadores_equipos explícito
+                }
+
+                const nuevo = {};
+                for (const [nombre, _pts] of Object.entries(jugadoresRaw)) {
+                    nuevo[nombre] = equiposRaw[nombre] || catalogoJugadores[nombre] || "";
+                }
+                for (const [nombre, eq] of Object.entries(equiposRaw)) {
+                    if (eq) nuevo[nombre] = eq;
+                }
+
+                guardarCatalogoLocal(nuevo);
+                if (manual) showToast(`📚 Catálogo actualizado (${Object.keys(catalogoJugadores).length} jugadores)`);
+            } catch (e) {
+                if (manual) alert("No se pudo actualizar el catálogo desde puntos.json");
+            }
+        }
+
         function buscarPuntosJugador(nombreBackup, mapaPuntos) {
             const normBackup = normalizarTexto(nombreBackup);
             if (!normBackup) return null;
 
+            // 1. Coincidencia exacta normalizada
             if (Object.prototype.hasOwnProperty.call(mapaPuntos, normBackup)) {
                 return mapaPuntos[normBackup];
             }
 
             const clavesComuniate = Object.keys(mapaPuntos);
 
+            // 2. Formato inicial + apellido (ej. "j. martin" o "f. valverde")
             const matchInicial = normBackup.match(/^([a-z])\.\s*(.+)$/);
             if (matchInicial) {
                 const inicial = matchInicial[1];
                 const apellido = matchInicial[2];
-                const encontrado = clavesComuniate.find(k => k.startsWith(inicial) && k.endsWith(apellido));
-                if (encontrado) return mapaPuntos[encontrado];
-            }
-
-            if (!normBackup.includes(" ")) {
-                const coincidencias = clavesComuniate.filter(k => k.split(" ").includes(normBackup));
-                if (coincidencias.length === 1) {
-                    return mapaPuntos[coincidencias[0]];
-                }
-                const prefijos = clavesComuniate.filter(k => k.startsWith(normBackup + " "));
-                if (prefijos.length === 1) {
-                    return mapaPuntos[prefijos[0]];
-                }
+                const candidatos = clavesComuniate.filter(k => {
+                    const partes = k.split(" ");
+                    return partes[0].startsWith(inicial) && partes[partes.length - 1] === apellido;
+                });
+                if (candidatos.length === 1) return mapaPuntos[candidatos[0]];
             }
 
             const palabrasBackup = normBackup.split(" ").filter(Boolean);
-            if (palabrasBackup.length >= 2) {
-                const subconjunto = clavesComuniate.filter(k => {
-                    const palabrasClave = k.split(" ");
-                    return palabrasBackup.every(pb => palabrasClave.includes(pb));
-                });
-                if (subconjunto.length === 1) {
-                    return mapaPuntos[subconjunto[0]];
-                }
+
+            // 3. Si el usuario escribió un solo término (ej. "mbappe" o "bellingham"), solo si hay match único exacto de palabra o prefijo único
+            if (palabrasBackup.length === 1) {
+                const unico = palabrasBackup[0];
+                const exactasPalabra = clavesComuniate.filter(k => k.split(" ").includes(unico));
+                if (exactasPalabra.length === 1) return mapaPuntos[exactasPalabra[0]];
+                if (exactasPalabra.length > 1) return null; // Ambiguo (ej. varios García o López) -> evita falso positivo
+
+                const prefijos = clavesComuniate.filter(k => k.startsWith(unico + " "));
+                if (prefijos.length === 1) return mapaPuntos[prefijos[0]];
+                return null;
             }
 
-            const ultimoTermino = palabrasBackup[palabrasBackup.length - 1];
-            if (ultimoTermino && ultimoTermino.length >= 4) {
-                const porApellido = clavesComuniate.filter(k => k.split(" ").includes(ultimoTermino));
-                if (porApellido.length === 1) {
-                    return mapaPuntos[porApellido[0]];
-                }
+            // 4. Si escribió nombre y apellido (2+ palabras), exigir que todas las palabras estén presentes en la clave
+            // y que NO haya ambigüedad. Nunca asignar por un apellido suelto si el nombre de pila no coincide.
+            const subconjunto = clavesComuniate.filter(k => {
+                const palabrasClave = k.split(" ");
+                return palabrasBackup.every(pb => palabrasClave.includes(pb));
+            });
+            if (subconjunto.length === 1) {
+                return mapaPuntos[subconjunto[0]];
             }
 
             return null;
@@ -1258,6 +1378,15 @@
                     saveDataToLocal();
                 }
 
+                if (numJug > 0) {
+                    const eqRaw = dataRaw.jugadores_equipos || {};
+                    const addCat = {};
+                    for (const nombreKey of Object.keys(jugadoresRaw)) {
+                        addCat[nombreKey] = eqRaw[nombreKey] || catalogoJugadores[nombreKey] || "";
+                    }
+                    guardarCatalogoLocal(addCat);
+                }
+
                 const hora = new Date().toLocaleTimeString();
                 const numJug = Object.keys(jugadoresRaw).length;
                 const numEnt = Object.keys(entrenadoresRaw).length;
@@ -1269,6 +1398,7 @@
         }
 
         (async () => {
+            actualizarDatalistCatalogo();
             cargarConfigGitHubUI();
             cargarConfigCronJobUI();
             await cargarBackupInicialSiVacio();
