@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "22/11 19:31:12",
+  "actualizado_en": "22/11 19:35:49",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -236,13 +236,15 @@
     "Diego Murillo": 2,
     "Álex Pastor": 2,
     "Ángel Recio": 0,
-    "José Salinas": 1,
+    "José Salinas": 0,
     "Dotor": 0,
     "David Larrubia": 1,
     "Rafa Rodríguez": 0,
     "Pablo Martínez": 0,
     "Joaquín Muñoz": 0,
-    "Adrián Niño": 0
+    "Adrián Niño": 0,
+    "Carlos Puga": 0,
+    "Ramón Enríquez": 0
   },
   "jugadores_equipos": {
     "Unai Simón": "Athletic",
@@ -485,7 +487,9 @@
     "Rafa Rodríguez": "Málaga",
     "Pablo Martínez": "Málaga",
     "Joaquín Muñoz": "Málaga",
-    "Adrián Niño": "Málaga"
+    "Adrián Niño": "Málaga",
+    "Carlos Puga": "Málaga",
+    "Ramón Enríquez": "Málaga"
   },
   "entrenadores": {
     "Athletic": 0,
