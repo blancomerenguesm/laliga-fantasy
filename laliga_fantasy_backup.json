@@ -204,12 +204,12 @@
     },
     {
       "manager": "Roy",
-      "total": 19,
+      "total": 24,
       "players": [
         {
           "n": "Gulácsi",
           "t": "Villarreal",
-          "p": 0,
+          "p": 1,
           "c": false
         },
         {
@@ -269,7 +269,7 @@
         {
           "n": "Raphinha",
           "t": "Barcelona",
-          "p": -1,
+          "p": 1,
           "c": true
         }
       ],
@@ -284,7 +284,7 @@
     },
     {
       "manager": "Humanes",
-      "total": 18,
+      "total": 22,
       "players": [
         {
           "n": "Ryan",
@@ -337,7 +337,7 @@
         {
           "n": "Lamine",
           "t": "Barcelona",
-          "p": -1,
+          "p": 1,
           "c": true
         },
         {
@@ -524,7 +524,7 @@
     },
     {
       "manager": "Puebla",
-      "total": 42,
+      "total": 47,
       "players": [
         {
           "n": "Agirrezabala",
@@ -596,7 +596,7 @@
       "coach": {
         "n": "Flick",
         "t": "Barcelona",
-        "p": 0
+        "p": 5
       },
       "historicPoints": 675,
       "debt": 11,
@@ -713,7 +713,7 @@
         {
           "n": "Cubarsí",
           "t": "Barcelona",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
