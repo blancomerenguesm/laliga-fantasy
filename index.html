@@ -73,6 +73,9 @@
         .radio-cell { display: flex; align-items: center; justify-content: center; width: 40px; }
         input[type="radio"] { width: 20px; height: 20px; cursor: pointer; accent-color: var(--accent); }
 
+        .historic-compact-box { background: #181818; border: 1px solid #383838; border-radius: 6px; padding: 12px; margin-top: 8px; }
+        .historic-compact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 10px; }
+
         .debt-tag { color: var(--danger); font-weight: bold; background: rgba(220, 53, 69, 0.15); padding: 2px 5px; border-radius: 4px; border: 1px solid var(--danger); white-space: nowrap; }
         .no-debt { color: var(--success); font-weight: bold; }
 
@@ -199,10 +202,13 @@
         </div>
 
         <div class="config-section">
-            <h3 style="color:var(--accent); margin-top:0;">3. Modificar Histórico (General)</h3>
-            <p style="font-size:0.85em; color:var(--gray);">Usa esto para meter los puntos y las deudas que ya teníais acumulados de jornadas anteriores.</p>
-            <div id="historicInputsContainer"></div>
-            <button class="save-btn" onclick="saveHistoricData()">💾 Guardar Datos Históricos</button>
+            <details id="historicDetails">
+                <summary style="cursor:pointer; color:var(--accent); font-weight:bold; font-size:1.1em; list-style:none;">
+                    3. Modificar Histórico (General) <span style="font-size:0.75em; color:var(--gray); font-weight:normal;">— desplegar para editar</span>
+                </summary>
+                <p style="font-size:0.85em; color:var(--gray); margin-top:8px;">Elige un mánager en el desplegable para ajustar sus puntos históricos o deuda acumulada.</p>
+                <div id="historicInputsContainer"></div>
+            </details>
         </div>
 
         <div class="config-section">
@@ -593,21 +599,20 @@
                     <select id="m-vis-${i}" class="config-input">${buildTeamOptions(p.visitante)}</select>
                 </div>`).join('');
 
-            document.getElementById('historicInputsContainer').innerHTML = fantasyData.map((t, i) => `
-                <div class="config-row" style="background:#222; padding:8px; border-radius:4px; margin-bottom:8px; ${t.isRetired ? 'border-left: 3px solid var(--danger);' : ''}">
-                    <div style="width:80px; font-weight:bold; color:${coloresManagers[i]}">${t.manager} ${t.isRetired ? '<br><span style="font-size:0.7em; color:var(--danger);">(Ret.)</span>' : ''}</div>
-                    <div style="display:flex; flex-direction:column; gap:4px; flex:1;">
-                        <div style="display:flex; align-items:center; gap:5px;">
-                            <label style="font-size:0.8em; color:var(--gray); width:50px;">Puntos:</label>
-                            <input type="number" id="hist-pts-${i}" class="config-input" style="padding:4px;" value="${t.historicPoints}" ${t.isRetired ? 'disabled' : ''}>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:5px;">
-                            <label style="font-size:0.8em; color:var(--gray); width:50px;">Deuda(€):</label>
-                            <input type="number" step="0.01" id="hist-debt-${i}" class="config-input" style="padding:4px;" value="${t.debt}">
-                        </div>
-                    </div>
-                </div>
-            `).join('');
+            const prevSel = document.getElementById('historicManagerSelect');
+            const selectedIdx = prevSel ? prevSel.value : "0";
+
+            let optionsHtml = fantasyData.map((t, i) =>
+                `<option value="${i}" ${String(i) === String(selectedIdx) ? 'selected' : ''}>${t.manager}${t.isRetired ? ' (Ret.)' : ''} — ${t.historicPoints} pts | ${t.debt.toFixed(2)} €</option>`
+            ).join('');
+
+            document.getElementById('historicInputsContainer').innerHTML = `
+                <select id="historicManagerSelect" class="config-input" onchange="renderHistoricManagerEditor()" style="margin-bottom:8px;">
+                    ${optionsHtml}
+                </select>
+                <div id="historicSingleEditor"></div>
+            `;
+            renderHistoricManagerEditor();
 
             const select = document.getElementById('managerSelect');
             if(select.options.length <= 1) {
@@ -617,12 +622,56 @@
             }
         }
 
-        function saveHistoricData() {
+        function renderHistoricManagerEditor() {
+            const sel = document.getElementById('historicManagerSelect');
+            const box = document.getElementById('historicSingleEditor');
+            if (!sel || !box || fantasyData.length === 0) return;
+
+            const i = parseInt(sel.value, 10) || 0;
+            const t = fantasyData[i];
+
+            box.innerHTML = `
+                <div class="historic-compact-box" style="${t.isRetired ? 'border-left: 3px solid var(--danger);' : ''}">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <strong style="color:${coloresManagers[i]};">${t.manager} ${t.isRetired ? '<span style="font-size:0.75em; color:var(--danger);">(Retirado)</span>' : ''}</strong>
+                        <span style="font-size:0.8em; color:var(--gray);">Actual: ${t.historicPoints} pts · ${t.debt.toFixed(2)} €</span>
+                    </div>
+                    <div class="historic-compact-grid">
+                        <div>
+                            <label style="display:block; font-size:0.78em; color:var(--gray); margin-bottom:3px;">Puntos históricos</label>
+                            <input type="number" id="hist-pts-${i}" class="config-input" style="width:100%; box-sizing:border-box; padding:6px;" value="${t.historicPoints}" ${t.isRetired ? 'disabled' : ''}>
+                        </div>
+                        <div>
+                            <label style="display:block; font-size:0.78em; color:var(--gray); margin-bottom:3px;">Deuda (€)</label>
+                            <input type="number" step="0.01" id="hist-debt-${i}" class="config-input" style="width:100%; box-sizing:border-box; padding:6px;" value="${t.debt}">
+                        </div>
+                    </div>
+                    <button class="save-btn" style="padding:9px; font-size:0.95em; margin-top:10px;" onclick="saveHistoricData(${i})">💾 Guardar ${t.manager}</button>
+                </div>
+            `;
+        }
+
+        function saveHistoricData(targetIndex = null) {
+            if (targetIndex !== null && typeof targetIndex === 'number') {
+                const t = fantasyData[targetIndex];
+                if (!t.isRetired) {
+                    const ptsEl = document.getElementById(`hist-pts-${targetIndex}`);
+                    if (ptsEl) t.historicPoints = parseInt(ptsEl.value) || 0;
+                }
+                const debtEl = document.getElementById(`hist-debt-${targetIndex}`);
+                if (debtEl) t.debt = parseFloat(debtEl.value) || 0;
+                saveDataToLocal();
+                showToast(`✔️ Histórico de ${t.manager} guardado`);
+                return;
+            }
+
             fantasyData.forEach((t, i) => {
                 if (!t.isRetired) {
-                    t.historicPoints = parseInt(document.getElementById(`hist-pts-${i}`).value) || 0;
+                    const ptsEl = document.getElementById(`hist-pts-${i}`);
+                    if (ptsEl) t.historicPoints = parseInt(ptsEl.value) || 0;
                 }
-                t.debt = parseFloat(document.getElementById(`hist-debt-${i}`).value) || 0;
+                const debtEl = document.getElementById(`hist-debt-${i}`);
+                if (debtEl) t.debt = parseFloat(debtEl.value) || 0;
             });
             saveDataToLocal();
             showToast("✔️ Datos históricos guardados");
