@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "22/11 17:55:57",
+  "actualizado_en": "22/11 18:01:22",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -216,7 +216,8 @@
     "Guedes": -1,
     "Kubo": 0,
     "Jon Aramburu": 0,
-    "Zakharyan": 0
+    "Zakharyan": 0,
+    "Aihen Muñoz": 0
   },
   "jugadores_equipos": {
     "Unai Simón": "Athletic",
@@ -433,7 +434,8 @@
     "Guedes": "Real Sociedad",
     "Kubo": "Real Sociedad",
     "Jon Aramburu": "Real Sociedad",
-    "Zakharyan": "Real Sociedad"
+    "Zakharyan": "Real Sociedad",
+    "Aihen Muñoz": "Real Sociedad"
   },
   "entrenadores": {
     "Athletic": 0,
