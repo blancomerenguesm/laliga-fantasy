@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "22/11 22:50:54",
+  "actualizado_en": "22/11 22:55:44",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -254,7 +254,7 @@
     "Chupe": 2,
     "Juan Cruz": 2,
     "David Soria": 1,
-    "Djené": -3,
+    "Djené": -8,
     "Andrés García": 1,
     "Zaid Romero": -2,
     "Jean Ives Valou": -2,
@@ -273,7 +273,7 @@
     "Marcos Llorente": 1,
     "Le Normand": 1,
     "Hancko": 1,
-    "Grimaldo": 0,
+    "Grimaldo": 6,
     "Koke": 0,
     "Giuliano Simeone": 1,
     "Álex Baena": 6,
@@ -282,7 +282,7 @@
     "Julián Álvarez": 8,
     "Kang-In Lee": 2,
     "Mendoza": 0,
-    "Sorloth": 0
+    "Sorloth": 2
   },
   "jugadores_equipos": {
     "Unai Simón": "Athletic",
