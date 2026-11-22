@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "22/11 18:50:55",
+  "actualizado_en": "22/11 18:55:47",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -222,7 +222,7 @@
     "Aihen Muñoz": 2,
     "Beñat Turrientes": 2,
     "Sergio Herrera": 0,
-    "Rosier": 0,
+    "Rosier": 5,
     "Catena": 0,
     "Boyomo": 0,
     "Diego Rico": 0,
@@ -231,7 +231,7 @@
     "Aimar Oroz": 0,
     "Moi Gómez": 0,
     "Kike Barja": 1,
-    "Budimir": 0,
+    "Budimir": 4,
     "Alfonso Herrero": 0,
     "Diego Murillo": 1,
     "Álex Pastor": 0,
@@ -502,8 +502,8 @@
     "Villarreal": 0,
     "Racing": 5,
     "Real Sociedad": 0,
-    "Osasuna": 2,
-    "Málaga": 2
+    "Osasuna": 5,
+    "Málaga": 0
   },
   "partidos": [
     {
