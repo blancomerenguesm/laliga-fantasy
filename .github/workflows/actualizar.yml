@@ -1,8 +1,6 @@
 name: Actualizar Puntos LaLiga Fantasy
 
 on:
-  schedule:
-    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 permissions:
