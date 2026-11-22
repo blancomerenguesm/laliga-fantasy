@@ -212,7 +212,13 @@
         </div>
 
         <div class="config-section">
-            <h3 style="color:var(--accent); margin-top:0;">4. Editar Partidos</h3>
+            <h3 style="color:var(--accent); margin-top:0;">4. Editar Partidos y Jornada</h3>
+            <p style="font-size:0.85em; color:var(--gray); margin-top:0;">Cambia el número de jornada en GitHub y lanza el extractor automáticamente, o importa los partidos ya generados.</p>
+            <div class="config-row" style="margin-bottom:10px;">
+                <input type="number" id="jornadaNumeroInput" class="config-input" min="1" max="42" placeholder="Nº Jornada (ej: 14)" style="max-width:150px;">
+                <button class="save-btn" style="margin-top:0; padding:9px; font-size:0.95em;" onclick="cambiarJornadaEnGitHub()">🚀 Cambiar jornada en GitHub</button>
+            </div>
+            <div id="jornadaGitHubStatus" style="font-size:0.8em; color:var(--gray); margin-bottom:10px;"></div>
             <button class="save-btn" style="background:#2a2a2a; border:1px solid var(--accent); color:var(--accent); margin-top:0; margin-bottom:12px; padding:9px; font-size:0.95em;" onclick="cargarPartidosDesdePuntosJson()">📥 Cargar partidos de la jornada desde puntos.json</button>
             <div id="editMatchesContainer"></div>
             <button class="save-btn" onclick="saveMatches()">💾 Guardar Partidos</button>
@@ -315,6 +321,7 @@
             if(tabId === 'configuracion') {
                 cargarConfigGitHubUI();
                 cargarConfigCronJobUI();
+                cargarJornadaActualEnInput();
             }
         }
 
@@ -891,7 +898,7 @@
             }
         }
 
-        // --- SINCRONIZACIÓN CON GITHUB (laliga_fantasy_backup.json) ---
+        // --- SINCRONIZACIÓN CON GITHUB ---
         function getGitHubConfig() {
             return {
                 owner: localStorage.getItem('lf_gh_owner') || 'blancomerenguesm',
@@ -1039,6 +1046,86 @@
             }
         }
 
+        // --- CAMBIAR JORNADA EN GITHUB Y CARGAR PARTIDOS ---
+        async function cargarJornadaActualEnInput() {
+            const input = document.getElementById('jornadaNumeroInput');
+            if (!input || input.value) return;
+            try {
+                const res = await fetch('puntos.json?t=' + Date.now());
+                if (res.ok) {
+                    const dataRaw = await res.json();
+                    if (dataRaw.jornada) input.value = dataRaw.jornada;
+                }
+            } catch (e) {}
+        }
+
+        async function cambiarJornadaEnGitHub() {
+            const cfg = getGitHubConfig();
+            const statusDiv = document.getElementById('jornadaGitHubStatus');
+            const jornadaVal = (document.getElementById('jornadaNumeroInput').value || '').trim();
+
+            if (!jornadaVal || isNaN(jornadaVal)) {
+                alert("Introduce un número de jornada válido (por ejemplo, 14).");
+                return;
+            }
+            if (!cfg.token) {
+                alert("Primero configura tu Token de GitHub en 'Sincronización Nube (PC ↔ Móvil)'.");
+                return;
+            }
+
+            const fileUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/config_jornada.json`;
+            const dispatchUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/actions/workflows/actualizar.yml/dispatches`;
+            const headers = {
+                'Authorization': `Bearer ${cfg.token}`,
+                'Accept': 'application/vnd.github+json',
+                'Content-Type': 'application/json'
+            };
+
+            try {
+                if (statusDiv) statusDiv.innerText = `⏳ Guardando Jornada ${jornadaVal} en GitHub...`;
+                let sha = null;
+                const getRes = await fetch(fileUrl + '?t=' + Date.now(), { headers });
+                if (getRes.ok) {
+                    const info = await getRes.json();
+                    sha = info.sha;
+                }
+
+                const contentB64 = utf8ToBase64(JSON.stringify({ jornada: String(jornadaVal) }, null, 2));
+                const putBody = {
+                    message: `Cambiar jornada activa a Jornada ${jornadaVal}`,
+                    content: contentB64
+                };
+                if (sha) putBody.sha = sha;
+
+                const putRes = await fetch(fileUrl, {
+                    method: 'PUT',
+                    headers,
+                    body: JSON.stringify(putBody)
+                });
+
+                if (!putRes.ok) {
+                    const errData = await putRes.json();
+                    throw new Error(errData.message || `HTTP ${putRes.status}`);
+                }
+
+                if (statusDiv) statusDiv.innerText = `⏳ Lanzando extractor para Jornada ${jornadaVal}...`;
+                const dispRes = await fetch(dispatchUrl, {
+                    method: 'POST',
+                    headers,
+                    body: JSON.stringify({ ref: 'main' })
+                });
+
+                if (!dispRes.ok && dispRes.status !== 204) {
+                    throw new Error(`No se pudo disparar el workflow (HTTP ${dispRes.status})`);
+                }
+
+                if (statusDiv) statusDiv.innerText = `✅ Jornada ${jornadaVal} activada. Espera ~20 segundos y pulsa "📥 Cargar partidos de la jornada desde puntos.json".`;
+                showToast(`🚀 Jornada ${jornadaVal} enviada a GitHub y extractor lanzado`);
+            } catch (err) {
+                if (statusDiv) statusDiv.innerText = `❌ Error: ${err.message}`;
+                alert("❌ Error al cambiar jornada en GitHub: " + err.message);
+            }
+        }
 
         async function cargarPartidosDesdePuntosJson() {
             try {
@@ -1046,7 +1133,7 @@
                 if (!res.ok) throw new Error("No se pudo leer puntos.json");
                 const dataRaw = await res.json();
                 if (!Array.isArray(dataRaw.partidos) || dataRaw.partidos.length === 0) {
-                    alert("puntos.json no contiene partidos todavía. Ejecuta el extractor actualizado primero.");
+                    alert("puntos.json no contiene partidos todavía. Espera unos segundos a que termine GitHub Actions y vuelve a pulsar.");
                     return;
                 }
                 partidosJornada = dataRaw.partidos.map(p => ({
@@ -1054,7 +1141,8 @@
                     visitante: p.visitante
                 }));
                 saveDataToLocal();
-                showToast(`📥 ${partidosJornada.length} partidos cargados desde puntos.json`);
+                const jTxt = dataRaw.jornada ? ` (Jornada ${dataRaw.jornada})` : '';
+                showToast(`📥 ${partidosJornada.length} partidos cargados${jTxt}`);
             } catch (err) {
                 alert("❌ Error al cargar partidos: " + err.message);
             }
@@ -1173,7 +1261,8 @@
                 const hora = new Date().toLocaleTimeString();
                 const numJug = Object.keys(jugadoresRaw).length;
                 const numEnt = Object.keys(entrenadoresRaw).length;
-                if (statusEl) statusEl.innerText = `🟢 Sincronizado a las ${hora} (${numJug} jugadores, ${numEnt} entrenadores)`;
+                const jTag = dataRaw.jornada ? `J${dataRaw.jornada} · ` : '';
+                if (statusEl) statusEl.innerText = `🟢 ${jTag}Sincronizado a las ${hora} (${numJug} jugadores, ${numEnt} entrenadores)`;
             } catch (err) {
                 if (statusEl) statusEl.innerText = `🔴 Sin conexión con puntos.json`;
             }
@@ -1183,6 +1272,7 @@
             cargarConfigGitHubUI();
             cargarConfigCronJobUI();
             await cargarBackupInicialSiVacio();
+            await cargarJornadaActualEnInput();
             await sincronizarPuntosEnDirecto();
             setInterval(sincronizarPuntosEnDirecto, 30000);
         })();
