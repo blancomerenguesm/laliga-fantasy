@@ -170,6 +170,8 @@
     "Lamine Yamal": 1,
     "Raphinha": 1,
     "Adeyemi": 0,
+    "Dani Olmo": 0,
+    "Gordon": 0,
     "Gulácsi": 1,
     "Alex Freeman": -2,
     "Pau Navarro": 0,
@@ -180,7 +182,9 @@
     "Pape Gueye": 0,
     "Alberto Moleiro": 3,
     "Oluwaseyi": 3,
-    "Mikautadze": 1
+    "Mikautadze": 1,
+    "Sergi Cardona": 0,
+    "Carlos Macia": 0
   },
   "entrenadores": {
     "Athletic": 0,
@@ -193,8 +197,8 @@
     "Betis": 2,
     "Real Madrid": 5,
     "Celta": 0,
-    "Barcelona": 2,
-    "Villarreal": 2
+    "Barcelona": 5,
+    "Villarreal": 0
   },
   "partidos": [
     {
