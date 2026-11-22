@@ -170,5 +170,47 @@
     "Betis": 2,
     "Real Madrid": 5,
     "Celta": 0
-  }
+  },
+  "partidos": [
+    {
+      "local": "Athletic",
+      "visitante": "Espanyol"
+    },
+    {
+      "local": "Alavés",
+      "visitante": "Deportivo"
+    },
+    {
+      "local": "Rayo",
+      "visitante": "Valencia"
+    },
+    {
+      "local": "Sevilla",
+      "visitante": "Betis"
+    },
+    {
+      "local": "Real Madrid",
+      "visitante": "Celta"
+    },
+    {
+      "local": "Barcelona",
+      "visitante": "Villarreal"
+    },
+    {
+      "local": "Racing",
+      "visitante": "Real Sociedad"
+    },
+    {
+      "local": "Osasuna",
+      "visitante": "Málaga"
+    },
+    {
+      "local": "Getafe",
+      "visitante": "Atleti"
+    },
+    {
+      "local": "Levante",
+      "visitante": "Elche"
+    }
+  ]
 }
