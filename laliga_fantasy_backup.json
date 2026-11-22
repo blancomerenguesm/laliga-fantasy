@@ -44,7 +44,7 @@
   "datos": [
     {
       "manager": "Marcos",
-      "total": 62,
+      "total": 56,
       "players": [
         {
           "n": "M. Dituro",
@@ -103,7 +103,7 @@
         {
           "n": "Ivan Romero",
           "t": "Levante",
-          "p": 6,
+          "p": "",
           "c": false
         },
         {
@@ -139,7 +139,7 @@
           "c": false
         },
         {
-          "n": "Jon Martín",
+          "n": "Jon",
           "t": "Real Sociedad",
           "p": "",
           "c": false
@@ -204,12 +204,12 @@
     },
     {
       "manager": "Roy",
-      "total": 21,
+      "total": 19,
       "players": [
         {
           "n": "Gulácsi",
           "t": "Villarreal",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
@@ -269,7 +269,7 @@
         {
           "n": "Raphinha",
           "t": "Barcelona",
-          "p": "",
+          "p": -1,
           "c": true
         }
       ],
@@ -284,7 +284,7 @@
     },
     {
       "manager": "Humanes",
-      "total": 15,
+      "total": 18,
       "players": [
         {
           "n": "Ryan",
@@ -331,13 +331,13 @@
         {
           "n": "Buchanan",
           "t": "Villarreal",
-          "p": "",
+          "p": 5,
           "c": false
         },
         {
           "n": "Lamine",
           "t": "Barcelona",
-          "p": "",
+          "p": -1,
           "c": true
         },
         {
@@ -444,7 +444,7 @@
     },
     {
       "manager": "Javi",
-      "total": 40,
+      "total": 38,
       "players": [
         {
           "n": "Herrera",
@@ -467,7 +467,7 @@
         {
           "n": "Eric",
           "t": "Barcelona",
-          "p": "",
+          "p": -2,
           "c": false
         },
         {
@@ -596,7 +596,7 @@
       "coach": {
         "n": "Flick",
         "t": "Barcelona",
-        "p": ""
+        "p": 0
       },
       "historicPoints": 675,
       "debt": 11,
@@ -604,12 +604,12 @@
     },
     {
       "manager": "Poty",
-      "total": 17,
+      "total": 13,
       "players": [
         {
           "n": "Joan García",
           "t": "Barcelona",
-          "p": "",
+          "p": -2,
           "c": true
         },
         {
@@ -707,7 +707,7 @@
         {
           "n": "Veiga",
           "t": "Villarreal",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
