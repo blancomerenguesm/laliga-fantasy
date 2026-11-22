@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "22/11 17:40:54",
+  "actualizado_en": "22/11 17:45:59",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -212,7 +212,9 @@
     "Carlos Soler": 1,
     "Oyarzabal": 4,
     "Oskarsson": -1,
-    "Guedes": -1
+    "Guedes": -1,
+    "Kubo": 0,
+    "Jon Aramburu": 0
   },
   "jugadores_equipos": {
     "Unai Simón": "Athletic",
@@ -425,7 +427,9 @@
     "Carlos Soler": "Real Sociedad",
     "Oyarzabal": "Real Sociedad",
     "Oskarsson": "Real Sociedad",
-    "Guedes": "Real Sociedad"
+    "Guedes": "Real Sociedad",
+    "Kubo": "Real Sociedad",
+    "Jon Aramburu": "Real Sociedad"
   },
   "entrenadores": {
     "Athletic": 0,
@@ -440,8 +444,8 @@
     "Celta": 0,
     "Barcelona": 5,
     "Villarreal": 0,
-    "Racing": 2,
-    "Real Sociedad": 2
+    "Racing": 5,
+    "Real Sociedad": 0
   },
   "partidos": [
     {
