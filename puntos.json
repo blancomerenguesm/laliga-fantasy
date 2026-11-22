@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "22/11 18:31:13",
+  "actualizado_en": "22/11 18:35:47",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -220,7 +220,29 @@
     "Jon Aramburu": 2,
     "Zakharyan": 2,
     "Aihen Muñoz": 2,
-    "Beñat Turrientes": 2
+    "Beñat Turrientes": 2,
+    "Sergio Herrera": 0,
+    "Rosier": 0,
+    "Catena": 0,
+    "Boyomo": 0,
+    "Diego Rico": 0,
+    "Rubén García": 0,
+    "Jon Moncayola": 0,
+    "Aimar Oroz": 0,
+    "Moi Gómez": 0,
+    "Kike Barja": 0,
+    "Budimir": 0,
+    "Alfonso Herrero": 0,
+    "Diego Murillo": 0,
+    "Álex Pastor": 0,
+    "Ángel Recio": 0,
+    "José Salinas": 0,
+    "Dotor": 0,
+    "David Larrubia": 0,
+    "Rafa Rodríguez": 0,
+    "Pablo Martínez": 0,
+    "Joaquín Muñoz": 0,
+    "Adrián Niño": 0
   },
   "jugadores_equipos": {
     "Unai Simón": "Athletic",
@@ -441,7 +463,29 @@
     "Jon Aramburu": "Real Sociedad",
     "Zakharyan": "Real Sociedad",
     "Aihen Muñoz": "Real Sociedad",
-    "Beñat Turrientes": "Real Sociedad"
+    "Beñat Turrientes": "Real Sociedad",
+    "Sergio Herrera": "Osasuna",
+    "Rosier": "Osasuna",
+    "Catena": "Osasuna",
+    "Boyomo": "Osasuna",
+    "Diego Rico": "Osasuna",
+    "Rubén García": "Osasuna",
+    "Jon Moncayola": "Osasuna",
+    "Aimar Oroz": "Osasuna",
+    "Moi Gómez": "Osasuna",
+    "Kike Barja": "Osasuna",
+    "Budimir": "Osasuna",
+    "Alfonso Herrero": "Málaga",
+    "Diego Murillo": "Málaga",
+    "Álex Pastor": "Málaga",
+    "Ángel Recio": "Málaga",
+    "José Salinas": "Málaga",
+    "Dotor": "Málaga",
+    "David Larrubia": "Málaga",
+    "Rafa Rodríguez": "Málaga",
+    "Pablo Martínez": "Málaga",
+    "Joaquín Muñoz": "Málaga",
+    "Adrián Niño": "Málaga"
   },
   "entrenadores": {
     "Athletic": 0,
@@ -457,7 +501,9 @@
     "Barcelona": 5,
     "Villarreal": 0,
     "Racing": 5,
-    "Real Sociedad": 0
+    "Real Sociedad": 0,
+    "Osasuna": 2,
+    "Málaga": 2
   },
   "partidos": [
     {
