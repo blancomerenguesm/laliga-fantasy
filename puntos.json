@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "22/11 19:46:05",
+  "actualizado_en": "22/11 19:50:57",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -225,15 +225,15 @@
     "Rosier": 5,
     "Catena": -1,
     "Boyomo": 1,
-    "Diego Rico": 0,
-    "Rubén García": 0,
+    "Diego Rico": 1,
+    "Rubén García": 1,
     "Jon Moncayola": 0,
     "Aimar Oroz": 1,
-    "Moi Gómez": 2,
+    "Moi Gómez": 3,
     "Kike Barja": 0,
     "Budimir": 5,
     "Alfonso Herrero": -1,
-    "Diego Murillo": 2,
+    "Diego Murillo": 3,
     "Álex Pastor": 2,
     "Ángel Recio": 0,
     "José Salinas": 0,
@@ -244,7 +244,8 @@
     "Joaquín Muñoz": 0,
     "Adrián Niño": 0,
     "Carlos Puga": 0,
-    "Ramón Enríquez": 0
+    "Ramón Enríquez": 0,
+    "Dani Lorenzo": 0
   },
   "jugadores_equipos": {
     "Unai Simón": "Athletic",
@@ -489,7 +490,8 @@
     "Joaquín Muñoz": "Málaga",
     "Adrián Niño": "Málaga",
     "Carlos Puga": "Málaga",
-    "Ramón Enríquez": "Málaga"
+    "Ramón Enríquez": "Málaga",
+    "Dani Lorenzo": "Málaga"
   },
   "entrenadores": {
     "Athletic": 0,
