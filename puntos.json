@@ -158,7 +158,29 @@
     "Aleix Febas": 1,
     "Driouech": 1,
     "Iago Aspas": 1,
-    "Javi Rueda": 1
+    "Javi Rueda": 1,
+    "Joan García": 0,
+    "Eric García": 0,
+    "Gerard Martín": 0,
+    "Joao Cancelo": 0,
+    "Fermín López": 0,
+    "De Jong": 0,
+    "Marc Bernal": 0,
+    "Pedri": 0,
+    "Lamine Yamal": 0,
+    "Raphinha": 0,
+    "Adeyemi": 0,
+    "Gulácsi": 0,
+    "Alex Freeman": 0,
+    "Pau Navarro": 0,
+    "Renato Veiga": 0,
+    "Carlos Romero": 0,
+    "Buchanan": 0,
+    "Comesaña": 0,
+    "Pape Gueye": 0,
+    "Alberto Moleiro": 0,
+    "Oluwaseyi": 0,
+    "Mikautadze": 0
   },
   "entrenadores": {
     "Athletic": 0,
@@ -170,7 +192,9 @@
     "Sevilla": 2,
     "Betis": 2,
     "Real Madrid": 5,
-    "Celta": 0
+    "Celta": 0,
+    "Barcelona": 2,
+    "Villarreal": 2
   },
   "partidos": [
     {
