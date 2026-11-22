@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "22/11 21:15:58",
+  "actualizado_en": "22/11 21:21:01",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -253,10 +253,9 @@
     "Dani Lorenzo": 3,
     "Chupe": 2,
     "Juan Cruz": 2,
-    "David Soria": 0,
+    "David Soria": 1,
     "Djené": 0,
-    "Andrés García": 0,
-    "Carvajal": 0,
+    "Andrés García": 2,
     "Zaid Romero": 0,
     "Jean Ives Valou": 0,
     "Johan Mojica": 1,
@@ -272,7 +271,7 @@
     "Grimaldo": 0,
     "Koke": 0,
     "Giuliano Simeone": 0,
-    "Álex Baena": 5,
+    "Álex Baena": 6,
     "Pablo Barrios": 0,
     "Johnny Cardoso": 0,
     "Julián Álvarez": 3
@@ -532,7 +531,6 @@
     "David Soria": "Getafe",
     "Djené": "Getafe",
     "Andrés García": "Getafe",
-    "Carvajal": "Getafe",
     "Zaid Romero": "Getafe",
     "Jean Ives Valou": "Getafe",
     "Johan Mojica": "Getafe",
