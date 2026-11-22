@@ -204,7 +204,7 @@
     },
     {
       "manager": "Roy",
-      "total": 26,
+      "total": 24,
       "players": [
         {
           "n": "Gulácsi",
@@ -225,9 +225,9 @@
           "c": false
         },
         {
-          "n": "Sergio G.",
+          "n": "Sergio Gómez",
           "t": "Real Sociedad",
-          "p": "",
+          "p": -2,
           "c": false
         },
         {
