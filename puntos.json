@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "22/11 17:01:25",
+  "actualizado_en": "22/11 17:05:53",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -193,12 +193,12 @@
     "Santiago Mouriño": 2,
     "Agirrezabala": 2,
     "Pablo Ramón": 1,
-    "Pedro Felipe": 0,
+    "Pedro Felipe": 1,
     "Belocian": 1,
     "Jorge Salinas": 0,
     "Prati": 0,
     "Canales": 0,
-    "Íñigo Vicente": 0,
+    "Íñigo Vicente": -1,
     "Iván Martín": 0,
     "Iker Luque": 5,
     "Zabiri": 9,
@@ -210,7 +210,7 @@
     "Sucic": 0,
     "Gorrotxategi": -1,
     "Carlos Soler": 1,
-    "Oyarzabal": -1,
+    "Oyarzabal": 4,
     "Oskarsson": -1,
     "Guedes": -1
   },
