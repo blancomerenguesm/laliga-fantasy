@@ -116,8 +116,14 @@ def ejecutar_una_vez():
     partidos = descubrir_partidos_jornada()
     jugadores = {}
     entrenadores = {}
+    partidos_limpios = []
 
     for p in partidos:
+        partidos_limpios.append({
+            "local": p["local"],
+            "visitante": p["visitante"]
+        })
+
         if not p["id_sofascore"]:
             continue
 
@@ -165,13 +171,14 @@ def ejecutar_una_vez():
 
     salida = {
         "jugadores": jugadores,
-        "entrenadores": entrenadores
+        "entrenadores": entrenadores,
+        "partidos": partidos_limpios
     }
 
     with open("puntos.json", "w", encoding="utf-8") as f:
         json.dump(salida, f, ensure_ascii=False, indent=2)
 
-    print(f"OK: {len(jugadores)} jugadores, {len(entrenadores)} entrenadores.")
+    print(f"OK: {len(jugadores)} jugadores, {len(entrenadores)} entrenadores, {len(partidos_limpios)} partidos.")
 
 if __name__ == "__main__":
     ejecutar_una_vez()

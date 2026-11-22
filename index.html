@@ -213,6 +213,7 @@
 
         <div class="config-section">
             <h3 style="color:var(--accent); margin-top:0;">4. Editar Partidos</h3>
+            <button class="save-btn" style="background:#2a2a2a; border:1px solid var(--accent); color:var(--accent); margin-top:0; margin-bottom:12px; padding:9px; font-size:0.95em;" onclick="cargarPartidosDesdePuntosJson()">📥 Cargar partidos de la jornada desde puntos.json</button>
             <div id="editMatchesContainer"></div>
             <button class="save-btn" onclick="saveMatches()">💾 Guardar Partidos</button>
         </div>
@@ -1035,6 +1036,27 @@
             } else {
                 fantasyData.forEach(t => t.total = calculateTeamTotal(t));
                 renderAll();
+            }
+        }
+
+
+        async function cargarPartidosDesdePuntosJson() {
+            try {
+                const res = await fetch('puntos.json?t=' + Date.now());
+                if (!res.ok) throw new Error("No se pudo leer puntos.json");
+                const dataRaw = await res.json();
+                if (!Array.isArray(dataRaw.partidos) || dataRaw.partidos.length === 0) {
+                    alert("puntos.json no contiene partidos todavía. Ejecuta el extractor actualizado primero.");
+                    return;
+                }
+                partidosJornada = dataRaw.partidos.map(p => ({
+                    local: p.local,
+                    visitante: p.visitante
+                }));
+                saveDataToLocal();
+                showToast(`📥 ${partidosJornada.length} partidos cargados desde puntos.json`);
+            } catch (err) {
+                alert("❌ Error al cargar partidos: " + err.message);
             }
         }
 
