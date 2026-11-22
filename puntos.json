@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "22/11 18:01:22",
+  "actualizado_en": "22/11 18:05:56",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -203,6 +203,7 @@
     "Iker Luque": 5,
     "Zabiri": 9,
     "Pablo García": 0,
+    "André Almeida": 0,
     "Alex Remiro": -2,
     "Héctor Fort": -2,
     "Zubeldia": -2,
@@ -217,7 +218,8 @@
     "Kubo": 0,
     "Jon Aramburu": 0,
     "Zakharyan": 0,
-    "Aihen Muñoz": 0
+    "Aihen Muñoz": 0,
+    "Beñat Turrientes": 0
   },
   "jugadores_equipos": {
     "Unai Simón": "Athletic",
@@ -421,6 +423,7 @@
     "Iker Luque": "Racing",
     "Zabiri": "Racing",
     "Pablo García": "Racing",
+    "André Almeida": "Racing",
     "Alex Remiro": "Real Sociedad",
     "Héctor Fort": "Real Sociedad",
     "Zubeldia": "Real Sociedad",
@@ -435,7 +438,8 @@
     "Kubo": "Real Sociedad",
     "Jon Aramburu": "Real Sociedad",
     "Zakharyan": "Real Sociedad",
-    "Aihen Muñoz": "Real Sociedad"
+    "Aihen Muñoz": "Real Sociedad",
+    "Beñat Turrientes": "Real Sociedad"
   },
   "entrenadores": {
     "Athletic": 0,
