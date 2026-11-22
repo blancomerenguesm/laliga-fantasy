@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "22/11 22:35:56",
+  "actualizado_en": "22/11 22:40:57",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -254,11 +254,11 @@
     "Chupe": 2,
     "Juan Cruz": 2,
     "David Soria": 1,
-    "Djené": -2,
+    "Djené": -3,
     "Andrés García": 1,
     "Zaid Romero": -2,
     "Jean Ives Valou": -2,
-    "Johan Mojica": -1,
+    "Johan Mojica": -2,
     "Orel Mangala": -2,
     "Francho Serrano": -1,
     "Ramón Terrats": -1,
@@ -279,8 +279,9 @@
     "Pablo Barrios": 2,
     "Johnny Cardoso": 4,
     "Julián Álvarez": 8,
-    "Kang-In Lee": 0,
-    "Mendoza": 0
+    "Kang-In Lee": 1,
+    "Mendoza": 0,
+    "Sorloth": 0
   },
   "jugadores_equipos": {
     "Unai Simón": "Athletic",
@@ -561,7 +562,8 @@
     "Johnny Cardoso": "Atleti",
     "Julián Álvarez": "Atleti",
     "Kang-In Lee": "Atleti",
-    "Mendoza": "Atleti"
+    "Mendoza": "Atleti",
+    "Sorloth": "Atleti"
   },
   "entrenadores": {
     "Athletic": 0,
