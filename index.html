@@ -1378,7 +1378,7 @@
                     saveDataToLocal();
                 }
 
-                const hora = new Date().toLocaleTimeString();
+                const horaLectura = new Date().toLocaleTimeString();
                 const numJug = Object.keys(jugadoresRaw).length;
                 const numEnt = Object.keys(entrenadoresRaw).length;
 
@@ -1390,8 +1390,19 @@
                     }
                     guardarCatalogoLocal(addCat);
                 }
+
+                let infoOrigen = "";
+                if (dataRaw.actualizado_en) {
+                    infoOrigen = `Datos de las ${dataRaw.actualizado_en}`;
+                } else {
+                    const lastMod = res.headers.get("Last-Modified");
+                    infoOrigen = lastMod
+                        ? `Archivo de las ${new Date(lastMod).toLocaleTimeString()}`
+                        : `Leído a las ${horaLectura}`;
+                }
+
                 const jTag = dataRaw.jornada ? `J${dataRaw.jornada} · ` : '';
-                if (statusEl) statusEl.innerText = `🟢 ${jTag}Sincronizado a las ${hora} (${numJug} jugadores, ${numEnt} entrenadores)`;
+                if (statusEl) statusEl.innerText = `🟢 ${jTag}${infoOrigen} · Leído ${horaLectura} (${numJug} jugadores, ${numEnt} entrenadores)`;
             } catch (err) {
                 if (statusEl) statusEl.innerText = `🔴 Sin conexión con puntos.json`;
             }

@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 import json
 import re
 import os
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 TEMPORADA = "26"
 JORNADA_DEFECTO = "13"
@@ -221,8 +223,11 @@ def ejecutar_una_vez():
         except Exception as e:
             print(f"Error en {p['local']}-{p['visitante']}: {e}")
 
+    ahora_es = datetime.now(ZoneInfo("Europe/Madrid")).strftime("%d/%m %H:%M:%S")
+
     salida = {
         "jornada": jornada_actual,
+        "actualizado_en": ahora_es,
         "jugadores": jugadores,
         "jugadores_equipos": jugadores_equipos,
         "entrenadores": entrenadores,
