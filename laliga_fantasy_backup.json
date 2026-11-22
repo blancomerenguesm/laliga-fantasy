@@ -44,7 +44,7 @@
   "datos": [
     {
       "manager": "Marcos",
-      "total": 56,
+      "total": 61,
       "players": [
         {
           "n": "M. Dituro",
@@ -109,7 +109,7 @@
         {
           "n": "Iker Luque",
           "t": "Racing",
-          "p": "",
+          "p": 5,
           "c": false
         }
       ],
@@ -124,7 +124,7 @@
     },
     {
       "manager": "Álex",
-      "total": 21,
+      "total": 20,
       "players": [
         {
           "n": "Radu",
@@ -147,7 +147,7 @@
         {
           "n": "Salinas",
           "t": "Málaga",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
@@ -165,7 +165,7 @@
         {
           "n": "Carlos Soler",
           "t": "Real Sociedad",
-          "p": "",
+          "p": -1,
           "c": false
         },
         {
@@ -204,12 +204,12 @@
     },
     {
       "manager": "Roy",
-      "total": 24,
+      "total": 26,
       "players": [
         {
           "n": "Gulácsi",
           "t": "Villarreal",
-          "p": 1,
+          "p": 7,
           "c": false
         },
         {
@@ -233,13 +233,13 @@
         {
           "n": "Canales",
           "t": "Athletic",
-          "p": 5,
+          "p": 0,
           "c": false
         },
         {
           "n": "Sucic",
           "t": "Real Sociedad",
-          "p": "",
+          "p": -1,
           "c": false
         },
         {
@@ -269,7 +269,7 @@
         {
           "n": "Raphinha",
           "t": "Barcelona",
-          "p": 1,
+          "p": 2,
           "c": true
         }
       ],
@@ -284,7 +284,7 @@
     },
     {
       "manager": "Humanes",
-      "total": 22,
+      "total": 41,
       "players": [
         {
           "n": "Ryan",
@@ -331,13 +331,13 @@
         {
           "n": "Buchanan",
           "t": "Villarreal",
-          "p": 5,
+          "p": 8,
           "c": false
         },
         {
           "n": "Lamine",
           "t": "Barcelona",
-          "p": 1,
+          "p": 9,
           "c": true
         },
         {
@@ -444,7 +444,7 @@
     },
     {
       "manager": "Javi",
-      "total": 38,
+      "total": 40,
       "players": [
         {
           "n": "Herrera",
@@ -461,13 +461,13 @@
         {
           "n": "Pablo Ramón",
           "t": "Racing",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
           "n": "Eric",
           "t": "Barcelona",
-          "p": -2,
+          "p": 0,
           "c": false
         },
         {
@@ -529,7 +529,7 @@
         {
           "n": "Agirrezabala",
           "t": "Racing",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
@@ -604,24 +604,24 @@
     },
     {
       "manager": "Poty",
-      "total": 13,
+      "total": 25,
       "players": [
         {
           "n": "Joan García",
           "t": "Barcelona",
-          "p": -2,
+          "p": 0,
           "c": true
         },
         {
           "n": "Pedro Felipe",
           "t": "Racing",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
           "n": "Jorge Salinas",
           "t": "Racing",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
@@ -649,9 +649,9 @@
           "c": false
         },
         {
-          "n": "Gorrotxategui",
+          "n": "Gorrotxategi",
           "t": "Real Sociedad",
-          "p": "",
+          "p": -1,
           "c": false
         },
         {
@@ -663,13 +663,13 @@
         {
           "n": "Íñigo Vicente",
           "t": "Racing",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
           "n": "Zabiri",
           "t": "Racing",
-          "p": "",
+          "p": 9,
           "c": false
         }
       ],
@@ -684,7 +684,7 @@
     },
     {
       "manager": "Alberto",
-      "total": 19,
+      "total": 18,
       "players": [
         {
           "n": "Leo Román",
@@ -707,7 +707,7 @@
         {
           "n": "Veiga",
           "t": "Villarreal",
-          "p": 0,
+          "p": -1,
           "c": false
         },
         {
@@ -756,7 +756,7 @@
       "coach": {
         "n": "Matarazzo",
         "t": "Real Sociedad",
-        "p": ""
+        "p": 0
       },
       "historicPoints": 657,
       "debt": 13,
