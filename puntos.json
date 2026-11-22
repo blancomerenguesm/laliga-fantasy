@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "22/11 22:05:46",
+  "actualizado_en": "22/11 22:11:00",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -265,6 +265,7 @@
     "Iván Azón": -1,
     "Enes Ünal": -1,
     "Kiko Femenía": 0,
+    "Satriano": 0,
     "Oblak": 1,
     "Marcos Llorente": 0,
     "Le Normand": 0,
@@ -275,7 +276,8 @@
     "Álex Baena": 6,
     "Pablo Barrios": 1,
     "Johnny Cardoso": 4,
-    "Julián Álvarez": 8
+    "Julián Álvarez": 8,
+    "Kang-In Lee": 0
   },
   "jugadores_equipos": {
     "Unai Simón": "Athletic",
@@ -541,6 +543,7 @@
     "Iván Azón": "Getafe",
     "Enes Ünal": "Getafe",
     "Kiko Femenía": "Getafe",
+    "Satriano": "Getafe",
     "Oblak": "Atleti",
     "Marcos Llorente": "Atleti",
     "Le Normand": "Atleti",
@@ -551,7 +554,8 @@
     "Álex Baena": "Atleti",
     "Pablo Barrios": "Atleti",
     "Johnny Cardoso": "Atleti",
-    "Julián Álvarez": "Atleti"
+    "Julián Álvarez": "Atleti",
+    "Kang-In Lee": "Atleti"
   },
   "entrenadores": {
     "Athletic": 0,
