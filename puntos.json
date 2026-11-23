@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "23/11 22:01:20",
+  "actualizado_en": "23/11 22:05:56",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -305,7 +305,8 @@
     "Javi Morcillo": 0,
     "Germán Valera": 0,
     "Fernando Niño": 1,
-    "Abiel Osorio": 0
+    "Abiel Osorio": 0,
+    "Lemar": 0
   },
   "jugadores_equipos": {
     "Unai Simón": "Athletic",
@@ -611,7 +612,8 @@
     "Javi Morcillo": "Elche",
     "Germán Valera": "Elche",
     "Fernando Niño": "Elche",
-    "Abiel Osorio": "Elche"
+    "Abiel Osorio": "Elche",
+    "Lemar": "Elche"
   },
   "entrenadores": {
     "Athletic": 0,
