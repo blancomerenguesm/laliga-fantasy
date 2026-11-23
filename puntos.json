@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "23/11 22:21:01",
+  "actualizado_en": "23/11 22:25:50",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -286,20 +286,20 @@
     "Ryan": 0,
     "Toljan": 0,
     "Aïssa Mandi": -1,
-    "Adrián de la Fuente": 1,
+    "Adrián de la Fuente": 2,
     "Manu Sánchez": 0,
     "Oriol Rey": 0,
     "Requena": 0,
     "Olasagasti": -1,
     "Thiago Fernández": -1,
-    "Brugui": 0,
+    "Brugui": 1,
     "Iván Romero": 0,
     "Nacho Pérez": 0,
     "Marc Santos": 0,
     "Matías Dituro": -1,
     "Buba Sangaré": 0,
     "Víctor Chust": 2,
-    "Roy Revivo": 0,
+    "Roy Revivo": 7,
     "Gonzalo Villar": 0,
     "Lucas Cepeda": -1,
     "Federico Redondo": 1,
@@ -636,8 +636,8 @@
     "Málaga": 0,
     "Getafe": 0,
     "Atleti": 5,
-    "Levante": 2,
-    "Elche": 2
+    "Levante": 0,
+    "Elche": 5
   },
   "partidos": [
     {
