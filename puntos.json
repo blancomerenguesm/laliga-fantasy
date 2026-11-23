@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "23/11 22:25:50",
+  "actualizado_en": "23/11 22:31:21",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -289,9 +289,9 @@
     "Adrián de la Fuente": 2,
     "Manu Sánchez": 0,
     "Oriol Rey": 0,
-    "Requena": 0,
+    "Requena": 1,
     "Olasagasti": -1,
-    "Thiago Fernández": -1,
+    "Thiago Fernández": -2,
     "Brugui": 1,
     "Iván Romero": 0,
     "Nacho Pérez": 0,
@@ -302,12 +302,13 @@
     "Roy Revivo": 7,
     "Gonzalo Villar": 0,
     "Lucas Cepeda": -1,
-    "Federico Redondo": 1,
+    "Federico Redondo": 2,
     "Javi Morcillo": 0,
-    "Germán Valera": 0,
+    "Germán Valera": 3,
     "Fernando Niño": 1,
     "Abiel Osorio": 0,
-    "Lemar": 0
+    "Lemar": 1,
+    "Martim Neto": 0
   },
   "jugadores_equipos": {
     "Unai Simón": "Athletic",
@@ -615,7 +616,8 @@
     "Germán Valera": "Elche",
     "Fernando Niño": "Elche",
     "Abiel Osorio": "Elche",
-    "Lemar": "Elche"
+    "Lemar": "Elche",
+    "Martim Neto": "Elche"
   },
   "entrenadores": {
     "Athletic": 0,
