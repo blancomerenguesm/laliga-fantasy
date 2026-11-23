@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "23/11 22:35:49",
+  "actualizado_en": "23/11 22:40:58",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -283,7 +283,7 @@
     "Kang-In Lee": 5,
     "Mendoza": 1,
     "Sorloth": 3,
-    "Ryan": 0,
+    "Ryan": 1,
     "Toljan": 0,
     "Aïssa Mandi": -2,
     "Adrián de la Fuente": 2,
@@ -293,22 +293,25 @@
     "Olasagasti": 0,
     "Thiago Fernández": -2,
     "Brugui": 1,
-    "Iván Romero": 0,
+    "Iván Romero": 1,
     "Nacho Pérez": 1,
     "Marc Santos": 0,
+    "Etta Eyong": 0,
+    "Ratkov": 0,
     "Matías Dituro": -1,
     "Buba Sangaré": 0,
     "Víctor Chust": 1,
     "Roy Revivo": 7,
     "Gonzalo Villar": 0,
-    "Lucas Cepeda": -1,
+    "Lucas Cepeda": 0,
     "Federico Redondo": 2,
-    "Javi Morcillo": 0,
+    "Javi Morcillo": 1,
     "Germán Valera": 3,
     "Fernando Niño": 1,
     "Abiel Osorio": 0,
     "Lemar": 1,
-    "Martim Neto": 0
+    "Martim Neto": 1,
+    "Tete Morente": 0
   },
   "jugadores_equipos": {
     "Unai Simón": "Athletic",
@@ -605,6 +608,8 @@
     "Iván Romero": "Levante",
     "Nacho Pérez": "Levante",
     "Marc Santos": "Levante",
+    "Etta Eyong": "Levante",
+    "Ratkov": "Levante",
     "Matías Dituro": "Elche",
     "Buba Sangaré": "Elche",
     "Víctor Chust": "Elche",
@@ -617,7 +622,8 @@
     "Fernando Niño": "Elche",
     "Abiel Osorio": "Elche",
     "Lemar": "Elche",
-    "Martim Neto": "Elche"
+    "Martim Neto": "Elche",
+    "Tete Morente": "Elche"
   },
   "entrenadores": {
     "Athletic": 0,
