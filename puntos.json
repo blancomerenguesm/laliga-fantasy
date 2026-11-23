@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "23/11 21:01:24",
+  "actualizado_en": "23/11 21:06:02",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -282,7 +282,29 @@
     "Julián Álvarez": 15,
     "Kang-In Lee": 5,
     "Mendoza": 1,
-    "Sorloth": 3
+    "Sorloth": 3,
+    "Ryan": 0,
+    "Toljan": 0,
+    "Aïssa Mandi": 0,
+    "Adrián de la Fuente": 0,
+    "Manu Sánchez": 0,
+    "Oriol Rey": 0,
+    "Requena": 0,
+    "Olasagasti": 0,
+    "Thiago Fernández": 0,
+    "Brugui": 0,
+    "Iván Romero": 0,
+    "Matías Dituro": 0,
+    "Buba Sangaré": 0,
+    "Víctor Chust": 0,
+    "Roy Revivo": 0,
+    "Gonzalo Villar": 0,
+    "Lucas Cepeda": 0,
+    "Federico Redondo": 0,
+    "Javi Morcillo": 0,
+    "Germán Valera": 0,
+    "Fernando Niño": 0,
+    "Abiel Osorio": 0
   },
   "jugadores_equipos": {
     "Unai Simón": "Athletic",
@@ -565,7 +587,29 @@
     "Julián Álvarez": "Atleti",
     "Kang-In Lee": "Atleti",
     "Mendoza": "Atleti",
-    "Sorloth": "Atleti"
+    "Sorloth": "Atleti",
+    "Ryan": "Levante",
+    "Toljan": "Levante",
+    "Aïssa Mandi": "Levante",
+    "Adrián de la Fuente": "Levante",
+    "Manu Sánchez": "Levante",
+    "Oriol Rey": "Levante",
+    "Requena": "Levante",
+    "Olasagasti": "Levante",
+    "Thiago Fernández": "Levante",
+    "Brugui": "Levante",
+    "Iván Romero": "Levante",
+    "Matías Dituro": "Elche",
+    "Buba Sangaré": "Elche",
+    "Víctor Chust": "Elche",
+    "Roy Revivo": "Elche",
+    "Gonzalo Villar": "Elche",
+    "Lucas Cepeda": "Elche",
+    "Federico Redondo": "Elche",
+    "Javi Morcillo": "Elche",
+    "Germán Valera": "Elche",
+    "Fernando Niño": "Elche",
+    "Abiel Osorio": "Elche"
   },
   "entrenadores": {
     "Athletic": 0,
@@ -585,7 +629,9 @@
     "Osasuna": 5,
     "Málaga": 0,
     "Getafe": 0,
-    "Atleti": 5
+    "Atleti": 5,
+    "Levante": 2,
+    "Elche": 2
   },
   "partidos": [
     {
