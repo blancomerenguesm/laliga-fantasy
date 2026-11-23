@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "23/11 22:40:58",
+  "actualizado_en": "23/11 22:45:57",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -290,11 +290,11 @@
     "Manu Sánchez": 0,
     "Oriol Rey": -1,
     "Requena": 1,
-    "Olasagasti": 0,
+    "Olasagasti": -1,
     "Thiago Fernández": -2,
     "Brugui": 1,
     "Iván Romero": 1,
-    "Nacho Pérez": 1,
+    "Nacho Pérez": 0,
     "Marc Santos": 0,
     "Etta Eyong": 0,
     "Ratkov": 0,
@@ -311,7 +311,8 @@
     "Abiel Osorio": 0,
     "Lemar": 1,
     "Martim Neto": 1,
-    "Tete Morente": 0
+    "Tete Morente": 0,
+    "Barzic": 0
   },
   "jugadores_equipos": {
     "Unai Simón": "Athletic",
@@ -623,7 +624,8 @@
     "Abiel Osorio": "Elche",
     "Lemar": "Elche",
     "Martim Neto": "Elche",
-    "Tete Morente": "Elche"
+    "Tete Morente": "Elche",
+    "Barzic": "Elche"
   },
   "entrenadores": {
     "Athletic": 0,
