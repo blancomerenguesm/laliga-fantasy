@@ -44,79 +44,79 @@
   "datos": [
     {
       "manager": "Marcos",
-      "total": 92,
+      "total": 0,
       "players": [
         {
           "n": "M. Dituro",
           "t": "Elche",
-          "p": 3,
+          "p": "",
           "c": false
         },
         {
           "n": "Revivo",
           "t": "Elche",
-          "p": 15,
+          "p": "",
           "c": false
         },
         {
           "n": "Youssef",
           "t": "Alavés",
-          "p": 3,
+          "p": "",
           "c": false
         },
         {
           "n": "El Hilali",
           "t": "Espanyol",
-          "p": 10,
+          "p": "",
           "c": false
         },
         {
           "n": "Marc Roca",
           "t": "Betis",
-          "p": 6,
+          "p": "",
           "c": false
         },
         {
           "n": "Mario Soriano",
           "t": "Deportivo",
-          "p": 1,
+          "p": "",
           "c": false
         },
         {
           "n": "Bellingham",
           "t": "Real Madrid",
-          "p": 13,
+          "p": "",
           "c": true
         },
         {
           "n": "Unai López",
           "t": "Rayo",
-          "p": 5,
+          "p": "",
           "c": false
         },
         {
           "n": "Diomande",
           "t": "Real Madrid",
-          "p": 5,
+          "p": "",
           "c": false
         },
         {
           "n": "Ivan Romero",
           "t": "Levante",
-          "p": 5,
+          "p": "",
           "c": false
         },
         {
           "n": "Iker Luque",
           "t": "Racing",
-          "p": 8,
+          "p": "",
           "c": false
         }
       ],
       "coach": {
         "n": "Arrasate",
         "t": "Osasuna",
-        "p": 5
+        "p": ""
       },
       "historicPoints": 857,
       "debt": 4.5,
@@ -124,18 +124,18 @@
     },
     {
       "manager": "Álex",
-      "total": 53,
+      "total": 0,
       "players": [
         {
           "n": "Radu",
           "t": "Celta",
-          "p": 4,
+          "p": "",
           "c": false
         },
         {
           "n": "Konate",
           "t": "Real Madrid",
-          "p": 5,
+          "p": "",
           "c": false
         },
         {
@@ -147,56 +147,56 @@
         {
           "n": "José Salinas",
           "t": "Málaga",
-          "p": 5,
+          "p": "",
           "c": false
         },
         {
           "n": "Redondo",
           "t": "Elche",
-          "p": 6,
+          "p": "",
           "c": false
         },
         {
           "n": "Koke",
           "t": "Atleti",
-          "p": 7,
+          "p": "",
           "c": false
         },
         {
           "n": "Carlos Soler",
           "t": "Real Sociedad",
-          "p": 4,
+          "p": "",
           "c": false
         },
         {
           "n": "Pepelu",
           "t": "Valencia",
-          "p": 7,
+          "p": "",
           "c": false
         },
         {
           "n": "Yeremay",
           "t": "Deportivo",
-          "p": 2,
+          "p": "",
           "c": false
         },
         {
           "n": "Giuliano",
           "t": "Atleti",
-          "p": 5,
+          "p": "",
           "c": true
         },
         {
           "n": "Tsitaishvili",
           "t": "Rayo",
-          "p": 3,
+          "p": "",
           "c": false
         }
       ],
       "coach": {
         "n": "Beñat",
         "t": "Rayo",
-        "p": 0
+        "p": ""
       },
       "historicPoints": 834,
       "debt": 4.666666666666667,
@@ -204,79 +204,79 @@
     },
     {
       "manager": "Roy",
-      "total": 56,
+      "total": 0,
       "players": [
         {
           "n": "Gulácsi",
           "t": "Villarreal",
-          "p": 7,
+          "p": "",
           "c": false
         },
         {
           "n": "Yuri",
           "t": "Athletic",
-          "p": 5,
+          "p": "",
           "c": false
         },
         {
           "n": "Suazo",
           "t": "Sevilla",
-          "p": 6,
+          "p": "",
           "c": false
         },
         {
           "n": "Sergio Gómez",
           "t": "Real Sociedad",
-          "p": 9,
+          "p": "",
           "c": false
         },
         {
           "n": "Canales",
           "t": "Athletic",
-          "p": 8,
+          "p": "",
           "c": false
         },
         {
           "n": "Sucic",
           "t": "Real Sociedad",
-          "p": 3,
+          "p": "",
           "c": false
         },
         {
           "n": "Valverde",
           "t": "Real Madrid",
-          "p": 4,
+          "p": "",
           "c": false
         },
         {
           "n": "Gonzalo Villar",
           "t": "Elche",
-          "p": 5,
+          "p": "",
           "c": false
         },
         {
           "n": "Raúl Moro",
           "t": "Osasuna",
-          "p": 2,
+          "p": "",
           "c": false
         },
         {
           "n": "Iñaki Williams",
           "t": "Athletic",
-          "p": 1,
+          "p": "",
           "c": false
         },
         {
           "n": "Raphinha",
           "t": "Barcelona",
-          "p": 2,
+          "p": "",
           "c": true
         }
       ],
       "coach": {
         "n": "Luis Castro",
         "t": "Levante",
-        "p": 2
+        "p": ""
       },
       "historicPoints": 819,
       "debt": 3,
@@ -284,79 +284,79 @@
     },
     {
       "manager": "Humanes",
-      "total": 73,
+      "total": 0,
       "players": [
         {
           "n": "Ryan",
           "t": "Levante",
-          "p": 4,
+          "p": "",
           "c": false
         },
         {
           "n": "Quagliata",
           "t": "Deportivo",
-          "p": 4,
+          "p": "",
           "c": false
         },
         {
           "n": "Puga",
           "t": "Málaga",
-          "p": 7,
+          "p": "",
           "c": false
         },
         {
           "n": "Pedrosa",
           "t": "Rayo",
-          "p": 2,
+          "p": "",
           "c": false
         },
         {
           "n": "Diego Rico",
           "t": "Osasuna",
-          "p": 8,
+          "p": "",
           "c": false
         },
         {
           "n": "Olasagasti",
           "t": "Levante",
-          "p": 8,
+          "p": "",
           "c": false
         },
         {
           "n": "Guido Rodríguez",
           "t": "Valencia",
-          "p": 7,
+          "p": "",
           "c": false
         },
         {
           "n": "Buchanan",
           "t": "Villarreal",
-          "p": 8,
+          "p": "",
           "c": false
         },
         {
           "n": "Lamine",
           "t": "Barcelona",
-          "p": 9,
+          "p": "",
           "c": true
         },
         {
           "n": "T. Martínez",
           "t": "Alavés",
-          "p": 2,
+          "p": "",
           "c": false
         },
         {
           "n": "Cepeda",
           "t": "Elche",
-          "p": 5,
+          "p": "",
           "c": false
         }
       ],
       "coach": {
         "n": "Terzic",
         "t": "Athletic",
-        "p": 0
+        "p": ""
       },
       "historicPoints": 736,
       "debt": 9.5,
@@ -364,18 +364,18 @@
     },
     {
       "manager": "Farma",
-      "total": 67,
+      "total": 0,
       "players": [
         {
           "n": "Audero",
           "t": "Rayo",
-          "p": 4,
+          "p": "",
           "c": false
         },
         {
           "n": "Gimenez",
           "t": "Deportivo",
-          "p": 0,
+          "p": "",
           "c": false
         },
         {
@@ -387,7 +387,7 @@
         {
           "n": "Sadick",
           "t": "Rayo",
-          "p": 5,
+          "p": "",
           "c": false
         },
         {
@@ -399,44 +399,44 @@
         {
           "n": "Kike Salas",
           "t": "Sevilla",
-          "p": 13,
+          "p": "",
           "c": false
         },
         {
           "n": "Denis Suarez",
           "t": "Alavés",
-          "p": 10,
+          "p": "",
           "c": false
         },
         {
           "n": "Javier Guerra",
           "t": "Valencia",
-          "p": 9,
+          "p": "",
           "c": false
         },
         {
           "n": "Fornals",
           "t": "Betis",
-          "p": 2,
+          "p": "",
           "c": false
         },
         {
           "n": "Berenguer",
           "t": "Athletic",
-          "p": 1,
+          "p": "",
           "c": false
         },
         {
           "n": "Mbappe",
           "t": "Real Madrid",
-          "p": 9,
+          "p": "",
           "c": true
         }
       ],
       "coach": {
         "n": "Mourinho",
         "t": "Real Madrid",
-        "p": 5
+        "p": ""
       },
       "historicPoints": 719,
       "debt": 10.166666666666666,
@@ -444,36 +444,36 @@
     },
     {
       "manager": "Javi",
-      "total": 57,
+      "total": 0,
       "players": [
         {
           "n": "Herrera",
           "t": "Osasuna",
-          "p": 8,
+          "p": "",
           "c": false
         },
         {
           "n": "Catena",
           "t": "Osasuna",
-          "p": 4,
+          "p": "",
           "c": false
         },
         {
           "n": "Pablo Ramón",
           "t": "Racing",
-          "p": 3,
+          "p": "",
           "c": false
         },
         {
           "n": "Eric",
           "t": "Barcelona",
-          "p": 0,
+          "p": "",
           "c": false
         },
         {
           "n": "Huijsen",
           "t": "Real Madrid",
-          "p": 6,
+          "p": "",
           "c": false
         },
         {
@@ -485,38 +485,38 @@
         {
           "n": "Lemar",
           "t": "Elche",
-          "p": 2,
+          "p": "",
           "c": false
         },
         {
           "n": "Guler",
           "t": "Real Madrid",
-          "p": 6,
+          "p": "",
           "c": true
         },
         {
           "n": "Pedro Diaz",
           "t": "Rayo",
-          "p": 3,
+          "p": "",
           "c": false
         },
         {
           "n": "Ángel Perez",
           "t": "Alavés",
-          "p": 14,
+          "p": "",
           "c": false
         },
         {
           "n": "Danjuma",
           "t": "Valencia",
-          "p": 0,
+          "p": "",
           "c": false
         }
       ],
       "coach": {
         "n": "Sánchez Flores",
         "t": "Alavés",
-        "p": 5
+        "p": ""
       },
       "historicPoints": 708,
       "debt": 7.666666666666667,
@@ -524,18 +524,18 @@
     },
     {
       "manager": "Puebla",
-      "total": 91,
+      "total": 0,
       "players": [
         {
           "n": "Agirrezabala",
           "t": "Racing",
-          "p": 4,
+          "p": "",
           "c": false
         },
         {
           "n": "Cabrera",
           "t": "Espanyol",
-          "p": 8,
+          "p": "",
           "c": false
         },
         {
@@ -547,37 +547,37 @@
         {
           "n": "Chust",
           "t": "Elche",
-          "p": 6,
+          "p": "",
           "c": false
         },
         {
           "n": "Dotor",
           "t": "Málaga",
-          "p": 4,
+          "p": "",
           "c": false
         },
         {
           "n": "Blanco",
           "t": "Alavés",
-          "p": 11,
+          "p": "",
           "c": false
         },
         {
           "n": "Agoume",
           "t": "Sevilla",
-          "p": 4,
+          "p": "",
           "c": false
         },
         {
           "n": "Isco",
           "t": "Betis",
-          "p": 9,
+          "p": "",
           "c": false
         },
         {
           "n": "Duran",
           "t": "Celta",
-          "p": 10,
+          "p": "",
           "c": false
         },
         {
@@ -589,14 +589,14 @@
         {
           "n": "Julián Álvarez",
           "t": "Atleti",
-          "p": 15,
+          "p": "",
           "c": true
         }
       ],
       "coach": {
         "n": "Flick",
         "t": "Barcelona",
-        "p": 5
+        "p": ""
       },
       "historicPoints": 675,
       "debt": 11,
@@ -604,79 +604,79 @@
     },
     {
       "manager": "Poty",
-      "total": 64,
+      "total": 0,
       "players": [
         {
           "n": "Joan García",
           "t": "Barcelona",
-          "p": 0,
+          "p": "",
           "c": true
         },
         {
           "n": "Pedro Felipe",
           "t": "Racing",
-          "p": 4,
+          "p": "",
           "c": false
         },
         {
           "n": "Jorge Salinas",
           "t": "Racing",
-          "p": 0,
+          "p": "",
           "c": false
         },
         {
           "n": "Lejeune",
           "t": "Rayo",
-          "p": 5,
+          "p": "",
           "c": false
         },
         {
           "n": "Bartra",
           "t": "Betis",
-          "p": 6,
+          "p": "",
           "c": false
         },
         {
           "n": "Rubén García",
           "t": "Osasuna",
-          "p": 7,
+          "p": "",
           "c": false
         },
         {
           "n": "Pol Lozano",
           "t": "Espanyol",
-          "p": 6,
+          "p": "",
           "c": false
         },
         {
           "n": "Gorrotxategi",
           "t": "Real Sociedad",
-          "p": 7,
+          "p": "",
           "c": false
         },
         {
           "n": "Morcillo",
           "t": "Elche",
-          "p": 5,
+          "p": "",
           "c": false
         },
         {
           "n": "Íñigo Vicente",
           "t": "Racing",
-          "p": 3,
+          "p": "",
           "c": false
         },
         {
           "n": "Zabiri",
           "t": "Racing",
-          "p": 16,
+          "p": "",
           "c": false
         }
       ],
       "coach": {
         "n": "Simeone",
         "t": "Atleti",
-        "p": 5
+        "p": ""
       },
       "historicPoints": 718,
       "debt": 10.5,
@@ -684,60 +684,60 @@
     },
     {
       "manager": "Alberto",
-      "total": 30,
+      "total": 0,
       "players": [
         {
           "n": "Leo Román",
           "t": "Deportivo",
-          "p": 9,
+          "p": "",
           "c": false
         },
         {
           "n": "Juan Iglesias",
           "t": "Sevilla",
-          "p": 1,
+          "p": "",
           "c": false
         },
         {
           "n": "Hancko",
           "t": "Atleti",
-          "p": 9,
+          "p": "",
           "c": false
         },
         {
           "n": "Veiga",
           "t": "Villarreal",
-          "p": -1,
+          "p": "",
           "c": false
         },
         {
           "n": "Cubarsí",
           "t": "Barcelona",
-          "p": 0,
+          "p": "",
           "c": false
         },
         {
           "n": "Tchouameni",
           "t": "Real Madrid",
-          "p": 0,
+          "p": "",
           "c": false
         },
         {
           "n": "Bernardo",
           "t": "Real Madrid",
-          "p": 2,
+          "p": "",
           "c": true
         },
         {
           "n": "Camavinga",
           "t": "Real Madrid",
-          "p": 5,
+          "p": "",
           "c": false
         },
         {
           "n": "Rafa Rodríguez",
           "t": "Málaga",
-          "p": 2,
+          "p": "",
           "c": false
         },
         {
@@ -749,14 +749,14 @@
         {
           "n": "Tete Morente",
           "t": "Elche",
-          "p": 1,
+          "p": "",
           "c": false
         }
       ],
       "coach": {
         "n": "Matarazzo",
         "t": "Real Sociedad",
-        "p": 0
+        "p": ""
       },
       "historicPoints": 657,
       "debt": 13,
