@@ -1,44 +1,44 @@
 {
   "partidos": [
     {
-      "local": "Athletic",
-      "visitante": "Espanyol"
+      "local": "Levante",
+      "visitante": "Racing"
     },
     {
-      "local": "Alavés",
-      "visitante": "Deportivo"
+      "local": "Betis",
+      "visitante": "Rayo"
     },
     {
-      "local": "Rayo",
-      "visitante": "Valencia"
+      "local": "Málaga",
+      "visitante": "Athletic"
     },
     {
-      "local": "Sevilla",
-      "visitante": "Betis"
-    },
-    {
-      "local": "Real Madrid",
-      "visitante": "Celta"
-    },
-    {
-      "local": "Barcelona",
-      "visitante": "Villarreal"
-    },
-    {
-      "local": "Racing",
-      "visitante": "Real Sociedad"
-    },
-    {
-      "local": "Osasuna",
-      "visitante": "Málaga"
-    },
-    {
-      "local": "Getafe",
+      "local": "Elche",
       "visitante": "Atleti"
     },
     {
-      "local": "Levante",
-      "visitante": "Elche"
+      "local": "Real Madrid",
+      "visitante": "Alavés"
+    },
+    {
+      "local": "Valencia",
+      "visitante": "Osasuna"
+    },
+    {
+      "local": "Deportivo",
+      "visitante": "Barcelona"
+    },
+    {
+      "local": "Celta",
+      "visitante": "Villarreal"
+    },
+    {
+      "local": "Real Sociedad",
+      "visitante": "Sevilla"
+    },
+    {
+      "local": "Espanyol",
+      "visitante": "Getafe"
     }
   ],
   "datos": [
@@ -118,7 +118,7 @@
         "t": "Osasuna",
         "p": 5
       },
-      "historicPoints": 949,
+      "historicPoints": 857,
       "debt": 4.5,
       "isRetired": false
     },
@@ -139,7 +139,7 @@
           "c": false
         },
         {
-          "n": "Jon Martín",
+          "n": "Jon",
           "t": "Real Sociedad",
           "p": "",
           "c": false
@@ -198,13 +198,13 @@
         "t": "Rayo",
         "p": 0
       },
-      "historicPoints": 887,
-      "debt": 6.666666666666667,
+      "historicPoints": 834,
+      "debt": 4.666666666666667,
       "isRetired": false
     },
     {
       "manager": "Roy",
-      "total": 52,
+      "total": 56,
       "players": [
         {
           "n": "Gulácsi",
@@ -231,9 +231,9 @@
           "c": false
         },
         {
-          "n": "Peio Canales",
+          "n": "Canales",
           "t": "Athletic",
-          "p": 5,
+          "p": 8,
           "c": false
         },
         {
@@ -263,7 +263,7 @@
         {
           "n": "Iñaki Williams",
           "t": "Athletic",
-          "p": "",
+          "p": 1,
           "c": false
         },
         {
@@ -278,8 +278,8 @@
         "t": "Levante",
         "p": 2
       },
-      "historicPoints": 872,
-      "debt": 5,
+      "historicPoints": 819,
+      "debt": 3,
       "isRetired": false
     },
     {
@@ -358,13 +358,13 @@
         "t": "Athletic",
         "p": 0
       },
-      "historicPoints": 809,
+      "historicPoints": 736,
       "debt": 9.5,
       "isRetired": false
     },
     {
       "manager": "Farma",
-      "total": 82,
+      "total": 67,
       "players": [
         {
           "n": "Audero",
@@ -391,9 +391,9 @@
           "c": false
         },
         {
-          "n": "Rosier",
+          "n": "V. Rosier",
           "t": "Osasuna",
-          "p": 15,
+          "p": "",
           "c": false
         },
         {
@@ -438,13 +438,13 @@
         "t": "Real Madrid",
         "p": 5
       },
-      "historicPoints": 801,
+      "historicPoints": 719,
       "debt": 10.166666666666666,
       "isRetired": false
     },
     {
       "manager": "Javi",
-      "total": 60,
+      "total": 57,
       "players": [
         {
           "n": "Herrera",
@@ -477,9 +477,9 @@
           "c": false
         },
         {
-          "n": "Pablo Martínez",
+          "n": "Pedro Martinez",
           "t": "Málaga",
-          "p": 3,
+          "p": "",
           "c": false
         },
         {
@@ -509,7 +509,7 @@
         {
           "n": "Danjuma",
           "t": "Valencia",
-          "p": "",
+          "p": 0,
           "c": false
         }
       ],
@@ -518,7 +518,7 @@
         "t": "Alavés",
         "p": 5
       },
-      "historicPoints": 768,
+      "historicPoints": 708,
       "debt": 7.666666666666667,
       "isRetired": false
     },
@@ -598,7 +598,7 @@
         "t": "Barcelona",
         "p": 5
       },
-      "historicPoints": 769,
+      "historicPoints": 675,
       "debt": 11,
       "isRetired": false
     },
@@ -678,7 +678,7 @@
         "t": "Atleti",
         "p": 5
       },
-      "historicPoints": 782,
+      "historicPoints": 718,
       "debt": 10.5,
       "isRetired": false
     },
@@ -713,13 +713,13 @@
         {
           "n": "Cubarsí",
           "t": "Barcelona",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
           "n": "Tchouameni",
           "t": "Real Madrid",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
@@ -758,8 +758,8 @@
         "t": "Real Sociedad",
         "p": 0
       },
-      "historicPoints": 687,
-      "debt": 16,
+      "historicPoints": 657,
+      "debt": 13,
       "isRetired": false
     },
     {
