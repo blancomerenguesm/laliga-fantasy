@@ -128,13 +128,17 @@
 
     <!-- Pestaña Clasificación GENERAL -->
     <div id="general" class="tab-content">
-        <p style="text-align:center; color:var(--gray); font-size: 0.9em; margin-top: 0;">Clasificación histórica y deudas acumuladas.</p>
+        <p style="text-align:center; color:var(--gray); font-size: 0.9em; margin-top: 0;">Clasificación histórica, deudas y beneficio acumulado.</p>
+        <div class="sort-nav" style="margin-bottom:8px;">
+            <button id="btnGenLiveOn" class="sort-btn active" onclick="setGeneralLiveMode(true)">🟢 En directo</button>
+            <button id="btnGenLiveOff" class="sort-btn" onclick="setGeneralLiveMode(false)">⚪ Sin directo (cerrada)</button>
+        </div>
         <div class="sort-nav">
             <button id="btnSortGenPoints" class="sort-btn active" onclick="setGeneralSortMode('points')">🏆 Orden: Puntos</button>
             <button id="btnSortGenDebt" class="sort-btn" onclick="setGeneralSortMode('debt')">💸 Orden: Deuda</button>
         </div>
-        <table>
-            <thead><tr><th>Pos</th><th>Manager</th><th style="text-align:center;">Pts Jornada</th><th>Total Pts</th><th>Deuda</th></tr></thead>
+        <table style="max-width:720px;">
+            <thead><tr><th>Pos</th><th>Manager</th><th style="text-align:center;">Pts Jornada</th><th>Total Pts</th><th>Deuda</th><th>Beneficio</th></tr></thead>
             <tbody id="generalBody"></tbody>
         </table>
     </div>
@@ -265,6 +269,43 @@
         
         let currentSortMode = 'points';
         let currentGeneralSortMode = 'points';
+        let currentGeneralLiveMode = true;
+
+        function calcularDeudasProyectadasJornada() {
+            let processed = [...fantasyData].map((t, i) => ({ ...t, originalIndex: i })).filter(t => !t.isRetired);
+            let projectedDebts = {};
+            let totalPointsThisJornada = processed.reduce((acc, t) => acc + t.total, 0);
+
+            if (totalPointsThisJornada > 0) {
+                let scoreGroups = {};
+                processed.forEach(t => {
+                    if (!scoreGroups[t.total]) scoreGroups[t.total] = [];
+                    scoreGroups[t.total].push(t.originalIndex);
+                });
+
+                let sortedUniqueScores = Object.keys(scoreGroups).map(Number).sort((a, b) => a - b);
+                let penalties = [3, 2, 2];
+                let penaltyIndex = 0;
+
+                for (let score of sortedUniqueScores) {
+                    if (penaltyIndex >= penalties.length) break;
+
+                    let group = scoreGroups[score];
+                    let penaltiesToApply = [];
+
+                    for (let i = 0; i < group.length && penaltyIndex < penalties.length; i++) {
+                        penaltiesToApply.push(penalties[penaltyIndex]);
+                        penaltyIndex++;
+                    }
+
+                    let totalPenalty = penaltiesToApply.reduce((a, b) => a + b, 0);
+                    let penaltyPerPerson = totalPenalty / group.length;
+
+                    group.forEach(idx => { projectedDebts[idx] = penaltyPerPerson; });
+                }
+            }
+            return projectedDebts;
+        }
 
         function initLegacyData() {
             if(fantasyData.length > 0) {
@@ -413,6 +454,13 @@
             renderRanking();
         }
 
+        function setGeneralLiveMode(isLive) {
+            currentGeneralLiveMode = isLive;
+            document.getElementById('btnGenLiveOn').classList.toggle('active', isLive);
+            document.getElementById('btnGenLiveOff').classList.toggle('active', !isLive);
+            renderGeneral();
+        }
+
         function setGeneralSortMode(mode) {
             currentGeneralSortMode = mode;
             document.getElementById('btnSortGenPoints').classList.toggle('active', mode === 'points');
@@ -518,32 +566,108 @@
         }
 
         function renderGeneral() {
-            let sorted = [...fantasyData].sort((a, b) => {
+            const projectedDebts = calcularDeudasProyectadasJornada();
+            const numManagers = fantasyData.length || 10;
+
+            const enriched = fantasyData.map((t, idx) => {
+                const livePts = t.isRetired ? 0 : t.total;
+                const liveDebtAdd = (!t.isRetired && projectedDebts[idx]) ? projectedDebts[idx] : 0;
+
+                const basePts = t.historicPoints;
+                const livePtsTotal = t.historicPoints + livePts;
+
+                const baseDebt = t.debt;
+                const liveDebtTotal = t.debt + liveDebtAdd;
+
+                return {
+                    ...t,
+                    originalIndex: idx,
+                    livePts,
+                    liveDebtAdd,
+                    basePts,
+                    livePtsTotal,
+                    baseDebt,
+                    liveDebtTotal
+                };
+            });
+
+            // Ranking base (sin jornada en directo) para calcular variación de puestos
+            const baseSorted = [...enriched].sort((a, b) => {
                 if (currentGeneralSortMode === 'points') {
-                    let totalA = a.historicPoints + a.total;
-                    let totalB = b.historicPoints + b.total;
-                    return totalB - totalA;
+                    return b.basePts - a.basePts;
                 } else {
-                    return a.debt - b.debt; 
+                    return a.baseDebt - b.baseDebt;
                 }
             });
-            
+            const basePosMap = {};
+            baseSorted.forEach((item, i) => { basePosMap[item.originalIndex] = i + 1; });
+
+            // Ranking mostrado según esté en directo o sin directo
+            const sorted = [...enriched].sort((a, b) => {
+                if (currentGeneralSortMode === 'points') {
+                    const valA = currentGeneralLiveMode ? a.livePtsTotal : a.basePts;
+                    const valB = currentGeneralLiveMode ? b.livePtsTotal : b.basePts;
+                    return valB - valA;
+                } else {
+                    const valA = currentGeneralLiveMode ? a.liveDebtTotal : a.baseDebt;
+                    const valB = currentGeneralLiveMode ? b.liveDebtTotal : b.baseDebt;
+                    return valA - valB;
+                }
+            });
+
+            // Bote total de deudas (según modo activo) repartido a partes iguales entre los managers (10)
+            const boteTotalDeudas = sorted.reduce((acc, item) => {
+                return acc + (currentGeneralLiveMode ? item.liveDebtTotal : item.baseDebt);
+            }, 0);
+            const repartoPorManager = boteTotalDeudas / numManagers;
+
             let html = '';
             sorted.forEach((t, index) => {
-                let color = coloresManagers[fantasyData.findIndex(x => x.manager === t.manager)];
-                let debtHTML = t.debt > 0 ? `<span class="debt-tag">${t.debt.toFixed(2)} €</span>` : `<span class="no-debt">0.00 €</span>`;
-                
-                let isRetiredStyle = t.isRetired ? 'opacity: 0.6; background: #161616;' : '';
-                let nameLabel = t.manager + (t.isRetired ? ' <em>(Ret.)</em>' : '');
-                let pointsLabel = t.isRetired ? '-' : (t.total > 0 ? '+' + t.total : '0');
+                const posActual = index + 1;
+                const posBase = basePosMap[t.originalIndex];
+                const diffPos = posBase - posActual; // >0 sube puestos, <0 baja puestos
+
+                let trendHtml = '';
+                if (currentGeneralLiveMode) {
+                    if (diffPos > 0) {
+                        trendHtml = ` <span style="color:var(--success); font-size:0.8em; font-weight:bold;" title="Sube ${diffPos}">▲${diffPos}</span>`;
+                    } else if (diffPos < 0) {
+                        trendHtml = ` <span style="color:var(--danger); font-size:0.8em; font-weight:bold;" title="Baja ${Math.abs(diffPos)}">▼${Math.abs(diffPos)}</span>`;
+                    } else {
+                        trendHtml = ` <span style="color:var(--gray); font-size:0.8em;" title="Se mantiene">=</span>`;
+                    }
+                }
+
+                const color = coloresManagers[t.originalIndex];
+                const shownDebt = currentGeneralLiveMode ? t.liveDebtTotal : t.baseDebt;
+                const extraDebtBadge = (currentGeneralLiveMode && t.liveDebtAdd > 0)
+                    ? ` <span style="font-size:0.75em; color:#ff7675;">(+${t.liveDebtAdd.toFixed(2)}€)</span>`
+                    : '';
+                const debtHTML = shownDebt > 0
+                    ? `<span class="debt-tag">${shownDebt.toFixed(2)} €</span>${extraDebtBadge}`
+                    : `<span class="no-debt">0.00 €</span>`;
+
+                // Beneficio neto: parte igual del bote total menos su deuda acumulada
+                const beneficioNeto = repartoPorManager - shownDebt;
+                const benefColor = beneficioNeto >= 0 ? 'var(--success)' : 'var(--danger)';
+                const benefSign = beneficioNeto > 0 ? '+' : '';
+                const beneficioHTML = `<span style="color:${benefColor}; font-weight:bold; white-space:nowrap;">${benefSign}${beneficioNeto.toFixed(2)} €</span>`;
+
+                const isRetiredStyle = t.isRetired ? 'opacity: 0.6; background: #161616;' : '';
+                const nameLabel = t.manager + (t.isRetired ? ' <em>(Ret.)</em>' : '');
+                const pointsLabel = t.isRetired
+                    ? '-'
+                    : (currentGeneralLiveMode ? (t.livePts > 0 ? '+' + t.livePts : String(t.livePts)) : '0');
+                const shownPts = currentGeneralLiveMode ? t.livePtsTotal : t.basePts;
 
                 html += `
                 <tr class="ranking-row" style="${isRetiredStyle}">
-                    <td>${index + 1}</td>
+                    <td style="white-space:nowrap;">${posActual}${trendHtml}</td>
                     <td style="color: ${color};"><strong>${nameLabel}</strong></td>
                     <td style="text-align:center; color:var(--gray);">${pointsLabel}</td>
-                    <td style="font-weight:bold; font-size:1.1em;">${t.historicPoints + (t.isRetired ? 0 : t.total)}</td>
+                    <td style="font-weight:bold; font-size:1.1em;">${shownPts}</td>
                     <td>${debtHTML}</td>
+                    <td>${beneficioHTML}</td>
                 </tr>`;
             });
             document.getElementById('generalBody').innerHTML = html;
