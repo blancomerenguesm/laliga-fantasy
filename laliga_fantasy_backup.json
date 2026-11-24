@@ -44,18 +44,18 @@
   "datos": [
     {
       "manager": "Marcos",
-      "total": 66,
+      "total": 92,
       "players": [
         {
           "n": "M. Dituro",
           "t": "Elche",
-          "p": "",
+          "p": 3,
           "c": false
         },
         {
           "n": "Revivo",
           "t": "Elche",
-          "p": "",
+          "p": 15,
           "c": false
         },
         {
@@ -103,7 +103,7 @@
         {
           "n": "Ivan Romero",
           "t": "Levante",
-          "p": "",
+          "p": 5,
           "c": false
         },
         {
@@ -116,15 +116,15 @@
       "coach": {
         "n": "Arrasate",
         "t": "Osasuna",
-        "p": 2
+        "p": 5
       },
-      "historicPoints": 857,
+      "historicPoints": 949,
       "debt": 4.5,
       "isRetired": false
     },
     {
       "manager": "Álex",
-      "total": 25,
+      "total": 53,
       "players": [
         {
           "n": "Radu",
@@ -141,25 +141,25 @@
         {
           "n": "Jon Martín",
           "t": "Real Sociedad",
-          "p": 0,
+          "p": "",
           "c": false
         },
         {
           "n": "José Salinas",
           "t": "Málaga",
-          "p": 0,
+          "p": 5,
           "c": false
         },
         {
           "n": "Redondo",
           "t": "Elche",
-          "p": "",
+          "p": 6,
           "c": false
         },
         {
           "n": "Koke",
           "t": "Atleti",
-          "p": "",
+          "p": 7,
           "c": false
         },
         {
@@ -183,7 +183,7 @@
         {
           "n": "Giuliano",
           "t": "Atleti",
-          "p": "",
+          "p": 5,
           "c": true
         },
         {
@@ -198,13 +198,13 @@
         "t": "Rayo",
         "p": 0
       },
-      "historicPoints": 834,
-      "debt": 4.666666666666667,
+      "historicPoints": 887,
+      "debt": 6.666666666666667,
       "isRetired": false
     },
     {
       "manager": "Roy",
-      "total": 47,
+      "total": 52,
       "players": [
         {
           "n": "Gulácsi",
@@ -231,9 +231,9 @@
           "c": false
         },
         {
-          "n": "Canales",
+          "n": "Peio Canales",
           "t": "Athletic",
-          "p": 8,
+          "p": 5,
           "c": false
         },
         {
@@ -251,19 +251,19 @@
         {
           "n": "Gonzalo Villar",
           "t": "Elche",
-          "p": "",
+          "p": 5,
           "c": false
         },
         {
           "n": "Raúl Moro",
           "t": "Osasuna",
-          "p": "",
+          "p": 2,
           "c": false
         },
         {
           "n": "Iñaki Williams",
           "t": "Athletic",
-          "p": 1,
+          "p": "",
           "c": false
         },
         {
@@ -276,20 +276,20 @@
       "coach": {
         "n": "Luis Castro",
         "t": "Levante",
-        "p": ""
+        "p": 2
       },
-      "historicPoints": 819,
-      "debt": 3,
+      "historicPoints": 872,
+      "debt": 5,
       "isRetired": false
     },
     {
       "manager": "Humanes",
-      "total": 41,
+      "total": 73,
       "players": [
         {
           "n": "Ryan",
           "t": "Levante",
-          "p": "",
+          "p": 4,
           "c": false
         },
         {
@@ -301,7 +301,7 @@
         {
           "n": "Puga",
           "t": "Málaga",
-          "p": "",
+          "p": 7,
           "c": false
         },
         {
@@ -313,13 +313,13 @@
         {
           "n": "Diego Rico",
           "t": "Osasuna",
-          "p": 0,
+          "p": 8,
           "c": false
         },
         {
           "n": "Olasagasti",
           "t": "Levante",
-          "p": "",
+          "p": 8,
           "c": false
         },
         {
@@ -349,7 +349,7 @@
         {
           "n": "Cepeda",
           "t": "Elche",
-          "p": "",
+          "p": 5,
           "c": false
         }
       ],
@@ -358,13 +358,13 @@
         "t": "Athletic",
         "p": 0
       },
-      "historicPoints": 736,
+      "historicPoints": 809,
       "debt": 9.5,
       "isRetired": false
     },
     {
       "manager": "Farma",
-      "total": 67,
+      "total": 82,
       "players": [
         {
           "n": "Audero",
@@ -393,7 +393,7 @@
         {
           "n": "Rosier",
           "t": "Osasuna",
-          "p": 0,
+          "p": 15,
           "c": false
         },
         {
@@ -438,24 +438,24 @@
         "t": "Real Madrid",
         "p": 5
       },
-      "historicPoints": 719,
+      "historicPoints": 801,
       "debt": 10.166666666666666,
       "isRetired": false
     },
     {
       "manager": "Javi",
-      "total": 43,
+      "total": 60,
       "players": [
         {
           "n": "Herrera",
           "t": "Osasuna",
-          "p": 0,
+          "p": 8,
           "c": false
         },
         {
           "n": "Catena",
           "t": "Osasuna",
-          "p": 0,
+          "p": 4,
           "c": false
         },
         {
@@ -479,13 +479,13 @@
         {
           "n": "Pablo Martínez",
           "t": "Málaga",
-          "p": 0,
+          "p": 3,
           "c": false
         },
         {
           "n": "Lemar",
           "t": "Elche",
-          "p": "",
+          "p": 2,
           "c": false
         },
         {
@@ -509,7 +509,7 @@
         {
           "n": "Danjuma",
           "t": "Valencia",
-          "p": 0,
+          "p": "",
           "c": false
         }
       ],
@@ -518,13 +518,13 @@
         "t": "Alavés",
         "p": 5
       },
-      "historicPoints": 708,
+      "historicPoints": 768,
       "debt": 7.666666666666667,
       "isRetired": false
     },
     {
       "manager": "Puebla",
-      "total": 51,
+      "total": 91,
       "players": [
         {
           "n": "Agirrezabala",
@@ -547,13 +547,13 @@
         {
           "n": "Chust",
           "t": "Elche",
-          "p": "",
+          "p": 6,
           "c": false
         },
         {
           "n": "Dotor",
           "t": "Málaga",
-          "p": 0,
+          "p": 4,
           "c": false
         },
         {
@@ -583,13 +583,13 @@
         {
           "n": "Niño",
           "t": "Málaga",
-          "p": 0,
+          "p": "",
           "c": false
         },
         {
           "n": "Julián Álvarez",
           "t": "Atleti",
-          "p": "",
+          "p": 15,
           "c": true
         }
       ],
@@ -598,13 +598,13 @@
         "t": "Barcelona",
         "p": 5
       },
-      "historicPoints": 675,
+      "historicPoints": 769,
       "debt": 11,
       "isRetired": false
     },
     {
       "manager": "Poty",
-      "total": 47,
+      "total": 64,
       "players": [
         {
           "n": "Joan García",
@@ -639,7 +639,7 @@
         {
           "n": "Rubén García",
           "t": "Osasuna",
-          "p": 0,
+          "p": 7,
           "c": false
         },
         {
@@ -657,7 +657,7 @@
         {
           "n": "Morcillo",
           "t": "Elche",
-          "p": "",
+          "p": 5,
           "c": false
         },
         {
@@ -676,15 +676,15 @@
       "coach": {
         "n": "Simeone",
         "t": "Atleti",
-        "p": ""
+        "p": 5
       },
-      "historicPoints": 718,
+      "historicPoints": 782,
       "debt": 10.5,
       "isRetired": false
     },
     {
       "manager": "Alberto",
-      "total": 18,
+      "total": 30,
       "players": [
         {
           "n": "Leo Román",
@@ -701,7 +701,7 @@
         {
           "n": "Hancko",
           "t": "Atleti",
-          "p": "",
+          "p": 9,
           "c": false
         },
         {
@@ -713,13 +713,13 @@
         {
           "n": "Cubarsí",
           "t": "Barcelona",
-          "p": 0,
+          "p": "",
           "c": false
         },
         {
           "n": "Tchouameni",
           "t": "Real Madrid",
-          "p": 0,
+          "p": "",
           "c": false
         },
         {
@@ -737,7 +737,7 @@
         {
           "n": "Rafa Rodríguez",
           "t": "Málaga",
-          "p": 0,
+          "p": 2,
           "c": false
         },
         {
@@ -749,7 +749,7 @@
         {
           "n": "Tete Morente",
           "t": "Elche",
-          "p": "",
+          "p": 1,
           "c": false
         }
       ],
@@ -758,8 +758,8 @@
         "t": "Real Sociedad",
         "p": 0
       },
-      "historicPoints": 657,
-      "debt": 13,
+      "historicPoints": 687,
+      "debt": 16,
       "isRetired": false
     },
     {
