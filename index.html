@@ -188,6 +188,7 @@
             <h3 style="color:var(--success); margin-top:0;">1. Cerrar Jornada Actual</h3>
             <p style="font-size:0.85em; color:var(--gray);">Suma los puntos a la General, <b>calcula las deudas (3€, 2€, 2€)</b> de esta jornada y pone las plantillas a 0 para empezar la siguiente.</p>
             <button class="save-btn" style="background:var(--success); color:white; border: 1px solid #1e7e34;" onclick="cerrarJornada()">✅ Cerrar Jornada y Repartir Deudas</button>
+            <button class="save-btn" style="background:#2a2a2a; color:#ff7675; border: 1px solid #dc3545; margin-top:8px; font-size:0.95em;" onclick="limpiarPuntosJornada()">🧹 Limpiar puntos de jornada a cero (sin sumar ni repartir)</button>
         </div>
 
         <div class="config-section">
@@ -753,8 +754,25 @@
             sincronizarPuntosEnDirecto();
         }
 
+        function limpiarPuntosJornada() {
+            if (confirm("🧹 ¿Poner a cero/vacío todos los puntos de la jornada actual?\n\nNo se sumarán puntos a la General ni se repartirán deudas.")) {
+                fantasyData.forEach(team => {
+                    team.players.forEach(p => p.p = "");
+                    if (team.coach) team.coach.p = "";
+                    team.total = 0;
+                });
+                localStorage.setItem('lf_bloqueo_sincro_cerrada', '1');
+            const jInputVal = (document.getElementById('jornadaNumeroInput')?.value || '').trim();
+            if (jInputVal) localStorage.setItem('lf_jornada_cerrada_num', jInputVal);
+                saveDataToLocal();
+                showToast("🧹 Puntos de jornada limpiados a cero");
+            }
+        }
+
         function cerrarJornada() {
-            let activeTeams = fantasyData.map((team, index) => ({ index, total: team.total, isRetired: team.isRetired })).filter(t => !t.isRetired);
+            let activeTeams = fantasyData
+                .map((team, index) => ({ index, manager: team.manager, total: team.total, isRetired: team.isRetired }))
+                .filter(t => !t.isRetired);
             
             let totalPointsThisJornada = activeTeams.reduce((acc, t) => acc + t.total, 0);
             if (totalPointsThisJornada === 0) {
@@ -762,49 +780,80 @@
                 return;
             }
 
-            if(confirm("⚠️ ¿Terminar la jornada actual? Esto sumará los puntos a la General, calculará las deudas y pondrá los marcadores a 0 para la siguiente.")) {
+            // Calcular reparto de deudas (3€, 2€, 2€ con reparto en empates)
+            let scoreGroups = {};
+            activeTeams.forEach(s => {
+                if(!scoreGroups[s.total]) scoreGroups[s.total] = [];
+                scoreGroups[s.total].push(s.index); 
+            });
+            
+            let sortedUniqueScores = Object.keys(scoreGroups).map(Number).sort((a,b) => a - b);
+            let penalties = [3, 2, 2]; 
+            let penaltyIndex = 0;
+            let debtChanges = {};
+            
+            for(let score of sortedUniqueScores) {
+                if(penaltyIndex >= penalties.length) break; 
                 
-                let scoreGroups = {};
-                activeTeams.forEach(s => {
-                    if(!scoreGroups[s.total]) scoreGroups[s.total] = [];
-                    scoreGroups[s.total].push(s.index); 
-                });
+                let group = scoreGroups[score];
+                let penaltiesToApply = [];
                 
-                let sortedUniqueScores = Object.keys(scoreGroups).map(Number).sort((a,b) => a - b);
-                
-                let penalties = [3, 2, 2]; 
-                let penaltyIndex = 0;
-                
-                for(let score of sortedUniqueScores) {
-                    if(penaltyIndex >= penalties.length) break; 
-                    
-                    let group = scoreGroups[score];
-                    let penaltiesToApply = [];
-                    
-                    for(let i = 0; i < group.length && penaltyIndex < penalties.length; i++) {
-                        penaltiesToApply.push(penalties[penaltyIndex]);
-                        penaltyIndex++;
-                    }
-                    
-                    let totalPenalty = penaltiesToApply.reduce((a,b) => a+b, 0);
-                    let penaltyPerPerson = totalPenalty / group.length;
-                    
-                    group.forEach(managerIndex => {
-                        fantasyData[managerIndex].debt += penaltyPerPerson;
-                    });
+                for(let i = 0; i < group.length && penaltyIndex < penalties.length; i++) {
+                    penaltiesToApply.push(penalties[penaltyIndex]);
+                    penaltyIndex++;
                 }
-
-                fantasyData.forEach(team => {
-                    if(!team.isRetired) team.historicPoints += team.total; 
-                    
-                    team.players.forEach(p => p.p = ""); 
-                    if (team.coach) team.coach.p = "";   
-                    team.total = 0;                      
-                });
                 
-                saveDataToLocal();
-                showToast("🔄 Jornada cerrada. Puntos y deudas actualizados.");
+                let totalPenalty = penaltiesToApply.reduce((a,b) => a+b, 0);
+                let penaltyPerPerson = totalPenalty / group.length;
+                
+                group.forEach(managerIndex => {
+                    debtChanges[managerIndex] = penaltyPerPerson;
+                });
             }
+
+            // Paso 1: Confirmar nombres y cantidades que se van a sumar en las deudas
+            const resumenDeudas = Object.entries(debtChanges)
+                .map(([idx, amount]) => ({
+                    manager: fantasyData[idx].manager,
+                    amount: amount,
+                    total: fantasyData[idx].total
+                }))
+                .sort((a, b) => b.amount - a.amount || a.total - b.total)
+                .map(d => `• ${d.manager}: +${d.amount.toFixed(2)} € (${d.total} pts)`)
+                .join("\n");
+
+            if (!confirm(`💸 PASO 1/2 — DEUDAS A SUMAR:\n\n${resumenDeudas || 'Nadie suma deuda'}\n\n¿Confirmas este reparto de deudas?`)) {
+                return;
+            }
+
+            // Paso 2: Confirmar puntos que ha hecho cada mánager en la jornada
+            const resumenPuntos = [...activeTeams]
+                .sort((a, b) => b.total - a.total)
+                .map(t => `• ${t.manager}: ${t.total} pts`)
+                .join("\n");
+
+            if (!confirm(`🏆 PASO 2/2 — PUNTOS A SUMAR A LA GENERAL:\n\n${resumenPuntos}\n\n¿Confirmas sumar estos puntos y reiniciar los marcadores a 0?`)) {
+                return;
+            }
+
+            // Aplicar deudas, sumar puntos históricos y poner marcadores a 0
+            Object.entries(debtChanges).forEach(([idx, amount]) => {
+                fantasyData[idx].debt += amount;
+            });
+
+            fantasyData.forEach(team => {
+                if(!team.isRetired) team.historicPoints += team.total; 
+                
+                team.players.forEach(p => p.p = ""); 
+                if (team.coach) team.coach.p = "";   
+                team.total = 0;                      
+            });
+
+            localStorage.setItem('lf_bloqueo_sincro_cerrada', '1');
+            const jInputVal = (document.getElementById('jornadaNumeroInput')?.value || '').trim();
+            if (jInputVal) localStorage.setItem('lf_jornada_cerrada_num', jInputVal);
+            saveDataToLocal();
+            showToast("🔄 Jornada cerrada. Puntos y deudas actualizados.");
         }
 
         function exportData() {
@@ -1337,6 +1386,22 @@
 
                 const jugadoresRaw = dataRaw.jugadores ? dataRaw.jugadores : dataRaw;
                 const entrenadoresRaw = dataRaw.entrenadores ? dataRaw.entrenadores : {};
+                const numJugCheck = Object.keys(jugadoresRaw).length;
+
+                if (numJugCheck > 0 && localStorage.getItem('lf_bloqueo_sincro_cerrada') === '1') {
+                    // Si el JSON sigue siendo de la jornada cerrada, no volver a pisar los ceros hasta que haya jornada nueva
+                    const jCerrada = localStorage.getItem('lf_jornada_cerrada_num') || '';
+                    if (jCerrada && String(dataRaw.jornada || '') === jCerrada) {
+                        const horaLecturaSkip = new Date().toLocaleTimeString();
+                        const jTagSkip = dataRaw.jornada ? `J${dataRaw.jornada} · ` : '';
+                        const infoOrigenSkip = dataRaw.actualizado_en ? `Datos de las ${dataRaw.actualizado_en}` : `Leído ${horaLecturaSkip}`;
+                        if (statusEl) statusEl.innerText = `🟢 ${jTagSkip}${infoOrigenSkip} · Leído ${horaLecturaSkip} (Jornada cerrada en local)`;
+                        return;
+                    } else {
+                        localStorage.removeItem('lf_bloqueo_sincro_cerrada');
+                        localStorage.removeItem('lf_jornada_cerrada_num');
+                    }
+                }
 
                 const mapaPuntos = {};
                 for (const [nombre, pts] of Object.entries(jugadoresRaw)) {
