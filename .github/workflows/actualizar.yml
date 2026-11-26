@@ -29,7 +29,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python extractor_github.py
+        run: python -u extractor_github.py
 
       - name: Guardar cambios en puntos.json y estado_relevo.json
         run: |
