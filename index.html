@@ -309,46 +309,46 @@
                 .trim();
         }
 
-function buscarDesgloseJugador(nombreJugador) {
-    const norm = normalizarTexto(nombreJugador);
-    if (!norm || !desglosesJugadoresLive) return null;
+        function buscarDesgloseJugador(nombreJugador) {
+            const norm = normalizarTexto(nombreJugador);
+            if (!norm || !desglosesJugadoresLive) return null;
 
-    const mapaNormalizado = {};
-    for (const [claveRaw, val] of Object.entries(desglosesJugadoresLive)) {
-        const claveNorm = normalizarTexto(claveRaw);
-        if (claveNorm && !Object.prototype.hasOwnProperty.call(mapaNormalizado, claveNorm)) {
-            mapaNormalizado[claveNorm] = val;
+            const mapaNormalizado = {};
+            for (const [claveRaw, val] of Object.entries(desglosesJugadoresLive)) {
+                const claveNorm = normalizarTexto(claveRaw);
+                if (claveNorm && !Object.prototype.hasOwnProperty.call(mapaNormalizado, claveNorm)) {
+                    mapaNormalizado[claveNorm] = val;
+                }
+            }
+
+            if (Object.prototype.hasOwnProperty.call(mapaNormalizado, norm)) {
+                return mapaNormalizado[norm];
+            }
+
+            const claves = Object.keys(mapaNormalizado);
+            const matchInicial = norm.match(/^([a-z])\.\s*(.+)$/);
+            if (matchInicial) {
+                const inicial = matchInicial[1];
+                const apellido = matchInicial[2];
+                const cand = claves.filter(k => {
+                    const partes = k.split(" ");
+                    return partes[0].startsWith(inicial) && partes[partes.length - 1] === apellido;
+                });
+                if (cand.length === 1) return mapaNormalizado[cand[0]];
+            }
+
+            const palabras = norm.split(" ").filter(Boolean);
+            if (palabras.length === 1) {
+                const unico = palabras[0];
+                const exactas = claves.filter(k => k.split(" ").includes(unico));
+                if (exactas.length === 1) return mapaNormalizado[exactas[0]];
+            }
+
+            const sub = claves.filter(k => palabras.every(pb => k.split(" ").includes(pb)));
+            if (sub.length === 1) return mapaNormalizado[sub[0]];
+
+            return null;
         }
-    }
-
-    if (Object.prototype.hasOwnProperty.call(mapaNormalizado, norm)) {
-        return mapaNormalizado[norm];
-    }
-
-    const claves = Object.keys(mapaNormalizado);
-    const matchInicial = norm.match(/^([a-z])\.\s*(.+)$/);
-    if (matchInicial) {
-        const inicial = matchInicial[1];
-        const apellido = matchInicial[2];
-        const cand = claves.filter(k => {
-            const partes = k.split(" ");
-            return partes[0].startsWith(inicial) && partes[partes.length - 1] === apellido;
-        });
-        if (cand.length === 1) return mapaNormalizado[cand[0]];
-    }
-
-    const palabras = norm.split(" ").filter(Boolean);
-    if (palabras.length === 1) {
-        const unico = palabras[0];
-        const exactas = claves.filter(k => k.split(" ").includes(unico));
-        if (exactas.length === 1) return mapaNormalizado[exactas[0]];
-    }
-
-    const sub = claves.filter(k => palabras.every(pb => k.split(" ").includes(pb)));
-    if (sub.length === 1) return mapaNormalizado[sub[0]];
-
-    return null;
-}
 
         function abrirDesgloseJugador(nombreJugador, equipoJugador = "", puntosActuales = "") {
             if (!nombreJugador) return;
@@ -1457,12 +1457,55 @@ function buscarDesgloseJugador(nombreJugador) {
             }
         }
 
+        const CLAVES_CATALOGO_ANTIGUAS = ["catalogo_jugadores", "jugadores_memorizados", "jugadores_ff"];
+        for (const kAnt of CLAVES_CATALOGO_ANTIGUAS) {
+            try { localStorage.removeItem(kAnt); } catch (_) {}
+        }
+
         let catalogoJugadores = JSON.parse(localStorage.getItem('lf_catalogo_jugadores')) || {};
 
-        function guardarCatalogoLocal(nuevoCatalogo) {
-            catalogoJugadores = { ...catalogoJugadores, ...nuevoCatalogo };
+        function fusionarCatalogoDesdeComuniate(jugadoresRaw = {}, equiposRaw = {}) {
+            const porClaveNorm = new Map();
+
+            for (const [nombrePrev, eqPrev] of Object.entries(catalogoJugadores || {})) {
+                const limp = String(nombrePrev || "").replace(/\s+/g, " ").trim();
+                const clave = normalizarTexto(limp);
+                if (!clave) continue;
+                porClaveNorm.set(clave, {
+                    nombre: limp,
+                    equipo: eqPrev ? String(eqPrev).trim() : ""
+                });
+            }
+
+            const nombresNuevos = new Set([
+                ...Object.keys(jugadoresRaw || {}),
+                ...Object.keys(equiposRaw || {})
+            ]);
+
+            for (const nombreRaw of nombresNuevos) {
+                const limp = String(nombreRaw || "").replace(/\s+/g, " ").trim();
+                const clave = normalizarTexto(limp);
+                if (!clave) continue;
+                const eqNuevo = equiposRaw && equiposRaw[nombreRaw] ? String(equiposRaw[nombreRaw]).trim() : "";
+                const prev = porClaveNorm.get(clave);
+                porClaveNorm.set(clave, {
+                    nombre: limp || (prev ? prev.nombre : ""),
+                    equipo: eqNuevo || (prev ? prev.equipo : "")
+                });
+            }
+
+            const totalEntrada = nombresNuevos.size;
+            if (totalEntrada === 0 && porClaveNorm.size === 0) return false;
+
+            const actualizado = {};
+            for (const { nombre, equipo } of porClaveNorm.values()) {
+                actualizado[nombre] = equipo;
+            }
+
+            catalogoJugadores = actualizado;
             localStorage.setItem('lf_catalogo_jugadores', JSON.stringify(catalogoJugadores));
             actualizarDatalistCatalogo();
+            return totalEntrada > 0;
         }
 
         function actualizarDatalistCatalogo() {
@@ -1474,7 +1517,7 @@ function buscarDesgloseJugador(nombreJugador) {
             }
             if (st) {
                 st.innerText = nombres.length > 0
-                    ? `📚 Catálogo: ${nombres.length} jugadores memorizados`
+                    ? `📚 Catálogo: ${nombres.length} jugadores (Comuniate)`
                     : `📚 Catálogo: vacío (se rellena con puntos.json)`;
             }
         }
@@ -1547,16 +1590,11 @@ function buscarDesgloseJugador(nombreJugador) {
                 const jugadoresRaw = dataRaw.jugadores || {};
                 const equiposRaw = dataRaw.jugadores_equipos || {};
 
-                const nuevo = {};
-                for (const [nombre, _pts] of Object.entries(jugadoresRaw)) {
-                    nuevo[nombre] = equiposRaw[nombre] || catalogoJugadores[nombre] || "";
+                if (fusionarCatalogoDesdeComuniate(jugadoresRaw, equiposRaw)) {
+                    if (manual) showToast(`📚 Catálogo actualizado (${Object.keys(catalogoJugadores).length} jugadores de Comuniate)`);
+                } else if (manual) {
+                    alert("puntos.json no contiene jugadores todavía.");
                 }
-                for (const [nombre, eq] of Object.entries(equiposRaw)) {
-                    if (eq) nuevo[nombre] = eq;
-                }
-
-                guardarCatalogoLocal(nuevo);
-                if (manual) showToast(`📚 Catálogo actualizado (${Object.keys(catalogoJugadores).length} jugadores)`);
             } catch (e) {
                 if (manual) alert("No se pudo actualizar el catálogo desde puntos.json");
             }
@@ -1622,6 +1660,9 @@ function buscarDesgloseJugador(nombreJugador) {
                 }
 
                 const numJugCheck = Object.keys(jugadoresRaw).length;
+                if (numJugCheck > 0) {
+                    fusionarCatalogoDesdeComuniate(jugadoresRaw, dataRaw.jugadores_equipos || {});
+                }
 
                 if (numJugCheck > 0 && localStorage.getItem('lf_bloqueo_sincro_cerrada') === '1') {
                     const jCerrada = localStorage.getItem('lf_jornada_cerrada_num') || '';
@@ -1683,15 +1724,6 @@ function buscarDesgloseJugador(nombreJugador) {
                 const horaLectura = new Date().toLocaleTimeString();
                 const numJug = Object.keys(jugadoresRaw).length;
                 const numEnt = Object.keys(entrenadoresRaw).length;
-
-                if (numJug > 0) {
-                    const eqRaw = dataRaw.jugadores_equipos || {};
-                    const addCat = {};
-                    for (const nombreKey of Object.keys(jugadoresRaw)) {
-                        addCat[nombreKey] = eqRaw[nombreKey] || catalogoJugadores[nombreKey] || "";
-                    }
-                    guardarCatalogoLocal(addCat);
-                }
 
                 let infoOrigen = "";
                 if (dataRaw.actualizado_en) {
