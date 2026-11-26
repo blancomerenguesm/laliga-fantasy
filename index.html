@@ -5,106 +5,671 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Mánager LaLiga Fantasy</title>
     <style>
-        :root { --bg: #121212; --panel: #1e1e1e; --text: #ffffff; --accent: #d4af37; --accent-hover: #b5952f; --gray: #888; --danger: #dc3545; --success: #28a745; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 15px; }
-        h1 { text-align: center; color: var(--accent); font-size: 1.5em; }
-        
-        .nav { display: flex; justify-content: center; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
-        button { background-color: var(--panel); color: var(--text); border: 1px solid var(--accent); padding: 10px 15px; cursor: pointer; border-radius: 5px; font-weight: bold; transition: all 0.2s ease; }
-        button:hover, button.active { background-color: var(--accent); color: var(--bg); }
-        
-        .tab-content { display: none; animation: fadeIn 0.3s ease-in-out; }
+        :root {
+            --bg: #0c0d10;
+            --bg-elevated: #14161c;
+            --panel: #191c24;
+            --panel-soft: #20242f;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-strong: rgba(255, 255, 255, 0.14);
+            --text: #f3f5f8;
+            --text-muted: #939bb0;
+            --accent: #e0b94b;
+            --accent-bright: #f7d774;
+            --accent-dim: rgba(224, 185, 75, 0.14);
+            --danger: #ef4444;
+            --danger-dim: rgba(239, 68, 68, 0.16);
+            --success: #22c55e;
+            --success-dim: rgba(34, 197, 94, 0.15);
+            --shadow-card: 0 10px 28px rgba(0, 0, 0, 0.42);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: radial-gradient(circle at 50% -10%, #1d212e 0%, var(--bg) 52%);
+            color: var(--text);
+            margin: 0;
+            padding: 18px 16px 40px;
+            font-variant-numeric: tabular-nums;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-shell {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        /* Cabecera Broadcast */
+        .broadcast-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .title-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.65em;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #fff6d6 0%, var(--accent) 55%, #b8891e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .jornada-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 11px;
+            border-radius: 999px;
+            background: var(--accent-dim);
+            border: 1px solid rgba(224, 185, 75, 0.42);
+            color: var(--accent-bright);
+            font-size: 0.78em;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        /* Navegación Segmented Control */
+        .nav {
+            display: inline-flex;
+            justify-content: center;
+            gap: 4px;
+            padding: 5px;
+            background: rgba(20, 22, 28, 0.92);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+            flex-wrap: wrap;
+        }
+
+        button {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: 1px solid transparent;
+            padding: 9px 15px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9em;
+            transition: all 0.18s ease;
+        }
+
+        .nav button:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav button.active {
+            background: linear-gradient(135deg, var(--accent) 0%, #c89b2b 100%);
+            color: #111;
+            box-shadow: 0 4px 14px rgba(224, 185, 75, 0.32);
+        }
+
+        /* Barra de estado en vivo */
+        .sync-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            max-width: 820px;
+            margin: 0 auto 18px;
+            padding: 8px 14px;
+            background: rgba(25, 28, 36, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            font-size: 0.82em;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+        }
+
+        .sync-info-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--success);
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+            animation: pulseLive 2s infinite;
+            flex-shrink: 0;
+        }
+
+        .live-dot.offline {
+            background: var(--danger);
+            animation: none;
+        }
+
+        @keyframes pulseLive {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.65); }
+            70% { box-shadow: 0 0 0 7px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        .sync-refresh-btn {
+            background: var(--panel-soft);
+            color: var(--text);
+            border: 1px solid var(--border-strong);
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 0.92em;
+        }
+
+        .sync-refresh-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent-bright);
+        }
+
+        .tab-content { display: none; animation: fadeIn 0.25s ease-out; }
         .tab-content.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-        .teams-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-        .card { background-color: var(--panel); border: 1px solid #333; border-radius: 8px; padding: 15px; transition: transform 0.2s ease; }
-        .team-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 10px; }
-        .team-title { font-size: 1.2em; margin: 0; }
-        
-        .player-item { display: flex; justify-content: space-between; align-items: center; background: #2a2a2a; padding: 8px; margin-bottom: 5px; border-radius: 4px; }
-        .player-info { display: flex; flex-direction: column; }
-        .player-name { font-weight: bold; font-size: 0.9em; }
-        .player-team { font-size: 0.75em; color: var(--gray); }
-        .points-container { display: flex; align-items: center; gap: 5px; }
-        .points-input { width: 45px; padding: 5px; background: #121212; color: white; border: 1px solid #555; border-radius: 4px; text-align: center; font-weight: bold; }
-        .points-input:focus { border-color: var(--accent); outline: none; }
-        .captain-tag { color: var(--accent); font-weight: bold; font-size: 0.8em; border: 1px solid var(--accent); border-radius: 50%; width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; margin-left: 5px; }
-        .coach-item { border-left: 3px solid var(--accent); margin-top: 10px; background: #222; }
+        /* Tarjetas generales */
+        .card {
+            background: linear-gradient(180deg, rgba(31, 35, 46, 0.96) 0%, rgba(22, 25, 33, 0.98) 100%);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px;
+            box-shadow: var(--shadow-card);
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
 
-        .sort-nav { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; }
-        .sort-btn { padding: 6px 12px; font-size: 0.85em; border-radius: 4px; border: 1px solid #555; background: #222; color: #fff; cursor: pointer; }
-        .sort-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-        
-        table { width: 100%; border-collapse: collapse; max-width: 600px; margin: 0 auto; background: var(--panel); border-radius: 8px; overflow: hidden; }
-        th, td { padding: 10px 5px; text-align: left; border-bottom: 1px solid #333; font-size: 0.9em; }
-        th { color: var(--accent); background: #222; }
-        
-        .ranking-row { cursor: pointer; transition: background 0.2s; }
-        .ranking-row:hover { background-color: #2a2a2a; }
-        
-        .bg-red { background-color: rgba(220, 53, 69, 0.2) !important; }
-        .bg-red:hover { background-color: rgba(220, 53, 69, 0.35) !important; }
-        .bg-dark-red { background-color: rgba(220, 53, 69, 0.5) !important; }
-        .bg-dark-red:hover { background-color: rgba(220, 53, 69, 0.65) !important; }
+        .card:hover {
+            border-color: var(--border-strong);
+        }
 
-        .ranking-details { background-color: #161616; border-bottom: 2px solid var(--accent); }
-        .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 5px; font-size: 0.85em; }
-        .detail-item { display: flex; justify-content: space-between; padding: 6px 10px; background: #222; border-radius: 4px; border-left: 3px solid #555; align-items: center;}
-        .detail-item.played { border-left-color: #4caf50; background: #1e2b1e; } 
+        /* Pestaña Plantillas / Puntos */
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 16px;
+        }
+
+        .team-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .team-title { font-size: 1.15em; margin: 0; font-weight: 800; letter-spacing: -0.01em; }
+
+        .team-total-badge {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-strong);
+            padding: 4px 11px;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .player-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 7px 10px;
+            margin-bottom: 6px;
+            border-radius: 8px;
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+
+        .player-item.unplayed { opacity: 0.68; }
+        .player-item:hover { background: rgba(255, 255, 255, 0.06); opacity: 1; }
+
+        .player-info { display: flex; flex-direction: column; gap: 2px; }
+        .player-name { font-weight: 700; font-size: 0.9em; display: flex; align-items: center; gap: 5px; }
+        .player-team { font-size: 0.74em; color: var(--text-muted); }
+
+        .points-input, .match-points-input {
+            width: 44px;
+            height: 30px;
+            padding: 2px 4px;
+            background: #0f1116;
+            color: var(--text);
+            border: 1px solid var(--border-strong);
+            border-radius: 7px;
+            text-align: center;
+            font-weight: 800;
+            font-size: 0.92em;
+            font-variant-numeric: tabular-nums;
+            transition: all 0.2s ease;
+        }
+
+        .points-input:focus, .match-points-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent-dim);
+            outline: none;
+        }
+
+        /* Colores dinámicos según puntuación */
+        .pts-high {
+            border-color: rgba(224, 185, 75, 0.7) !important;
+            background: rgba(224, 185, 75, 0.14) !important;
+            color: var(--accent-bright) !important;
+        }
+        .pts-good {
+            border-color: rgba(34, 197, 94, 0.55) !important;
+            background: rgba(34, 197, 94, 0.12) !important;
+            color: #86efac !important;
+        }
+        .pts-neg {
+            border-color: rgba(239, 68, 68, 0.65) !important;
+            background: rgba(239, 68, 68, 0.16) !important;
+            color: #fca5a5 !important;
+        }
+
+        @keyframes flashScore {
+            0% { box-shadow: 0 0 0 0 rgba(224, 185, 75, 0.95); transform: scale(1.14); background: rgba(224, 185, 75, 0.35); }
+            100% { box-shadow: 0 0 0 10px rgba(224, 185, 75, 0); transform: scale(1); }
+        }
+        .score-flash { animation: flashScore 1.1s ease-out; }
+
+        .captain-tag {
+            color: #111;
+            background: linear-gradient(135deg, var(--accent-bright), var(--accent));
+            font-weight: 900;
+            font-size: 0.68em;
+            border-radius: 50%;
+            width: 17px;
+            height: 17px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(224, 185, 75, 0.35);
+            flex-shrink: 0;
+        }
+
+        .coach-item {
+            border-left: 3px solid var(--accent);
+            margin-top: 10px;
+            background: rgba(224, 185, 75, 0.05);
+        }
+
+        /* Partidos Broadcast Grid */
+        .match-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 15px;
+        }
+
+        .match-scoreboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 8px 12px;
+            margin: -14px -14px 12px -14px;
+            background: linear-gradient(90deg, rgba(224, 185, 75, 0.12) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(224, 185, 75, 0.12) 100%);
+            border-bottom: 1px solid var(--border);
+            border-radius: 14px 14px 0 0;
+        }
+
+        .match-team-title {
+            flex: 1;
+            font-weight: 800;
+            font-size: 0.92em;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .match-team-title.away { text-align: right; }
+
+        .vs-badge {
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(224, 185, 75, 0.35);
+            color: var(--accent-bright);
+            font-size: 0.7em;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+        }
+
+        .match-teams { display: flex; justify-content: space-between; gap: 10px; }
+        .match-half { width: 50%; display: flex; flex-direction: column; gap: 5px; }
+        .match-half h4 {
+            color: var(--text-muted);
+            margin: 0 0 3px 0;
+            font-size: 0.74em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .match-player {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.84em;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 6px 7px;
+            border-radius: 8px;
+            transition: opacity 0.15s ease, background 0.15s ease;
+        }
+
+        .match-player.unplayed { opacity: 0.66; }
+        .match-player:hover { opacity: 1; background: rgba(255, 255, 255, 0.065); }
+        .match-player.coach { border-left: 2px solid var(--accent); background: rgba(224, 185, 75, 0.05); }
+
+        .match-player-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            min-width: 0;
+        }
+
+        .match-player-name-line {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.2;
+        }
+
+        .manager-pill {
+            display: inline-block;
+            width: fit-content;
+            font-size: 0.72em;
+            font-weight: 800;
+            padding: 1px 6px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.06);
+            letter-spacing: 0.01em;
+        }
+
+        .match-points-input { width: 38px; height: 28px; flex-shrink: 0; }
+        .owner-tag { color: var(--text-muted); font-style: italic; font-size: 0.84em; padding: 4px 0; }
+
+        /* Controles de orden y modo */
+        .sort-nav { display: flex; justify-content: center; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+        .sort-btn {
+            padding: 7px 14px;
+            font-size: 0.84em;
+            border-radius: 999px;
+            border: 1px solid var(--border-strong);
+            background: var(--panel);
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+        .sort-btn:hover { color: var(--text); border-color: rgba(255, 255, 255, 0.25); }
+        .sort-btn.active {
+            background: var(--accent-dim);
+            color: var(--accent-bright);
+            border-color: rgba(224, 185, 75, 0.55);
+        }
+
+        /* KPI Resumen General */
+        .general-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 10px;
+            max-width: 760px;
+            margin: 0 auto 14px;
+        }
+
+        .kpi-card {
+            background: linear-gradient(180deg, rgba(31, 35, 46, 0.92), rgba(20, 23, 30, 0.96));
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 10px 14px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+        }
+
+        .kpi-label {
+            font-size: 0.72em;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .kpi-value {
+            font-size: 1.18em;
+            font-weight: 800;
+            color: var(--accent-bright);
+        }
+
+        /* Tablas de Clasificación */
+        .table-wrap {
+            max-width: 760px;
+            margin: 0 auto;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow-x: auto;
+            box-shadow: var(--shadow-card);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            background: transparent;
+        }
+
+        th, td {
+            padding: 11px 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+
+        th {
+            color: var(--text-muted);
+            background: rgba(12, 13, 16, 0.55);
+            font-size: 0.76em;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 800;
+        }
+
+        tbody tr:last-child td { border-bottom: none; }
+
+        .ranking-row { cursor: pointer; transition: background 0.16s ease; }
+        .ranking-row:hover { background-color: rgba(255, 255, 255, 0.045); }
+
+        /* Zona de peligro / deudas */
+        .bg-red { background: linear-gradient(90deg, rgba(239, 68, 68, 0.16) 0%, rgba(239, 68, 68, 0.06) 100%) !important; }
+        .bg-red:hover { background: rgba(239, 68, 68, 0.24) !important; }
+        .bg-dark-red { background: linear-gradient(90deg, rgba(239, 68, 68, 0.32) 0%, rgba(239, 68, 68, 0.14) 100%) !important; }
+        .bg-dark-red:hover { background: rgba(239, 68, 68, 0.4) !important; }
+
+        .pos-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 24px;
+            height: 24px;
+            padding: 0 6px;
+            border-radius: 7px;
+            background: rgba(255, 255, 255, 0.06);
+            font-weight: 800;
+            font-size: 0.86em;
+            color: var(--text);
+        }
+
+        .pos-badge.danger-zone {
+            background: rgba(239, 68, 68, 0.22);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.45);
+        }
+
+        .trend-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 0.74em;
+            font-weight: 800;
+            margin-left: 5px;
+        }
+        .trend-up { background: var(--success-dim); color: #86efac; }
+        .trend-down { background: var(--danger-dim); color: #fca5a5; }
+        .trend-eq { background: rgba(255, 255, 255, 0.05); color: var(--text-muted); }
+
+        .ranking-details { background-color: #12141a; border-bottom: 1px solid var(--border-strong); }
+        .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 7px; padding: 8px; font-size: 0.84em; }
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 10px;
+            background: var(--panel);
+            border-radius: 7px;
+            border-left: 3px solid #444;
+            align-items: center;
+        }
+        .detail-item.played { border-left-color: var(--success); background: rgba(34, 197, 94, 0.08); }
         .detail-item.coach { border-left-color: var(--accent); }
-        
-        .match-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-        .match-teams { display: flex; justify-content: space-between; gap: 10px; margin-top: 10px; }
-        .match-half { width: 50%; }
-        .match-half h4 { color: var(--accent); margin: 0 0 5px 0; font-size: 0.9em; }
-        .match-player { display: flex; justify-content: space-between; align-items: center; font-size: 0.85em; background: #2a2a2a; padding: 6px; margin-bottom: 5px; border-radius: 4px; }
-        .match-player.coach { border-left: 2px solid var(--accent); }
-        .match-player-info { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
-        .match-points-input { width: 35px; padding: 4px; background: #121212; color: white; border: 1px solid #555; border-radius: 4px; text-align: center; font-weight: bold; }
-        .match-points-input:focus { border-color: var(--accent); outline: none; }
-        .owner-tag { color: var(--gray); font-style: italic; font-size: 0.9em; }
 
-        .config-section { background: var(--panel); padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #333; }
+        /* Ajustes / Configuración */
+        #configuracion { max-width: 780px; margin: 0 auto; }
+
+        .config-section {
+            background: var(--panel);
+            padding: 16px;
+            border-radius: 14px;
+            margin-bottom: 18px;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+        }
+
         .config-row { display: flex; gap: 10px; margin-bottom: 10px; align-items: center; }
-        .config-input { flex: 1; padding: 8px; background: #121212; color: white; border: 1px solid #555; border-radius: 4px; }
-        .save-btn { background: var(--accent); color: var(--bg); width: 100%; margin-top: 10px; padding: 12px; font-size: 1.1em; border: none; cursor: pointer; border-radius: 4px; font-weight: bold; }
+        .config-input {
+            flex: 1;
+            padding: 9px 10px;
+            background: #101217;
+            color: var(--text);
+            border: 1px solid var(--border-strong);
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+        .config-input:focus { border-color: var(--accent); outline: none; }
+
+        .save-btn {
+            background: linear-gradient(135deg, var(--accent) 0%, #c89b2b 100%);
+            color: #111;
+            width: 100%;
+            margin-top: 10px;
+            padding: 11px 14px;
+            font-size: 0.98em;
+            border: none;
+            cursor: pointer;
+            border-radius: 9px;
+            font-weight: 800;
+            box-shadow: 0 4px 14px rgba(224, 185, 75, 0.22);
+        }
+        .save-btn:hover { filter: brightness(1.06); }
+
         select.config-input { cursor: pointer; }
         .radio-cell { display: flex; align-items: center; justify-content: center; width: 40px; }
-        input[type="radio"] { width: 20px; height: 20px; cursor: pointer; accent-color: var(--accent); }
+        input[type="radio"] { width: 18px; height: 18px; cursor: pointer; accent-color: var(--accent); }
 
-        .historic-compact-box { background: #181818; border: 1px solid #383838; border-radius: 6px; padding: 12px; margin-top: 8px; }
+        .historic-compact-box { background: #13151b; border: 1px solid var(--border-strong); border-radius: 10px; padding: 12px; margin-top: 8px; }
         .historic-compact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 10px; }
 
-        .debt-tag { color: var(--danger); font-weight: bold; background: rgba(220, 53, 69, 0.15); padding: 2px 5px; border-radius: 4px; border: 1px solid var(--danger); white-space: nowrap; }
-        .no-debt { color: var(--success); font-weight: bold; }
+        .debt-tag {
+            color: #fca5a5;
+            font-weight: 800;
+            background: var(--danger-dim);
+            padding: 3px 7px;
+            border-radius: 6px;
+            border: 1px solid rgba(239, 68, 68, 0.45);
+            white-space: nowrap;
+            font-size: 0.88em;
+        }
+        .no-debt { color: #86efac; font-weight: 700; font-size: 0.88em; }
 
-        .toast { visibility: hidden; min-width: 250px; background-color: #333; color: #fff; text-align: center; border-radius: 8px; padding: 12px 20px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-weight: bold; box-shadow: 0px 4px 12px rgba(0,0,0,0.5); border: 1px solid var(--accent); opacity: 0; transition: opacity 0.3s, bottom 0.3s; }
+        .toast {
+            visibility: hidden;
+            min-width: 260px;
+            background: rgba(25, 28, 36, 0.96);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            text-align: center;
+            border-radius: 10px;
+            padding: 12px 20px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-weight: 700;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(224, 185, 75, 0.55);
+            opacity: 0;
+            transition: opacity 0.25s, bottom 0.25s;
+        }
         .toast.show { visibility: visible; opacity: 1; bottom: 40px; }
+
+        @media (max-width: 600px) {
+            body { padding: 12px 10px 32px; }
+            h1 { font-size: 1.35em; }
+            .nav button { padding: 8px 10px; font-size: 0.82em; }
+            th, td { padding: 9px 6px; font-size: 0.84em; }
+        }
     </style>
 </head>
 <body>
+<div class="app-shell">
 
-    <h1>⚙️ Panel Mánager LaLiga</h1>
-    
-    <div class="nav">
-        <button onclick="switchTab('jornada')" class="active">⚽ Partidos</button>
-        <button onclick="switchTab('plantillas')">📋 Puntos</button>
-        <button onclick="switchTab('clasificacion')">📊 Jornada</button>
-        <button onclick="switchTab('general')">🏆 General</button>
-        <button onclick="switchTab('configuracion')">⚙️ Ajustes</button>
-    </div>
+    <header class="broadcast-header">
+        <div class="title-row">
+            <h1>Panel Mánager LaLiga</h1>
+            <span id="headerJornadaBadge" class="jornada-pill">JORNADA --</span>
+        </div>
 
-    <div style="text-align:center; margin-bottom:15px; font-size:0.85em; color:var(--gray);">
-        <span id="syncStatus">⏳ Esperando sincronización con puntos.json...</span>
-        <button onclick="sincronizarPuntosEnDirecto()" style="padding:4px 10px; font-size:0.85em; margin-left:8px;">🔄 Actualizar ahora</button>
+        <nav class="nav">
+            <button onclick="switchTab('jornada', this)" class="active">⚽ Partidos</button>
+            <button onclick="switchTab('plantillas', this)">📋 Puntos</button>
+            <button onclick="switchTab('clasificacion', this)">📊 Jornada</button>
+            <button onclick="switchTab('general', this)">🏆 General</button>
+            <button onclick="switchTab('configuracion', this)">⚙️ Ajustes</button>
+        </nav>
+    </header>
+
+    <div class="sync-bar">
+        <div class="sync-info-left">
+            <span id="liveIndicatorDot" class="live-dot"></span>
+            <span id="syncStatus">Esperando sincronización con puntos.json...</span>
+        </div>
+        <button class="sync-refresh-btn" onclick="sincronizarPuntosEnDirecto()">🔄 Actualizar ahora</button>
     </div>
 
     <div id="toast" class="toast">Notificación</div>
 
     <!-- Pestaña Jornada -->
     <div id="jornada" class="tab-content active">
-        <p style="text-align:center; color:var(--gray); font-size: 0.9em; margin-top: 0;">Introduce los puntos directamente durante el partido.</p>
+        <p style="text-align:center; color:var(--text-muted); font-size: 0.86em; margin: 0 0 14px 0;">Introduce o edita los puntos directamente sobre cada partido.</p>
         <div class="match-grid" id="matchesContainer"></div>
     </div>
 
@@ -115,20 +680,22 @@
 
     <!-- Pestaña Clasificación (Jornada Actual) -->
     <div id="clasificacion" class="tab-content">
-        <p style="text-align:center; color:var(--gray); font-size: 0.9em; margin-top: 0;">Clasificación de la jornada en curso.</p>
+        <p style="text-align:center; color:var(--text-muted); font-size: 0.86em; margin: 0 0 12px 0;">Clasificación de la jornada en curso · Pulsa en un mánager para ver su alineación.</p>
         <div class="sort-nav">
             <button id="btnSortPoints" class="sort-btn active" onclick="setSortMode('points')">Orden: Puntos</button>
             <button id="btnSortCoef" class="sort-btn" onclick="setSortMode('coef')">Orden: Coeficiente</button>
         </div>
-        <table>
-            <thead><tr><th>Pos</th><th>Manager</th><th style="text-align:center;">Faltan</th><th style="text-align:center;">Coef</th><th style="text-align:center;">Paga hoy</th><th>Puntos</th></tr></thead>
-            <tbody id="rankingBody"></tbody>
-        </table>
+        <div class="table-wrap" style="max-width:680px;">
+            <table>
+                <thead><tr><th>Pos</th><th>Manager</th><th style="text-align:center;">Faltan</th><th style="text-align:center;">Coef</th><th style="text-align:center;">Paga hoy</th><th style="text-align:right;">Puntos</th></tr></thead>
+                <tbody id="rankingBody"></tbody>
+            </table>
+        </div>
     </div>
 
     <!-- Pestaña Clasificación GENERAL -->
     <div id="general" class="tab-content">
-        <p style="text-align:center; color:var(--gray); font-size: 0.9em; margin-top: 0;">Clasificación histórica, deudas y beneficio acumulado.</p>
+        <p style="text-align:center; color:var(--text-muted); font-size: 0.86em; margin: 0 0 12px 0;">Clasificación histórica, deudas y balance neto acumulado.</p>
         <div class="sort-nav" style="margin-bottom:8px;">
             <button id="btnGenLiveOn" class="sort-btn active" onclick="setGeneralLiveMode(true)">🟢 En directo</button>
             <button id="btnGenLiveOff" class="sort-btn" onclick="setGeneralLiveMode(false)">⚪ Sin directo (cerrada)</button>
@@ -137,44 +704,47 @@
             <button id="btnSortGenPoints" class="sort-btn active" onclick="setGeneralSortMode('points')">🏆 Orden: Puntos</button>
             <button id="btnSortGenDebt" class="sort-btn" onclick="setGeneralSortMode('debt')">💸 Orden: Deuda</button>
         </div>
-        <table style="max-width:720px;">
-            <thead><tr><th>Pos</th><th>Manager</th><th style="text-align:center;">Pts Jornada</th><th>Total Pts</th><th>Deuda</th><th>Beneficio</th></tr></thead>
-            <tbody id="generalBody"></tbody>
-        </table>
+        <div id="generalKpiSummary" class="general-summary-grid"></div>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Pos</th><th>Manager</th><th style="text-align:center;">Pts Jornada</th><th>Total Pts</th><th>Deuda</th><th>Beneficio</th></tr></thead>
+                <tbody id="generalBody"></tbody>
+            </table>
+        </div>
     </div>
 
     <!-- Pestaña Configuración -->
     <div id="configuracion" class="tab-content">
         
-        <div class="config-section" style="border-color: #fdcb6e; background: rgba(253, 203, 110, 0.05);">
-            <h3 style="color:#fdcb6e; margin-top:0;">⏱️ Control Cron-job.org (Auto-puntos cada 5 min)</h3>
-            <p style="font-size:0.85em; color:var(--gray); margin-top:0;">Actívalo durante la jornada para que los puntos se actualicen solos cada 5 minutos, o páusalo entre semana.</p>
+        <div class="config-section" style="border-color: rgba(253, 203, 110, 0.35); background: rgba(253, 203, 110, 0.04);">
+            <h3 style="color:#fdcb6e; margin-top:0;">⏱️ Control Cron-job.org (Auto-puntos)</h3>
+            <p style="font-size:0.85em; color:var(--text-muted); margin-top:0;">Actívalo durante la jornada para actualizar puntos automáticamente, o páusalo entre semana.</p>
             <div style="display:flex; gap:10px; margin-bottom:10px;">
-                <button class="save-btn" style="background:#28a745; color:white; margin:0;" onclick="controlarCronJob(true)">▶️ Activar (5 min)</button>
-                <button class="save-btn" style="background:#dc3545; color:white; margin:0;" onclick="controlarCronJob(false)">⏸️ Pausar Cron</button>
+                <button class="save-btn" style="background:var(--success); color:white; margin:0;" onclick="controlarCronJob(true)">▶️ Activar Cron</button>
+                <button class="save-btn" style="background:var(--danger); color:white; margin:0;" onclick="controlarCronJob(false)">⏸️ Pausar Cron</button>
             </div>
-            <div id="cronStatusLabel" style="font-size:0.85em; color:var(--gray); margin-bottom:6px;">Estado: listo para controlar Job #8917104</div>
-            <details style="margin-top:8px; font-size:0.85em; color:var(--gray);">
-                <summary style="cursor:pointer; color:var(--accent); font-weight:bold;">🔑 Configurar Clave API y Job ID de Cron-job.org</summary>
+            <div id="cronStatusLabel" style="font-size:0.85em; color:var(--text-muted); margin-bottom:6px;">Estado: listo para controlar Job #8917104</div>
+            <details style="margin-top:8px; font-size:0.85em; color:var(--text-muted);">
+                <summary style="cursor:pointer; color:var(--accent-bright); font-weight:bold;">🔑 Configurar Clave API y Job ID de Cron-job.org</summary>
                 <div style="margin-top:8px;">
                     <div class="config-row" style="margin-bottom:6px;">
                         <input type="text" id="cjJobId" class="config-input" placeholder="Job ID (ej: 8917104)">
                         <input type="password" id="cjApiKey" class="config-input" placeholder="Clave API de cron-job.org">
                     </div>
-                    <button class="save-btn" style="padding:8px; font-size:0.95em; margin-top:0;" onclick="guardarConfigCronJob()">💾 Guardar credenciales Cron-job</button>
+                    <button class="save-btn" style="padding:8px; font-size:0.92em; margin-top:0;" onclick="guardarConfigCronJob()">💾 Guardar credenciales Cron-job</button>
                 </div>
             </details>
         </div>
 
-        <div class="config-section" style="border-color: #74b9ff; background: rgba(116, 185, 255, 0.05);">
+        <div class="config-section" style="border-color: rgba(116, 185, 255, 0.35); background: rgba(116, 185, 255, 0.04);">
             <h3 style="color:#74b9ff; margin-top:0;">☁️ Sincronización Nube (PC ↔ Móvil)</h3>
-            <p style="font-size:0.85em; color:var(--gray); margin-top:0;">Guarda o descarga plantillas, partidos, histórico y deudas directamente desde GitHub para no tener que editarlo dos veces.</p>
+            <p style="font-size:0.85em; color:var(--text-muted); margin-top:0;">Guarda o descarga plantillas, partidos, histórico y deudas directamente desde GitHub para mantener PC y móvil sincronizados.</p>
             <div style="display:flex; gap:10px; margin-bottom:10px;">
                 <button class="save-btn" style="background:#218838; color:white; margin:0;" onclick="subirBackupAGitHub()">☁️ Subir cambios a GitHub</button>
                 <button class="save-btn" style="background:#0069d9; color:white; margin:0;" onclick="cargarBackupDesdeGitHub(true)">⬇️ Traer de GitHub</button>
             </div>
-            <details style="margin-top:8px; font-size:0.85em; color:var(--gray);">
-                <summary style="cursor:pointer; color:var(--accent); font-weight:bold;">🔑 Configurar Token de GitHub (solo necesario para subir)</summary>
+            <details style="margin-top:8px; font-size:0.85em; color:var(--text-muted);">
+                <summary style="cursor:pointer; color:var(--accent-bright); font-weight:bold;">🔑 Configurar Token de GitHub (solo necesario para subir)</summary>
                 <div style="margin-top:8px;">
                     <div class="config-row" style="margin-bottom:6px;">
                         <input type="text" id="ghOwner" class="config-input" placeholder="Usuario (ej: blancomerenguesm)">
@@ -183,23 +753,23 @@
                     <div class="config-row" style="margin-bottom:6px;">
                         <input type="password" id="ghToken" class="config-input" placeholder="Pega aquí tu Personal Access Token (github_pat_...)">
                     </div>
-                    <button class="save-btn" style="padding:8px; font-size:0.95em; margin-top:0;" onclick="guardarConfigGitHub()">💾 Guardar credenciales en este dispositivo</button>
+                    <button class="save-btn" style="padding:8px; font-size:0.92em; margin-top:0;" onclick="guardarConfigGitHub()">💾 Guardar credenciales en este dispositivo</button>
                 </div>
             </details>
         </div>
 
-        <div class="config-section" style="border-color: var(--success); background: rgba(40, 167, 69, 0.05);">
+        <div class="config-section" style="border-color: rgba(34, 197, 94, 0.38); background: rgba(34, 197, 94, 0.04);">
             <h3 style="color:var(--success); margin-top:0;">1. Cerrar Jornada Actual</h3>
-            <p style="font-size:0.85em; color:var(--gray);">Suma los puntos a la General, <b>calcula las deudas (3€, 2€, 2€)</b> de esta jornada y pone las plantillas a 0 para empezar la siguiente.</p>
-            <button class="save-btn" style="background:var(--success); color:white; border: 1px solid #1e7e34;" onclick="cerrarJornada()">✅ Cerrar Jornada y Repartir Deudas</button>
-            <button class="save-btn" style="background:#2a2a2a; color:#ff7675; border: 1px solid #dc3545; margin-top:8px; font-size:0.95em;" onclick="limpiarPuntosJornada()">🧹 Limpiar puntos de jornada a cero (sin sumar ni repartir)</button>
+            <p style="font-size:0.85em; color:var(--text-muted);">Suma los puntos a la General, <b>calcula las deudas (3€, 2€, 2€)</b> de esta jornada y pone las plantillas a 0 para empezar la siguiente.</p>
+            <button class="save-btn" style="background:var(--success); color:white;" onclick="cerrarJornada()">✅ Cerrar Jornada y Repartir Deudas</button>
+            <button class="save-btn" style="background:#20242f; color:#fca5a5; border: 1px solid rgba(239, 68, 68, 0.45); margin-top:8px; font-size:0.9em; box-shadow:none;" onclick="limpiarPuntosJornada()">🧹 Limpiar puntos de jornada a cero (sin sumar ni repartir)</button>
         </div>
 
         <div class="config-section">
-            <h3 style="color:var(--accent); margin-top:0;">2. Copia de Seguridad Local (Archivo)</h3>
+            <h3 style="color:var(--accent-bright); margin-top:0;">2. Copia de Seguridad Local (Archivo)</h3>
             <div style="display:flex; gap:10px;">
-                <button class="save-btn" style="background:#2a2a2a; border:1px solid #555; color:white;" onclick="exportData()">⬇️ Descargar JSON</button>
-                <label class="save-btn" style="background:#2a2a2a; border:1px solid #555; color:white; text-align:center; display:flex; align-items:center; justify-content:center; margin:0;">
+                <button class="save-btn" style="background:var(--panel-soft); border:1px solid var(--border-strong); color:white; box-shadow:none;" onclick="exportData()">⬇️ Descargar JSON</button>
+                <label class="save-btn" style="background:var(--panel-soft); border:1px solid var(--border-strong); color:white; text-align:center; display:flex; align-items:center; justify-content:center; margin:0; box-shadow:none;">
                     ⬆️ Subir JSON
                     <input type="file" style="display:none;" accept=".json" onchange="importData(event)">
                 </label>
@@ -208,49 +778,49 @@
 
         <div class="config-section">
             <details id="historicDetails">
-                <summary style="cursor:pointer; color:var(--accent); font-weight:bold; font-size:1.1em; list-style:none;">
-                    3. Modificar Histórico (General) <span style="font-size:0.75em; color:var(--gray); font-weight:normal;">— desplegar para editar</span>
+                <summary style="cursor:pointer; color:var(--accent-bright); font-weight:bold; font-size:1.05em; list-style:none;">
+                    3. Modificar Histórico (General) <span style="font-size:0.75em; color:var(--text-muted); font-weight:normal;">— desplegar para editar</span>
                 </summary>
-                <p style="font-size:0.85em; color:var(--gray); margin-top:8px;">Elige un mánager en el desplegable para ajustar sus puntos históricos o deuda acumulada.</p>
+                <p style="font-size:0.85em; color:var(--text-muted); margin-top:8px;">Elige un mánager en el desplegable para ajustar sus puntos históricos o deuda acumulada.</p>
                 <div id="historicInputsContainer"></div>
             </details>
         </div>
 
         <div class="config-section">
-            <h3 style="color:var(--accent); margin-top:0;">4. Editar Partidos y Jornada</h3>
-            <p style="font-size:0.85em; color:var(--gray); margin-top:0;">Cambia el número de jornada en GitHub y lanza el extractor automáticamente, o importa los partidos ya generados.</p>
+            <h3 style="color:var(--accent-bright); margin-top:0;">4. Editar Partidos y Jornada</h3>
+            <p style="font-size:0.85em; color:var(--text-muted); margin-top:0;">Cambia el número de jornada en GitHub y lanza el extractor automáticamente, o importa los partidos ya generados.</p>
             <div class="config-row" style="margin-bottom:10px;">
                 <input type="number" id="jornadaNumeroInput" class="config-input" min="1" max="42" placeholder="Nº Jornada (ej: 14)" style="max-width:150px;">
-                <button class="save-btn" style="margin-top:0; padding:9px; font-size:0.95em;" onclick="cambiarJornadaEnGitHub()">🚀 Cambiar jornada en GitHub</button>
+                <button class="save-btn" style="margin-top:0; padding:9px; font-size:0.92em;" onclick="cambiarJornadaEnGitHub()">🚀 Cambiar jornada en GitHub</button>
             </div>
-            <div id="jornadaGitHubStatus" style="font-size:0.8em; color:var(--gray); margin-bottom:10px;"></div>
-            <button class="save-btn" style="background:#2a2a2a; border:1px solid var(--accent); color:var(--accent); margin-top:0; margin-bottom:12px; padding:9px; font-size:0.95em;" onclick="cargarPartidosDesdePuntosJson()">📥 Cargar partidos de la jornada desde puntos.json</button>
+            <div id="jornadaGitHubStatus" style="font-size:0.8em; color:var(--text-muted); margin-bottom:10px;"></div>
+            <button class="save-btn" style="background:var(--panel-soft); border:1px solid rgba(224, 185, 75, 0.45); color:var(--accent-bright); margin-top:0; margin-bottom:12px; padding:9px; font-size:0.92em; box-shadow:none;" onclick="cargarPartidosDesdePuntosJson()">📥 Cargar partidos de la jornada desde puntos.json</button>
             <div id="editMatchesContainer"></div>
             <button class="save-btn" onclick="saveMatches()">💾 Guardar Partidos</button>
         </div>
 
         <div class="config-section">
-            <h3 style="color:var(--accent); margin-top:0;">5. Editar Plantillas</h3>
+            <h3 style="color:var(--accent-bright); margin-top:0;">5. Editar Plantillas</h3>
             <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:10px; flex-wrap:wrap;">
-                <span id="catalogoJugadoresStatus" style="font-size:0.8em; color:var(--gray);">📚 Catálogo: esperando puntos.json...</span>
-                <button type="button" style="padding:5px 10px; font-size:0.8em;" onclick="cargarCatalogoJugadoresDesdePuntosJson(true)">📚 Actualizar catálogo</button>
+                <span id="catalogoJugadoresStatus" style="font-size:0.8em; color:var(--text-muted);">📚 Catálogo: esperando puntos.json...</span>
+                <button type="button" style="padding:5px 10px; font-size:0.8em; background:var(--panel-soft); border:1px solid var(--border-strong); color:var(--text);" onclick="cargarCatalogoJugadoresDesdePuntosJson(true)">📚 Actualizar catálogo</button>
             </div>
             <datalist id="catalogoJugadoresList"></datalist>
             <select id="managerSelect" class="config-input" onchange="loadSquadEditor()" style="margin-bottom: 15px;">
                 <option value="">Selecciona un mánager...</option>
             </select>
             <div id="editSquadContainer" style="display:none;">
-                <div style="display:flex; margin-bottom:5px; font-weight:bold; font-size:0.85em; color:var(--gray);">
+                <div style="display:flex; margin-bottom:5px; font-weight:bold; font-size:0.84em; color:var(--text-muted);">
                     <div style="flex:1.3;">Jugador (autocompleta)</div><div style="flex:1;">Equipo (auto)</div><div style="width:40px; text-align:center;">Cap</div>
                 </div>
                 <div id="squadInputs"></div>
-                <details style="margin-top:10px; background:#181818; border:1px solid #383838; border-radius:6px; padding:10px;">
-                    <summary style="cursor:pointer; color:var(--accent); font-size:0.85em; font-weight:bold;">⚡ Pegado rápido (1 jugador por línea)</summary>
-                    <p style="font-size:0.78em; color:var(--gray); margin:6px 0;">Pega hasta 11 líneas con el nombre del jugador (o <code>Jugador - Equipo</code>). Se autocompletará el equipo desde el catálogo y podrás retocar cualquier campo arriba antes de guardar.</p>
-                    <textarea id="quickPasteSquad" class="config-input" rows="5" style="width:100%; box-sizing:border-box; font-size:0.82em;" placeholder="Ej:&#10;Pedri&#10;Bellingham - Real Madrid&#10;Lamine Yamal"></textarea>
+                <details style="margin-top:10px; background:#13151b; border:1px solid var(--border-strong); border-radius:8px; padding:10px;">
+                    <summary style="cursor:pointer; color:var(--accent-bright); font-size:0.85em; font-weight:bold;">⚡ Pegado rápido (1 jugador por línea)</summary>
+                    <p style="font-size:0.78em; color:var(--text-muted); margin:6px 0;">Pega hasta 11 líneas con el nombre del jugador (o <code>Jugador - Equipo</code>). Se autocompletará el equipo desde el catálogo y podrás retocar cualquier campo arriba antes de guardar.</p>
+                    <textarea id="quickPasteSquad" class="config-input" rows="5" style="width:100%; font-size:0.82em;" placeholder="Ej:&#10;Pedri&#10;Bellingham - Real Madrid&#10;Lamine Yamal"></textarea>
                     <button type="button" class="save-btn" style="padding:8px; font-size:0.9em; margin-top:8px;" onclick="aplicarPegadoRapidoPlantilla()">✨ Rellenar huecos desde texto</button>
                 </details>
-                <div style="display:flex; margin: 15px 0 5px 0; font-weight:bold; font-size:0.85em; color:var(--accent); border-top: 1px solid #333; padding-top:10px;">
+                <div style="display:flex; margin: 15px 0 5px 0; font-weight:bold; font-size:0.85em; color:var(--accent-bright); border-top: 1px solid var(--border); padding-top:10px;">
                     Entrenador
                 </div>
                 <div id="coachInput"></div>
@@ -258,6 +828,8 @@
             </div>
         </div>
     </div>
+
+</div>
 
     <script>
         const equiposLaLiga = ["Alavés", "Athletic", "Atleti", "Barcelona", "Betis", "Celta", "Deportivo", "Elche", "Espanyol", "Getafe", "Levante", "Málaga", "Osasuna", "Racing", "Rayo", "Real Madrid", "Real Sociedad", "Sevilla", "Valencia", "Villarreal", "Otros"];
@@ -270,6 +842,16 @@
         let currentSortMode = 'points';
         let currentGeneralSortMode = 'points';
         let currentGeneralLiveMode = true;
+        let flashedKeys = new Set();
+
+        function getScoreClass(val) {
+            if (val === "" || val === null || typeof val === "undefined" || isNaN(val)) return "";
+            const n = Number(val);
+            if (n >= 10) return "pts-high";
+            if (n >= 5) return "pts-good";
+            if (n < 0) return "pts-neg";
+            return "";
+        }
 
         function calcularDeudasProyectadasJornada() {
             let processed = [...fantasyData].map((t, i) => ({ ...t, originalIndex: i })).filter(t => !t.isRetired);
@@ -362,11 +944,11 @@
             renderAll();
         }
 
-        function switchTab(tabId) {
+        function switchTab(tabId, btnEl) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.nav button').forEach(el => el.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
+            if (btnEl) btnEl.classList.add('active');
             
             if(tabId === 'plantillas') renderPlantillas();
             if(tabId === 'jornada') renderJornada();
@@ -393,25 +975,33 @@
             fantasyData.forEach((team, mIndex) => {
                 if (team.isRetired) return; 
 
-                let playersHtml = team.players.map((p, pIndex) => `
-                    <div class="player-item">
+                let playersHtml = team.players.map((p, pIndex) => {
+                    const isUnplayed = p.p === "";
+                    const scClass = getScoreClass(p.p);
+                    const flashClass = flashedKeys.has(`p-${mIndex}-${pIndex}`) ? 'score-flash' : '';
+                    return `
+                    <div class="player-item ${isUnplayed ? 'unplayed' : ''}">
                         <div class="player-info">
                             <span class="player-name">${p.n || 'Vacío'} ${p.c ? '<span class="captain-tag">C</span>' : ''}</span>
                             <span class="player-team">${p.t || '-'}</span>
                         </div>
                         <div class="points-container">
-                            <input type="number" class="points-input" value="${p.p !== "" ? p.p : ''}" placeholder="-" oninput="updatePoints(${mIndex}, ${pIndex}, this.value)">
+                            <input type="number" class="points-input ${scClass} ${flashClass}" value="${p.p !== "" ? p.p : ''}" placeholder="-" oninput="updatePoints(${mIndex}, ${pIndex}, this.value, this)">
                         </div>
-                    </div>`).join('');
+                    </div>`;
+                }).join('');
                 
+                const coachUnplayed = team.coach.p === "";
+                const coachScClass = getScoreClass(team.coach.p);
+                const coachFlashClass = flashedKeys.has(`c-${mIndex}`) ? 'score-flash' : '';
                 let coachHtml = `
-                    <div class="player-item coach-item">
+                    <div class="player-item coach-item ${coachUnplayed ? 'unplayed' : ''}">
                         <div class="player-info">
                             <span class="player-name">👔 ${team.coach.n || 'Sin Entrenador'}</span>
                             <span class="player-team">${team.coach.t || '-'}</span>
                         </div>
                         <div class="points-container">
-                            <input type="number" class="points-input" value="${team.coach.p !== "" ? team.coach.p : ''}" placeholder="-" oninput="updateCoachPoints(${mIndex}, this.value)">
+                            <input type="number" class="points-input ${coachScClass} ${coachFlashClass}" value="${team.coach.p !== "" ? team.coach.p : ''}" placeholder="-" oninput="updateCoachPoints(${mIndex}, this.value, this)">
                         </div>
                     </div>`;
 
@@ -419,7 +1009,7 @@
                     <div class="card">
                         <div class="team-header">
                             <h2 class="team-title" style="color: ${coloresManagers[mIndex]};">${team.manager}</h2>
-                            <strong style="font-size:1.3em;" id="total-${mIndex}">${team.total}</strong>
+                            <span class="team-total-badge" id="total-${mIndex}">${team.total}</span>
                         </div>
                         <div>${playersHtml}${coachHtml}</div>
                     </div>`;
@@ -427,15 +1017,31 @@
             document.getElementById('teamsContainer').innerHTML = html;
         }
 
-        function updatePoints(mIndex, pIndex, value) {
-            fantasyData[mIndex].players[pIndex].p = value === "" ? "" : parseInt(value);
+        function refreshInputStyle(inputEl, value) {
+            if (!inputEl) return;
+            inputEl.classList.remove('pts-high', 'pts-good', 'pts-neg');
+            const cls = getScoreClass(value);
+            if (cls) inputEl.classList.add(cls);
+            const row = inputEl.closest('.player-item, .match-player');
+            if (row) {
+                if (value === "") row.classList.add('unplayed');
+                else row.classList.remove('unplayed');
+            }
+        }
+
+        function updatePoints(mIndex, pIndex, value, inputEl = null) {
+            const parsed = value === "" ? "" : parseInt(value);
+            fantasyData[mIndex].players[pIndex].p = parsed;
             fantasyData[mIndex].total = calculateTeamTotal(fantasyData[mIndex]);
+            refreshInputStyle(inputEl, parsed);
             updateUIAfterPoints(mIndex);
         }
 
-        function updateCoachPoints(mIndex, value) {
-            fantasyData[mIndex].coach.p = value === "" ? "" : parseInt(value);
+        function updateCoachPoints(mIndex, value, inputEl = null) {
+            const parsed = value === "" ? "" : parseInt(value);
+            fantasyData[mIndex].coach.p = parsed;
             fantasyData[mIndex].total = calculateTeamTotal(fantasyData[mIndex]);
+            refreshInputStyle(inputEl, parsed);
             updateUIAfterPoints(mIndex);
         }
 
@@ -485,38 +1091,7 @@
                 }
             });
             
-            let projectedDebts = {};
-            let totalPointsThisJornada = processed.reduce((acc, t) => acc + t.total, 0);
-
-            if (totalPointsThisJornada > 0) {
-                let scoreGroups = {};
-                sorted.forEach(t => {
-                    if(!scoreGroups[t.total]) scoreGroups[t.total] = [];
-                    scoreGroups[t.total].push(t.originalIndex);
-                });
-                
-                let sortedUniqueScores = Object.keys(scoreGroups).map(Number).sort((a,b) => a - b);
-                let penalties = [3, 2, 2];
-                let penaltyIndex = 0;
-                
-                for(let score of sortedUniqueScores) {
-                    if(penaltyIndex >= penalties.length) break; 
-                    
-                    let group = scoreGroups[score];
-                    let penaltiesToApply = [];
-                    
-                    for(let i = 0; i < group.length && penaltyIndex < penalties.length; i++) {
-                        penaltiesToApply.push(penalties[penaltyIndex]);
-                        penaltyIndex++;
-                    }
-                    
-                    let totalPenalty = penaltiesToApply.reduce((a,b) => a+b, 0);
-                    let penaltyPerPerson = totalPenalty / group.length;
-                    
-                    group.forEach(idx => { projectedDebts[idx] = penaltyPerPerson; });
-                }
-            }
-
+            let projectedDebts = calcularDeudasProyectadasJornada();
             let uniqueScoresAsc = [...new Set(sorted.map(t => t.total))].sort((a,b) => a - b);
             let lastPlaceScore = uniqueScoresAsc[0];
 
@@ -526,24 +1101,26 @@
                 let pendingCount = 12 - t.playedCount; 
                 let rowClass = "ranking-row";
                 let paysAmount = projectedDebts[t.originalIndex] || 0;
+                let posBadgeClass = "pos-badge";
                 
                 if (paysAmount > 0) {
+                    posBadgeClass += " danger-zone";
                     if (t.total === lastPlaceScore) rowClass += " bg-dark-red";
                     else rowClass += " bg-red";
                 }
                 
                 let pagaHtml = paysAmount > 0 
                     ? `<span class="debt-tag">+${paysAmount.toFixed(2)}€</span>` 
-                    : `<span style="color:var(--gray);">-</span>`;
+                    : `<span style="color:var(--text-muted);">-</span>`;
                 
                 html += `
                 <tr class="${rowClass}" onclick="toggleDetails(${t.originalIndex})">
-                    <td>${index + 1}</td>
+                    <td><span class="${posBadgeClass}">${index + 1}</span></td>
                     <td style="color: ${coloresManagers[t.originalIndex]};"><strong>${t.manager}</strong></td>
-                    <td style="text-align:center;">${pendingCount}</td>
-                    <td style="text-align:center; color:var(--gray);">${t.coef.toFixed(1)}</td>
+                    <td style="text-align:center; color:var(--text-muted);">${pendingCount}</td>
+                    <td style="text-align:center; color:var(--text-muted);">${t.coef.toFixed(1)}</td>
                     <td style="text-align:center; font-size: 0.9em;">${pagaHtml}</td>
-                    <td style="font-weight:bold;">${t.total}</td>
+                    <td style="text-align:right; font-weight:800; font-size:1.05em;">${t.total}</td>
                 </tr>
                 <tr id="details-${t.originalIndex}" class="ranking-details" style="display:none;">
                     <td colspan="6">
@@ -551,12 +1128,12 @@
                             ${t.players.map(p => `
                                 <div class="detail-item ${p.p !== "" ? 'played' : ''}">
                                     <span>${p.n} ${p.c ? '<span class="captain-tag">C</span>' : ''}</span>
-                                    <strong style="color: ${p.p !== "" ? '#fff' : 'var(--gray)'};">${p.p !== "" ? p.p : '-'}</strong>
+                                    <strong style="color: ${p.p !== "" ? '#fff' : 'var(--text-muted)'};">${p.p !== "" ? p.p : '-'}</strong>
                                 </div>
                             `).join('')}
                             <div class="detail-item coach ${t.coach.p !== "" ? 'played' : ''}">
                                 <span>👔 ${t.coach.n || 'Míster'}</span>
-                                <strong style="color: ${t.coach.p !== "" ? '#fff' : 'var(--gray)'};">${t.coach.p !== "" ? t.coach.p : '-'}</strong>
+                                <strong style="color: ${t.coach.p !== "" ? '#fff' : 'var(--text-muted)'};">${t.coach.p !== "" ? t.coach.p : '-'}</strong>
                             </div>
                         </div>
                     </td>
@@ -591,7 +1168,6 @@
                 };
             });
 
-            // Ranking base (sin jornada en directo) para calcular variación de puestos
             const baseSorted = [...enriched].sort((a, b) => {
                 if (currentGeneralSortMode === 'points') {
                     return b.basePts - a.basePts;
@@ -602,7 +1178,6 @@
             const basePosMap = {};
             baseSorted.forEach((item, i) => { basePosMap[item.originalIndex] = i + 1; });
 
-            // Ranking mostrado según esté en directo o sin directo
             const sorted = [...enriched].sort((a, b) => {
                 if (currentGeneralSortMode === 'points') {
                     const valA = currentGeneralLiveMode ? a.livePtsTotal : a.basePts;
@@ -615,45 +1190,67 @@
                 }
             });
 
-            // Bote total de deudas (según modo activo) repartido a partes iguales entre los managers (10)
             const boteTotalDeudas = sorted.reduce((acc, item) => {
                 return acc + (currentGeneralLiveMode ? item.liveDebtTotal : item.baseDebt);
             }, 0);
             const repartoPorManager = boteTotalDeudas / numManagers;
 
+            const kpiEl = document.getElementById('generalKpiSummary');
+            if (kpiEl) {
+                const activeByPts = [...enriched].filter(x => !x.isRetired).sort((a, b) => {
+                    return (currentGeneralLiveMode ? b.livePtsTotal : b.basePts) - (currentGeneralLiveMode ? a.livePtsTotal : a.basePts);
+                });
+                const lider = activeByPts[0];
+                const liderPts = lider ? (currentGeneralLiveMode ? lider.livePtsTotal : lider.basePts) : 0;
+
+                kpiEl.innerHTML = `
+                    <div class="kpi-card">
+                        <div class="kpi-label">💰 Bote Total Deudas</div>
+                        <div class="kpi-value">${boteTotalDeudas.toFixed(2)} €</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">⚖️ Reparto (1/${numManagers})</div>
+                        <div class="kpi-value" style="color:#86efac;">${repartoPorManager.toFixed(2)} €</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">👑 Líder General</div>
+                        <div class="kpi-value" style="color:${lider ? coloresManagers[lider.originalIndex] : 'var(--text)'};">${lider ? `${lider.manager} (${liderPts})` : '-'}</div>
+                    </div>
+                `;
+            }
+
             let html = '';
             sorted.forEach((t, index) => {
                 const posActual = index + 1;
                 const posBase = basePosMap[t.originalIndex];
-                const diffPos = posBase - posActual; // >0 sube puestos, <0 baja puestos
+                const diffPos = posBase - posActual;
 
                 let trendHtml = '';
                 if (currentGeneralLiveMode) {
                     if (diffPos > 0) {
-                        trendHtml = ` <span style="color:var(--success); font-size:0.8em; font-weight:bold;" title="Sube ${diffPos}">▲${diffPos}</span>`;
+                        trendHtml = `<span class="trend-pill trend-up" title="Sube ${diffPos}">▲${diffPos}</span>`;
                     } else if (diffPos < 0) {
-                        trendHtml = ` <span style="color:var(--danger); font-size:0.8em; font-weight:bold;" title="Baja ${Math.abs(diffPos)}">▼${Math.abs(diffPos)}</span>`;
+                        trendHtml = `<span class="trend-pill trend-down" title="Baja ${Math.abs(diffPos)}">▼${Math.abs(diffPos)}</span>`;
                     } else {
-                        trendHtml = ` <span style="color:var(--gray); font-size:0.8em;" title="Se mantiene">=</span>`;
+                        trendHtml = `<span class="trend-pill trend-eq" title="Se mantiene">=</span>`;
                     }
                 }
 
                 const color = coloresManagers[t.originalIndex];
                 const shownDebt = currentGeneralLiveMode ? t.liveDebtTotal : t.baseDebt;
                 const extraDebtBadge = (currentGeneralLiveMode && t.liveDebtAdd > 0)
-                    ? ` <span style="font-size:0.75em; color:#ff7675;">(+${t.liveDebtAdd.toFixed(2)}€)</span>`
+                    ? ` <span style="font-size:0.75em; color:#fca5a5;">(+${t.liveDebtAdd.toFixed(2)}€)</span>`
                     : '';
                 const debtHTML = shownDebt > 0
                     ? `<span class="debt-tag">${shownDebt.toFixed(2)} €</span>${extraDebtBadge}`
                     : `<span class="no-debt">0.00 €</span>`;
 
-                // Beneficio neto: parte igual del bote total menos su deuda acumulada
                 const beneficioNeto = repartoPorManager - shownDebt;
-                const benefColor = beneficioNeto >= 0 ? 'var(--success)' : 'var(--danger)';
+                const benefColor = beneficioNeto >= 0 ? '#86efac' : '#fca5a5';
                 const benefSign = beneficioNeto > 0 ? '+' : '';
-                const beneficioHTML = `<span style="color:${benefColor}; font-weight:bold; white-space:nowrap;">${benefSign}${beneficioNeto.toFixed(2)} €</span>`;
+                const beneficioHTML = `<span style="color:${benefColor}; font-weight:800; white-space:nowrap;">${benefSign}${beneficioNeto.toFixed(2)} €</span>`;
 
-                const isRetiredStyle = t.isRetired ? 'opacity: 0.6; background: #161616;' : '';
+                const isRetiredStyle = t.isRetired ? 'opacity: 0.55; background: rgba(0,0,0,0.22);' : '';
                 const nameLabel = t.manager + (t.isRetired ? ' <em>(Ret.)</em>' : '');
                 const pointsLabel = t.isRetired
                     ? '-'
@@ -662,10 +1259,10 @@
 
                 html += `
                 <tr class="ranking-row" style="${isRetiredStyle}">
-                    <td style="white-space:nowrap;">${posActual}${trendHtml}</td>
+                    <td style="white-space:nowrap;"><span class="pos-badge">${posActual}</span>${trendHtml}</td>
                     <td style="color: ${color};"><strong>${nameLabel}</strong></td>
-                    <td style="text-align:center; color:var(--gray);">${pointsLabel}</td>
-                    <td style="font-weight:bold; font-size:1.1em;">${shownPts}</td>
+                    <td style="text-align:center; color:var(--text-muted);">${pointsLabel}</td>
+                    <td style="font-weight:800; font-size:1.06em;">${shownPts}</td>
                     <td>${debtHTML}</td>
                     <td>${beneficioHTML}</td>
                 </tr>`;
@@ -686,27 +1283,37 @@
                     if (team.isRetired) return; 
 
                     team.players.forEach((p, pIndex) => {
+                        const isUnplayed = p.p === "";
+                        const scClass = getScoreClass(p.p);
+                        const flashClass = flashedKeys.has(`p-${mIndex}-${pIndex}`) ? 'score-flash' : '';
                         let playerHtml = `
-                            <div class="match-player">
-                                <div class="match-player-info">
-                                    <span>${p.n}</span>
-                                    ${p.c ? '<span class="captain-tag" style="margin:0 2px;">C</span>' : ''}
-                                    <span class="owner-tag" style="color: ${coloresManagers[mIndex]}; font-weight: bold; font-style: normal;">${team.manager}</span>
+                            <div class="match-player ${isUnplayed ? 'unplayed' : ''}">
+                                <div class="match-player-stack">
+                                    <div class="match-player-name-line">
+                                        <span>${p.n}</span>
+                                        ${p.c ? '<span class="captain-tag">C</span>' : ''}
+                                    </div>
+                                    <span class="manager-pill" style="color: ${coloresManagers[mIndex]};">${team.manager}</span>
                                 </div>
-                                <input type="number" class="match-points-input" value="${p.p !== "" ? p.p : ''}" placeholder="-" oninput="updatePoints(${mIndex}, ${pIndex}, this.value)">
+                                <input type="number" class="match-points-input ${scClass} ${flashClass}" value="${p.p !== "" ? p.p : ''}" placeholder="-" oninput="updatePoints(${mIndex}, ${pIndex}, this.value, this)">
                             </div>`;
                         if (p.t === partido.local) loc.push(playerHtml);
                         if (p.t === partido.visitante) vis.push(playerHtml);
                     });
 
                     if (team.coach) {
+                        const coachUnplayed = team.coach.p === "";
+                        const coachScClass = getScoreClass(team.coach.p);
+                        const coachFlashClass = flashedKeys.has(`c-${mIndex}`) ? 'score-flash' : '';
                         let coachHtml = `
-                            <div class="match-player coach">
-                                <div class="match-player-info">
-                                    <span>👔 ${team.coach.n}</span>
-                                    <span class="owner-tag" style="color: ${coloresManagers[mIndex]}; font-weight: bold; font-style: normal;">${team.manager}</span>
+                            <div class="match-player coach ${coachUnplayed ? 'unplayed' : ''}">
+                                <div class="match-player-stack">
+                                    <div class="match-player-name-line">
+                                        <span>👔 ${team.coach.n}</span>
+                                    </div>
+                                    <span class="manager-pill" style="color: ${coloresManagers[mIndex]};">${team.manager}</span>
                                 </div>
-                                <input type="number" class="match-points-input" value="${team.coach.p !== "" ? team.coach.p : ''}" placeholder="-" oninput="updateCoachPoints(${mIndex}, this.value)">
+                                <input type="number" class="match-points-input ${coachScClass} ${coachFlashClass}" value="${team.coach.p !== "" ? team.coach.p : ''}" placeholder="-" oninput="updateCoachPoints(${mIndex}, this.value, this)">
                             </div>`;
                         if (team.coach.t === partido.local) loc.push(coachHtml);
                         if (team.coach.t === partido.visitante) vis.push(coachHtml);
@@ -715,17 +1322,19 @@
                 
                 html += `
                     <div class="card">
-                        <div style="text-align:center; border-bottom:1px solid #444; padding-bottom:5px; color:var(--accent); font-weight:bold;">
-                            ${partido.local} vs ${partido.visitante}
+                        <div class="match-scoreboard-header">
+                            <span class="match-team-title">${partido.local}</span>
+                            <span class="vs-badge">VS</span>
+                            <span class="match-team-title away">${partido.visitante}</span>
                         </div>
                         <div class="match-teams">
                             <div class="match-half">
                                 <h4>${partido.local}</h4>
-                                ${loc.join('') || '<div class="owner-tag">Nadie</div>'}
+                                ${loc.join('') || '<div class="owner-tag">Sin jugadores</div>'}
                             </div>
                             <div class="match-half">
                                 <h4>${partido.visitante}</h4>
-                                ${vis.join('') || '<div class="owner-tag">Nadie</div>'}
+                                ${vis.join('') || '<div class="owner-tag">Sin jugadores</div>'}
                             </div>
                         </div>
                     </div>`;
@@ -739,7 +1348,7 @@
             document.getElementById('editMatchesContainer').innerHTML = partidosJornada.map((p, i) => `
                 <div class="config-row">
                     <select id="m-loc-${i}" class="config-input">${buildTeamOptions(p.local)}</select>
-                    <span>vs</span>
+                    <span style="color:var(--text-muted); font-weight:bold;">vs</span>
                     <select id="m-vis-${i}" class="config-input">${buildTeamOptions(p.visitante)}</select>
                 </div>`).join('');
 
@@ -778,19 +1387,19 @@
                 <div class="historic-compact-box" style="${t.isRetired ? 'border-left: 3px solid var(--danger);' : ''}">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
                         <strong style="color:${coloresManagers[i]};">${t.manager} ${t.isRetired ? '<span style="font-size:0.75em; color:var(--danger);">(Retirado)</span>' : ''}</strong>
-                        <span style="font-size:0.8em; color:var(--gray);">Actual: ${t.historicPoints} pts · ${t.debt.toFixed(2)} €</span>
+                        <span style="font-size:0.8em; color:var(--text-muted);">Actual: ${t.historicPoints} pts · ${t.debt.toFixed(2)} €</span>
                     </div>
                     <div class="historic-compact-grid">
                         <div>
-                            <label style="display:block; font-size:0.78em; color:var(--gray); margin-bottom:3px;">Puntos históricos</label>
-                            <input type="number" id="hist-pts-${i}" class="config-input" style="width:100%; box-sizing:border-box; padding:6px;" value="${t.historicPoints}" ${t.isRetired ? 'disabled' : ''}>
+                            <label style="display:block; font-size:0.78em; color:var(--text-muted); margin-bottom:3px;">Puntos históricos</label>
+                            <input type="number" id="hist-pts-${i}" class="config-input" style="width:100%; padding:6px;" value="${t.historicPoints}" ${t.isRetired ? 'disabled' : ''}>
                         </div>
                         <div>
-                            <label style="display:block; font-size:0.78em; color:var(--gray); margin-bottom:3px;">Deuda (€)</label>
-                            <input type="number" step="0.01" id="hist-debt-${i}" class="config-input" style="width:100%; box-sizing:border-box; padding:6px;" value="${t.debt}">
+                            <label style="display:block; font-size:0.78em; color:var(--text-muted); margin-bottom:3px;">Deuda (€)</label>
+                            <input type="number" step="0.01" id="hist-debt-${i}" class="config-input" style="width:100%; padding:6px;" value="${t.debt}">
                         </div>
                     </div>
-                    <button class="save-btn" style="padding:9px; font-size:0.95em; margin-top:10px;" onclick="saveHistoricData(${i})">💾 Guardar ${t.manager}</button>
+                    <button class="save-btn" style="padding:9px; font-size:0.92em; margin-top:10px;" onclick="saveHistoricData(${i})">💾 Guardar ${t.manager}</button>
                 </div>
             `;
         }
@@ -879,15 +1488,17 @@
         }
 
         function limpiarPuntosJornada() {
-            if (confirm("🧹 ¿Poner a cero/vacío todos los puntos de la jornada actual?\n\nNo se sumarán puntos a la General ni se repartirán deudas.")) {
+            if (confirm("🧹 ¿Poner a cero/vacío todos los puntos de la jornada actual?
+
+No se sumarán puntos a la General ni se repartirán deudas.")) {
                 fantasyData.forEach(team => {
                     team.players.forEach(p => p.p = "");
                     if (team.coach) team.coach.p = "";
                     team.total = 0;
                 });
                 localStorage.setItem('lf_bloqueo_sincro_cerrada', '1');
-            const jInputVal = (document.getElementById('jornadaNumeroInput')?.value || '').trim();
-            if (jInputVal) localStorage.setItem('lf_jornada_cerrada_num', jInputVal);
+                const jInputVal = (document.getElementById('jornadaNumeroInput')?.value || '').trim();
+                if (jInputVal) localStorage.setItem('lf_jornada_cerrada_num', jInputVal);
                 saveDataToLocal();
                 showToast("🧹 Puntos de jornada limpiados a cero");
             }
@@ -904,38 +1515,8 @@
                 return;
             }
 
-            // Calcular reparto de deudas (3€, 2€, 2€ con reparto en empates)
-            let scoreGroups = {};
-            activeTeams.forEach(s => {
-                if(!scoreGroups[s.total]) scoreGroups[s.total] = [];
-                scoreGroups[s.total].push(s.index); 
-            });
-            
-            let sortedUniqueScores = Object.keys(scoreGroups).map(Number).sort((a,b) => a - b);
-            let penalties = [3, 2, 2]; 
-            let penaltyIndex = 0;
-            let debtChanges = {};
-            
-            for(let score of sortedUniqueScores) {
-                if(penaltyIndex >= penalties.length) break; 
-                
-                let group = scoreGroups[score];
-                let penaltiesToApply = [];
-                
-                for(let i = 0; i < group.length && penaltyIndex < penalties.length; i++) {
-                    penaltiesToApply.push(penalties[penaltyIndex]);
-                    penaltyIndex++;
-                }
-                
-                let totalPenalty = penaltiesToApply.reduce((a,b) => a+b, 0);
-                let penaltyPerPerson = totalPenalty / group.length;
-                
-                group.forEach(managerIndex => {
-                    debtChanges[managerIndex] = penaltyPerPerson;
-                });
-            }
+            let debtChanges = calcularDeudasProyectadasJornada();
 
-            // Paso 1: Confirmar nombres y cantidades que se van a sumar en las deudas
             const resumenDeudas = Object.entries(debtChanges)
                 .map(([idx, amount]) => ({
                     manager: fantasyData[idx].manager,
@@ -944,23 +1525,31 @@
                 }))
                 .sort((a, b) => b.amount - a.amount || a.total - b.total)
                 .map(d => `• ${d.manager}: +${d.amount.toFixed(2)} € (${d.total} pts)`)
-                .join("\n");
+                .join("
+");
 
-            if (!confirm(`💸 PASO 1/2 — DEUDAS A SUMAR:\n\n${resumenDeudas || 'Nadie suma deuda'}\n\n¿Confirmas este reparto de deudas?`)) {
+            if (!confirm(`💸 PASO 1/2 — DEUDAS A SUMAR:
+
+${resumenDeudas || 'Nadie suma deuda'}
+
+¿Confirmas este reparto de deudas?`)) {
                 return;
             }
 
-            // Paso 2: Confirmar puntos que ha hecho cada mánager en la jornada
             const resumenPuntos = [...activeTeams]
                 .sort((a, b) => b.total - a.total)
                 .map(t => `• ${t.manager}: ${t.total} pts`)
-                .join("\n");
+                .join("
+");
 
-            if (!confirm(`🏆 PASO 2/2 — PUNTOS A SUMAR A LA GENERAL:\n\n${resumenPuntos}\n\n¿Confirmas sumar estos puntos y reiniciar los marcadores a 0?`)) {
+            if (!confirm(`🏆 PASO 2/2 — PUNTOS A SUMAR A LA GENERAL:
+
+${resumenPuntos}
+
+¿Confirmas sumar estos puntos y reiniciar los marcadores a 0?`)) {
                 return;
             }
 
-            // Aplicar deudas, sumar puntos históricos y poner marcadores a 0
             Object.entries(debtChanges).forEach(([idx, amount]) => {
                 fantasyData[idx].debt += amount;
             });
@@ -1070,10 +1659,10 @@
                 }
 
                 const textoEstado = activar
-                    ? "🟢 ACTIVO (se ejecuta cada 5 minutos)"
+                    ? "🟢 ACTIVO"
                     : "⏸️ PAUSADO (no gastará ejecuciones hasta que lo actives)";
                 if (label) label.innerText = "Estado: " + textoEstado;
-                showToast(activar ? "▶️ Cron-job activado (cada 5 min)" : "⏸️ Cron-job pausado");
+                showToast(activar ? "▶️ Cron-job activado" : "⏸️ Cron-job pausado");
             } catch (err) {
                 if (label) label.innerText = "⚠️ No se pudo cambiar desde el navegador (" + err.message + ")";
                 if (confirm("El navegador bloqueó la petición directa a cron-job.org por seguridad CORS. ¿Quieres abrir la consola de cron-job.org para activarlo/pausarlo en un clic?")) {
@@ -1238,7 +1827,11 @@
                 const res = await fetch('puntos.json?t=' + Date.now());
                 if (res.ok) {
                     const dataRaw = await res.json();
-                    if (dataRaw.jornada) input.value = dataRaw.jornada;
+                    if (dataRaw.jornada) {
+                        input.value = dataRaw.jornada;
+                        const badge = document.getElementById('headerJornadaBadge');
+                        if (badge) badge.innerText = `JORNADA ${dataRaw.jornada}`;
+                    }
                 }
             } catch (e) {}
         }
@@ -1337,7 +1930,7 @@
             return (texto || "")
                 .toLowerCase()
                 .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[̀-ͯ]/g, "")
                 .trim();
         }
 
@@ -1390,7 +1983,8 @@
             if (!area) return;
 
             const lineas = area.value
-                .split(/\r?\n/)
+                .split(/?
+/)
                 .map(l => l.trim())
                 .filter(Boolean)
                 .slice(0, 11);
@@ -1431,11 +2025,6 @@
                 const jugadoresRaw = dataRaw.jugadores || {};
                 const equiposRaw = dataRaw.jugadores_equipos || {};
 
-                const mapaEquipoPorJugadorNorm = {};
-                if (Array.isArray(dataRaw.partidos)) {
-                    // Fallback si no hay jugadores_equipos explícito
-                }
-
                 const nuevo = {};
                 for (const [nombre, _pts] of Object.entries(jugadoresRaw)) {
                     nuevo[nombre] = equiposRaw[nombre] || catalogoJugadores[nombre] || "";
@@ -1455,14 +2044,12 @@
             const normBackup = normalizarTexto(nombreBackup);
             if (!normBackup) return null;
 
-            // 1. Coincidencia exacta normalizada
             if (Object.prototype.hasOwnProperty.call(mapaPuntos, normBackup)) {
                 return mapaPuntos[normBackup];
             }
 
             const clavesComuniate = Object.keys(mapaPuntos);
 
-            // 2. Formato inicial + apellido (ej. "j. martin" o "f. valverde")
             const matchInicial = normBackup.match(/^([a-z])\.\s*(.+)$/);
             if (matchInicial) {
                 const inicial = matchInicial[1];
@@ -1476,20 +2063,17 @@
 
             const palabrasBackup = normBackup.split(" ").filter(Boolean);
 
-            // 3. Si el usuario escribió un solo término (ej. "mbappe" o "bellingham"), solo si hay match único exacto de palabra o prefijo único
             if (palabrasBackup.length === 1) {
                 const unico = palabrasBackup[0];
                 const exactasPalabra = clavesComuniate.filter(k => k.split(" ").includes(unico));
                 if (exactasPalabra.length === 1) return mapaPuntos[exactasPalabra[0]];
-                if (exactasPalabra.length > 1) return null; // Ambiguo (ej. varios García o López) -> evita falso positivo
+                if (exactasPalabra.length > 1) return null;
 
                 const prefijos = clavesComuniate.filter(k => k.startsWith(unico + " "));
                 if (prefijos.length === 1) return mapaPuntos[prefijos[0]];
                 return null;
             }
 
-            // 4. Si escribió nombre y apellido (2+ palabras), exigir que todas las palabras estén presentes en la clave
-            // y que NO haya ambigüedad. Nunca asignar por un apellido suelto si el nombre de pila no coincide.
             const subconjunto = clavesComuniate.filter(k => {
                 const palabrasClave = k.split(" ");
                 return palabrasBackup.every(pb => palabrasClave.includes(pb));
@@ -1503,23 +2087,29 @@
 
         async function sincronizarPuntosEnDirecto() {
             const statusEl = document.getElementById("syncStatus");
+            const dotEl = document.getElementById("liveIndicatorDot");
+            const badgeEl = document.getElementById("headerJornadaBadge");
             try {
                 const res = await fetch('puntos.json?t=' + Date.now());
                 if (!res.ok) throw new Error("No se encontró puntos.json");
                 const dataRaw = await res.json();
+
+                if (dataRaw.jornada && badgeEl) {
+                    badgeEl.innerText = `JORNADA ${dataRaw.jornada}`;
+                }
+                if (dotEl) dotEl.classList.remove("offline");
 
                 const jugadoresRaw = dataRaw.jugadores ? dataRaw.jugadores : dataRaw;
                 const entrenadoresRaw = dataRaw.entrenadores ? dataRaw.entrenadores : {};
                 const numJugCheck = Object.keys(jugadoresRaw).length;
 
                 if (numJugCheck > 0 && localStorage.getItem('lf_bloqueo_sincro_cerrada') === '1') {
-                    // Si el JSON sigue siendo de la jornada cerrada, no volver a pisar los ceros hasta que haya jornada nueva
                     const jCerrada = localStorage.getItem('lf_jornada_cerrada_num') || '';
                     if (jCerrada && String(dataRaw.jornada || '') === jCerrada) {
                         const horaLecturaSkip = new Date().toLocaleTimeString();
                         const jTagSkip = dataRaw.jornada ? `J${dataRaw.jornada} · ` : '';
                         const infoOrigenSkip = dataRaw.actualizado_en ? `Datos de las ${dataRaw.actualizado_en}` : `Leído ${horaLecturaSkip}`;
-                        if (statusEl) statusEl.innerText = `🟢 ${jTagSkip}${infoOrigenSkip} · Leído ${horaLecturaSkip} (Jornada cerrada en local)`;
+                        if (statusEl) statusEl.innerText = `${jTagSkip}${infoOrigenSkip} · Leído ${horaLecturaSkip} (Jornada cerrada en local)`;
                         return;
                     } else {
                         localStorage.removeItem('lf_bloqueo_sincro_cerrada');
@@ -1537,15 +2127,17 @@
                     mapaEntrenadores[normalizarTexto(equipo)] = pts;
                 }
 
+                flashedKeys.clear();
                 let cambios = 0;
-                fantasyData.forEach(team => {
+                fantasyData.forEach((team, mIndex) => {
                     if (team.isRetired) return;
 
-                    team.players.forEach(p => {
+                    team.players.forEach((p, pIndex) => {
                         const pts = buscarPuntosJugador(p.n, mapaPuntos);
                         if (pts !== null && p.p !== pts) {
                             p.p = pts;
                             cambios++;
+                            flashedKeys.add(`p-${mIndex}-${pIndex}`);
                         }
                     });
 
@@ -1556,6 +2148,7 @@
                             if (team.coach.p !== ptsCoach) {
                                 team.coach.p = ptsCoach;
                                 cambios++;
+                                flashedKeys.add(`c-${mIndex}`);
                             }
                         }
                     }
@@ -1565,6 +2158,7 @@
 
                 if (cambios > 0) {
                     saveDataToLocal();
+                    setTimeout(() => { flashedKeys.clear(); }, 1300);
                 }
 
                 const horaLectura = new Date().toLocaleTimeString();
@@ -1591,9 +2185,10 @@
                 }
 
                 const jTag = dataRaw.jornada ? `J${dataRaw.jornada} · ` : '';
-                if (statusEl) statusEl.innerText = `🟢 ${jTag}${infoOrigen} · Leído ${horaLectura} (${numJug} jugadores, ${numEnt} entrenadores)`;
+                if (statusEl) statusEl.innerText = `${jTag}${infoOrigen} · Leído ${horaLectura} (${numJug} jug., ${numEnt} entr.)`;
             } catch (err) {
-                if (statusEl) statusEl.innerText = `🔴 Sin conexión con puntos.json`;
+                if (dotEl) dotEl.classList.add("offline");
+                if (statusEl) statusEl.innerText = `Sin conexión con puntos.json`;
             }
         }
 
