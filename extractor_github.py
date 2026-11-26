@@ -399,22 +399,3 @@ def ejecutar_una_vez():
 
 if __name__ == "__main__":
     ejecutar_una_vez()
-```[cite: 10, 14]
-
-### Cómo comprobarlo
-<Steps>
-  <Step subtitle="En el repositorio laliga-fantasy" title="Sube el extractor actualizado y ejecuta el workflow">
-    Guarda el nuevo `extractor_github.py` en la rama `main` (con `config_jornada.json` en `"13"`) y lanza **Actualizar Puntos LaLiga Fantasy** desde **Actions**[cite: 8, 9, 10].
-    *Verification:* El workflow termina en verde y el log muestra `OK (J13):` con un número de partidos mayor que `0`[cite: 8, 10].
-  </Step>
-  <Step subtitle="En puntos.json y en el panel web" title="Revisa jugadores, desgloses y abre el modal">
-    Abre `puntos.json` para verificar que `jugadores` y `desgloses` contienen datos de los partidos de la jornada 13, y en `blancomerenguesm.github.io/laliga-fantasy` pulsa **🔄 Actualizar ahora** y haz clic sobre un jugador para ver su desglose[cite: 11, 13].
-    *Verification:* Aparece el modal con los conceptos y puntos del jugador seleccionado.
-  </Step>
-  <Step subtitle="Al terminar la prueba" title="Devuelve config_jornada.json a 14">
-    Cambia `"jornada"` de nuevo a `"14"` en `config_jornada.json` para dejarlo listo para la próxima jornada[cite: 9].
-    *Verification:* `config_jornada.json` contiene `"jornada": "14"`[cite: 9].
-  </Step>
-</Steps>
-
-Si tras esta prueba `desgloses` sigue saliendo en `0` aunque sí haya `jugadores`, pega aquí el HTML de una fila `.playerRow` de `carga_puntos_relevo.php` para ver dónde guarda Comuniate el `id_jugador`.
