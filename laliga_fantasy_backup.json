@@ -1,44 +1,44 @@
 {
   "partidos": [
     {
-      "local": "Levante",
-      "visitante": "Racing"
+      "local": "Athletic",
+      "visitante": "Espanyol"
     },
     {
-      "local": "Betis",
-      "visitante": "Rayo"
+      "local": "Alavés",
+      "visitante": "Deportivo"
     },
     {
-      "local": "Málaga",
-      "visitante": "Athletic"
+      "local": "Rayo",
+      "visitante": "Valencia"
     },
     {
-      "local": "Elche",
-      "visitante": "Atleti"
+      "local": "Sevilla",
+      "visitante": "Betis"
     },
     {
       "local": "Real Madrid",
-      "visitante": "Alavés"
+      "visitante": "Celta"
     },
     {
-      "local": "Valencia",
-      "visitante": "Osasuna"
-    },
-    {
-      "local": "Deportivo",
-      "visitante": "Barcelona"
-    },
-    {
-      "local": "Celta",
+      "local": "Barcelona",
       "visitante": "Villarreal"
     },
     {
-      "local": "Real Sociedad",
-      "visitante": "Sevilla"
+      "local": "Racing",
+      "visitante": "Real Sociedad"
     },
     {
-      "local": "Espanyol",
-      "visitante": "Getafe"
+      "local": "Osasuna",
+      "visitante": "Málaga"
+    },
+    {
+      "local": "Getafe",
+      "visitante": "Atleti"
+    },
+    {
+      "local": "Levante",
+      "visitante": "Elche"
     }
   ],
   "datos": [
@@ -118,7 +118,7 @@
         "t": "Osasuna",
         "p": ""
       },
-      "historicPoints": 857,
+      "historicPoints": 949,
       "debt": 4.5,
       "isRetired": false
     },
@@ -139,7 +139,7 @@
           "c": false
         },
         {
-          "n": "Jon",
+          "n": "Jon Martín",
           "t": "Real Sociedad",
           "p": "",
           "c": false
@@ -198,8 +198,8 @@
         "t": "Rayo",
         "p": ""
       },
-      "historicPoints": 834,
-      "debt": 4.666666666666667,
+      "historicPoints": 887,
+      "debt": 6.666666666666667,
       "isRetired": false
     },
     {
@@ -231,7 +231,7 @@
           "c": false
         },
         {
-          "n": "Canales",
+          "n": "Peio Canales",
           "t": "Athletic",
           "p": "",
           "c": false
@@ -278,8 +278,8 @@
         "t": "Levante",
         "p": ""
       },
-      "historicPoints": 819,
-      "debt": 3,
+      "historicPoints": 872,
+      "debt": 5,
       "isRetired": false
     },
     {
@@ -358,7 +358,7 @@
         "t": "Athletic",
         "p": ""
       },
-      "historicPoints": 736,
+      "historicPoints": 809,
       "debt": 9.5,
       "isRetired": false
     },
@@ -391,7 +391,7 @@
           "c": false
         },
         {
-          "n": "V. Rosier",
+          "n": "Rosier",
           "t": "Osasuna",
           "p": "",
           "c": false
@@ -438,7 +438,7 @@
         "t": "Real Madrid",
         "p": ""
       },
-      "historicPoints": 719,
+      "historicPoints": 801,
       "debt": 10.166666666666666,
       "isRetired": false
     },
@@ -477,7 +477,7 @@
           "c": false
         },
         {
-          "n": "Pedro Martinez",
+          "n": "Pablo Martínez",
           "t": "Málaga",
           "p": "",
           "c": false
@@ -518,7 +518,7 @@
         "t": "Alavés",
         "p": ""
       },
-      "historicPoints": 708,
+      "historicPoints": 768,
       "debt": 7.666666666666667,
       "isRetired": false
     },
@@ -598,7 +598,7 @@
         "t": "Barcelona",
         "p": ""
       },
-      "historicPoints": 675,
+      "historicPoints": 769,
       "debt": 11,
       "isRetired": false
     },
@@ -678,7 +678,7 @@
         "t": "Atleti",
         "p": ""
       },
-      "historicPoints": 718,
+      "historicPoints": 782,
       "debt": 10.5,
       "isRetired": false
     },
@@ -758,8 +758,8 @@
         "t": "Real Sociedad",
         "p": ""
       },
-      "historicPoints": 657,
-      "debt": 13,
+      "historicPoints": 687,
+      "debt": 16,
       "isRetired": false
     },
     {
