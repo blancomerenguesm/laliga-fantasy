@@ -122,7 +122,6 @@ def parsear_equipos_desde_url(url: str) -> tuple[str, str]:
 def parsear_equipos_desde_html(html: str, url_final: str) -> tuple[str, str]:
     soup = BeautifulSoup(html, "html.parser")
     titulo = limpiar_texto(soup.title.get_text()) if soup.title else ""
-    # Busca patrones tipo "Getafe 0-3 Atlético" o "Getafe - Atlético" en el título o h1
     candidatos = [titulo]
     h1 = soup.find("h1")
     if h1:
@@ -248,7 +247,6 @@ def descubrir_partidos_jornada(jornada: str) -> list[dict]:
         except Exception as e:
             print(f"Error explorando {url_idx}: {e}")
 
-    # Completar slots faltantes (1..10) consultando directamente /partido/{TEMPORADA}/{slot}/{jornada}
     for slot in range(1, MAX_PARTIDOS_JORNADA + 1):
         if slot in partidos_por_slot:
             continue
@@ -258,7 +256,6 @@ def descubrir_partidos_jornada(jornada: str) -> list[dict]:
             if resp.status_code != 200:
                 continue
             url_final = resp.url or url_slot
-            # Verificar que la URL final sigue correspondiendo a la temporada y jornada pedidas
             if not re.search(rf"/partido/{TEMPORADA}/\d+/{jornada}/", url_final):
                 continue
             id_sofa = extraer_id_sofascore(resp.text)
@@ -393,7 +390,7 @@ def ejecutar_una_vez():
                             equipo_detectado = p["local"]
                         elif fila in columnas[1].select(".playerRow"):
                             equipo_detectado = p["visitante"]
-                if equipo_detectado:
+                    if equipo_detectado:
                         jugadores_equipos[nombre] = equipo_detectado
 
                     norm_nombre = normalizar_clave(nombre)
