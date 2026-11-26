@@ -3187,14 +3187,6 @@
       "relevo_listo": false
     },
     {
-      "partido": "Union Saint-Gilloise 0-0 Lech",
-      "local": "Union Saint-Gilloise",
-      "visitante": "Lech",
-      "marcador": "0-0",
-      "url": "https://www.futbolfantasy.com/partidos/24333-union-saint-gilloise-lech",
-      "relevo_listo": false
-    },
-    {
       "partido": "O. Marsella 0-0 Levski Sofia",
       "local": "O. Marsella",
       "visitante": "Levski Sofia",
@@ -3211,19 +3203,19 @@
       "relevo_listo": false
     },
     {
-      "partido": "D. Zagreb 0-1 B. Leverkusen",
-      "local": "D. Zagreb",
-      "visitante": "B. Leverkusen",
-      "marcador": "0-1",
-      "url": "https://www.futbolfantasy.com/partidos/24329-d-zagreb-b-leverkusen",
-      "relevo_listo": false
-    },
-    {
       "partido": "Olympiacos 0-0 Milan",
       "local": "Olympiacos",
       "visitante": "Milan",
       "marcador": "0-0",
       "url": "https://www.futbolfantasy.com/partidos/24330-olympiacos-milan",
+      "relevo_listo": false
+    },
+    {
+      "partido": "Union Saint-Gilloise 0-2 Lech",
+      "local": "Union Saint-Gilloise",
+      "visitante": "Lech",
+      "marcador": "0-2",
+      "url": "https://www.futbolfantasy.com/partidos/24333-union-saint-gilloise-lech",
       "relevo_listo": false
     },
     {
@@ -3235,6 +3227,14 @@
       "relevo_listo": false
     },
     {
+      "partido": "D. Zagreb 0-1 B. Leverkusen",
+      "local": "D. Zagreb",
+      "visitante": "B. Leverkusen",
+      "marcador": "0-1",
+      "url": "https://www.futbolfantasy.com/partidos/24329-d-zagreb-b-leverkusen",
+      "relevo_listo": false
+    },
+    {
       "partido": "V. Plzen 0-0 Benfica",
       "local": "V. Plzen",
       "visitante": "Benfica",
@@ -3243,10 +3243,10 @@
       "relevo_listo": false
     },
     {
-      "partido": "Celta 0-0 Bournemouth",
+      "partido": "Celta 1-0 Bournemouth",
       "local": "Celta",
       "visitante": "Bournemouth",
-      "marcador": "0-0",
+      "marcador": "1-0",
       "url": "https://www.futbolfantasy.com/partidos/24327-celta-bournemouth",
       "relevo_listo": false
     },
@@ -24403,416 +24403,6 @@
       "relevo": null,
       "desglose": []
     },
-    "Koffi": {
-      "nombre": "Koffi",
-      "nombre_completo": "Koffi",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Sykes": {
-      "nombre": "Sykes",
-      "nombre_completo": "Sykes",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Patris": {
-      "nombre": "Patris",
-      "nombre_completo": "Patris",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "De Roeve": {
-      "nombre": "De Roeve",
-      "nombre_completo": "De Roeve",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Sylla": {
-      "nombre": "Sylla",
-      "nombre_completo": "Sylla",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Van De Perre": {
-      "nombre": "Van De Perre",
-      "nombre_completo": "Van De Perre",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "B. Zeneli": {
-      "nombre": "B. Zeneli",
-      "nombre_completo": "B. Zeneli",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Zorgane": {
-      "nombre": "Zorgane",
-      "nombre_completo": "Zorgane",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Kevin Rodríguez": {
-      "nombre": "Kevin Rodríguez",
-      "nombre_completo": "Kevin Rodríguez",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Smith": {
-      "nombre": "Smith",
-      "nombre_completo": "Smith",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Florucz": {
-      "nombre": "Florucz",
-      "nombre_completo": "Florucz",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Kavlashvili": {
-      "nombre": "Kavlashvili",
-      "nombre_completo": "Kavlashvili",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Boets": {
-      "nombre": "Boets",
-      "nombre_completo": "Boets",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Chibani": {
-      "nombre": "Chibani",
-      "nombre_completo": "Chibani",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Olaru": {
-      "nombre": "Olaru",
-      "nombre_completo": "Olaru",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Schoofs": {
-      "nombre": "Schoofs",
-      "nombre_completo": "Schoofs",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Hamoutahar": {
-      "nombre": "Hamoutahar",
-      "nombre_completo": "Hamoutahar",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Kricfalusi": {
-      "nombre": "Kricfalusi",
-      "nombre_completo": "Kricfalusi",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Keita": {
-      "nombre": "Keita",
-      "nombre_completo": "Keita",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Mofokeng": {
-      "nombre": "Mofokeng",
-      "nombre_completo": "Mofokeng",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Aquino": {
-      "nombre": "Aquino",
-      "nombre_completo": "Aquino",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Hurtevent": {
-      "nombre": "Hurtevent",
-      "nombre_completo": "Hurtevent",
-      "equipo": "Union Saint-Gilloise",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Lis": {
-      "nombre": "Lis",
-      "nombre_completo": "Lis",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Gumny": {
-      "nombre": "Gumny",
-      "nombre_completo": "Gumny",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Yegbe": {
-      "nombre": "Yegbe",
-      "nombre_completo": "Yegbe",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Skrzypczak": {
-      "nombre": "Skrzypczak",
-      "nombre_completo": "Skrzypczak",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Monka": {
-      "nombre": "Monka",
-      "nombre_completo": "Monka",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Gurgul": {
-      "nombre": "Gurgul",
-      "nombre_completo": "Gurgul",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Berggren": {
-      "nombre": "Berggren",
-      "nombre_completo": "Berggren",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Kozubal": {
-      "nombre": "Kozubal",
-      "nombre_completo": "Kozubal",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Luis Palma": {
-      "nombre": "Luis Palma",
-      "nombre_completo": "Luis Palma",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Bengtsson": {
-      "nombre": "Bengtsson",
-      "nombre_completo": "Bengtsson",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Agnero": {
-      "nombre": "Agnero",
-      "nombre_completo": "Agnero",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Obremski": {
-      "nombre": "Obremski",
-      "nombre_completo": "Obremski",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Joel Pereira": {
-      "nombre": "Joel Pereira",
-      "nombre_completo": "Joel Pereira",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Murawski": {
-      "nombre": "Murawski",
-      "nombre_completo": "Murawski",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Delikat": {
-      "nombre": "Delikat",
-      "nombre_completo": "Delikat",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Håkans": {
-      "nombre": "Håkans",
-      "nombre_completo": "Håkans",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Sayyadmanesh": {
-      "nombre": "Sayyadmanesh",
-      "nombre_completo": "Sayyadmanesh",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Szymczak": {
-      "nombre": "Szymczak",
-      "nombre_completo": "Szymczak",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Śledziński": {
-      "nombre": "Śledziński",
-      "nombre_completo": "Śledziński",
-      "equipo": "Lech",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
     "De Lange": {
       "nombre": "De Lange",
       "nombre_completo": "De Lange",
@@ -25703,6 +25293,1196 @@
       "relevo": null,
       "desglose": []
     },
+    "Ortega": {
+      "nombre": "Ortega",
+      "nombre_completo": "Ortega",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Pirola": {
+      "nombre": "Pirola",
+      "nombre_completo": "Pirola",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Retsos": {
+      "nombre": "Retsos",
+      "nombre_completo": "Retsos",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Pedersen": {
+      "nombre": "Pedersen",
+      "nombre_completo": "Pedersen",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Smajlovic": {
+      "nombre": "Smajlovic",
+      "nombre_completo": "Smajlovic",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Onyemaechi": {
+      "nombre": "Onyemaechi",
+      "nombre_completo": "Onyemaechi",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Gelson": {
+      "nombre": "Gelson",
+      "nombre_completo": "Gelson",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Freuler": {
+      "nombre": "Freuler",
+      "nombre_completo": "Freuler",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Gustavo Sá": {
+      "nombre": "Gustavo Sá",
+      "nombre_completo": "Gustavo Sá",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Jota Silva": {
+      "nombre": "Jota Silva",
+      "nombre_completo": "Jota Silva",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Armando G.": {
+      "nombre": "Armando G.",
+      "nombre_completo": "Armando G.",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Stournaras": {
+      "nombre": "Stournaras",
+      "nombre_completo": "Stournaras",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Georgakopoulos": {
+      "nombre": "Georgakopoulos",
+      "nombre_completo": "Georgakopoulos",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Manolis Saliakas": {
+      "nombre": "Manolis Saliakas",
+      "nombre_completo": "Manolis Saliakas",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Carmo": {
+      "nombre": "Carmo",
+      "nombre_completo": "Carmo",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Fortounis": {
+      "nombre": "Fortounis",
+      "nombre_completo": "Fortounis",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Tiknizyan": {
+      "nombre": "Tiknizyan",
+      "nombre_completo": "Tiknizyan",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Bakoulas": {
+      "nombre": "Bakoulas",
+      "nombre_completo": "Bakoulas",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Filis": {
+      "nombre": "Filis",
+      "nombre_completo": "Filis",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Toufakis": {
+      "nombre": "Toufakis",
+      "nombre_completo": "Toufakis",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Yaremchuk": {
+      "nombre": "Yaremchuk",
+      "nombre_completo": "Yaremchuk",
+      "equipo": "Olympiacos",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Maignan": {
+      "nombre": "Maignan",
+      "nombre_completo": "Maignan",
+      "equipo": "Milan",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Estupiñán": {
+      "nombre": "Estupiñán",
+      "nombre_completo": "Estupiñán",
+      "equipo": "Milan",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Gila": {
+      "nombre": "Gila",
+      "nombre_completo": "Gila",
+      "equipo": "Milan",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Diawara": {
+      "nombre": "Diawara",
+      "nombre_completo": "Diawara",
+      "equipo": "Milan",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Rabiot": {
+      "nombre": "Rabiot",
+      "nombre_completo": "Rabiot",
+      "equipo": "Milan",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "De Winter": {
+      "nombre": "De Winter",
+      "nombre_completo": "De Winter",
+      "equipo": "Milan",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Hutchinson": {
+      "nombre": "Hutchinson",
+      "nombre_completo": "Hutchinson",
+      "equipo": "Milan",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Jashari": {
+      "nombre": "Jashari",
+      "nombre_completo": "Jashari",
+      "equipo": "Milan",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Cissè": {
+      "nombre": "Cissè",
+      "nombre_completo": "Cissè",
+      "equipo": "Milan",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Moreira": {
+      "nombre": "Moreira",
+      "nombre_completo": "Moreira",
+      "equipo": "Benfica",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Torriani": {
+      "nombre": "Torriani",
+      "nombre_completo": "Torriani",
+      "equipo": "Milan",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Pittarella": {
+      "nombre": "Pittarella",
+      "nombre_completo": "Pittarella",
+      "equipo": "Milan",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Tomori": {
+      "nombre": "Tomori",
+      "nombre_completo": "Tomori",
+      "equipo": "Milan",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Pulisic": {
+      "nombre": "Pulisic",
+      "nombre_completo": "Pulisic",
+      "equipo": "Milan",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Terracciano": {
+      "nombre": "Terracciano",
+      "nombre_completo": "Terracciano",
+      "equipo": "Milan",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Musah": {
+      "nombre": "Musah",
+      "nombre_completo": "Musah",
+      "equipo": "Milan",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Comotto": {
+      "nombre": "Comotto",
+      "nombre_completo": "Comotto",
+      "equipo": "Milan",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Ossola": {
+      "nombre": "Ossola",
+      "nombre_completo": "Ossola",
+      "equipo": "Milan",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Koffi": {
+      "nombre": "Koffi",
+      "nombre_completo": "Koffi",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Sykes": {
+      "nombre": "Sykes",
+      "nombre_completo": "Sykes",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Patris": {
+      "nombre": "Patris",
+      "nombre_completo": "Patris",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "De Roeve": {
+      "nombre": "De Roeve",
+      "nombre_completo": "De Roeve",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Sylla": {
+      "nombre": "Sylla",
+      "nombre_completo": "Sylla",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Van De Perre": {
+      "nombre": "Van De Perre",
+      "nombre_completo": "Van De Perre",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "B. Zeneli": {
+      "nombre": "B. Zeneli",
+      "nombre_completo": "B. Zeneli",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Zorgane": {
+      "nombre": "Zorgane",
+      "nombre_completo": "Zorgane",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Kevin Rodríguez": {
+      "nombre": "Kevin Rodríguez",
+      "nombre_completo": "Kevin Rodríguez",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Smith": {
+      "nombre": "Smith",
+      "nombre_completo": "Smith",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Florucz": {
+      "nombre": "Florucz",
+      "nombre_completo": "Florucz",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Kavlashvili": {
+      "nombre": "Kavlashvili",
+      "nombre_completo": "Kavlashvili",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Boets": {
+      "nombre": "Boets",
+      "nombre_completo": "Boets",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Chibani": {
+      "nombre": "Chibani",
+      "nombre_completo": "Chibani",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Olaru": {
+      "nombre": "Olaru",
+      "nombre_completo": "Olaru",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Schoofs": {
+      "nombre": "Schoofs",
+      "nombre_completo": "Schoofs",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Hamoutahar": {
+      "nombre": "Hamoutahar",
+      "nombre_completo": "Hamoutahar",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Kricfalusi": {
+      "nombre": "Kricfalusi",
+      "nombre_completo": "Kricfalusi",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Keita": {
+      "nombre": "Keita",
+      "nombre_completo": "Keita",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Mofokeng": {
+      "nombre": "Mofokeng",
+      "nombre_completo": "Mofokeng",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Aquino": {
+      "nombre": "Aquino",
+      "nombre_completo": "Aquino",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Hurtevent": {
+      "nombre": "Hurtevent",
+      "nombre_completo": "Hurtevent",
+      "equipo": "Union Saint-Gilloise",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Lis": {
+      "nombre": "Lis",
+      "nombre_completo": "Lis",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Gumny": {
+      "nombre": "Gumny",
+      "nombre_completo": "Gumny",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Yegbe": {
+      "nombre": "Yegbe",
+      "nombre_completo": "Yegbe",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Skrzypczak": {
+      "nombre": "Skrzypczak",
+      "nombre_completo": "Skrzypczak",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Monka": {
+      "nombre": "Monka",
+      "nombre_completo": "Monka",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Gurgul": {
+      "nombre": "Gurgul",
+      "nombre_completo": "Gurgul",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Berggren": {
+      "nombre": "Berggren",
+      "nombre_completo": "Berggren",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Kozubal": {
+      "nombre": "Kozubal",
+      "nombre_completo": "Kozubal",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Luis Palma": {
+      "nombre": "Luis Palma",
+      "nombre_completo": "Luis Palma",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Bengtsson": {
+      "nombre": "Bengtsson",
+      "nombre_completo": "Bengtsson",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Agnero": {
+      "nombre": "Agnero",
+      "nombre_completo": "Agnero",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Obremski": {
+      "nombre": "Obremski",
+      "nombre_completo": "Obremski",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Joel Pereira": {
+      "nombre": "Joel Pereira",
+      "nombre_completo": "Joel Pereira",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Murawski": {
+      "nombre": "Murawski",
+      "nombre_completo": "Murawski",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Delikat": {
+      "nombre": "Delikat",
+      "nombre_completo": "Delikat",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Håkans": {
+      "nombre": "Håkans",
+      "nombre_completo": "Håkans",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Sayyadmanesh": {
+      "nombre": "Sayyadmanesh",
+      "nombre_completo": "Sayyadmanesh",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Szymczak": {
+      "nombre": "Szymczak",
+      "nombre_completo": "Szymczak",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Śledziński": {
+      "nombre": "Śledziński",
+      "nombre_completo": "Śledziński",
+      "equipo": "Lech",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Zawieschitzky": {
+      "nombre": "Zawieschitzky",
+      "nombre_completo": "Zawieschitzky",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Krätzig": {
+      "nombre": "Krätzig",
+      "nombre_completo": "Krätzig",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Morgalla": {
+      "nombre": "Morgalla",
+      "nombre_completo": "Morgalla",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Drexler": {
+      "nombre": "Drexler",
+      "nombre_completo": "Drexler",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Zabransky": {
+      "nombre": "Zabransky",
+      "nombre_completo": "Zabransky",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Lindström": {
+      "nombre": "Lindström",
+      "nombre_completo": "Lindström",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Mazurek": {
+      "nombre": "Mazurek",
+      "nombre_completo": "Mazurek",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Diabaté": {
+      "nombre": "Diabaté",
+      "nombre_completo": "Diabaté",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Vertessen": {
+      "nombre": "Vertessen",
+      "nombre_completo": "Vertessen",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Diakité": {
+      "nombre": "Diakité",
+      "nombre_completo": "Diakité",
+      "equipo": "Bournemouth",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Früchtl": {
+      "nombre": "Früchtl",
+      "nombre_completo": "Früchtl",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Sarcevic": {
+      "nombre": "Sarcevic",
+      "nombre_completo": "Sarcevic",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Lainer": {
+      "nombre": "Lainer",
+      "nombre_completo": "Lainer",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Chase": {
+      "nombre": "Chase",
+      "nombre_completo": "Chase",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Veratschnig": {
+      "nombre": "Veratschnig",
+      "nombre_completo": "Veratschnig",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Tohumcu": {
+      "nombre": "Tohumcu",
+      "nombre_completo": "Tohumcu",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Barry": {
+      "nombre": "Barry",
+      "nombre_completo": "Barry",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Aguilar": {
+      "nombre": "Aguilar",
+      "nombre_completo": "Aguilar",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Redzic": {
+      "nombre": "Redzic",
+      "nombre_completo": "Redzic",
+      "equipo": "RB Salzburg",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Nersesyan": {
+      "nombre": "Nersesyan",
+      "nombre_completo": "Nersesyan",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Bruno Wilson": {
+      "nombre": "Bruno Wilson",
+      "nombre_completo": "Bruno Wilson",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Grigoryan": {
+      "nombre": "Grigoryan",
+      "nombre_completo": "Grigoryan",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Malis": {
+      "nombre": "Malis",
+      "nombre_completo": "Malis",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Hugo Oliveira": {
+      "nombre": "Hugo Oliveira",
+      "nombre_completo": "Hugo Oliveira",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Carlier": {
+      "nombre": "Carlier",
+      "nombre_completo": "Carlier",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Muradyan": {
+      "nombre": "Muradyan",
+      "nombre_completo": "Muradyan",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Balanta Jr.": {
+      "nombre": "Balanta Jr.",
+      "nombre_completo": "Balanta Jr.",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Shaghoyan": {
+      "nombre": "Shaghoyan",
+      "nombre_completo": "Shaghoyan",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Serobyan": {
+      "nombre": "Serobyan",
+      "nombre_completo": "Serobyan",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Ndour": {
+      "nombre": "Ndour",
+      "nombre_completo": "Ndour",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "Hovhannisyan": {
+      "nombre": "Hovhannisyan",
+      "nombre_completo": "Hovhannisyan",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Luis Felipe": {
+      "nombre": "Luis Felipe",
+      "nombre_completo": "Luis Felipe",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Bruno Pereira": {
+      "nombre": "Bruno Pereira",
+      "nombre_completo": "Bruno Pereira",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Tera": {
+      "nombre": "Tera",
+      "nombre_completo": "Tera",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Ambartsumyan": {
+      "nombre": "Ambartsumyan",
+      "nombre_completo": "Ambartsumyan",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Banjaqui": {
+      "nombre": "Banjaqui",
+      "nombre_completo": "Banjaqui",
+      "equipo": "Benfica",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": []
+    },
+    "França": {
+      "nombre": "França",
+      "nombre_completo": "França",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Eloyan": {
+      "nombre": "Eloyan",
+      "nombre_completo": "Eloyan",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Lima": {
+      "nombre": "Lima",
+      "nombre_completo": "Lima",
+      "equipo": "Ararat-Armenia",
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
     "Kotarski": {
       "nombre": "Kotarski",
       "nombre_completo": "Kotarski",
@@ -26123,790 +26903,10 @@
       "relevo": null,
       "desglose": []
     },
-    "Moreira": {
-      "nombre": "Moreira",
-      "nombre_completo": "Moreira",
-      "equipo": "Benfica",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
     "Kofane": {
       "nombre": "Kofane",
       "nombre_completo": "Kofane",
       "equipo": "B. Leverkusen",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Ortega": {
-      "nombre": "Ortega",
-      "nombre_completo": "Ortega",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Pirola": {
-      "nombre": "Pirola",
-      "nombre_completo": "Pirola",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Retsos": {
-      "nombre": "Retsos",
-      "nombre_completo": "Retsos",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Pedersen": {
-      "nombre": "Pedersen",
-      "nombre_completo": "Pedersen",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Smajlovic": {
-      "nombre": "Smajlovic",
-      "nombre_completo": "Smajlovic",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Onyemaechi": {
-      "nombre": "Onyemaechi",
-      "nombre_completo": "Onyemaechi",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Gelson": {
-      "nombre": "Gelson",
-      "nombre_completo": "Gelson",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Freuler": {
-      "nombre": "Freuler",
-      "nombre_completo": "Freuler",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Gustavo Sá": {
-      "nombre": "Gustavo Sá",
-      "nombre_completo": "Gustavo Sá",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Jota Silva": {
-      "nombre": "Jota Silva",
-      "nombre_completo": "Jota Silva",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Armando G.": {
-      "nombre": "Armando G.",
-      "nombre_completo": "Armando G.",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Stournaras": {
-      "nombre": "Stournaras",
-      "nombre_completo": "Stournaras",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Georgakopoulos": {
-      "nombre": "Georgakopoulos",
-      "nombre_completo": "Georgakopoulos",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Manolis Saliakas": {
-      "nombre": "Manolis Saliakas",
-      "nombre_completo": "Manolis Saliakas",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Carmo": {
-      "nombre": "Carmo",
-      "nombre_completo": "Carmo",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Fortounis": {
-      "nombre": "Fortounis",
-      "nombre_completo": "Fortounis",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Tiknizyan": {
-      "nombre": "Tiknizyan",
-      "nombre_completo": "Tiknizyan",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Bakoulas": {
-      "nombre": "Bakoulas",
-      "nombre_completo": "Bakoulas",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Filis": {
-      "nombre": "Filis",
-      "nombre_completo": "Filis",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Toufakis": {
-      "nombre": "Toufakis",
-      "nombre_completo": "Toufakis",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Yaremchuk": {
-      "nombre": "Yaremchuk",
-      "nombre_completo": "Yaremchuk",
-      "equipo": "Olympiacos",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Maignan": {
-      "nombre": "Maignan",
-      "nombre_completo": "Maignan",
-      "equipo": "Milan",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Estupiñán": {
-      "nombre": "Estupiñán",
-      "nombre_completo": "Estupiñán",
-      "equipo": "Milan",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Gila": {
-      "nombre": "Gila",
-      "nombre_completo": "Gila",
-      "equipo": "Milan",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Diawara": {
-      "nombre": "Diawara",
-      "nombre_completo": "Diawara",
-      "equipo": "Milan",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Rabiot": {
-      "nombre": "Rabiot",
-      "nombre_completo": "Rabiot",
-      "equipo": "Milan",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "De Winter": {
-      "nombre": "De Winter",
-      "nombre_completo": "De Winter",
-      "equipo": "Milan",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Hutchinson": {
-      "nombre": "Hutchinson",
-      "nombre_completo": "Hutchinson",
-      "equipo": "Milan",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Jashari": {
-      "nombre": "Jashari",
-      "nombre_completo": "Jashari",
-      "equipo": "Milan",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Cissè": {
-      "nombre": "Cissè",
-      "nombre_completo": "Cissè",
-      "equipo": "Milan",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Torriani": {
-      "nombre": "Torriani",
-      "nombre_completo": "Torriani",
-      "equipo": "Milan",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Pittarella": {
-      "nombre": "Pittarella",
-      "nombre_completo": "Pittarella",
-      "equipo": "Milan",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Tomori": {
-      "nombre": "Tomori",
-      "nombre_completo": "Tomori",
-      "equipo": "Milan",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Pulisic": {
-      "nombre": "Pulisic",
-      "nombre_completo": "Pulisic",
-      "equipo": "Milan",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Terracciano": {
-      "nombre": "Terracciano",
-      "nombre_completo": "Terracciano",
-      "equipo": "Milan",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Musah": {
-      "nombre": "Musah",
-      "nombre_completo": "Musah",
-      "equipo": "Milan",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Comotto": {
-      "nombre": "Comotto",
-      "nombre_completo": "Comotto",
-      "equipo": "Milan",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Ossola": {
-      "nombre": "Ossola",
-      "nombre_completo": "Ossola",
-      "equipo": "Milan",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Zawieschitzky": {
-      "nombre": "Zawieschitzky",
-      "nombre_completo": "Zawieschitzky",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Krätzig": {
-      "nombre": "Krätzig",
-      "nombre_completo": "Krätzig",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Morgalla": {
-      "nombre": "Morgalla",
-      "nombre_completo": "Morgalla",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Drexler": {
-      "nombre": "Drexler",
-      "nombre_completo": "Drexler",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Zabransky": {
-      "nombre": "Zabransky",
-      "nombre_completo": "Zabransky",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Lindström": {
-      "nombre": "Lindström",
-      "nombre_completo": "Lindström",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Mazurek": {
-      "nombre": "Mazurek",
-      "nombre_completo": "Mazurek",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Diabaté": {
-      "nombre": "Diabaté",
-      "nombre_completo": "Diabaté",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Vertessen": {
-      "nombre": "Vertessen",
-      "nombre_completo": "Vertessen",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Diakité": {
-      "nombre": "Diakité",
-      "nombre_completo": "Diakité",
-      "equipo": "Bournemouth",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Früchtl": {
-      "nombre": "Früchtl",
-      "nombre_completo": "Früchtl",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Sarcevic": {
-      "nombre": "Sarcevic",
-      "nombre_completo": "Sarcevic",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Lainer": {
-      "nombre": "Lainer",
-      "nombre_completo": "Lainer",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Chase": {
-      "nombre": "Chase",
-      "nombre_completo": "Chase",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Veratschnig": {
-      "nombre": "Veratschnig",
-      "nombre_completo": "Veratschnig",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Tohumcu": {
-      "nombre": "Tohumcu",
-      "nombre_completo": "Tohumcu",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Barry": {
-      "nombre": "Barry",
-      "nombre_completo": "Barry",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Aguilar": {
-      "nombre": "Aguilar",
-      "nombre_completo": "Aguilar",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Redzic": {
-      "nombre": "Redzic",
-      "nombre_completo": "Redzic",
-      "equipo": "RB Salzburg",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Nersesyan": {
-      "nombre": "Nersesyan",
-      "nombre_completo": "Nersesyan",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Bruno Wilson": {
-      "nombre": "Bruno Wilson",
-      "nombre_completo": "Bruno Wilson",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Grigoryan": {
-      "nombre": "Grigoryan",
-      "nombre_completo": "Grigoryan",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Malis": {
-      "nombre": "Malis",
-      "nombre_completo": "Malis",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Hugo Oliveira": {
-      "nombre": "Hugo Oliveira",
-      "nombre_completo": "Hugo Oliveira",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Carlier": {
-      "nombre": "Carlier",
-      "nombre_completo": "Carlier",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Muradyan": {
-      "nombre": "Muradyan",
-      "nombre_completo": "Muradyan",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Balanta Jr.": {
-      "nombre": "Balanta Jr.",
-      "nombre_completo": "Balanta Jr.",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Shaghoyan": {
-      "nombre": "Shaghoyan",
-      "nombre_completo": "Shaghoyan",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Serobyan": {
-      "nombre": "Serobyan",
-      "nombre_completo": "Serobyan",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Ndour": {
-      "nombre": "Ndour",
-      "nombre_completo": "Ndour",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "Hovhannisyan": {
-      "nombre": "Hovhannisyan",
-      "nombre_completo": "Hovhannisyan",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Luis Felipe": {
-      "nombre": "Luis Felipe",
-      "nombre_completo": "Luis Felipe",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Bruno Pereira": {
-      "nombre": "Bruno Pereira",
-      "nombre_completo": "Bruno Pereira",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Tera": {
-      "nombre": "Tera",
-      "nombre_completo": "Tera",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Ambartsumyan": {
-      "nombre": "Ambartsumyan",
-      "nombre_completo": "Ambartsumyan",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Banjaqui": {
-      "nombre": "Banjaqui",
-      "nombre_completo": "Banjaqui",
-      "equipo": "Benfica",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": 0,
-      "desglose": []
-    },
-    "França": {
-      "nombre": "França",
-      "nombre_completo": "França",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Eloyan": {
-      "nombre": "Eloyan",
-      "nombre_completo": "Eloyan",
-      "equipo": "Ararat-Armenia",
-      "posicion": null,
-      "puntos": 0,
-      "jugo": false,
-      "relevo": null,
-      "desglose": []
-    },
-    "Lima": {
-      "nombre": "Lima",
-      "nombre_completo": "Lima",
-      "equipo": "Ararat-Armenia",
       "posicion": null,
       "puntos": 0,
       "jugo": false,
