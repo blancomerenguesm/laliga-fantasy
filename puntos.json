@@ -1,50 +1,9 @@
 {
-  "jornada": "14",
-  "actualizado_en": "26/11 19:35:04",
+  "jornada": "13",
+  "actualizado_en": "26/11 19:37:50",
   "jugadores": {},
   "jugadores_equipos": {},
   "entrenadores": {},
   "desgloses": {},
-  "partidos": [
-    {
-      "local": "Levante",
-      "visitante": "Racing"
-    },
-    {
-      "local": "Betis",
-      "visitante": "Rayo"
-    },
-    {
-      "local": "Málaga",
-      "visitante": "Athletic"
-    },
-    {
-      "local": "Elche",
-      "visitante": "Atleti"
-    },
-    {
-      "local": "Real Madrid",
-      "visitante": "Alavés"
-    },
-    {
-      "local": "Valencia",
-      "visitante": "Osasuna"
-    },
-    {
-      "local": "Deportivo",
-      "visitante": "Barcelona"
-    },
-    {
-      "local": "Celta",
-      "visitante": "Villarreal"
-    },
-    {
-      "local": "Real Sociedad",
-      "visitante": "Sevilla"
-    },
-    {
-      "local": "Espanyol",
-      "visitante": "Getafe"
-    }
-  ]
+  "partidos": []
 }
