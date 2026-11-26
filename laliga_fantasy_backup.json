@@ -127,14 +127,14 @@
       "total": 0,
       "players": [
         {
-          "n": "Radu",
-          "t": "Celta",
+          "n": "Oblak",
+          "t": "Atleti",
           "p": "",
           "c": false
         },
         {
-          "n": "Konate",
-          "t": "Real Madrid",
+          "n": "Carlos Romero",
+          "t": "Villarreal",
           "p": "",
           "c": false
         },
@@ -145,57 +145,57 @@
           "c": false
         },
         {
-          "n": "José Salinas",
+          "n": "Cáceres",
+          "t": "Celta",
+          "p": "",
+          "c": false
+        },
+        {
+          "n": "Requena",
+          "t": "Levante",
+          "p": "",
+          "c": false
+        },
+        {
+          "n": "Sancet",
+          "t": "Athletic",
+          "p": "",
+          "c": false
+        },
+        {
+          "n": "David Larrubia",
           "t": "Málaga",
           "p": "",
           "c": false
         },
         {
-          "n": "Redondo",
-          "t": "Elche",
+          "n": "Iván Martín",
+          "t": "Racing",
           "p": "",
           "c": false
         },
         {
-          "n": "Koke",
-          "t": "Atleti",
-          "p": "",
-          "c": false
-        },
-        {
-          "n": "Carlos Soler",
-          "t": "Real Sociedad",
-          "p": "",
-          "c": false
-        },
-        {
-          "n": "Pepelu",
+          "n": "Umar Sadiq",
           "t": "Valencia",
           "p": "",
           "c": false
         },
         {
-          "n": "Yeremay",
-          "t": "Deportivo",
-          "p": "",
-          "c": false
-        },
-        {
-          "n": "Giuliano",
-          "t": "Atleti",
+          "n": "Etta Eyong",
+          "t": "Levante",
           "p": "",
           "c": true
         },
         {
-          "n": "Tsitaishvili",
-          "t": "Rayo",
+          "n": "Williams",
+          "t": "Athletic",
           "p": "",
           "c": false
         }
       ],
       "coach": {
-        "n": "Beñat",
-        "t": "Rayo",
+        "n": "Aguirre",
+        "t": "Valencia",
         "p": ""
       },
       "historicPoints": 887,
