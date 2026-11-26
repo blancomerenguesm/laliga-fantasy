@@ -1,6 +1,6 @@
 {
   "jornada": "13",
-  "actualizado_en": "26/11 19:47:03",
+  "actualizado_en": "26/11 19:56:42",
   "jugadores": {
     "Unai Simón": 6,
     "Hugo Rincón": 3,
@@ -455,22 +455,22 @@
     "Pablo García": "Racing",
     "André Almeida": "Racing",
     "Facu González": "Racing",
-    "Alex Remiro": "Real-Sociedad",
-    "Héctor Fort": "Real-Sociedad",
-    "Zubeldia": "Real-Sociedad",
-    "Mamadou Sarr": "Real-Sociedad",
-    "Sergio Gómez": "Real-Sociedad",
-    "Sucic": "Real-Sociedad",
-    "Gorrotxategi": "Real-Sociedad",
-    "Carlos Soler": "Real-Sociedad",
-    "Oyarzabal": "Real-Sociedad",
-    "Oskarsson": "Real-Sociedad",
-    "Guedes": "Real-Sociedad",
-    "Kubo": "Real-Sociedad",
-    "Jon Aramburu": "Real-Sociedad",
-    "Zakharyan": "Real-Sociedad",
-    "Aihen Muñoz": "Real-Sociedad",
-    "Beñat Turrientes": "Real-Sociedad",
+    "Alex Remiro": "Real Sociedad",
+    "Héctor Fort": "Real Sociedad",
+    "Zubeldia": "Real Sociedad",
+    "Mamadou Sarr": "Real Sociedad",
+    "Sergio Gómez": "Real Sociedad",
+    "Sucic": "Real Sociedad",
+    "Gorrotxategi": "Real Sociedad",
+    "Carlos Soler": "Real Sociedad",
+    "Oyarzabal": "Real Sociedad",
+    "Oskarsson": "Real Sociedad",
+    "Guedes": "Real Sociedad",
+    "Kubo": "Real Sociedad",
+    "Jon Aramburu": "Real Sociedad",
+    "Zakharyan": "Real Sociedad",
+    "Aihen Muñoz": "Real Sociedad",
+    "Beñat Turrientes": "Real Sociedad",
     "Sergio Herrera": "Osasuna",
     "Rosier": "Osasuna",
     "Catena": "Osasuna",
@@ -577,7 +577,7 @@
     "Barcelona": 5,
     "Villarreal": 0,
     "Racing": 5,
-    "Real-Sociedad": 0,
+    "Real Sociedad": 0,
     "Osasuna": 5,
     "Málaga": 0,
     "Getafe": 0,
@@ -585,7 +585,1977 @@
     "Levante": 2,
     "Elche": 2
   },
-  "desgloses": {},
+  "desgloses": {
+    "yuri berchiche": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "álex berenguer": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "peio canales": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "williams": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Tarjetas amarillas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Tiros a puerta",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      }
+    ],
+    "omar el hilali": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones al área",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "3",
+        "dazn": false
+      },
+      {
+        "concepto": "Regates",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "leandro cabrera": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "3",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "pol lozano": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "emil audero": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "lejeune": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "3",
+        "dazn": true
+      }
+    ],
+    "sadick": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "unai lópez": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones al área",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "tsitaishvili": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "adrià pedrosa": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "pepelu": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "javier guerra": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Asistencias de gol",
+        "puntos": "3",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones al área",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Tarjetas amarillas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "guido rodríguez": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "juan iglesias": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones al área",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Tarjetas amarillas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "kike salas": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles",
+        "puntos": "6",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Tarjetas amarillas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "4",
+        "dazn": true
+      }
+    ],
+    "gabriel suazo": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "3",
+        "dazn": true
+      }
+    ],
+    "marc bartra": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "marc roca": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Regates",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "isco": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Asistencias de gol",
+        "puntos": "3",
+        "dazn": false
+      },
+      {
+        "concepto": "Regates",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "4",
+        "dazn": true
+      }
+    ],
+    "fornals": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Tarjetas amarillas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "huijsen": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "3",
+        "dazn": true
+      }
+    ],
+    "camavinga": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "bellingham": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles",
+        "puntos": "5",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Tiros a puerta",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Regates",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "4",
+        "dazn": true
+      }
+    ],
+    "bernardo silva": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "diomande": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Asistencias sin gol",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "fede valverde": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "radu": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Paradas",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "joan garcía": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-2",
+        "dazn": false
+      }
+    ],
+    "eric garcía": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "lamine yamal": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Asistencias de gol",
+        "puntos": "3",
+        "dazn": false
+      },
+      {
+        "concepto": "Asistencias sin gol",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Penaltis provados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Penaltis fallados",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Tiros a puerta",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Regates",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "3",
+        "dazn": true
+      }
+    ],
+    "raphinha": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Asistencias sin gol",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones al área",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Tarjetas amarillas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "gulácsi": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Paradas",
+        "puntos": "3",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "3",
+        "dazn": true
+      }
+    ],
+    "renato veiga": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      }
+    ],
+    "buchanan": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles",
+        "puntos": "5",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "agirrezabala": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Paradas",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "3",
+        "dazn": true
+      }
+    ],
+    "pablo ramón": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Regates",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "pedro felipe": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "jorge salinas": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      }
+    ],
+    "canales": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles",
+        "puntos": "5",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Tiros a puerta",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "íñigo vicente": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Tarjetas amarillas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Regates",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "iker luque": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Asistencias de gol",
+        "puntos": "3",
+        "dazn": false
+      },
+      {
+        "concepto": "Asistencias sin gol",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Tarjetas amarillas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Tiros a puerta",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Regates",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "zabiri": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles",
+        "puntos": "8",
+        "dazn": false
+      },
+      {
+        "concepto": "Penaltis provados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Tiros a puerta",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "4",
+        "dazn": true
+      }
+    ],
+    "sergio gómez": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Asistencias de gol",
+        "puntos": "3",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Regates",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "4",
+        "dazn": true
+      }
+    ],
+    "sucic": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Tiros a puerta",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "gorrotxategi": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Asistencias de gol",
+        "puntos": "3",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "carlos soler": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Asistencias sin gol",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones al área",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "zakharyan": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "sergio herrera": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "4",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "rosier": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Asistencias de gol",
+        "puntos": "3",
+        "dazn": false
+      },
+      {
+        "concepto": "Asistencias sin gol",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones al área",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "3",
+        "dazn": false
+      },
+      {
+        "concepto": "Regates",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "4",
+        "dazn": true
+      }
+    ],
+    "catena": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "3",
+        "dazn": false
+      },
+      {
+        "concepto": "Segundas amarillas",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "diego rico": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones al área",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "3",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "3",
+        "dazn": true
+      }
+    ],
+    "rubén garcía": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones al área",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "raúl moro": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "josé salinas": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "dotor": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "rafa rodríguez": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "pablo martínez": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "adrián niño": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "carlos puga": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Regates",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "3",
+        "dazn": true
+      }
+    ],
+    "hancko": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "3",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "3",
+        "dazn": true
+      }
+    ],
+    "koke": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "3",
+        "dazn": true
+      }
+    ],
+    "giuliano simeone": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "julián álvarez": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Asistencias de gol",
+        "puntos": "6",
+        "dazn": false
+      },
+      {
+        "concepto": "Asistencias sin gol",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Tiros a puerta",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "4",
+        "dazn": true
+      }
+    ],
+    "ryan": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "olasagasti": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Asistencias de gol",
+        "puntos": "3",
+        "dazn": false
+      },
+      {
+        "concepto": "Asistencias sin gol",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "4",
+        "dazn": true
+      }
+    ],
+    "víctor chust": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "roy revivo": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles",
+        "puntos": "6",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "3",
+        "dazn": false
+      },
+      {
+        "concepto": "Regates",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "4",
+        "dazn": true
+      }
+    ],
+    "gonzalo villar": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "lucas cepeda": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones al área",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Goles en contra",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "federico redondo": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Tarjetas amarillas",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "javi morcillo": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
+      }
+    ],
+    "fernando niño": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "lemar": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
+      }
+    ],
+    "tete morente": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "1",
+        "dazn": false
+      }
+    ]
+  },
   "partidos": [
     {
       "local": "Athletic",
@@ -609,7 +2579,7 @@
     },
     {
       "local": "Racing",
-      "visitante": "Real-Sociedad"
+      "visitante": "Real Sociedad"
     },
     {
       "local": "Osasuna",
