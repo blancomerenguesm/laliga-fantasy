@@ -228,7 +228,9 @@
 
         .player-item.unplayed { opacity: 0.68; }
         .player-item:hover { background: rgba(255, 255, 255, 0.06); opacity: 1; }
-        .player-item.clickable-player { cursor: pointer; }
+        .player-item.clickable-player,
+        .match-player.clickable-player,
+        .detail-item.clickable-player { cursor: pointer; }
 
         .player-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; padding-right: 8px; }
         .player-name { font-weight: 700; font-size: 0.9em; display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
@@ -237,12 +239,10 @@
         .relevo-dot {
             display: inline-flex;
             align-items: center;
-            gap: 3px;
             padding: 1px 5px;
             border-radius: 4px;
             font-size: 0.68em;
             font-weight: 800;
-            letter-spacing: 0.03em;
             text-transform: uppercase;
         }
         .relevo-dot.done {
@@ -256,11 +256,7 @@
             border: 1px solid rgba(224, 185, 75, 0.35);
         }
 
-        .breakdown-hint {
-            font-size: 0.72em;
-            color: var(--text-muted);
-            opacity: 0.85;
-        }
+        .breakdown-hint { font-size: 0.72em; color: var(--text-muted); }
 
         .points-input, .match-points-input {
             width: 44px;
@@ -326,7 +322,6 @@
             background: rgba(224, 185, 75, 0.05);
         }
 
-        /* Partidos Broadcast Grid */
         .matches-toolbar {
             display: flex;
             justify-content: center;
@@ -368,9 +363,7 @@
             border-radius: 14px;
         }
 
-        .match-scoreboard-header:hover {
-            filter: brightness(1.08);
-        }
+        .match-scoreboard-header:hover { filter: brightness(1.08); }
 
         .match-action-btn {
             display: inline-flex;
@@ -387,10 +380,7 @@
             flex-shrink: 0;
         }
 
-        .match-action-btn:hover {
-            color: var(--text);
-            border-color: var(--accent);
-        }
+        .match-action-btn:hover { color: var(--text); border-color: var(--accent); }
 
         .match-action-btn.active-pin {
             background: var(--success-dim);
@@ -475,7 +465,6 @@
             transition: opacity 0.15s ease, background 0.15s ease;
         }
 
-        .match-player.clickable-player { cursor: pointer; }
         .match-player.unplayed { opacity: 0.66; }
         .match-player:hover { opacity: 1; background: rgba(255, 255, 255, 0.065); }
         .match-player.coach { border-left: 2px solid var(--accent); background: rgba(224, 185, 75, 0.05); }
@@ -505,7 +494,6 @@
         .match-points-input { width: 38px; height: 28px; flex-shrink: 0; }
         .owner-tag { color: var(--text-muted); font-style: italic; font-size: 0.84em; padding: 4px 0; }
 
-        /* Modal Desglose Jugador (FútbolFantasy) */
         .modal-backdrop {
             display: none;
             position: fixed;
@@ -516,7 +504,6 @@
             align-items: center;
             justify-content: center;
             padding: 16px;
-            animation: fadeIn 0.18s ease-out;
         }
         .modal-backdrop.open { display: flex; }
 
@@ -540,79 +527,17 @@
             margin-bottom: 12px;
         }
 
-        .modal-title {
-            margin: 0;
-            font-size: 1.15em;
-            font-weight: 800;
-            color: var(--text);
-        }
-
-        .modal-subtitle {
-            font-size: 0.8em;
-            color: var(--text-muted);
-            margin-top: 3px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .modal-close-btn {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--border-strong);
-            color: var(--text);
-            width: 30px;
-            height: 30px;
-            padding: 0;
-            border-radius: 8px;
-            font-size: 1em;
-            flex-shrink: 0;
-        }
-        .modal-close-btn:hover { border-color: var(--accent); color: var(--accent-bright); }
-
-        .breakdown-list {
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-            margin-bottom: 14px;
-        }
-
-        .breakdown-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 11px;
-            border-radius: 9px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.88em;
-        }
-
-        .breakdown-row.dazn-row {
-            background: rgba(224, 185, 75, 0.1);
-            border-color: rgba(224, 185, 75, 0.35);
-            font-weight: 700;
-        }
-
-        .breakdown-pts {
-            font-weight: 800;
-            padding: 2px 8px;
-            border-radius: 6px;
-            white-space: nowrap;
-        }
+        .modal-title { margin: 0; font-size: 1.15em; font-weight: 800; color: var(--text); }
+        .modal-subtitle { font-size: 0.8em; color: var(--text-muted); margin-top: 3px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+        .modal-close-btn { background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border-strong); color: var(--text); width: 30px; height: 30px; padding: 0; border-radius: 8px; }
+        .breakdown-list { display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
+        .breakdown-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 11px; border-radius: 9px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.88em; }
+        .breakdown-row.dazn-row { background: rgba(224, 185, 75, 0.1); border-color: rgba(224, 185, 75, 0.35); font-weight: 700; }
+        .breakdown-pts { font-weight: 800; padding: 2px 8px; border-radius: 6px; white-space: nowrap; }
         .breakdown-pts.pos { background: var(--success-dim); color: #86efac; }
         .breakdown-pts.neg { background: var(--danger-dim); color: #fca5a5; }
         .breakdown-pts.neu { background: rgba(255, 255, 255, 0.07); color: var(--text-muted); }
-
-        .modal-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 10px;
-            border-top: 1px solid var(--border);
-            font-size: 0.9em;
-        }
+        .modal-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid var(--border); font-size: 0.9em; }
 
         .sort-nav { display: flex; justify-content: center; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
         .sort-btn {
@@ -657,11 +582,7 @@
             font-weight: 700;
         }
 
-        .kpi-value {
-            font-size: 1.18em;
-            font-weight: 800;
-            color: var(--accent-bright);
-        }
+        .kpi-value { font-size: 1.18em; font-weight: 800; color: var(--accent-bright); }
 
         .table-wrap {
             max-width: 760px;
@@ -745,7 +666,6 @@
             border-left: 3px solid #444;
             align-items: center;
         }
-        .detail-item.clickable-player { cursor: pointer; }
         .detail-item.clickable-player:hover { background: var(--panel-soft); }
         .detail-item.played { border-left-color: var(--success); background: rgba(34, 197, 94, 0.08); }
         .detail-item.coach { border-left-color: var(--accent); }
@@ -865,7 +785,6 @@
 
     <div id="toast" class="toast">Notificación</div>
 
-    <!-- Modal de desglose de puntos (FútbolFantasy) -->
     <div id="playerBreakdownModal" class="modal-backdrop" onclick="if(event.target === this) cerrarModalDesglose()">
         <div class="modal-card">
             <div class="modal-header">
@@ -894,7 +813,7 @@
     </div>
 
     <div id="plantillas" class="tab-content">
-        <p style="text-align:center; color:var(--text-muted); font-size: 0.82em; margin: 0 0 12px 0;">Pulsa en el nombre de cualquier jugador para ver el desglose detallado de sus puntos.</p>
+        <p style="text-align:center; color:var(--text-muted); font-size: 0.82em; margin: 0 0 12px 0;">Pulsa en un jugador para ver el desglose detallado de sus puntos.</p>
         <div class="teams-grid" id="teamsContainer"></div>
     </div>
 
@@ -1047,349 +966,1549 @@
 
 </div>
 
-    <script>
-        const equiposLaLiga = ["Alavés", "Athletic", "Atleti", "Barcelona", "Betis", "Celta", "Deportivo", "Elche", "Espanyol", "Getafe", "Levante", "Málaga", "Osasuna", "Racing", "Rayo", "Real Madrid", "Real Sociedad", "Sevilla", "Valencia", "Villarreal", "Otros"];
+<script>
+const equiposLaLiga = ["Alavés", "Athletic", "Atleti", "Barcelona", "Betis", "Celta", "Deportivo", "Elche", "Espanyol", "Getafe", "Levante", "Málaga", "Osasuna", "Racing", "Rayo", "Real Madrid", "Real Sociedad", "Sevilla", "Valencia", "Villarreal", "Otros"];
 
-        let partidosJornada = JSON.parse(localStorage.getItem('lf_partidos_v4')) || [];
-        let fantasyData = JSON.parse(localStorage.getItem('lf_datos_v4')) || [];
-        let pinnedMatchKeys = JSON.parse(localStorage.getItem('lf_partidos_fijados')) || [];
-        let collapsedMatchKeys = JSON.parse(localStorage.getItem('lf_partidos_ocultos')) || [];
+let partidosJornada = JSON.parse(localStorage.getItem("lf_partidos_v4")) || [];
+let fantasyData = JSON.parse(localStorage.getItem("lf_datos_v4")) || [];
+let pinnedMatchKeys = JSON.parse(localStorage.getItem("lf_partidos_fijados")) || [];
+let collapsedMatchKeys = JSON.parse(localStorage.getItem("lf_partidos_ocultos")) || [];
+let detallesJugadoresLive = {};
+let detallesPartidosLive = {};
 
-        // Mapa en memoria con detalles enriquecidos de puntos.json (desglose, relevo/DAZN, estado de partidos)
-        let detallesJugadoresLive = {};
-        let detallesPartidosLive = {};
-        
-        const coloresManagers = ['#ff7675', '#74b9ff', '#55efc4', '#ffeaa7', '#a29bfe', '#fdcb6e', '#00b894', '#e84393', '#00cec9', '#b2bec3'];
-        
-        let currentSortMode = 'points';
-        let currentGeneralSortMode = 'points';
-        let currentGeneralLiveMode = true;
-        let flashedKeys = new Set();
+const coloresManagers = ["#ff7675", "#74b9ff", "#55efc4", "#ffeaa7", "#a29bfe", "#fdcb6e", "#00b894", "#e84393", "#00cec9", "#b2bec3"];
 
-        function escapeHtml(str) {
-            return String(str || '')
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')\n                .replace(/'/g, '&#39;');\n        }\n\n        function getMatchKey(partido) {\n            return `${partido.local}__${partido.visitante}`;\n        }\n\n        function togglePinMatch(matchKey, event) {\n            if (event) event.stopPropagation();\n            const idx = pinnedMatchKeys.indexOf(matchKey);\n            if (idx >= 0) {\n                pinnedMatchKeys.splice(idx, 1);\n            } else {\n                pinnedMatchKeys.unshift(matchKey);\n                collapsedMatchKeys = collapsedMatchKeys.filter(k => k !== matchKey);\n                localStorage.setItem('lf_partidos_ocultos', JSON.stringify(collapsedMatchKeys));\n            }\n            localStorage.setItem('lf_partidos_fijados', JSON.stringify(pinnedMatchKeys));\n            renderJornada();\n        }\n\n        function toggleCollapseMatch(matchKey) {\n            const idx = collapsedMatchKeys.indexOf(matchKey);\n            if (idx >= 0) {\n                collapsedMatchKeys.splice(idx, 1);\n            } else {\n                collapsedMatchKeys.push(matchKey);\n            }\n            localStorage.setItem('lf_partidos_ocultos', JSON.stringify(collapsedMatchKeys));\n            renderJornada();\n        }\n\n        function expandirTodosPartidos() {\n            collapsedMatchKeys = [];\n            localStorage.setItem('lf_partidos_ocultos', JSON.stringify(collapsedMatchKeys));\n            renderJornada();\n        }\n\n        function contraerTodosPartidos() {\n            collapsedMatchKeys = partidosJornada.map(p => getMatchKey(p));\n            localStorage.setItem('lf_partidos_ocultos', JSON.stringify(collapsedMatchKeys));\n            renderJornada();\n        }\n\n        function contraerPartidosSinFijar() {\n            collapsedMatchKeys = partidosJornada\n                .map(p => getMatchKey(p))\n                .filter(k => !pinnedMatchKeys.includes(k));\n            localStorage.setItem('lf_partidos_ocultos', JSON.stringify(collapsedMatchKeys));\n            renderJornada();\n        }\n\n        function getScoreClass(val) {\n            if (val === "" || val === null || typeof val === "undefined" || isNaN(val)) return "";\n            const n = Number(val);\n            if (n >= 10) return "pts-high";\n            if (n >= 5) return "pts-good";\n            if (n < 0) return "pts-neg";\n            return "";\n        }\n\n        // Busca el objeto enriquecido { puntos, desglose, relevo, nombre_completo, equipo, posicion } en detallesJugadoresLive\n        function buscarDetalleJugador(nombreJugador, equipoJugador = "") {\n            const normBackup = normalizarTexto(nombreJugador);\n            if (!normBackup) return null;\n\n            const entradas = Object.entries(detallesJugadoresLive);\n            if (entradas.length === 0) return null;\n\n            const normEq = normalizarTexto(equipoJugador);\n            const filtrarPorEquipo = (lista) => {\n                if (!normEq || lista.length <= 1) return lista;\n                const conEquipo = lista.filter(([, det]) => det && det.equipo && normalizarTexto(det.equipo) === normEq);\n                return conEquipo.length > 0 ? conEquipo : lista;\n            };\n\n            // 1. Coincidencia exacta por clave normalizada o por nombre corto / nombre_completo\n            let exactas = entradas.filter(([k, det]) => {\n                return k === normBackup\n                    || normalizarTexto(det.nombre) === normBackup\n                    || normalizarTexto(det.nombre_completo) === normBackup;\n            });\n            exactas = filtrarPorEquipo(exactas);\n            if (exactas.length === 1) return exactas[0][1];\n\n            // 2. Patrón "I. Williams"\n            const matchInicial = normBackup.match(/^([a-z])\.\s*(.+)$/);\n            if (matchInicial) {\n                const inicial = matchInicial[1];\n                const apellido = matchInicial[2];\n                let candidatos = entradas.filter(([k, det]) => {\n                    const full = normalizarTexto(det.nombre_completo || k);\n                    const partes = full.split(" ");\n                    return partes[0].startsWith(inicial) && partes[partes.length - 1] === apellido;\n                });\n                candidatos = filtrarPorEquipo(candidatos);\n                if (candidatos.length === 1) return candidatos[0][1];\n            }\n\n            // 3. Una sola palabra (ej. "Requena", "Ryan", "Brugui")\n            const palabrasBackup = normBackup.split(" ").filter(Boolean);\n            if (palabrasBackup.length === 1) {\n                const unico = palabrasBackup[0];\n                let exactasPalabra = entradas.filter(([k, det]) => {\n                    const palabrasK = k.split(" ");\n                    const palabrasC = normalizarTexto(det.nombre).split(" ");\n                    const palabrasF = normalizarTexto(det.nombre_completo).split(" ");\n                    return palabrasK.includes(unico) || palabrasC.includes(unico) || palabrasF.includes(unico);\n                });\n                exactasPalabra = filtrarPorEquipo(exactasPalabra);\n                if (exactasPalabra.length === 1) return exactasPalabra[0][1];\n                if (exactasPalabra.length > 1) return null;\n\n                let prefijos = entradas.filter(([k]) => k.startsWith(unico + " "));\n                prefijos = filtrarPorEquipo(prefijos);\n                if (prefijos.length === 1) return prefijos[0][1];\n                return null;\n            }\n\n            // 4. Subconjunto de palabras (ej. "Manu Sanchez", "De la Fuente")\n            let subconjunto = entradas.filter(([k, det]) => {\n                const full = normalizarTexto(det.nombre_completo || k);\n                const palabrasClave = full.split(" ");\n                return palabrasBackup.every(pb => palabrasClave.includes(pb));\n            });\n            subconjunto = filtrarPorEquipo(subconjunto);\n            if (subconjunto.length === 1) return subconjunto[0][1];\n\n            return null;\n        }\n\n        function abrirModalDesglose(nombreJugador, equipoJugador = "", esCapitan = false, puntosActuales = "") {\n            if (!nombreJugador) return;\n            const modal = document.getElementById('playerBreakdownModal');\n            const titleEl = document.getElementById('modalPlayerName');\n            const metaEl = document.getElementById('modalPlayerMeta');\n            const listEl = document.getElementById('modalBreakdownList');\n            const statusEl = document.getElementById('modalStatusText');\n            const totalEl = document.getElementById('modalTotalPts');\n\n            const det = buscarDetalleJugador(nombreJugador, equipoJugador);\n            const displayName = (det && det.nombre_completo) ? det.nombre_completo : nombreJugador;\n\n            titleEl.innerHTML = `${escapeHtml(displayName)} ${esCapitan ? '<span class="captain-tag" style="vertical-align:middle;">C</span>' : ''}`;\n\n            const posTxt = (det && det.posicion) ? ` · ${escapeHtml(det.posicion)}` : '';\n            const eqTxt = escapeHtml((det && det.equipo) || equipoJugador || 'Equipo');\n            const tieneRelevo = det && det.relevo !== null && det.relevo !== undefined && det.relevo !== '';\n            const badgeEstado = det\n                ? (tieneRelevo\n                    ? '<span class="relevo-dot done">✓ Definitivo (DAZN)</span>'\n                    : '<span class="relevo-dot live">● Provisional</span>')\n                : '';\n\n            metaEl.innerHTML = `<span>${eqTxt}${posTxt}</span> ${badgeEstado}`;\n\n            const ptsBase = (det && typeof det.puntos === 'number')\n                ? det.puntos\n                : (puntosActuales !== "" && !isNaN(puntosActuales) ? Number(puntosActuales) : 0);\n\n            if (det && Array.isArray(det.desglose) && det.desglose.length > 0) {\n                listEl.innerHTML = det.desglose.map(linea => {\n                    const partes = linea.split('->');\n                    const concepto = (partes[0] || linea).trim();\n                    const ptsTexto = (partes[1] || '').trim();\n                    const numMatch = ptsTexto.match(/-?\d+(?:[.,]\d+)?/);\n                    const numVal = numMatch ? parseFloat(numMatch[0].replace(',', '.')) : 0;\n                    const ptsCls = numVal > 0 ? 'pos' : (numVal < 0 ? 'neg' : 'neu');\n                    const esDazn = /dazn|relevo/i.test(concepto);\n\n                    return `\n                        <div class="breakdown-row ${esDazn ? 'dazn-row' : ''}">\n                            <span>${esDazn ? '⭐ ' : ''}${escapeHtml(concepto)}</span>\n                            ${ptsTexto ? `<span class="breakdown-pts ${ptsCls}">${escapeHtml(ptsTexto)}</span>` : ''}\n                        </div>\n                    `;\n                }).join('');\n                statusEl.innerText = tieneRelevo ? 'Puntos definitivos cerrados' : 'Pendiente de nota DAZN/Relevo';\n            } else {\n                listEl.innerHTML = `\n                    <div class="breakdown-row">\n                        <span style="color:var(--text-muted);">Aún no hay desglose disponible para este jugador en puntos.json (partido sin disputar o sin minutos).</span>\n                    </div>\n                `;\n                statusEl.innerText = 'Sin desglose registrado';\n            }\n\n            if (esCapitan) {\n                totalEl.innerText = `${ptsBase * 2} pts (${ptsBase} ×2 Cap)`;\n            } else {\n                totalEl.innerText = `${ptsBase} pts`;\n            }\n\n            modal.classList.add('open');\n        }\n\n        function cerrarModalDesglose() {\n            const modal = document.getElementById('playerBreakdownModal');\n            if (modal) modal.classList.remove('open');\n        }\n\n        document.addEventListener('keydown', (e) => {\n            if (e.key === 'Escape') cerrarModalDesglose();\n        });\n\n        function calcularDeudasProyectadasJornada() {\n            let processed = [...fantasyData].map((t, i) => ({ ...t, originalIndex: i })).filter(t => !t.isRetired);\n            let projectedDebts = {};\n            let totalPointsThisJornada = processed.reduce((acc, t) => acc + t.total, 0);\n\n            if (totalPointsThisJornada > 0) {\n                let scoreGroups = {};\n                processed.forEach(t => {\n                    if (!scoreGroups[t.total]) scoreGroups[t.total] = [];\n                    scoreGroups[t.total].push(t.originalIndex);\n                });\n\n                let sortedUniqueScores = Object.keys(scoreGroups).map(Number).sort((a, b) => a - b);\n                let penalties = [3, 2, 2];\n                let penaltyIndex = 0;\n\n                for (let score of sortedUniqueScores) {\n                    if (penaltyIndex >= penalties.length) break;\n\n                    let group = scoreGroups[score];\n                    let penaltiesToApply = [];\n\n                    for (let i = 0; i < group.length && penaltyIndex < penalties.length; i++) {\n                        penaltiesToApply.push(penalties[penaltyIndex]);\n                        penaltyIndex++;\n                    }\n\n                    let totalPenalty = penaltiesToApply.reduce((a, b) => a + b, 0);\n                    let penaltyPerPerson = totalPenalty / group.length;\n\n                    group.forEach(idx => { projectedDebts[idx] = penaltyPerPerson; });\n                }\n            }\n            return projectedDebts;\n        }\n\n        function initLegacyData() {\n            if(fantasyData.length > 0) {\n                let needsSave = false;\n                fantasyData.forEach(team => {\n                    if (!team.coach) { team.coach = { n: "", t: equiposLaLiga[0], p: "" }; needsSave = true; }\n                    if (typeof team.historicPoints === 'undefined') { team.historicPoints = 0; needsSave = true; }\n                    if (typeof team.debt === 'undefined') { team.debt = 0; needsSave = true; }\n                    if (typeof team.isRetired === 'undefined') { team.isRetired = false; needsSave = true; }\n                });\n\n                if (!fantasyData.some(t => t.manager === 'Galián')) {\n                    let emptyPlayers = [];\n                    for(let i=0; i<11; i++) emptyPlayers.push({n: "", t: equiposLaLiga[0], c: false, p: ""});\n                    \n                    fantasyData.push({\n                        manager: 'Galián',\n                        players: emptyPlayers,\n                        coach: { n: "", t: equiposLaLiga[0], p: "" },\n                        historicPoints: 0,\n                        debt: 0,\n                        total: 0,\n                        isRetired: true\n                    });\n                    needsSave = true;\n                }\n\n                if(needsSave) localStorage.setItem('lf_datos_v4', JSON.stringify(fantasyData));\n            }\n        }\n\n        initLegacyData();\n\n        function showToast(message) {\n            const toast = document.getElementById("toast");\n            toast.innerText = message;\n            toast.classList.add("show");\n            setTimeout(() => { toast.classList.remove("show"); }, 3500);\n        }\n\n        function buildTeamOptions(selectedTeam) {\n            return equiposLaLiga.map(eq => `<option value="${eq}" ${eq === selectedTeam ? 'selected' : ''}>${eq}</option>`).join('');\n        }\n\n        function calculateTeamTotal(team) {\n            let total = team.players.reduce((acc, p) => acc + (p.p === "" ? 0 : (p.c ? p.p * 2 : p.p)), 0);\n            if (team.coach && team.coach.p !== "") total += team.coach.p;\n            return total;\n        }\n\n        function saveDataToLocal() {\n            localStorage.setItem('lf_partidos_v4', JSON.stringify(partidosJornada));\n            localStorage.setItem('lf_datos_v4', JSON.stringify(fantasyData));\n            renderAll();\n        }\n\n        function switchTab(tabId, btnEl) {\n            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));\n            document.querySelectorAll('.nav button').forEach(el => el.classList.remove('active'));\n            document.getElementById(tabId).classList.add('active');\n            if (btnEl) btnEl.classList.add('active');\n            \n            if(tabId === 'plantillas') renderPlantillas();\n            if(tabId === 'jornada') renderJornada();\n            if(tabId === 'general') renderGeneral();\n            if(tabId === 'configuracion') {\n                cargarConfigGitHubUI();\n                cargarConfigCronJobUI();\n                cargarJornadaActualEnInput();\n            }\n        }\n\n        function renderAll() {\n            if(fantasyData.length > 0) {\n                renderPlantillas();\n                renderRanking();\n                renderGeneral();\n                renderJornada();\n                populateConfigForms();\n            }\n        }\n\n        function renderPlantillas() {\n            let html = '';\n            fantasyData.forEach((team, mIndex) => {\n                if (team.isRetired) return; \n\n                let playersHtml = team.players.map((p, pIndex) => {\n                    const isUnplayed = p.p === "";\n                    const scClass = getScoreClass(p.p);\n                    const flashClass = flashedKeys.has(`p-${mIndex}-${pIndex}`) ? 'score-flash' : '';\n                    const det = buscarDetalleJugador(p.n, p.t);\n                    const hasBreakdown = det && Array.isArray(det.desglose) && det.desglose.length > 0;\n                    const tieneRelevo = det && det.relevo !== null && det.relevo !== undefined && det.relevo !== '';\n                    const relevoBadge = det\n                        ? (tieneRelevo ? '<span class="relevo-dot done" title="Puntos definitivos DAZN">✓</span>' : '<span class="relevo-dot live" title="Puntos provisionales">●</span>')\n                        : '';\n                    const safeName = escapeHtml(p.n);\n                    const safeTeam = escapeHtml(p.t);\n\n                    return `\n                    <div class="player-item ${isUnplayed ? 'unplayed' : ''} ${p.n ? 'clickable-player' : ''}" onclick="if(!event.target.closest('input') && '${safeName}') abrirModalDesglose('${safeName}', '${safeTeam}', ${Boolean(p.c)}, '${p.p}')">\n                        <div class="player-info">\n                            <span class="player-name">${escapeHtml(p.n) || 'Vacío'} ${p.c ? '<span class="captain-tag">C</span>' : ''} ${relevoBadge}</span>\n                            <span class="player-team">\n                                <span>${escapeHtml(p.t) || '-'}</span>\n                                ${hasBreakdown ? '<span class="breakdown-hint">· ver desglose</span>' : ''}\n                            </span>\n                        </div>\n                        <div class="points-container" onclick="event.stopPropagation()">\n                            <input type="number" class="points-input ${scClass} ${flashClass}" value="${p.p !== "" ? p.p : ''}" placeholder="-" oninput="updatePoints(${mIndex}, ${pIndex}, this.value, this)">\n                        </div>\n                    </div>`;\n                }).join('');\n                \n                const coachUnplayed = team.coach.p === "";\n                const coachScClass = getScoreClass(team.coach.p);\n                const coachFlashClass = flashedKeys.has(`c-${mIndex}`) ? 'score-flash' : '';\n                let coachHtml = `\n                    <div class="player-item coach-item ${coachUnplayed ? 'unplayed' : ''}">\n                        <div class="player-info">\n                            <span class="player-name">👔 ${escapeHtml(team.coach.n) || 'Sin Entrenador'}</span>\n                            <span class="player-team">${escapeHtml(team.coach.t) || '-'} (5V / 2E / 0D)</span>\n                        </div>\n                        <div class="points-container">\n                            <input type="number" class="points-input ${coachScClass} ${coachFlashClass}" value="${team.coach.p !== "" ? team.coach.p : ''}" placeholder="-" oninput="updateCoachPoints(${mIndex}, this.value, this)">\n                        </div>\n                    </div>`;\n\n                html += `\n                    <div class="card">\n                        <div class="team-header">\n                            <h2 class="team-title" style="color: ${coloresManagers[mIndex]};">${escapeHtml(team.manager)}</h2>\n                            <span class="team-total-badge" id="total-${mIndex}">${team.total}</span>\n                        </div>\n                        <div>${playersHtml}${coachHtml}</div>\n                    </div>`;\n            });\n            document.getElementById('teamsContainer').innerHTML = html;\n        }\n\n        function refreshInputStyle(inputEl, value) {\n            if (!inputEl) return;\n            inputEl.classList.remove('pts-high', 'pts-good', 'pts-neg');\n            const cls = getScoreClass(value);\n            if (cls) inputEl.classList.add(cls);\n            const row = inputEl.closest('.player-item, .match-player');\n            if (row) {\n                if (value === "") row.classList.add('unplayed');\n                else row.classList.remove('unplayed');\n            }\n        }\n\n        function updatePoints(mIndex, pIndex, value, inputEl = null) {\n            const parsed = value === "" ? "" : parseInt(value);\n            fantasyData[mIndex].players[pIndex].p = parsed;\n            fantasyData[mIndex].total = calculateTeamTotal(fantasyData[mIndex]);\n            refreshInputStyle(inputEl, parsed);\n            updateUIAfterPoints(mIndex);\n        }\n\n        function updateCoachPoints(mIndex, value, inputEl = null) {\n            const parsed = value === "" ? "" : parseInt(value);\n            fantasyData[mIndex].coach.p = parsed;\n            fantasyData[mIndex].total = calculateTeamTotal(fantasyData[mIndex]);\n            refreshInputStyle(inputEl, parsed);\n            updateUIAfterPoints(mIndex);\n        }\n\n        function updateUIAfterPoints(mIndex) {\n            const totalEl = document.getElementById(`total-${mIndex}`);\n            if(totalEl) totalEl.innerText = fantasyData[mIndex].total;\n            localStorage.setItem('lf_datos_v4', JSON.stringify(fantasyData)); \n            renderRanking();\n            renderGeneral();\n        }\n\n        function setSortMode(mode) {\n            currentSortMode = mode;\n            document.getElementById('btnSortPoints').classList.toggle('active', mode === 'points');\n            document.getElementById('btnSortCoef').classList.toggle('active', mode === 'coef');\n            renderRanking();\n        }\n\n        function setGeneralLiveMode(isLive) {\n            currentGeneralLiveMode = isLive;\n            document.getElementById('btnGenLiveOn').classList.toggle('active', isLive);\n            document.getElementById('btnGenLiveOff').classList.toggle('active', !isLive);\n            renderGeneral();\n        }\n\n        function setGeneralSortMode(mode) {\n            currentGeneralSortMode = mode;\n            document.getElementById('btnSortGenPoints').classList.toggle('active', mode === 'points');\n            document.getElementById('btnSortGenDebt').classList.toggle('active', mode === 'debt');\n            renderGeneral();\n        }\n\n        function renderRanking() {\n            let processed = [...fantasyData].map((t, i) => {\n                let playedCount = t.players.filter(p => p.p !== "").length;\n                if(t.coach && t.coach.p !== "") playedCount++;\n                let coef = playedCount > 0 ? (t.total / playedCount) : 0;\n                return { ...t, originalIndex: i, playedCount, coef };\n            }).filter(t => !t.isRetired);\n\n            let sorted = processed.sort((a, b) => {\n                if (currentSortMode === 'points') {\n                    if (b.total === a.total) return b.coef - a.coef;\n                    return b.total - a.total;\n                } else {\n                    return b.coef - a.coef;\n                }\n            });\n            \n            let projectedDebts = calcularDeudasProyectadasJornada();\n            let uniqueScoresAsc = [...new Set(sorted.map(t => t.total))].sort((a,b) => a - b);\n            let lastPlaceScore = uniqueScoresAsc[0];\n\n            let html = '';\n            \n            sorted.forEach((t, index) => {\n                let pendingCount = 12 - t.playedCount; \n                let rowClass = "ranking-row";\n                let paysAmount = projectedDebts[t.originalIndex] || 0;\n                let posBadgeClass = "pos-badge";\n                \n                if (paysAmount > 0) {\n                    posBadgeClass += " danger-zone";\n                    if (t.total === lastPlaceScore) rowClass += " bg-dark-red";\n                    else rowClass += " bg-red";\n                }\n                \n                let pagaHtml = paysAmount > 0 \n                    ? `<span class="debt-tag">+${paysAmount.toFixed(2)}€</span>` \n                    : `<span style="color:var(--text-muted);">-</span>`;\n                \n                html += `\n                <tr class="${rowClass}" onclick="toggleDetails(${t.originalIndex})">\n                    <td><span class="${posBadgeClass}">${index + 1}</span></td>\n                    <td style="color: ${coloresManagers[t.originalIndex]};"><strong>${escapeHtml(t.manager)}</strong></td>\n                    <td style="text-align:center; color:var(--text-muted);">${pendingCount}</td>\n                    <td style="text-align:center; color:var(--text-muted);">${t.coef.toFixed(1)}</td>\n                    <td style="text-align:center; font-size: 0.9em;">${pagaHtml}</td>\n                    <td style="text-align:right; font-weight:800; font-size:1.05em;">${t.total}</td>\n                </tr>\n                <tr id="details-${t.originalIndex}" class="ranking-details" style="display:none;">\n                    <td colspan="6">\n                        <div class="detail-grid">\n                            ${t.players.map(p => {\n                                const safeName = escapeHtml(p.n);\n                                const safeTeam = escapeHtml(p.t);\n                                return `\n                                <div class="detail-item ${p.p !== "" ? 'played' : ''} ${p.n ? 'clickable-player' : ''}" onclick="event.stopPropagation(); if('${safeName}') abrirModalDesglose('${safeName}', '${safeTeam}', ${Boolean(p.c)}, '${p.p}')">\n                                    <span>${escapeHtml(p.n)} ${p.c ? '<span class="captain-tag">C</span>' : ''}</span>\n                                    <strong style="color: ${p.p !== "" ? '#fff' : 'var(--text-muted)'};">${p.p !== "" ? p.p : '-'}</strong>\n                                </div>`;\n                            }).join('')}\n                            <div class="detail-item coach ${t.coach.p !== "" ? 'played' : ''}">\n                                <span>👔 ${escapeHtml(t.coach.n) || 'Míster'}</span>\n                                <strong style="color: ${t.coach.p !== "" ? '#fff' : 'var(--text-muted)'};">${t.coach.p !== "" ? t.coach.p : '-'}</strong>\n                            </div>\n                        </div>\n                    </td>\n                </tr>`;\n            });\n            document.getElementById('rankingBody').innerHTML = html;\n        }\n\n        function renderGeneral() {\n            const projectedDebts = calcularDeudasProyectadasJornada();\n            const numManagers = fantasyData.length || 10;\n\n            const enriched = fantasyData.map((t, idx) => {\n                const livePts = t.isRetired ? 0 : t.total;\n                const liveDebtAdd = (!t.isRetired && projectedDebts[idx]) ? projectedDebts[idx] : 0;\n\n                const basePts = t.historicPoints;\n                const livePtsTotal = t.historicPoints + livePts;\n\n                const baseDebt = t.debt;\n                const liveDebtTotal = t.debt + liveDebtAdd;\n\n                return {\n                    ...t,\n                    originalIndex: idx,\n                    livePts,\n                    liveDebtAdd,\n                    basePts,\n                    livePtsTotal,\n                    baseDebt,\n                    liveDebtTotal\n                };\n            });\n\n            const baseSorted = [...enriched].sort((a, b) => {\n                if (currentGeneralSortMode === 'points') {\n                    return b.basePts - a.basePts;\n                } else {\n                    return a.baseDebt - b.baseDebt;\n                }\n            });\n            const basePosMap = {};\n            baseSorted.forEach((item, i) => { basePosMap[item.originalIndex] = i + 1; });\n\n            const sorted = [...enriched].sort((a, b) => {\n                if (currentGeneralSortMode === 'points') {\n                    const valA = currentGeneralLiveMode ? a.livePtsTotal : a.basePts;\n                    const valB = currentGeneralLiveMode ? b.livePtsTotal : b.basePts;\n                    return valB - valA;\n                } else {\n                    const valA = currentGeneralLiveMode ? a.liveDebtTotal : a.baseDebt;\n                    const valB = currentGeneralLiveMode ? b.liveDebtTotal : b.baseDebt;\n                    return valA - valB;\n                }\n            });\n\n            const boteTotalDeudas = sorted.reduce((acc, item) => {\n                return acc + (currentGeneralLiveMode ? item.liveDebtTotal : item.baseDebt);\n            }, 0);\n            const repartoPorManager = boteTotalDeudas / numManagers;\n\n            const kpiEl = document.getElementById('generalKpiSummary');\n            if (kpiEl) {\n                const activeByPts = [...enriched].filter(x => !x.isRetired).sort((a, b) => {\n                    return (currentGeneralLiveMode ? b.livePtsTotal : b.basePts) - (currentGeneralLiveMode ? a.livePtsTotal : a.basePts);\n                });\n                const lider = activeByPts[0];\n                const liderPts = lider ? (currentGeneralLiveMode ? lider.livePtsTotal : lider.basePts) : 0;\n\n                kpiEl.innerHTML = `\n                    <div class="kpi-card">\n                        <div class="kpi-label">💰 Bote Total Deudas</div>\n                        <div class="kpi-value">${boteTotalDeudas.toFixed(2)} €</div>\n                    </div>\n                    <div class="kpi-card">\n                        <div class="kpi-label">⚖️ Reparto (1/${numManagers})</div>\n                        <div class="kpi-value" style="color:#86efac;">${repartoPorManager.toFixed(2)} €</div>\n                    </div>\n                    <div class="kpi-card">\n                        <div class="kpi-label">👑 Líder General</div>\n                        <div class="kpi-value" style="color:${lider ? coloresManagers[lider.originalIndex] : 'var(--text)'};">${lider ? `${escapeHtml(lider.manager)} (${liderPts})` : '-'}</div>\n                    </div>\n                `;\n            }\n\n            let html = '';\n            sorted.forEach((t, index) => {\n                const posActual = index + 1;\n                const posBase = basePosMap[t.originalIndex];\n                const diffPos = posBase - posActual;\n\n                let trendHtml = '';\n                if (currentGeneralLiveMode) {\n                    if (diffPos > 0) {\n                        trendHtml = `<span class="trend-pill trend-up" title="Sube ${diffPos}">▲${diffPos}</span>`;\n                    } else if (diffPos < 0) {\n                        trendHtml = `<span class="trend-pill trend-down" title="Baja ${Math.abs(diffPos)}">▼${Math.abs(diffPos)}</span>`;\n                    } else {\n                        trendHtml = `<span class="trend-pill trend-eq" title="Se mantiene">=</span>`;\n                    }\n                }\n\n                const color = coloresManagers[t.originalIndex];\n                const shownDebt = currentGeneralLiveMode ? t.liveDebtTotal : t.baseDebt;\n                const extraDebtBadge = (currentGeneralLiveMode && t.liveDebtAdd > 0)\n                    ? ` <span style="font-size:0.75em; color:#fca5a5;">(+${t.liveDebtAdd.toFixed(2)}€)</span>`\n                    : '';\n                const debtHTML = shownDebt > 0\n                    ? `<span class="debt-tag">${shownDebt.toFixed(2)} €</span>${extraDebtBadge}`\n                    : `<span class="no-debt">0.00 €</span>`;\n\n                const beneficioNeto = repartoPorManager - shownDebt;\n                const benefColor = beneficioNeto >= 0 ? '#86efac' : '#fca5a5';\n                const benefSign = beneficioNeto > 0 ? '+' : '';\n                const beneficioHTML = `<span style="color:${benefColor}; font-weight:800; white-space:nowrap;">${benefSign}${beneficioNeto.toFixed(2)} €</span>`;\n\n                const isRetiredStyle = t.isRetired ? 'opacity: 0.55; background: rgba(0,0,0,0.22);' : '';\n                const nameLabel = escapeHtml(t.manager) + (t.isRetired ? ' <em>(Ret.)</em>' : '');\n                const pointsLabel = t.isRetired\n                    ? '-'\n                    : (currentGeneralLiveMode ? (t.livePts > 0 ? '+' + t.livePts : String(t.livePts)) : '0');\n                const shownPts = currentGeneralLiveMode ? t.livePtsTotal : t.basePts;\n\n                html += `\n                <tr class="ranking-row" style="${isRetiredStyle}">\n                    <td style="white-space:nowrap;"><span class="pos-badge">${posActual}</span>${trendHtml}</td>\n                    <td style="color: ${color};"><strong>${nameLabel}</strong></td>\n                    <td style="text-align:center; color:var(--text-muted);">${pointsLabel}</td>\n                    <td style="font-weight:800; font-size:1.06em;">${shownPts}</td>\n                    <td>${debtHTML}</td>\n                    <td>${beneficioHTML}</td>\n                </tr>`;\n            });\n            document.getElementById('generalBody').innerHTML = html;\n        }\n\n        function toggleDetails(originalIndex) {\n            const el = document.getElementById(`details-${originalIndex}`);\n            el.style.display = el.style.display === 'none' ? 'table-row' : 'none';\n        }\n\n        function renderJornada() {\n            let html = '';\n            const partidosOrdenados = [...partidosJornada].sort((a, b) => {\n                const idxA = pinnedMatchKeys.indexOf(getMatchKey(a));\n                const idxB = pinnedMatchKeys.indexOf(getMatchKey(b));\n                if (idxA !== -1 && idxB !== -1) return idxA - idxB;\n                if (idxA !== -1) return -1;\n                if (idxB !== -1) return 1;\n                return 0;\n            });\n\n            partidosOrdenados.forEach(partido => {\n                const matchKey = getMatchKey(partido);\n                const escapedKey = matchKey.replace(/'/g, "\'");\n                const isPinned = pinnedMatchKeys.includes(matchKey);\n                const isCollapsed = collapsedMatchKeys.includes(matchKey);\n\n                const liveMatchInfo = detallesPartidosLive[matchKey] || null;\n                const centerBadgeText = (liveMatchInfo && liveMatchInfo.marcador)\n                    ? escapeHtml(liveMatchInfo.marcador)\n                    : 'VS';\n                const statusBadgeHtml = liveMatchInfo\n                    ? (liveMatchInfo.relevo_listo\n                        ? '<span class="match-status-pill final" title="Puntos DAZN/Relevo cerrados">DEF</span>'\n                        : (liveMatchInfo.marcador ? '<span class="match-status-pill live" title="Provisional">PROV</span>' : ''))\n                    : '';\n\n                let loc = [], vis = [];\n                let totalEntities = 0;\n                let playedEntities = 0;\n\n                fantasyData.forEach((team, mIndex) => {\n                    if (team.isRetired) return; \n\n                    team.players.forEach((p, pIndex) => {\n                        if (p.t !== partido.local && p.t !== partido.visitante) return;\n                        totalEntities++;\n                        const isUnplayed = p.p === "";\n                        if (!isUnplayed) playedEntities++;\n\n                        const scClass = getScoreClass(p.p);\n                        const flashClass = flashedKeys.has(`p-${mIndex}-${pIndex}`) ? 'score-flash' : '';\n                        const det = buscarDetalleJugador(p.n, p.t);\n                        const tieneRelevo = det && det.relevo !== null && det.relevo !== undefined && det.relevo !== '';\n                        const relevoDot = det\n                            ? (tieneRelevo ? '<span class="relevo-dot done" title="Definitivo DAZN">✓</span>' : '<span class="relevo-dot live" title="Provisional">●</span>')\n                            : '';\n                        const safeName = escapeHtml(p.n);\n                        const safeTeam = escapeHtml(p.t);\n\n                        let playerHtml = `\n                            <div class="match-player ${isUnplayed ? 'unplayed' : ''} ${p.n ? 'clickable-player' : ''}" onclick="if(!event.target.closest('input') && '${safeName}') abrirModalDesglose('${safeName}', '${safeTeam}', ${Boolean(p.c)}, '${p.p}')">\n                                <div class="match-player-stack">\n                                    <div class="match-player-name-line">\n                                        <span>${escapeHtml(p.n)}</span>\n                                        ${p.c ? '<span class="captain-tag">C</span>' : ''}\n                                        ${relevoDot}\n                                    </div>\n                                    <span class="manager-pill" style="color: ${coloresManagers[mIndex]};">${escapeHtml(team.manager)}</span>\n                                </div>\n                                <div onclick="event.stopPropagation()">\n                                    <input type="number" class="match-points-input ${scClass} ${flashClass}" value="${p.p !== "" ? p.p : ''}" placeholder="-" oninput="updatePoints(${mIndex}, ${pIndex}, this.value, this)">\n                                </div>\n                            </div>`;\n                        if (p.t === partido.local) loc.push(playerHtml);\n                        if (p.t === partido.visitante) vis.push(playerHtml);\n                    });\n\n                    if (team.coach && (team.coach.t === partido.local || team.coach.t === partido.visitante)) {\n                        totalEntities++;\n                        const coachUnplayed = team.coach.p === "";\n                        if (!coachUnplayed) playedEntities++;\n\n                        const coachScClass = getScoreClass(team.coach.p);\n                        const coachFlashClass = flashedKeys.has(`c-${mIndex}`) ? 'score-flash' : '';\n                        let coachHtml = `\n                            <div class="match-player coach ${coachUnplayed ? 'unplayed' : ''}">\n                                <div class="match-player-stack">\n                                    <div class="match-player-name-line">\n                                        <span>👔 ${escapeHtml(team.coach.n)}</span>\n                                    </div>\n                                    <span class="manager-pill" style="color: ${coloresManagers[mIndex]};">${escapeHtml(team.manager)}</span>\n                                </div>\n                                <input type="number" class="match-points-input ${coachScClass} ${coachFlashClass}" value="${team.coach.p !== "" ? team.coach.p : ''}" placeholder="-" oninput="updateCoachPoints(${mIndex}, this.value, this)">\n                            </div>`;\n                        if (team.coach.t === partido.local) loc.push(coachHtml);\n                        if (team.coach.t === partido.visitante) vis.push(coachHtml);\n                    }\n                });\n\n                const bodyHtml = isCollapsed\n                    ? `<div class="collapsed-summary-bar">\n                           <span>${totalEntities} en juego (${playedEntities} puntuados)</span>\n                           <span style="color:var(--accent-bright); font-weight:700;">Pulsa para desplegar ▾</span>\n                       </div>`\n                    : `<div class="match-teams">\n                            <div class="match-half">\n                                <h4>${escapeHtml(partido.local)}</h4>\n                                ${loc.join('') || '<div class="owner-tag">Sin jugadores</div>'}\n                            </div>\n                            <div class="match-half">\n                                <h4>${escapeHtml(partido.visitante)}</h4>\n                                ${vis.join('') || '<div class="owner-tag">Sin jugadores</div>'}\n                            </div>\n                        </div>`;\n                \n                html += `\n                    <div class="card ${isPinned ? 'pinned-match' : ''} ${isCollapsed ? 'collapsed-match' : ''}">\n                        <div class="match-scoreboard-header" onclick="toggleCollapseMatch('${escapedKey}')" title="Pulsa para ocultar o mostrar los puntos de este partido">\n                            <button type="button" class="match-action-btn ${isPinned ? 'active-pin' : ''}" onclick="togglePinMatch('${escapedKey}', event)" title="${isPinned ? 'Quitar fijado arriba' : 'Fijar partido arriba'}">📌</button>\n                            <span class="match-team-title">${escapeHtml(partido.local)}</span>\n                            <span class="vs-badge">${centerBadgeText}</span>\n                            ${statusBadgeHtml}\n                            <span class="match-team-title away">${escapeHtml(partido.visitante)}</span>\n                            <span class="match-action-btn" title="${isCollapsed ? 'Mostrar puntos' : 'Ocultar puntos'}">${isCollapsed ? '▸' : '▾'}</span>\n                        </div>\n                        ${bodyHtml}\n                    </div>`;\n            });\n            document.getElementById('matchesContainer').innerHTML = html;\n        }\n\n        function populateConfigForms() {\n            if(partidosJornada.length === 0) return;\n            \n            document.getElementById('editMatchesContainer').innerHTML = partidosJornada.map((p, i) => `\n                <div class="config-row">\n                    <select id="m-loc-${i}" class="config-input">${buildTeamOptions(p.local)}</select>\n                    <span style="color:var(--text-muted); font-weight:bold;">vs</span>\n                    <select id="m-vis-${i}" class="config-input">${buildTeamOptions(p.visitante)}</select>\n                </div>`).join('');\n\n            const prevSel = document.getElementById('historicManagerSelect');\n            const selectedIdx = prevSel ? prevSel.value : "0";\n\n            let optionsHtml = fantasyData.map((t, i) =>\n                `<option value="${i}" ${String(i) === String(selectedIdx) ? 'selected' : ''}>${escapeHtml(t.manager)}${t.isRetired ? ' (Ret.)' : ''} — ${t.historicPoints} pts | ${t.debt.toFixed(2)} €</option>`\n            ).join('');\n\n            document.getElementById('historicInputsContainer').innerHTML = `\n                <select id="historicManagerSelect" class="config-input" onchange="renderHistoricManagerEditor()" style="margin-bottom:8px;">\n                    ${optionsHtml}\n                </select>\n                <div id="historicSingleEditor"></div>\n            `;\n            renderHistoricManagerEditor();\n\n            const select = document.getElementById('managerSelect');\n            if(select.options.length <= 1) {\n                fantasyData.forEach((t, i) => {\n                    if (!t.isRetired) select.add(new Option(t.manager, i));\n                });\n            }\n        }\n\n        function renderHistoricManagerEditor() {\n            const sel = document.getElementById('historicManagerSelect');\n            const box = document.getElementById('historicSingleEditor');\n            if (!sel || !box || fantasyData.length === 0) return;\n\n            const i = parseInt(sel.value, 10) || 0;\n            const t = fantasyData[i];\n\n            box.innerHTML = `\n                <div class="historic-compact-box" style="${t.isRetired ? 'border-left: 3px solid var(--danger);' : ''}">\n                    <div style="display:flex; justify-content:space-between; align-items:center;">\n                        <strong style="color:${coloresManagers[i]};">${escapeHtml(t.manager)} ${t.isRetired ? '<span style="font-size:0.75em; color:var(--danger);">(Retirado)</span>' : ''}</strong>\n                        <span style="font-size:0.8em; color:var(--text-muted);">Actual: ${t.historicPoints} pts · ${t.debt.toFixed(2)} €</span>\n                    </div>\n                    <div class="historic-compact-grid">\n                        <div>\n                            <label style="display:block; font-size:0.78em; color:var(--text-muted); margin-bottom:3px;">Puntos históricos</label>\n                            <input type="number" id="hist-pts-${i}" class="config-input" style="width:100%; padding:6px;" value="${t.historicPoints}" ${t.isRetired ? 'disabled' : ''}>\n                        </div>\n                        <div>\n                            <label style="display:block; font-size:0.78em; color:var(--text-muted); margin-bottom:3px;">Deuda (€)</label>\n                            <input type="number" step="0.01" id="hist-debt-${i}" class="config-input" style="width:100%; padding:6px;" value="${t.debt}">\n                        </div>\n                    </div>\n                    <button class="save-btn" style="padding:9px; font-size:0.92em; margin-top:10px;" onclick="saveHistoricData(${i})">💾 Guardar ${escapeHtml(t.manager)}</button>\n                </div>\n            `;\n        }\n\n        function saveHistoricData(targetIndex = null) {\n            if (targetIndex !== null && typeof targetIndex === 'number') {\n                const t = fantasyData[targetIndex];\n                if (!t.isRetired) {\n                    const ptsEl = document.getElementById(`hist-pts-${targetIndex}`);\n                    if (ptsEl) t.historicPoints = parseInt(ptsEl.value) || 0;\n                }\n                const debtEl = document.getElementById(`hist-debt-${targetIndex}`);\n                if (debtEl) t.debt = parseFloat(debtEl.value) || 0;\n                saveDataToLocal();\n                showToast(`✔️ Histórico de ${t.manager} guardado`);\n                return;\n            }\n\n            fantasyData.forEach((t, i) => {\n                if (!t.isRetired) {\n                    const ptsEl = document.getElementById(`hist-pts-${i}`);\n                    if (ptsEl) t.historicPoints = parseInt(ptsEl.value) || 0;\n                }\n                const debtEl = document.getElementById(`hist-debt-${i}`);\n                if (debtEl) t.debt = parseFloat(debtEl.value) || 0;\n            });\n            saveDataToLocal();\n            showToast("✔️ Datos históricos guardados");\n        }\n\n        function saveMatches() {\n            for (let i = 0; i < partidosJornada.length; i++) {\n                partidosJornada[i].local = document.getElementById(`m-loc-${i}`).value;\n                partidosJornada[i].visitante = document.getElementById(`m-vis-${i}`).value;\n            }\n            saveDataToLocal();\n            showToast("✔️ Partidos guardados correctamente");\n        }\n\n        function loadSquadEditor() {\n            const mIndex = document.getElementById('managerSelect').value;\n            if (mIndex === "") { document.getElementById('editSquadContainer').style.display = 'none'; return; }\n            \n            document.getElementById('editSquadContainer').style.display = 'block';\n            let team = fantasyData[mIndex];\n            \n            let html = '';\n            team.players.forEach((p, i) => {\n                html += `\n                <div class="config-row">\n                    <input type="text" id="p-name-${mIndex}-${i}" list="catalogoJugadoresList" class="config-input" value="${escapeHtml(p.n)}" placeholder="Jugador" oninput="autocompletarEquipoJugador(${mIndex}, ${i}, this.value)">\n                    <select id="p-team-${mIndex}-${i}" class="config-input">${buildTeamOptions(p.t)}</select>\n                    <div class="radio-cell">\n                        <input type="radio" name="capitan-${mIndex}" id="p-cap-${mIndex}-${i}" ${p.c ? 'checked' : ''}>\n                    </div>\n                </div>`;\n            });\n            document.getElementById('squadInputs').innerHTML = html;\n\n            let coachHtml = `\n                <div class="config-row">\n                    <input type="text" id="c-name-${mIndex}" class="config-input" value="${escapeHtml(team.coach.n)}" placeholder="Nombre Entrenador">\n                    <select id="c-team-${mIndex}" class="config-input">${buildTeamOptions(team.coach.t)}</select>\n                    <div class="radio-cell"></div>\n                </div>`;\n            document.getElementById('coachInput').innerHTML = coachHtml;\n        }\n\n        function saveSquad() {\n            const mIndex = document.getElementById('managerSelect').value;\n            \n            for (let i = 0; i < 11; i++) {\n                fantasyData[mIndex].players[i].n = document.getElementById(`p-name-${mIndex}-${i}`).value;\n                fantasyData[mIndex].players[i].t = document.getElementById(`p-team-${mIndex}-${i}`).value;\n                fantasyData[mIndex].players[i].c = document.getElementById(`p-cap-${mIndex}-${i}`).checked;\n            }\n            \n            fantasyData[mIndex].coach.n = document.getElementById(`c-name-${mIndex}`).value;\n            fantasyData[mIndex].coach.t = document.getElementById(`c-team-${mIndex}`).value;\n\n            fantasyData[mIndex].total = calculateTeamTotal(fantasyData[mIndex]);\n            saveDataToLocal();\n            showToast("✔️ Plantilla guardada en local (pulsa Subir a GitHub para compartir)");\n            loadSquadEditor();\n            sincronizarPuntosEnDirecto();\n        }\n\n        function limpiarPuntosJornada() {\n            if (confirm("🧹 ¿Poner a cero/vacío todos los puntos de la jornada actual?\n\nNo se sumarán puntos a la General ni se repartirán deudas.")) {\n                fantasyData.forEach(team => {\n                    team.players.forEach(p => p.p = "");\n                    if (team.coach) team.coach.p = "";\n                    team.total = 0;\n                });\n                localStorage.setItem('lf_bloqueo_sincro_cerrada', '1');\n                const jInputVal = (document.getElementById('jornadaNumeroInput')?.value || '').trim();\n                if (jInputVal) localStorage.setItem('lf_jornada_cerrada_num', jInputVal);\n                saveDataToLocal();\n                showToast("🧹 Puntos de jornada limpiados a cero");\n            }\n        }\n\n        function cerrarJornada() {\n            let activeTeams = fantasyData\n                .map((team, index) => ({ index, manager: team.manager, total: team.total, isRetired: team.isRetired }))\n                .filter(t => !t.isRetired);\n            \n            let totalPointsThisJornada = activeTeams.reduce((acc, t) => acc + t.total, 0);\n            if (totalPointsThisJornada === 0) {\n                alert("No hay puntos registrados en esta jornada. Carga algunos puntos antes de cerrar.");\n                return;\n            }\n\n            let debtChanges = calcularDeudasProyectadasJornada();\n\n            const resumenDeudas = Object.entries(debtChanges)\n                .map(([idx, amount]) => ({\n                    manager: fantasyData[idx].manager,\n                    amount: amount,\n                    total: fantasyData[idx].total\n                }))\n                .sort((a, b) => b.amount - a.amount || a.total - b.total)\n                .map(d => `• ${d.manager}: +${d.amount.toFixed(2)} € (${d.total} pts)`)\n                .join("
-");\n\n            if (!confirm(`💸 PASO 1/2 — DEUDAS A SUMAR:\n\n${resumenDeudas || 'Nadie suma deuda'}\n\n¿Confirmas este reparto de deudas?`)) {\n                return;\n            }\n\n            const resumenPuntos = [...activeTeams]\n                .sort((a, b) => b.total - a.total)\n                .map(t => `• ${t.manager}: ${t.total} pts`)\n                .join("
-");\n\n            if (!confirm(`🏆 PASO 2/2 — PUNTOS A SUMAR A LA GENERAL:\n\n${resumenPuntos}\n\n¿Confirmas sumar estos puntos y reiniciar los marcadores a 0?`)) {\n                return;\n            }\n\n            Object.entries(debtChanges).forEach(([idx, amount]) => {\n                fantasyData[idx].debt += amount;\n            });\n\n            fantasyData.forEach(team => {\n                if(!team.isRetired) team.historicPoints += team.total; \n                \n                team.players.forEach(p => p.p = ""); \n                if (team.coach) team.coach.p = "";   \n                team.total = 0;                      \n            });\n\n            localStorage.setItem('lf_bloqueo_sincro_cerrada', '1');\n            const jInputVal = (document.getElementById('jornadaNumeroInput')?.value || '').trim();\n            if (jInputVal) localStorage.setItem('lf_jornada_cerrada_num', jInputVal);\n            saveDataToLocal();\n            showToast("🔄 Jornada cerrada. Puntos y deudas actualizados.");\n        }\n\n        function exportData() {\n            const data = { partidos: partidosJornada, datos: fantasyData };\n            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));\n            const downloadAnchorNode = document.createElement('a');\n            downloadAnchorNode.setAttribute("href", dataStr);\n            downloadAnchorNode.setAttribute("download", "laliga_fantasy_backup.json");\n            document.body.appendChild(downloadAnchorNode);\n            downloadAnchorNode.click();\n            downloadAnchorNode.remove();\n            showToast("⬇️ Copia descargada");\n        }\n\n        function importData(event) {\n            const file = event.target.files[0];\n            if (!file) return;\n            const reader = new FileReader();\n            reader.onload = function(e) {\n                try {\n                    const imported = JSON.parse(e.target.result);\n                    if (imported.partidos && imported.datos) {\n                        partidosJornada = imported.partidos;\n                        fantasyData = imported.datos;\n                        \n                        initLegacyData(); \n                        saveDataToLocal();\n                        showToast("⬆️ Datos importados correctamente");\n                        sincronizarPuntosEnDirecto();\n                    } else {\n                        alert("El archivo no tiene el formato correcto.");\n                    }\n                } catch (err) {\n                    alert("Error al leer el archivo.");\n                }\n            };\n            reader.readAsText(file);\n        }\n\n        function getCronJobConfig() {\n            return {\n                jobId: localStorage.getItem('lf_cj_jobid') || '8917104',\n                apiKey: localStorage.getItem('lf_cj_apikey') || ''\n            };\n        }\n\n        function cargarConfigCronJobUI() {\n            const cfg = getCronJobConfig();\n            const j = document.getElementById('cjJobId');\n            const k = document.getElementById('cjApiKey');\n            if (j) j.value = cfg.jobId;\n            if (k) k.value = cfg.apiKey;\n        }\n\n        function guardarConfigCronJob() {\n            const jobId = document.getElementById('cjJobId').value.trim();\n            const apiKey = document.getElementById('cjApiKey').value.trim();\n            if (!jobId || !apiKey) {\n                alert("Rellena el Job ID y la Clave API de cron-job.org.");\n                return;\n            }\n            localStorage.setItem('lf_cj_jobid', jobId);\n            localStorage.setItem('lf_cj_apikey', apiKey);\n            showToast("🔑 Credenciales de Cron-job.org guardadas");\n        }\n\n        async function controlarCronJob(activar) {\n            const cfg = getCronJobConfig();\n            const label = document.getElementById('cronStatusLabel');\n            if (!cfg.apiKey) {\n                alert("Primero pega tu Clave API en 'Configurar Clave API y Job ID de Cron-job.org'.");\n                return;\n            }\n\n            const url = `https://api.cron-job.org/jobs/${encodeURIComponent(cfg.jobId)}`;\n            try {\n                if (label) label.innerText = activar ? "⏳ Activando cronjob..." : "⏳ Pausando cronjob...";\n                const res = await fetch(url, {\n                    method: 'PATCH',\n                    headers: {\n                        'Authorization': `Bearer ${cfg.apiKey}`,\n                        'Content-Type': 'application/json'\n                    },\n                    body: JSON.stringify({ job: { enabled: activar } })\n                });\n\n                if (!res.ok) throw new Error(`HTTP ${res.status}`);\n\n                const textoEstado = activar\n                    ? "🟢 ACTIVO"\n                    : "⏸️ PAUSADO (no gastará ejecuciones hasta que lo actives)";\n                if (label) label.innerText = "Estado: " + textoEstado;\n                showToast(activar ? "▶️ Cron-job activado" : "⏸️ Cron-job pausado");\n            } catch (err) {\n                if (label) label.innerText = "⚠️ No se pudo cambiar desde el navegador (" + err.message + ")";\n                if (confirm("El navegador bloqueó la petición directa a cron-job.org por seguridad CORS. ¿Quieres abrir la consola de cron-job.org para activarlo/pausarlo en un clic?")) {\n                    window.open("https://console.cron-job.org/jobs", "_blank");\n                }\n            }\n        }\n\n        function getGitHubConfig() {\n            return {\n                owner: localStorage.getItem('lf_gh_owner') || 'blancomerenguesm',\n                repo: localStorage.getItem('lf_gh_repo') || 'laliga-fantasy',\n                token: localStorage.getItem('lf_gh_token') || ''\n            };\n        }\n\n        function cargarConfigGitHubUI() {\n            const cfg = getGitHubConfig();\n            const o = document.getElementById('ghOwner');\n            const r = document.getElementById('ghRepo');\n            const t = document.getElementById('ghToken');\n            if (o) o.value = cfg.owner;\n            if (r) r.value = cfg.repo;\n            if (t) t.value = cfg.token;\n        }\n\n        function guardarConfigGitHub() {\n            const owner = document.getElementById('ghOwner').value.trim();\n            const repo = document.getElementById('ghRepo').value.trim();\n            const token = document.getElementById('ghToken').value.trim();\n            if (!owner || !repo || !token) {\n                alert("Rellena usuario, repositorio y token.");\n                return;\n            }\n            localStorage.setItem('lf_gh_owner', owner);\n            localStorage.setItem('lf_gh_repo', repo);\n            localStorage.setItem('lf_gh_token', token);\n            showToast("🔑 Credenciales de GitHub guardadas en este navegador");\n        }\n\n        function utf8ToBase64(str) {\n            const bytes = new TextEncoder().encode(str);\n            let binary = '';\n            for (let i = 0; i < bytes.byteLength; i++) {\n                binary += String.fromCharCode(bytes[i]);\n            }\n            return btoa(binary);\n        }\n\n        function base64ToUtf8(b64) {\n            const binary = atob(b64.replace(/\s/g, ''));\n            const bytes = new Uint8Array(binary.length);\n            for (let i = 0; i < binary.length; i++) {\n                bytes[i] = binary.charCodeAt(i);\n            }\n            return new TextDecoder().decode(bytes);\n        }\n\n        async function subirBackupAGitHub() {\n            const cfg = getGitHubConfig();\n            if (!cfg.token) {\n                alert("Primero configura tu Token de GitHub en el desplegable 'Configurar Token de GitHub'.");\n                return;\n            }\n\n            const apiUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/laliga_fantasy_backup.json`;\n            const headers = {\n                'Authorization': `Bearer ${cfg.token}`,\n                'Accept': 'application/vnd.github+json',\n                'Content-Type': 'application/json'\n            };\n\n            try {\n                showToast("⏳ Subiendo cambios a GitHub...");\n                let sha = null;\n                const getRes = await fetch(apiUrl + '?t=' + Date.now(), { headers });\n                if (getRes.ok) {\n                    const fileInfo = await getRes.json();\n                    sha = fileInfo.sha;\n                }\n\n                const payloadData = { partidos: partidosJornada, datos: fantasyData };\n                const jsonString = JSON.stringify(payloadData, null, 2);\n                const contentB64 = utf8ToBase64(jsonString);\n\n                const body = {\n                    message: "Actualización de plantillas/datos desde el panel web",\n                    content: contentB64\n                };\n                if (sha) body.sha = sha;\n\n                const putRes = await fetch(apiUrl, {\n                    method: 'PUT',\n                    headers,\n                    body: JSON.stringify(body)\n                });\n\n                if (!putRes.ok) {\n                    const errData = await putRes.json();\n                    throw new Error(errData.message || "Error al subir a GitHub");\n                }\n\n                showToast("☁️ ¡Subido a GitHub! Ya puedes traerlo desde el otro dispositivo");\n            } catch (err) {\n                alert("❌ Error al subir a GitHub: " + err.message);\n            }\n        }\n\n        async function cargarBackupDesdeGitHub(manual = false) {\n            const cfg = getGitHubConfig();\n            try {\n                if (manual) showToast("⏳ Descargando última versión de GitHub...");\n                let imported = null;\n\n                const apiUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/laliga_fantasy_backup.json?t=${Date.now()}`;\n                const headers = { 'Accept': 'application/vnd.github+json' };\n                if (cfg.token) headers['Authorization'] = `Bearer ${cfg.token}`;\n\n                const apiRes = await fetch(apiUrl, { headers });\n                if (apiRes.ok) {\n                    const fileObj = await apiRes.json();\n                    if (fileObj.content) {\n                        imported = JSON.parse(base64ToUtf8(fileObj.content));\n                    }\n                }\n\n                if (!imported) {\n                    const res = await fetch('laliga_fantasy_backup.json?t=' + Date.now());\n                    if (res.ok) imported = await res.json();\n                }\n\n                if (imported && imported.partidos && imported.datos) {\n                    partidosJornada = imported.partidos;\n                    fantasyData = imported.datos;\n                    initLegacyData();\n                    saveDataToLocal();\n                    await sincronizarPuntosEnDirecto();\n                    if (manual) showToast("✅ Plantillas y datos actualizados desde GitHub");\n                } else if (manual) {\n                    alert("No se pudo leer laliga_fantasy_backup.json desde GitHub.");\n                }\n            } catch (e) {\n                if (manual) alert("❌ Error al traer datos de GitHub: " + e.message);\n            }\n        }\n\n        async function cargarBackupInicialSiVacio() {\n            if (fantasyData.length === 0) {\n                await cargarBackupDesdeGitHub(false);\n            } else {\n                fantasyData.forEach(t => t.total = calculateTeamTotal(t));\n                renderAll();\n            }\n        }\n\n        async function cargarJornadaActualEnInput() {\n            const input = document.getElementById('jornadaNumeroInput');\n            if (!input || input.value) return;\n            try {\n                const res = await fetch('puntos.json?t=' + Date.now());\n                if (res.ok) {\n                    const dataRaw = await res.json();\n                    if (dataRaw.jornada) {\n                        input.value = dataRaw.jornada;\n                        const badge = document.getElementById('headerJornadaBadge');\n                        if (badge) badge.innerText = `JORNADA ${dataRaw.jornada}`;\n                    }\n                }\n            } catch (e) {}\n        }\n\n        async function cambiarJornadaEnGitHub() {\n            const cfg = getGitHubConfig();\n            const statusDiv = document.getElementById('jornadaGitHubStatus');\n            const jornadaVal = (document.getElementById('jornadaNumeroInput').value || '').trim();\n\n            if (!jornadaVal || isNaN(jornadaVal)) {\n                alert("Introduce un número de jornada válido (por ejemplo, 14).");\n                return;\n            }\n            if (!cfg.token) {\n                alert("Primero configura tu Token de GitHub en 'Sincronización Nube (PC ↔ Móvil)'.");\n                return;\n            }\n\n            const fileUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/config_jornada.json`;\n            const dispatchUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/actions/workflows/actualizar.yml/dispatches`;\n            const headers = {\n                'Authorization': `Bearer ${cfg.token}`,\n                'Accept': 'application/vnd.github+json',\n                'Content-Type': 'application/json'\n            };\n\n            try {\n                if (statusDiv) statusDiv.innerText = `⏳ Guardando Jornada ${jornadaVal} en GitHub...`;\n                let sha = null;\n                const getRes = await fetch(fileUrl + '?t=' + Date.now(), { headers });\n                if (getRes.ok) {\n                    const info = await getRes.json();\n                    sha = info.sha;\n                }\n\n                const contentB64 = utf8ToBase64(JSON.stringify({ jornada: String(jornadaVal) }, null, 2));\n                const putBody = {\n                    message: `Cambiar jornada activa a Jornada ${jornadaVal}`,\n                    content: contentB64\n                };\n                if (sha) putBody.sha = sha;\n\n                const putRes = await fetch(fileUrl, {\n                    method: 'PUT',\n                    headers,\n                    body: JSON.stringify(putBody)\n                });\n\n                if (!putRes.ok) {\n                    const errData = await putRes.json();\n                    throw new Error(errData.message || `HTTP ${putRes.status}`);\n                }\n\n                if (statusDiv) statusDiv.innerText = `⏳ Lanzando extractor para Jornada ${jornadaVal}...`;\n                const dispRes = await fetch(dispatchUrl, {\n                    method: 'POST',\n                    headers,\n                    body: JSON.stringify({ ref: 'main' })\n                });\n\n                if (!dispRes.ok && dispRes.status !== 204) {\n                    throw new Error(`No se pudo disparar el workflow (HTTP ${dispRes.status})`);\n                }\n\n                if (statusDiv) statusDiv.innerText = `✅ Jornada ${jornadaVal} activada. Espera ~20 segundos y pulsa "📥 Cargar partidos de la jornada desde puntos.json".`;\n                showToast(`🚀 Jornada ${jornadaVal} enviada a GitHub y extractor lanzado`);\n            } catch (err) {\n                if (statusDiv) statusDiv.innerText = `❌ Error: ${err.message}`;\n                alert("❌ Error al cambiar jornada en GitHub: " + err.message);\n            }\n        }\n\n        async function cargarPartidosDesdePuntosJson() {\n            try {\n                const res = await fetch('puntos.json?t=' + Date.now());\n                if (!res.ok) throw new Error("No se pudo leer puntos.json");\n                const dataRaw = await res.json();\n                if (!Array.isArray(dataRaw.partidos) || dataRaw.partidos.length === 0) {\n                    alert("puntos.json no contiene partidos todavía. Espera unos segundos a que termine GitHub Actions y vuelve a pulsar.");\n                    return;\n                }\n                partidosJornada = dataRaw.partidos.map(p => ({\n                    local: p.local,\n                    visitante: p.visitante\n                }));\n                saveDataToLocal();\n                const jTxt = dataRaw.jornada ? ` (Jornada ${dataRaw.jornada})` : '';\n                showToast(`📥 ${partidosJornada.length} partidos cargados${jTxt}`);\n            } catch (err) {\n                alert("❌ Error al cargar partidos: " + err.message);\n            }\n        }\n\n        function normalizarTexto(texto) {\n            return (texto || "")\n                .toLowerCase()\n                .normalize("NFD")\n                .replace(/[̀-ͯ]/g, "")\n                .trim();\n        }\n\n        let catalogoJugadores = JSON.parse(localStorage.getItem('lf_catalogo_jugadores')) || {};\n\n        function guardarCatalogoLocal(nuevoCatalogo) {\n            catalogoJugadores = { ...catalogoJugadores, ...nuevoCatalogo };\n            localStorage.setItem('lf_catalogo_jugadores', JSON.stringify(catalogoJugadores));\n            actualizarDatalistCatalogo();\n        }\n\n        function actualizarDatalistCatalogo() {\n            const dl = document.getElementById('catalogoJugadoresList');\n            const st = document.getElementById('catalogoJugadoresStatus');\n            const nombres = Object.keys(catalogoJugadores).sort((a, b) => a.localeCompare(b, 'es'));\n            if (dl) {\n                dl.innerHTML = nombres.map(n => `<option value="${n.replace(/"/g, '&quot;')}"></option>`).join('');
+let currentSortMode = "points";
+let currentGeneralSortMode = "points";
+let currentGeneralLiveMode = true;
+let flashedKeys = new Set();
+
+function escapeHtml(str) {
+    return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
+
+function getMatchKey(partido) {
+    return `${partido.local}__${partido.visitante}`;
+}
+
+function togglePinMatch(matchKey, event) {
+    if (event) event.stopPropagation();
+    const idx = pinnedMatchKeys.indexOf(matchKey);
+    if (idx >= 0) {
+        pinnedMatchKeys.splice(idx, 1);
+    } else {
+        pinnedMatchKeys.unshift(matchKey);
+        collapsedMatchKeys = collapsedMatchKeys.filter(k => k !== matchKey);
+        localStorage.setItem("lf_partidos_ocultos", JSON.stringify(collapsedMatchKeys));
+    }
+    localStorage.setItem("lf_partidos_fijados", JSON.stringify(pinnedMatchKeys));
+    renderJornada();
+}
+
+function toggleCollapseMatch(matchKey) {
+    const idx = collapsedMatchKeys.indexOf(matchKey);
+    if (idx >= 0) {
+        collapsedMatchKeys.splice(idx, 1);
+    } else {
+        collapsedMatchKeys.push(matchKey);
+    }
+    localStorage.setItem("lf_partidos_ocultos", JSON.stringify(collapsedMatchKeys));
+    renderJornada();
+}
+
+function expandirTodosPartidos() {
+    collapsedMatchKeys = [];
+    localStorage.setItem("lf_partidos_ocultos", JSON.stringify(collapsedMatchKeys));
+    renderJornada();
+}
+
+function contraerTodosPartidos() {
+    collapsedMatchKeys = partidosJornada.map(p => getMatchKey(p));
+    localStorage.setItem("lf_partidos_ocultos", JSON.stringify(collapsedMatchKeys));
+    renderJornada();
+}
+
+function contraerPartidosSinFijar() {
+    collapsedMatchKeys = partidosJornada
+        .map(p => getMatchKey(p))
+        .filter(k => !pinnedMatchKeys.includes(k));
+    localStorage.setItem("lf_partidos_ocultos", JSON.stringify(collapsedMatchKeys));
+    renderJornada();
+}
+
+function getScoreClass(val) {
+    if (val === "" || val === null || typeof val === "undefined" || isNaN(val)) return "";
+    const n = Number(val);
+    if (n >= 10) return "pts-high";
+    if (n >= 5) return "pts-good";
+    if (n < 0) return "pts-neg";
+    return "";
+}
+
+function buscarDetalleJugador(nombreJugador, equipoJugador) {
+    const normBackup = normalizarTexto(nombreJugador);
+    if (!normBackup) return null;
+    const entradas = Object.entries(detallesJugadoresLive);
+    if (entradas.length === 0) return null;
+
+    const normEq = normalizarTexto(equipoJugador || "");
+    const porEquipo = (lista) => {
+        if (!normEq || lista.length <= 1) return lista;
+        const match = lista.filter(([, d]) => d && d.equipo && normalizarTexto(d.equipo) === normEq);
+        return match.length > 0 ? match : lista;
+    };
+
+    let exactas = porEquipo(entradas.filter(([k, d]) =>
+        k === normBackup || normalizarTexto(d.nombre) === normBackup || normalizarTexto(d.nombre_completo) === normBackup
+    ));
+    if (exactas.length === 1) return exactas[0][1];
+
+    const palabras = normBackup.split(" ").filter(Boolean);
+    if (palabras.length === 1) {
+        const u = palabras[0];
+        let cand = porEquipo(entradas.filter(([k, d]) =>
+            k.split(" ").includes(u) || normalizarTexto(d.nombre).split(" ").includes(u) || normalizarTexto(d.nombre_completo).split(" ").includes(u)
+        ));
+        if (cand.length === 1) return cand[0][1];
+        if (cand.length > 1) return null;
+        let pref = porEquipo(entradas.filter(([k]) => k.startsWith(u + " ")));
+        if (pref.length === 1) return pref[0][1];
+        return null;
+    }
+
+    let sub = porEquipo(entradas.filter(([k, d]) => {
+        const full = normalizarTexto(d.nombre_completo || k).split(" ");
+        return palabras.every(pb => full.includes(pb));
+    }));
+    if (sub.length === 1) return sub[0][1];
+    return null;
+}
+
+function abrirModalDesglose(nombreJugador, equipoJugador, esCapitan, puntosActuales) {
+    if (!nombreJugador) return;
+    const modal = document.getElementById("playerBreakdownModal");
+    const titleEl = document.getElementById("modalPlayerName");
+    const metaEl = document.getElementById("modalPlayerMeta");
+    const listEl = document.getElementById("modalBreakdownList");
+    const statusEl = document.getElementById("modalStatusText");
+    const totalEl = document.getElementById("modalTotalPts");
+
+    const det = buscarDetalleJugador(nombreJugador, equipoJugador);
+    const displayName = (det && det.nombre_completo) ? det.nombre_completo : nombreJugador;
+    titleEl.innerHTML = escapeHtml(displayName) + (esCapitan ? " <span class=\"captain-tag\">C</span>" : "");
+
+    const posTxt = (det && det.posicion) ? " · " + escapeHtml(det.posicion) : "";
+    const eqTxt = escapeHtml((det && det.equipo) || equipoJugador || "Equipo");
+    const tieneRelevo = det && det.relevo !== null && det.relevo !== undefined && det.relevo !== "";
+    const badgeEstado = det
+        ? (tieneRelevo ? "<span class=\"relevo-dot done\">✓ Definitivo (DAZN)</span>" : "<span class=\"relevo-dot live\">● Provisional</span>")
+        : "";
+    metaEl.innerHTML = "<span>" + eqTxt + posTxt + "</span> " + badgeEstado;
+
+    const ptsBase = (det && typeof det.puntos === "number")
+        ? det.puntos
+        : (puntosActuales !== "" && !isNaN(puntosActuales) ? Number(puntosActuales) : 0);
+
+    if (det && Array.isArray(det.desglose) && det.desglose.length > 0) {
+        listEl.innerHTML = det.desglose.map(linea => {
+            const partes = linea.split("->");
+            const concepto = (partes[0] || linea).trim();
+            const ptsTexto = (partes[1] || "").trim();
+            const numMatch = ptsTexto.match(/-?\d+(?:[.,]\d+)?/);
+            const numVal = numMatch ? parseFloat(numMatch[0].replace(",", ".")) : 0;
+            const ptsCls = numVal > 0 ? "pos" : (numVal < 0 ? "neg" : "neu");
+            const esDazn = /dazn|relevo/i.test(concepto);
+            return "<div class=\"breakdown-row " + (esDazn ? "dazn-row" : "") + "\"><span>" + (esDazn ? "⭐ " : "") + escapeHtml(concepto) + "</span>" + (ptsTexto ? "<span class=\"breakdown-pts " + ptsCls + "\">" + escapeHtml(ptsTexto) + "</span>" : "") + "</div>";
+        }).join("");
+        statusEl.innerText = tieneRelevo ? "Puntos definitivos cerrados" : "Pendiente de nota DAZN/Relevo";
+    } else {
+        listEl.innerHTML = "<div class=\"breakdown-row\"><span style=\"color:var(--text-muted);\">Sin desglose registrado todavía para este jugador.</span></div>";
+        statusEl.innerText = "Sin desglose";
+    }
+
+    totalEl.innerText = esCapitan ? ((ptsBase * 2) + " pts (" + ptsBase + " ×2 Cap)") : (ptsBase + " pts");
+    modal.classList.add("open");
+}
+
+function cerrarModalDesglose() {
+    const modal = document.getElementById("playerBreakdownModal");
+    if (modal) modal.classList.remove("open");
+}
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") cerrarModalDesglose();
+});
+
+function calcularDeudasProyectadasJornada() {
+    let processed = [...fantasyData].map((t, i) => ({ ...t, originalIndex: i })).filter(t => !t.isRetired);
+    let projectedDebts = {};
+    let totalPointsThisJornada = processed.reduce((acc, t) => acc + t.total, 0);
+
+    if (totalPointsThisJornada > 0) {
+        let scoreGroups = {};
+        processed.forEach(t => {
+            if (!scoreGroups[t.total]) scoreGroups[t.total] = [];
+            scoreGroups[t.total].push(t.originalIndex);
+        });
+
+        let sortedUniqueScores = Object.keys(scoreGroups).map(Number).sort((a, b) => a - b);
+        let penalties = [3, 2, 2];
+        let penaltyIndex = 0;
+
+        for (let score of sortedUniqueScores) {
+            if (penaltyIndex >= penalties.length) break;
+            let group = scoreGroups[score];
+            let penaltiesToApply = [];
+            for (let i = 0; i < group.length && penaltyIndex < penalties.length; i++) {
+                penaltiesToApply.push(penalties[penaltyIndex]);
+                penaltyIndex++;
             }
-            if (st) {
-                st.innerText = nombres.length > 0
-                    ? `📚 Catálogo: ${nombres.length} jugadores memorizados`
-                    : `📚 Catálogo: vacío (se rellena con puntos.json)`;
-            }
+            let totalPenalty = penaltiesToApply.reduce((a, b) => a + b, 0);
+            let penaltyPerPerson = totalPenalty / group.length;
+            group.forEach(idx => { projectedDebts[idx] = penaltyPerPerson; });
+        }
+    }
+    return projectedDebts;
+}
+
+function initLegacyData() {
+    if (fantasyData.length > 0) {
+        let needsSave = false;
+        fantasyData.forEach(team => {
+            if (!team.coach) { team.coach = { n: "", t: equiposLaLiga[0], p: "" }; needsSave = true; }
+            if (typeof team.historicPoints === "undefined") { team.historicPoints = 0; needsSave = true; }
+            if (typeof team.debt === "undefined") { team.debt = 0; needsSave = true; }
+            if (typeof team.isRetired === "undefined") { team.isRetired = false; needsSave = true; }
+        });
+
+        if (!fantasyData.some(t => t.manager === "Galián")) {
+            let emptyPlayers = [];
+            for (let i = 0; i < 11; i++) emptyPlayers.push({ n: "", t: equiposLaLiga[0], c: false, p: "" });
+            fantasyData.push({
+                manager: "Galián",
+                players: emptyPlayers,
+                coach: { n: "", t: equiposLaLiga[0], p: "" },
+                historicPoints: 0,
+                debt: 0,
+                total: 0,
+                isRetired: true
+            });
+            needsSave = true;
+        }
+        if (needsSave) localStorage.setItem("lf_datos_v4", JSON.stringify(fantasyData));
+    }
+}
+
+initLegacyData();
+
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.innerText = message;
+    toast.classList.add("show");
+    setTimeout(() => { toast.classList.remove("show"); }, 3500);
+}
+
+function buildTeamOptions(selectedTeam) {
+    return equiposLaLiga.map(eq => `<option value="${eq}" ${eq === selectedTeam ? "selected" : ""}>${eq}</option>`).join("");
+}
+
+function calculateTeamTotal(team) {
+    let total = team.players.reduce((acc, p) => acc + (p.p === "" ? 0 : (p.c ? p.p * 2 : p.p)), 0);
+    if (team.coach && team.coach.p !== "") total += team.coach.p;
+    return total;
+}
+
+function saveDataToLocal() {
+    localStorage.setItem("lf_partidos_v4", JSON.stringify(partidosJornada));
+    localStorage.setItem("lf_datos_v4", JSON.stringify(fantasyData));
+    renderAll();
+}
+
+function switchTab(tabId, btnEl) {
+    document.querySelectorAll(".tab-content").forEach(el => el.classList.remove("active"));
+    document.querySelectorAll(".nav button").forEach(el => el.classList.remove("active"));
+    document.getElementById(tabId).classList.add("active");
+    if (btnEl) btnEl.classList.add("active");
+
+    if (tabId === "plantillas") renderPlantillas();
+    if (tabId === "jornada") renderJornada();
+    if (tabId === "general") renderGeneral();
+    if (tabId === "configuracion") {
+        cargarConfigGitHubUI();
+        cargarConfigCronJobUI();
+        cargarJornadaActualEnInput();
+    }
+}
+
+function renderAll() {
+    if (fantasyData.length > 0) {
+        renderPlantillas();
+        renderRanking();
+        renderGeneral();
+        renderJornada();
+        populateConfigForms();
+    }
+}
+
+function renderPlantillas() {
+    let html = "";
+    fantasyData.forEach((team, mIndex) => {
+        if (team.isRetired) return;
+
+        let playersHtml = team.players.map((p, pIndex) => {
+            const isUnplayed = p.p === "";
+            const scClass = getScoreClass(p.p);
+            const flashClass = flashedKeys.has(`p-${mIndex}-${pIndex}`) ? "score-flash" : "";
+            const det = buscarDetalleJugador(p.n, p.t);
+            const hasBreakdown = det && Array.isArray(det.desglose) && det.desglose.length > 0;
+            const tieneRelevo = det && det.relevo !== null && det.relevo !== undefined && det.relevo !== "";
+            const relevoBadge = det
+                ? (tieneRelevo ? "<span class=\"relevo-dot done\" title=\"Definitivo DAZN\">✓</span>" : "<span class=\"relevo-dot live\" title=\"Provisional\">●</span>")
+                : "";
+            const safeName = escapeHtml(p.n);
+            const safeTeam = escapeHtml(p.t);
+
+            return `
+            <div class="player-item ${isUnplayed ? "unplayed" : ""} ${p.n ? "clickable-player" : ""}" onclick="if(!event.target.closest('input') && '${safeName}') abrirModalDesglose('${safeName}', '${safeTeam}', ${Boolean(p.c)}, '${p.p}')">
+                <div class="player-info">
+                    <span class="player-name">${escapeHtml(p.n) || "Vacío"} ${p.c ? "<span class=\"captain-tag\">C</span>" : ""} ${relevoBadge}</span>
+                    <span class="player-team">
+                        <span>${escapeHtml(p.t) || "-"}</span>
+                        ${hasBreakdown ? "<span class=\"breakdown-hint\">· ver desglose</span>" : ""}
+                    </span>
+                </div>
+                <div class="points-container" onclick="event.stopPropagation()">
+                    <input type="number" class="points-input ${scClass} ${flashClass}" value="${p.p !== "" ? p.p : ""}" placeholder="-" oninput="updatePoints(${mIndex}, ${pIndex}, this.value, this)">
+                </div>
+            </div>`;
+        }).join("");
+
+        const coachUnplayed = team.coach.p === "";
+        const coachScClass = getScoreClass(team.coach.p);
+        const coachFlashClass = flashedKeys.has(`c-${mIndex}`) ? "score-flash" : "";
+        let coachHtml = `
+            <div class="player-item coach-item ${coachUnplayed ? "unplayed" : ""}">
+                <div class="player-info">
+                    <span class="player-name">👔 ${escapeHtml(team.coach.n) || "Sin Entrenador"}</span>
+                    <span class="player-team">${escapeHtml(team.coach.t) || "-"} (5V / 2E / 0D)</span>
+                </div>
+                <div class="points-container">
+                    <input type="number" class="points-input ${coachScClass} ${coachFlashClass}" value="${team.coach.p !== "" ? team.coach.p : ""}" placeholder="-" oninput="updateCoachPoints(${mIndex}, this.value, this)">
+                </div>
+            </div>`;
+
+        html += `
+            <div class="card">
+                <div class="team-header">
+                    <h2 class="team-title" style="color: ${coloresManagers[mIndex]};">${escapeHtml(team.manager)}</h2>
+                    <span class="team-total-badge" id="total-${mIndex}">${team.total}</span>
+                </div>
+                <div>${playersHtml}${coachHtml}</div>
+            </div>`;
+    });
+    document.getElementById("teamsContainer").innerHTML = html;
+}
+
+function refreshInputStyle(inputEl, value) {
+    if (!inputEl) return;
+    inputEl.classList.remove("pts-high", "pts-good", "pts-neg");
+    const cls = getScoreClass(value);
+    if (cls) inputEl.classList.add(cls);
+    const row = inputEl.closest(".player-item, .match-player");
+    if (row) {
+        if (value === "") row.classList.add("unplayed");
+        else row.classList.remove("unplayed");
+    }
+}
+
+function updatePoints(mIndex, pIndex, value, inputEl) {
+    const parsed = value === "" ? "" : parseInt(value, 10);
+    fantasyData[mIndex].players[pIndex].p = parsed;
+    fantasyData[mIndex].total = calculateTeamTotal(fantasyData[mIndex]);
+    refreshInputStyle(inputEl, parsed);
+    updateUIAfterPoints(mIndex);
+}
+
+function updateCoachPoints(mIndex, value, inputEl) {
+    const parsed = value === "" ? "" : parseInt(value, 10);
+    fantasyData[mIndex].coach.p = parsed;
+    fantasyData[mIndex].total = calculateTeamTotal(fantasyData[mIndex]);
+    refreshInputStyle(inputEl, parsed);
+    updateUIAfterPoints(mIndex);
+}
+
+function updateUIAfterPoints(mIndex) {
+    const totalEl = document.getElementById(`total-${mIndex}`);
+    if (totalEl) totalEl.innerText = fantasyData[mIndex].total;
+    localStorage.setItem("lf_datos_v4", JSON.stringify(fantasyData));
+    renderRanking();
+    renderGeneral();
+}
+
+function setSortMode(mode) {
+    currentSortMode = mode;
+    document.getElementById("btnSortPoints").classList.toggle("active", mode === "points");
+    document.getElementById("btnSortCoef").classList.toggle("active", mode === "coef");
+    renderRanking();
+}
+
+function setGeneralLiveMode(isLive) {
+    currentGeneralLiveMode = isLive;
+    document.getElementById("btnGenLiveOn").classList.toggle("active", isLive);
+    document.getElementById("btnGenLiveOff").classList.toggle("active", !isLive);
+    renderGeneral();
+}
+
+function setGeneralSortMode(mode) {
+    currentGeneralSortMode = mode;
+    document.getElementById("btnSortGenPoints").classList.toggle("active", mode === "points");
+    document.getElementById("btnSortGenDebt").classList.toggle("active", mode === "debt");
+    renderGeneral();
+}
+
+function renderRanking() {
+    let processed = [...fantasyData].map((t, i) => {
+        let playedCount = t.players.filter(p => p.p !== "").length;
+        if (t.coach && t.coach.p !== "") playedCount++;
+        let coef = playedCount > 0 ? (t.total / playedCount) : 0;
+        return { ...t, originalIndex: i, playedCount, coef };
+    }).filter(t => !t.isRetired);
+
+    let sorted = processed.sort((a, b) => {
+        if (currentSortMode === "points") {
+            if (b.total === a.total) return b.coef - a.coef;
+            return b.total - a.total;
+        } else {
+            return b.coef - a.coef;
+        }
+    });
+
+    let projectedDebts = calcularDeudasProyectadasJornada();
+    let uniqueScoresAsc = [...new Set(sorted.map(t => t.total))].sort((a, b) => a - b);
+    let lastPlaceScore = uniqueScoresAsc[0];
+
+    let html = "";
+    sorted.forEach((t, index) => {
+        let pendingCount = 12 - t.playedCount;
+        let rowClass = "ranking-row";
+        let paysAmount = projectedDebts[t.originalIndex] || 0;
+        let posBadgeClass = "pos-badge";
+
+        if (paysAmount > 0) {
+            posBadgeClass += " danger-zone";
+            if (t.total === lastPlaceScore) rowClass += " bg-dark-red";
+            else rowClass += " bg-red";
         }
 
-        function buscarEquipoEnCatalogo(nombreJugador) {
-            const norm = normalizarTexto(nombreJugador);
-            if (!norm) return null;
-            for (const [nombreCanónico, eq] of Object.entries(catalogoJugadores)) {
-                if (normalizarTexto(nombreCanónico) === norm && eq) {
-                    return eq;
-                }
-            }
-            return null;
+        let pagaHtml = paysAmount > 0
+            ? `<span class="debt-tag">+${paysAmount.toFixed(2)}€</span>`
+            : `<span style="color:var(--text-muted);">-</span>`;
+
+        html += `
+        <tr class="${rowClass}" onclick="toggleDetails(${t.originalIndex})">
+            <td><span class="${posBadgeClass}">${index + 1}</span></td>
+            <td style="color: ${coloresManagers[t.originalIndex]};"><strong>${escapeHtml(t.manager)}</strong></td>
+            <td style="text-align:center; color:var(--text-muted);">${pendingCount}</td>
+            <td style="text-align:center; color:var(--text-muted);">${t.coef.toFixed(1)}</td>
+            <td style="text-align:center; font-size: 0.9em;">${pagaHtml}</td>
+            <td style="text-align:right; font-weight:800; font-size:1.05em;">${t.total}</td>
+        </tr>
+        <tr id="details-${t.originalIndex}" class="ranking-details" style="display:none;">
+            <td colspan="6">
+                <div class="detail-grid">
+                    ${t.players.map(p => {
+                        const safeName = escapeHtml(p.n);
+                        const safeTeam = escapeHtml(p.t);
+                        return `
+                        <div class="detail-item ${p.p !== "" ? "played" : ""} ${p.n ? "clickable-player" : ""}" onclick="event.stopPropagation(); if('${safeName}') abrirModalDesglose('${safeName}', '${safeTeam}', ${Boolean(p.c)}, '${p.p}')">
+                            <span>${escapeHtml(p.n)} ${p.c ? "<span class=\"captain-tag\">C</span>" : ""}</span>
+                            <strong style="color: ${p.p !== "" ? "#fff" : "var(--text-muted)"};">${p.p !== "" ? p.p : "-"}</strong>
+                        </div>`;
+                    }).join("")}
+                    <div class="detail-item coach ${t.coach.p !== "" ? "played" : ""}">
+                        <span>👔 ${escapeHtml(t.coach.n) || "Míster"}</span>
+                        <strong style="color: ${t.coach.p !== "" ? "#fff" : "var(--text-muted)"};">${t.coach.p !== "" ? t.coach.p : "-"}</strong>
+                    </div>
+                </div>
+            </td>
+        </tr>`;
+    });
+    document.getElementById("rankingBody").innerHTML = html;
+}
+
+function renderGeneral() {
+    const projectedDebts = calcularDeudasProyectadasJornada();
+    const numManagers = fantasyData.length || 10;
+
+    const enriched = fantasyData.map((t, idx) => {
+        const livePts = t.isRetired ? 0 : t.total;
+        const liveDebtAdd = (!t.isRetired && projectedDebts[idx]) ? projectedDebts[idx] : 0;
+        const basePts = t.historicPoints;
+        const livePtsTotal = t.historicPoints + livePts;
+        const baseDebt = t.debt;
+        const liveDebtTotal = t.debt + liveDebtAdd;
+        return { ...t, originalIndex: idx, livePts, liveDebtAdd, basePts, livePtsTotal, baseDebt, liveDebtTotal };
+    });
+
+    const baseSorted = [...enriched].sort((a, b) => currentGeneralSortMode === "points" ? b.basePts - a.basePts : a.baseDebt - b.baseDebt);
+    const basePosMap = {};
+    baseSorted.forEach((item, i) => { basePosMap[item.originalIndex] = i + 1; });
+
+    const sorted = [...enriched].sort((a, b) => {
+        if (currentGeneralSortMode === "points") {
+            return (currentGeneralLiveMode ? b.livePtsTotal : b.basePts) - (currentGeneralLiveMode ? a.livePtsTotal : a.basePts);
+        } else {
+            return (currentGeneralLiveMode ? a.liveDebtTotal : a.baseDebt) - (currentGeneralLiveMode ? b.liveDebtTotal : b.baseDebt);
+        }
+    });
+
+    const boteTotalDeudas = sorted.reduce((acc, item) => acc + (currentGeneralLiveMode ? item.liveDebtTotal : item.baseDebt), 0);
+    const repartoPorManager = boteTotalDeudas / numManagers;
+
+    const kpiEl = document.getElementById("generalKpiSummary");
+    if (kpiEl) {
+        const activeByPts = [...enriched].filter(x => !x.isRetired).sort((a, b) =>
+            (currentGeneralLiveMode ? b.livePtsTotal : b.basePts) - (currentGeneralLiveMode ? a.livePtsTotal : a.basePts)
+        );
+        const lider = activeByPts[0];
+        const liderPts = lider ? (currentGeneralLiveMode ? lider.livePtsTotal : lider.basePts) : 0;
+
+        kpiEl.innerHTML = `
+            <div class="kpi-card">
+                <div class="kpi-label">💰 Bote Total Deudas</div>
+                <div class="kpi-value">${boteTotalDeudas.toFixed(2)} €</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">⚖️ Reparto (1/${numManagers})</div>
+                <div class="kpi-value" style="color:#86efac;">${repartoPorManager.toFixed(2)} €</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">👑 Líder General</div>
+                <div class="kpi-value" style="color:${lider ? coloresManagers[lider.originalIndex] : "var(--text)"};">${lider ? `${escapeHtml(lider.manager)} (${liderPts})` : "-"}</div>
+            </div>
+        `;
+    }
+
+    let html = "";
+    sorted.forEach((t, index) => {
+        const posActual = index + 1;
+        const posBase = basePosMap[t.originalIndex];
+        const diffPos = posBase - posActual;
+
+        let trendHtml = "";
+        if (currentGeneralLiveMode) {
+            if (diffPos > 0) trendHtml = `<span class="trend-pill trend-up" title="Sube ${diffPos}">▲${diffPos}</span>`;
+            else if (diffPos < 0) trendHtml = `<span class="trend-pill trend-down" title="Baja ${Math.abs(diffPos)}">▼${Math.abs(diffPos)}</span>`;
+            else trendHtml = `<span class="trend-pill trend-eq" title="Se mantiene">=</span>`;
         }
 
-        function autocompletarEquipoJugador(mIndex, pIndex, valorNombre) {
-            const eq = buscarEquipoEnCatalogo(valorNombre);
-            if (!eq) return;
-            const sel = document.getElementById(`p-team-${mIndex}-${pIndex}`);
-            if (sel && equiposLaLiga.includes(eq)) {
-                sel.value = eq;
-            }
-        }
+        const color = coloresManagers[t.originalIndex];
+        const shownDebt = currentGeneralLiveMode ? t.liveDebtTotal : t.baseDebt;
+        const extraDebtBadge = (currentGeneralLiveMode && t.liveDebtAdd > 0)
+            ? ` <span style="font-size:0.75em; color:#fca5a5;">(+${t.liveDebtAdd.toFixed(2)}€)</span>`
+            : "";
+        const debtHTML = shownDebt > 0
+            ? `<span class="debt-tag">${shownDebt.toFixed(2)} €</span>${extraDebtBadge}`
+            : `<span class="no-debt">0.00 €</span>`;
 
-        function aplicarPegadoRapidoPlantilla() {
-            const mIndex = document.getElementById('managerSelect').value;
-            if (mIndex === "") return;
-            const area = document.getElementById('quickPasteSquad');
-            if (!area) return;
+        const beneficioNeto = repartoPorManager - shownDebt;
+        const benefColor = beneficioNeto >= 0 ? "#86efac" : "#fca5a5";
+        const benefSign = beneficioNeto > 0 ? "+" : "";
+        const beneficioHTML = `<span style="color:${benefColor}; font-weight:800; white-space:nowrap;">${benefSign}${beneficioNeto.toFixed(2)} €</span>`;
 
-            const lineas = area.value
-                .split(/
-?
-/)
-                .map(l => l.trim())
-                .filter(Boolean)
-                .slice(0, 11);
+        const isRetiredStyle = t.isRetired ? "opacity: 0.55; background: rgba(0,0,0,0.22);" : "";
+        const nameLabel = escapeHtml(t.manager) + (t.isRetired ? " <em>(Ret.)</em>" : "");
+        const pointsLabel = t.isRetired
+            ? "-"
+            : (currentGeneralLiveMode ? (t.livePts > 0 ? "+" + t.livePts : String(t.livePts)) : "0");
+        const shownPts = currentGeneralLiveMode ? t.livePtsTotal : t.basePts;
 
-            if (lineas.length === 0) {
-                alert("Pega al menos un nombre de jugador en el cuadro de texto.");
-                return;
-            }
+        html += `
+        <tr class="ranking-row" style="${isRetiredStyle}">
+            <td style="white-space:nowrap;"><span class="pos-badge">${posActual}</span>${trendHtml}</td>
+            <td style="color: ${color};"><strong>${nameLabel}</strong></td>
+            <td style="text-align:center; color:var(--text-muted);">${pointsLabel}</td>
+            <td style="font-weight:800; font-size:1.06em;">${shownPts}</td>
+            <td>${debtHTML}</td>
+            <td>${beneficioHTML}</td>
+        </tr>`;
+    });
+    document.getElementById("generalBody").innerHTML = html;
+}
 
-            lineas.forEach((linea, idx) => {
-                let nombrePart = linea;
-                let equipoPart = null;
-                if (linea.includes(" - ")) {
-                    const partes = linea.split(" - ");
-                    nombrePart = partes[0].trim();
-                    equipoPart = partes[1].trim();
-                }
+function toggleDetails(originalIndex) {
+    const el = document.getElementById(`details-${originalIndex}`);
+    el.style.display = el.style.display === "none" ? "table-row" : "none";
+}
 
-                const inputEl = document.getElementById(`p-name-${mIndex}-${idx}`);
-                const selectEl = document.getElementById(`p-team-${mIndex}-${idx}`);
-                if (inputEl) inputEl.value = nombrePart;
+function renderJornada() {
+    let html = "";
+    const partidosOrdenados = [...partidosJornada].sort((a, b) => {
+        const idxA = pinnedMatchKeys.indexOf(getMatchKey(a));
+        const idxB = pinnedMatchKeys.indexOf(getMatchKey(b));
+        if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+        if (idxA !== -1) return -1;
+        if (idxB !== -1) return 1;
+        return 0;
+    });
 
-                const eqAuto = equipoPart || buscarEquipoEnCatalogo(nombrePart);
-                if (selectEl && eqAuto) {
-                    const matchEq = equiposLaLiga.find(e => normalizarTexto(e) === normalizarTexto(eqAuto));
-                    if (matchEq) selectEl.value = matchEq;
-                }
+    partidosOrdenados.forEach(partido => {
+        const matchKey = getMatchKey(partido);
+        const escapedKey = matchKey.replace(/'/g, "\\'");
+        const isPinned = pinnedMatchKeys.includes(matchKey);
+        const isCollapsed = collapsedMatchKeys.includes(matchKey);
+
+        const liveMatchInfo = detallesPartidosLive[matchKey] || null;
+        const centerBadgeText = (liveMatchInfo && liveMatchInfo.marcador) ? escapeHtml(liveMatchInfo.marcador) : "VS";
+        const statusBadgeHtml = liveMatchInfo
+            ? (liveMatchInfo.relevo_listo
+                ? "<span class=\"match-status-pill final\" title=\"Puntos DAZN/Relevo cerrados\">DEF</span>"
+                : (liveMatchInfo.marcador ? "<span class=\"match-status-pill live\" title=\"Provisional\">PROV</span>" : ""))
+            : "";
+
+        let loc = [], vis = [];
+        let totalEntities = 0, playedEntities = 0;
+
+        fantasyData.forEach((team, mIndex) => {
+            if (team.isRetired) return;
+
+            team.players.forEach((p, pIndex) => {
+                if (p.t !== partido.local && p.t !== partido.visitante) return;
+                totalEntities++;
+                const isUnplayed = p.p === "";
+                if (!isUnplayed) playedEntities++;
+
+                const scClass = getScoreClass(p.p);
+                const flashClass = flashedKeys.has(`p-${mIndex}-${pIndex}`) ? "score-flash" : "";
+                const det = buscarDetalleJugador(p.n, p.t);
+                const tieneRelevo = det && det.relevo !== null && det.relevo !== undefined && det.relevo !== "";
+                const relevoDot = det
+                    ? (tieneRelevo ? "<span class=\"relevo-dot done\" title=\"Definitivo DAZN\">✓</span>" : "<span class=\"relevo-dot live\" title=\"Provisional\">●</span>")
+                    : "";
+                const safeName = escapeHtml(p.n);
+                const safeTeam = escapeHtml(p.t);
+
+                let playerHtml = `
+                    <div class="match-player ${isUnplayed ? "unplayed" : ""} ${p.n ? "clickable-player" : ""}" onclick="if(!event.target.closest('input') && '${safeName}') abrirModalDesglose('${safeName}', '${safeTeam}', ${Boolean(p.c)}, '${p.p}')">
+                        <div class="match-player-stack">
+                            <div class="match-player-name-line">
+                                <span>${escapeHtml(p.n)}</span>
+                                ${p.c ? "<span class=\"captain-tag\">C</span>" : ""}
+                                ${relevoDot}
+                            </div>
+                            <span class="manager-pill" style="color: ${coloresManagers[mIndex]};">${escapeHtml(team.manager)}</span>
+                        </div>
+                        <div onclick="event.stopPropagation()">
+                            <input type="number" class="match-points-input ${scClass} ${flashClass}" value="${p.p !== "" ? p.p : ""}" placeholder="-" oninput="updatePoints(${mIndex}, ${pIndex}, this.value, this)">
+                        </div>
+                    </div>`;
+                if (p.t === partido.local) loc.push(playerHtml);
+                if (p.t === partido.visitante) vis.push(playerHtml);
             });
 
-            showToast(`✨ ${lineas.length} huecos rellenados. Revisa y pulsa Guardar Plantilla.`);
+            if (team.coach && (team.coach.t === partido.local || team.coach.t === partido.visitante)) {
+                totalEntities++;
+                const coachUnplayed = team.coach.p === "";
+                if (!coachUnplayed) playedEntities++;
+
+                const coachScClass = getScoreClass(team.coach.p);
+                const coachFlashClass = flashedKeys.has(`c-${mIndex}`) ? "score-flash" : "";
+                let coachHtml = `
+                    <div class="match-player coach ${coachUnplayed ? "unplayed" : ""}">
+                        <div class="match-player-stack">
+                            <div class="match-player-name-line">
+                                <span>👔 ${escapeHtml(team.coach.n)}</span>
+                            </div>
+                            <span class="manager-pill" style="color: ${coloresManagers[mIndex]};">${escapeHtml(team.manager)}</span>
+                        </div>
+                        <input type="number" class="match-points-input ${coachScClass} ${coachFlashClass}" value="${team.coach.p !== "" ? team.coach.p : ""}" placeholder="-" oninput="updateCoachPoints(${mIndex}, this.value, this)">
+                    </div>`;
+                if (team.coach.t === partido.local) loc.push(coachHtml);
+                if (team.coach.t === partido.visitante) vis.push(coachHtml);
+            }
+        });
+
+        const bodyHtml = isCollapsed
+            ? `<div class="collapsed-summary-bar">
+                   <span>${totalEntities} en juego (${playedEntities} puntuados)</span>
+                   <span style="color:var(--accent-bright); font-weight:700;">Pulsa para desplegar ▾</span>
+               </div>`
+            : `<div class="match-teams">
+                    <div class="match-half">
+                        <h4>${escapeHtml(partido.local)}</h4>
+                        ${loc.join("") || "<div class=\"owner-tag\">Sin jugadores</div>"}
+                    </div>
+                    <div class="match-half">
+                        <h4>${escapeHtml(partido.visitante)}</h4>
+                        ${vis.join("") || "<div class=\"owner-tag\">Sin jugadores</div>"}
+                    </div>
+                </div>`;
+
+        html += `
+            <div class="card ${isPinned ? "pinned-match" : ""} ${isCollapsed ? "collapsed-match" : ""}">
+                <div class="match-scoreboard-header" onclick="toggleCollapseMatch('${escapedKey}')" title="Pulsa para ocultar o mostrar los puntos de este partido">
+                    <button type="button" class="match-action-btn ${isPinned ? "active-pin" : ""}" onclick="togglePinMatch('${escapedKey}', event)" title="${isPinned ? "Quitar fijado arriba" : "Fijar partido arriba"}">📌</button>
+                    <span class="match-team-title">${escapeHtml(partido.local)}</span>
+                    <span class="vs-badge">${centerBadgeText}</span>
+                    ${statusBadgeHtml}
+                    <span class="match-team-title away">${escapeHtml(partido.visitante)}</span>
+                    <span class="match-action-btn" title="${isCollapsed ? "Mostrar puntos" : "Ocultar puntos"}">${isCollapsed ? "▸" : "▾"}</span>
+                </div>
+                ${bodyHtml}
+            </div>`;
+    });
+    document.getElementById("matchesContainer").innerHTML = html;
+}
+
+function populateConfigForms() {
+    if (partidosJornada.length === 0) return;
+
+    document.getElementById("editMatchesContainer").innerHTML = partidosJornada.map((p, i) => `
+        <div class="config-row">
+            <select id="m-loc-${i}" class="config-input">${buildTeamOptions(p.local)}</select>
+            <span style="color:var(--text-muted); font-weight:bold;">vs</span>
+            <select id="m-vis-${i}" class="config-input">${buildTeamOptions(p.visitante)}</select>
+        </div>`).join("");
+
+    const prevSel = document.getElementById("historicManagerSelect");
+    const selectedIdx = prevSel ? prevSel.value : "0";
+
+    let optionsHtml = fantasyData.map((t, i) =>
+        `<option value="${i}" ${String(i) === String(selectedIdx) ? "selected" : ""}>${escapeHtml(t.manager)}${t.isRetired ? " (Ret.)" : ""} — ${t.historicPoints} pts | ${t.debt.toFixed(2)} €</option>`
+    ).join("");
+
+    document.getElementById("historicInputsContainer").innerHTML = `
+        <select id="historicManagerSelect" class="config-input" onchange="renderHistoricManagerEditor()" style="margin-bottom:8px;">
+            ${optionsHtml}
+        </select>
+        <div id="historicSingleEditor"></div>
+    `;
+    renderHistoricManagerEditor();
+
+    const select = document.getElementById("managerSelect");
+    if (select.options.length <= 1) {
+        fantasyData.forEach((t, i) => {
+            if (!t.isRetired) select.add(new Option(t.manager, i));
+        });
+    }
+}
+
+function renderHistoricManagerEditor() {
+    const sel = document.getElementById("historicManagerSelect");
+    const box = document.getElementById("historicSingleEditor");
+    if (!sel || !box || fantasyData.length === 0) return;
+
+    const i = parseInt(sel.value, 10) || 0;
+    const t = fantasyData[i];
+
+    box.innerHTML = `
+        <div class="historic-compact-box" style="${t.isRetired ? "border-left: 3px solid var(--danger);" : ""}">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <strong style="color:${coloresManagers[i]};">${escapeHtml(t.manager)} ${t.isRetired ? "<span style=\"font-size:0.75em; color:var(--danger);\">(Retirado)</span>" : ""}</strong>
+                <span style="font-size:0.8em; color:var(--text-muted);">Actual: ${t.historicPoints} pts · ${t.debt.toFixed(2)} €</span>
+            </div>
+            <div class="historic-compact-grid">
+                <div>
+                    <label style="display:block; font-size:0.78em; color:var(--text-muted); margin-bottom:3px;">Puntos históricos</label>
+                    <input type="number" id="hist-pts-${i}" class="config-input" style="width:100%; padding:6px;" value="${t.historicPoints}" ${t.isRetired ? "disabled" : ""}>
+                </div>
+                <div>
+                    <label style="display:block; font-size:0.78em; color:var(--text-muted); margin-bottom:3px;">Deuda (€)</label>
+                    <input type="number" step="0.01" id="hist-debt-${i}" class="config-input" style="width:100%; padding:6px;" value="${t.debt}">
+                </div>
+            </div>
+            <button class="save-btn" style="padding:9px; font-size:0.92em; margin-top:10px;" onclick="saveHistoricData(${i})">💾 Guardar ${escapeHtml(t.manager)}</button>
+        </div>
+    `;
+}
+
+function saveHistoricData(targetIndex) {
+    if (typeof targetIndex === "number") {
+        const t = fantasyData[targetIndex];
+        if (!t.isRetired) {
+            const ptsEl = document.getElementById(`hist-pts-${targetIndex}`);
+            if (ptsEl) t.historicPoints = parseInt(ptsEl.value, 10) || 0;
+        }
+        const debtEl = document.getElementById(`hist-debt-${targetIndex}`);
+        if (debtEl) t.debt = parseFloat(debtEl.value) || 0;
+        saveDataToLocal();
+        showToast(`✔️ Histórico de ${t.manager} guardado`);
+        return;
+    }
+
+    fantasyData.forEach((t, i) => {
+        if (!t.isRetired) {
+            const ptsEl = document.getElementById(`hist-pts-${i}`);
+            if (ptsEl) t.historicPoints = parseInt(ptsEl.value, 10) || 0;
+        }
+        const debtEl = document.getElementById(`hist-debt-${i}`);
+        if (debtEl) t.debt = parseFloat(debtEl.value) || 0;
+    });
+    saveDataToLocal();
+    showToast("✔️ Datos históricos guardados");
+}
+
+function saveMatches() {
+    for (let i = 0; i < partidosJornada.length; i++) {
+        partidosJornada[i].local = document.getElementById(`m-loc-${i}`).value;
+        partidosJornada[i].visitante = document.getElementById(`m-vis-${i}`).value;
+    }
+    saveDataToLocal();
+    showToast("✔️ Partidos guardados correctamente");
+}
+
+function loadSquadEditor() {
+    const mIndex = document.getElementById("managerSelect").value;
+    if (mIndex === "") { document.getElementById("editSquadContainer").style.display = "none"; return; }
+
+    document.getElementById("editSquadContainer").style.display = "block";
+    let team = fantasyData[mIndex];
+
+    let html = "";
+    team.players.forEach((p, i) => {
+        html += `
+        <div class="config-row">
+            <input type="text" id="p-name-${mIndex}-${i}" list="catalogoJugadoresList" class="config-input" value="${escapeHtml(p.n)}" placeholder="Jugador" oninput="autocompletarEquipoJugador(${mIndex}, ${i}, this.value)">
+            <select id="p-team-${mIndex}-${i}" class="config-input">${buildTeamOptions(p.t)}</select>
+            <div class="radio-cell">
+                <input type="radio" name="capitan-${mIndex}" id="p-cap-${mIndex}-${i}" ${p.c ? "checked" : ""}>
+            </div>
+        </div>`;
+    });
+    document.getElementById("squadInputs").innerHTML = html;
+
+    let coachHtml = `
+        <div class="config-row">
+            <input type="text" id="c-name-${mIndex}" class="config-input" value="${escapeHtml(team.coach.n)}" placeholder="Nombre Entrenador">
+            <select id="c-team-${mIndex}" class="config-input">${buildTeamOptions(team.coach.t)}</select>
+            <div class="radio-cell"></div>
+        </div>`;
+    document.getElementById("coachInput").innerHTML = coachHtml;
+}
+
+function saveSquad() {
+    const mIndex = document.getElementById("managerSelect").value;
+
+    for (let i = 0; i < 11; i++) {
+        fantasyData[mIndex].players[i].n = document.getElementById(`p-name-${mIndex}-${i}`).value;
+        fantasyData[mIndex].players[i].t = document.getElementById(`p-team-${mIndex}-${i}`).value;
+        fantasyData[mIndex].players[i].c = document.getElementById(`p-cap-${mIndex}-${i}`).checked;
+    }
+
+    fantasyData[mIndex].coach.n = document.getElementById(`c-name-${mIndex}`).value;
+    fantasyData[mIndex].coach.t = document.getElementById(`c-team-${mIndex}`).value;
+
+    fantasyData[mIndex].total = calculateTeamTotal(fantasyData[mIndex]);
+    saveDataToLocal();
+    showToast("✔️ Plantilla guardada en local (pulsa Subir a GitHub para compartir)");
+    loadSquadEditor();
+    sincronizarPuntosEnDirecto();
+}
+
+function limpiarPuntosJornada() {
+    if (confirm("🧹 ¿Poner a cero/vacío todos los puntos de la jornada actual?\n\nNo se sumarán puntos a la General ni se repartirán deudas.")) {
+        fantasyData.forEach(team => {
+            team.players.forEach(p => p.p = "");
+            if (team.coach) team.coach.p = "";
+            team.total = 0;
+        });
+        localStorage.setItem("lf_bloqueo_sincro_cerrada", "1");
+        const jInputVal = (document.getElementById("jornadaNumeroInput")?.value || "").trim();
+        if (jInputVal) localStorage.setItem("lf_jornada_cerrada_num", jInputVal);
+        saveDataToLocal();
+        showToast("🧹 Puntos de jornada limpiados a cero");
+    }
+}
+
+function cerrarJornada() {
+    let activeTeams = fantasyData
+        .map((team, index) => ({ index, manager: team.manager, total: team.total, isRetired: team.isRetired }))
+        .filter(t => !t.isRetired);
+
+    let totalPointsThisJornada = activeTeams.reduce((acc, t) => acc + t.total, 0);
+    if (totalPointsThisJornada === 0) {
+        alert("No hay puntos registrados en esta jornada. Carga algunos puntos antes de cerrar.");
+        return;
+    }
+
+    let debtChanges = calcularDeudasProyectadasJornada();
+
+    const resumenDeudas = Object.entries(debtChanges)
+        .map(([idx, amount]) => ({ manager: fantasyData[idx].manager, amount: amount, total: fantasyData[idx].total }))
+        .sort((a, b) => b.amount - a.amount || a.total - b.total)
+        .map(d => `• ${d.manager}: +${d.amount.toFixed(2)} € (${d.total} pts)`)
+        .join("\n");
+
+    if (!confirm(`💸 PASO 1/2 — DEUDAS A SUMAR:\n\n${resumenDeudas || "Nadie suma deuda"}\n\n¿Confirmas este reparto de deudas?`)) {
+        return;
+    }
+
+    const resumenPuntos = [...activeTeams]
+        .sort((a, b) => b.total - a.total)
+        .map(t => `• ${t.manager}: ${t.total} pts`)
+        .join("\n");
+
+    if (!confirm(`🏆 PASO 2/2 — PUNTOS A SUMAR A LA GENERAL:\n\n${resumenPuntos}\n\n¿Confirmas sumar estos puntos y reiniciar los marcadores a 0?`)) {
+        return;
+    }
+
+    Object.entries(debtChanges).forEach(([idx, amount]) => {
+        fantasyData[idx].debt += amount;
+    });
+
+    fantasyData.forEach(team => {
+        if (!team.isRetired) team.historicPoints += team.total;
+        team.players.forEach(p => p.p = "");
+        if (team.coach) team.coach.p = "";
+        team.total = 0;
+    });
+
+    localStorage.setItem("lf_bloqueo_sincro_cerrada", "1");
+    const jInputVal = (document.getElementById("jornadaNumeroInput")?.value || "").trim();
+    if (jInputVal) localStorage.setItem("lf_jornada_cerrada_num", jInputVal);
+    saveDataToLocal();
+    showToast("🔄 Jornada cerrada. Puntos y deudas actualizados.");
+}
+
+function exportData() {
+    const data = { partidos: partidosJornada, datos: fantasyData };
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
+    const downloadAnchorNode = document.createElement("a");
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", "laliga_fantasy_backup.json");
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+    showToast("⬇️ Copia descargada");
+}
+
+function importData(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const imported = JSON.parse(e.target.result);
+            if (imported.partidos && imported.datos) {
+                partidosJornada = imported.partidos;
+                fantasyData = imported.datos;
+                initLegacyData();
+                saveDataToLocal();
+                showToast("⬆️ Datos importados correctamente");
+                sincronizarPuntosEnDirecto();
+            } else {
+                alert("El archivo no tiene el formato correcto.");
+            }
+        } catch (err) {
+            alert("Error al leer el archivo.");
+        }
+    };
+    reader.readAsText(file);
+}
+
+function getCronJobConfig() {
+    return {
+        jobId: localStorage.getItem("lf_cj_jobid") || "8917104",
+        apiKey: localStorage.getItem("lf_cj_apikey") || ""
+    };
+}
+
+function cargarConfigCronJobUI() {
+    const cfg = getCronJobConfig();
+    const j = document.getElementById("cjJobId");
+    const k = document.getElementById("cjApiKey");
+    if (j) j.value = cfg.jobId;
+    if (k) k.value = cfg.apiKey;
+}
+
+function guardarConfigCronJob() {
+    const jobId = document.getElementById("cjJobId").value.trim();
+    const apiKey = document.getElementById("cjApiKey").value.trim();
+    if (!jobId || !apiKey) {
+        alert("Rellena el Job ID y la Clave API de cron-job.org.");
+        return;
+    }
+    localStorage.setItem("lf_cj_jobid", jobId);
+    localStorage.setItem("lf_cj_apikey", apiKey);
+    showToast("🔑 Credenciales de Cron-job.org guardadas");
+}
+
+async function controlarCronJob(activar) {
+    const cfg = getCronJobConfig();
+    const label = document.getElementById("cronStatusLabel");
+    if (!cfg.apiKey) {
+        alert("Primero pega tu Clave API en 'Configurar Clave API y Job ID de Cron-job.org'.");
+        return;
+    }
+
+    const url = `https://api.cron-job.org/jobs/${encodeURIComponent(cfg.jobId)}`;
+    try {
+        if (label) label.innerText = activar ? "⏳ Activando cronjob..." : "⏳ Pausando cronjob...";
+        const res = await fetch(url, {
+            method: "PATCH",
+            headers: {
+                "Authorization": `Bearer ${cfg.apiKey}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ job: { enabled: activar } })
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const textoEstado = activar ? "🟢 ACTIVO" : "⏸️ PAUSADO (no gastará ejecuciones hasta que lo actives)";
+        if (label) label.innerText = "Estado: " + textoEstado;
+        showToast(activar ? "▶️ Cron-job activado" : "⏸️ Cron-job pausado");
+    } catch (err) {
+        if (label) label.innerText = "⚠️ No se pudo cambiar desde el navegador (" + err.message + ")";
+        if (confirm("El navegador bloqueó la petición directa a cron-job.org por seguridad CORS. ¿Quieres abrir la consola de cron-job.org para activarlo/pausarlo en un clic?")) {
+            window.open("https://console.cron-job.org/jobs", "_blank");
+        }
+    }
+}
+
+function getGitHubConfig() {
+    return {
+        owner: localStorage.getItem("lf_gh_owner") || "blancomerenguesm",
+        repo: localStorage.getItem("lf_gh_repo") || "laliga-fantasy",
+        token: localStorage.getItem("lf_gh_token") || ""
+    };
+}
+
+function cargarConfigGitHubUI() {
+    const cfg = getGitHubConfig();
+    const o = document.getElementById("ghOwner");
+    const r = document.getElementById("ghRepo");
+    const t = document.getElementById("ghToken");
+    if (o) o.value = cfg.owner;
+    if (r) r.value = cfg.repo;
+    if (t) t.value = cfg.token;
+}
+
+function guardarConfigGitHub() {
+    const owner = document.getElementById("ghOwner").value.trim();
+    const repo = document.getElementById("ghRepo").value.trim();
+    const token = document.getElementById("ghToken").value.trim();
+    if (!owner || !repo || !token) {
+        alert("Rellena usuario, repositorio y token.");
+        return;
+    }
+    localStorage.setItem("lf_gh_owner", owner);
+    localStorage.setItem("lf_gh_repo", repo);
+    localStorage.setItem("lf_gh_token", token);
+    showToast("🔑 Credenciales de GitHub guardadas en este navegador");
+}
+
+function utf8ToBase64(str) {
+    const bytes = new TextEncoder().encode(str);
+    let binary = "";
+    for (let i = 0; i < bytes.byteLength; i++) binary += String.fromCharCode(bytes[i]);
+    return btoa(binary);
+}
+
+function base64ToUtf8(b64) {
+    const binary = atob(b64.replace(/\s/g, ""));
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return new TextDecoder().decode(bytes);
+}
+
+async function subirBackupAGitHub() {
+    const cfg = getGitHubConfig();
+    if (!cfg.token) {
+        alert("Primero configura tu Token de GitHub en el desplegable 'Configurar Token de GitHub'.");
+        return;
+    }
+
+    const apiUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/laliga_fantasy_backup.json`;
+    const headers = {
+        "Authorization": `Bearer ${cfg.token}`,
+        "Accept": "application/vnd.github+json",
+        "Content-Type": "application/json"
+    };
+
+    try {
+        showToast("⏳ Subiendo cambios a GitHub...");
+        let sha = null;
+        const getRes = await fetch(apiUrl + "?t=" + Date.now(), { headers });
+        if (getRes.ok) {
+            const fileInfo = await getRes.json();
+            sha = fileInfo.sha;
         }
 
-        async function cargarCatalogoJugadoresDesdePuntosJson(manual = false) {
-            try {
-                const res = await fetch('puntos.json?t=' + Date.now());
-                if (!res.ok) throw new Error("No se encontró puntos.json");
-                const dataRaw = await res.json();
-                const jugadoresRaw = dataRaw.jugadores || {};
-                const equiposRaw = dataRaw.jugadores_equipos || {};
+        const payloadData = { partidos: partidosJornada, datos: fantasyData };
+        const contentB64 = utf8ToBase64(JSON.stringify(payloadData, null, 2));
+        const body = { message: "Actualización de plantillas/datos desde el panel web", content: contentB64 };
+        if (sha) body.sha = sha;
 
-                const nuevo = {};
-                for (const [nombre, val] of Object.entries(jugadoresRaw)) {
-                    const eqObj = (val && typeof val === 'object') ? (val.equipo || "") : "";
-                    nuevo[nombre] = equiposRaw[nombre] || eqObj || catalogoJugadores[nombre] || "";
-                }
-                for (const [nombre, eq] of Object.entries(equiposRaw)) {
-                    if (eq) nuevo[nombre] = eq;
-                }
+        const putRes = await fetch(apiUrl, { method: "PUT", headers, body: JSON.stringify(body) });
+        if (!putRes.ok) {
+            const errData = await putRes.json();
+            throw new Error(errData.message || "Error al subir a GitHub");
+        }
+        showToast("☁️ ¡Subido a GitHub! Ya puedes traerlo desde el otro dispositivo");
+    } catch (err) {
+        alert("❌ Error al subir a GitHub: " + err.message);
+    }
+}
 
-                guardarCatalogoLocal(nuevo);
-                if (manual) showToast(`📚 Catálogo actualizado (${Object.keys(catalogoJugadores).length} jugadores)`);
-            } catch (e) {
-                if (manual) alert("No se pudo actualizar el catálogo desde puntos.json");
-            }
+async function cargarBackupDesdeGitHub(manual) {
+    const cfg = getGitHubConfig();
+    try {
+        if (manual) showToast("⏳ Descargando última versión de GitHub...");
+        let imported = null;
+
+        const apiUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/laliga_fantasy_backup.json?t=${Date.now()}`;
+        const headers = { "Accept": "application/vnd.github+json" };
+        if (cfg.token) headers["Authorization"] = `Bearer ${cfg.token}`;
+
+        const apiRes = await fetch(apiUrl, { headers });
+        if (apiRes.ok) {
+            const fileObj = await apiRes.json();
+            if (fileObj.content) imported = JSON.parse(base64ToUtf8(fileObj.content));
         }
 
-        function buscarPuntosJugador(nombreBackup, mapaPuntos) {
-            const normBackup = normalizarTexto(nombreBackup);
-            if (!normBackup) return null;
-
-            if (Object.prototype.hasOwnProperty.call(mapaPuntos, normBackup)) {
-                return mapaPuntos[normBackup];
-            }
-
-            const claves = Object.keys(mapaPuntos);
-
-            const matchInicial = normBackup.match(/^([a-z])\.\s*(.+)$/);
-            if (matchInicial) {
-                const inicial = matchInicial[1];
-                const apellido = matchInicial[2];
-                const candidatos = claves.filter(k => {
-                    const partes = k.split(" ");
-                    return partes[0].startsWith(inicial) && partes[partes.length - 1] === apellido;
-                });
-                if (candidatos.length === 1) return mapaPuntos[candidatos[0]];
-            }
-
-            const palabrasBackup = normBackup.split(" ").filter(Boolean);
-
-            if (palabrasBackup.length === 1) {
-                const unico = palabrasBackup[0];
-                const exactasPalabra = claves.filter(k => k.split(" ").includes(unico));
-                if (exactasPalabra.length === 1) return mapaPuntos[exactasPalabra[0]];
-                if (exactasPalabra.length > 1) return null;
-
-                const prefijos = claves.filter(k => k.startsWith(unico + " "));
-                if (prefijos.length === 1) return mapaPuntos[prefijos[0]];
-                return null;
-            }
-
-            const subconjunto = claves.filter(k => {
-                const palabrasClave = k.split(" ");
-                return palabrasBackup.every(pb => palabrasClave.includes(pb));
-            });
-            if (subconjunto.length === 1) {
-                return mapaPuntos[subconjunto[0]];
-            }
-
-            return null;
+        if (!imported) {
+            const res = await fetch("laliga_fantasy_backup.json?t=" + Date.now());
+            if (res.ok) imported = await res.json();
         }
 
-        async function sincronizarPuntosEnDirecto() {
-            const statusEl = document.getElementById("syncStatus");
-            const dotEl = document.getElementById("liveIndicatorDot");
-            const badgeEl = document.getElementById("headerJornadaBadge");
-            try {
-                const res = await fetch('puntos.json?t=' + Date.now());
-                if (!res.ok) throw new Error("No se encontró puntos.json");
-                const dataRaw = await res.json();
-
-                if (dataRaw.jornada && badgeEl) {
-                    badgeEl.innerText = `JORNADA ${dataRaw.jornada}`;
-                }
-                if (dotEl) dotEl.classList.remove("offline");
-
-                const jugadoresRaw = dataRaw.jugadores ? dataRaw.jugadores : dataRaw;
-                const entrenadoresRaw = dataRaw.entrenadores ? dataRaw.entrenadores : {};
-                const partidosRaw = Array.isArray(dataRaw.partidos) ? dataRaw.partidos : [];
-                const numJugCheck = Object.keys(jugadoresRaw).length;
-
-                // Actualizar estado y marcadores de partidos desde puntos.json (FútbolFantasy)
-                const nuevoMapaPartidos = {};
-                partidosRaw.forEach(pt => {
-                    if (pt && pt.local && pt.visitante) {
-                        nuevoMapaPartidos[`${pt.local}__${pt.visitante}`] = pt;
-                    }
-                });
-                detallesPartidosLive = nuevoMapaPartidos;
-
-                if (numJugCheck > 0 && localStorage.getItem('lf_bloqueo_sincro_cerrada') === '1') {
-                    const jCerrada = localStorage.getItem('lf_jornada_cerrada_num') || '';
-                    if (jCerrada && String(dataRaw.jornada || '') === jCerrada) {
-                        const horaLecturaSkip = new Date().toLocaleTimeString();
-                        const jTagSkip = dataRaw.jornada ? `J${dataRaw.jornada} · ` : '';
-                        const infoOrigenSkip = dataRaw.actualizado_en ? `Datos de las ${dataRaw.actualizado_en}` : `Leído ${horaLecturaSkip}`;
-                        if (statusEl) statusEl.innerText = `${jTagSkip}${infoOrigenSkip} · Leído ${horaLecturaSkip} (Jornada cerrada en local)`;
-                        return;
-                    } else {
-                        localStorage.removeItem('lf_bloqueo_sincro_cerrada');
-                        localStorage.removeItem('lf_jornada_cerrada_num');
-                    }
-                }
-
-                // Soporta tanto formato antiguo (nombre: 7) como el nuevo enriquecido de FútbolFantasy (nombre: { puntos: 7, desglose: [...], relevo: 3, ... })
-                const mapaPuntos = {};
-                const nuevosDetalles = {};
-                for (const [nombre, val] of Object.entries(jugadoresRaw)) {
-                    const normKey = normalizarTexto(nombre);
-                    if (val !== null && typeof val === 'object') {
-                        if (val.jugo !== false) {
-                            mapaPuntos[normKey] = val.puntos;
-                        }
-                        if (val.nombre) {
-                            const normCorto = normalizarTexto(val.nombre);
-                            if (val.jugo !== false && !Object.prototype.hasOwnProperty.call(mapaPuntos, normCorto)) {
-                                mapaPuntos[normCorto] = val.puntos;
-                            }
-                        }
-                        nuevosDetalles[normKey] = {
-                            nombre: val.nombre || nombre,
-                            nombre_completo: val.nombre_completo || nombre,
-                            equipo: val.equipo || '',
-                            posicion: val.posicion || '',
-                            puntos: val.puntos ?? 0,
-                            jugo: val.jugo !== false,
-                            relevo: val.relevo ?? null,
-                            desglose: Array.isArray(val.desglose) ? val.desglose : []
-                        };
-                    } else {
-                        mapaPuntos[normKey] = val;
-                        nuevosDetalles[normKey] = {
-                            nombre: nombre,
-                            nombre_completo: nombre,
-                            equipo: (dataRaw.jugadores_equipos && dataRaw.jugadores_equipos[nombre]) || '',
-                            posicion: '',
-                            puntos: val,
-                            jugo: true,
-                            relevo: null,
-                            desglose: []
-                        };
-                    }
-                }
-                detallesJugadoresLive = nuevosDetalles;
-
-                // Entrenadores: soporta { "Levante": 2 } o { "Luis Castro": { equipo: "Levante", puntos: 2 } }
-                const mapaEntrenadores = {};
-                for (const [claveCoach, valCoach] of Object.entries(entrenadoresRaw)) {
-                    if (valCoach !== null && typeof valCoach === 'object') {
-                        if (valCoach.equipo) mapaEntrenadores[normalizarTexto(valCoach.equipo)] = valCoach.puntos;
-                        mapaEntrenadores[normalizarTexto(claveCoach)] = valCoach.puntos;
-                    } else {
-                        mapaEntrenadores[normalizarTexto(claveCoach)] = valCoach;
-                    }
-                }
-
-                flashedKeys.clear();
-                let cambios = 0;
-                fantasyData.forEach((team, mIndex) => {
-                    if (team.isRetired) return;
-
-                    team.players.forEach((p, pIndex) => {
-                        const pts = buscarPuntosJugador(p.n, mapaPuntos);
-                        if (pts !== null && p.p !== pts) {
-                            p.p = pts;
-                            cambios++;
-                            flashedKeys.add(`p-${mIndex}-${pIndex}`);
-                        }
-                    });
-
-                    if (team.coach) {
-                        const normEquipo = normalizarTexto(team.coach.t);
-                        const normNombreCoach = normalizarTexto(team.coach.n);
-                        let ptsCoach = null;
-                        if (normEquipo && Object.prototype.hasOwnProperty.call(mapaEntrenadores, normEquipo)) {
-                            ptsCoach = mapaEntrenadores[normEquipo];
-                        } else if (normNombreCoach && Object.prototype.hasOwnProperty.call(mapaEntrenadores, normNombreCoach)) {
-                            ptsCoach = mapaEntrenadores[normNombreCoach];
-                        }
-                        if (ptsCoach !== null && team.coach.p !== ptsCoach) {
-                            team.coach.p = ptsCoach;
-                            cambios++;
-                            flashedKeys.add(`c-${mIndex}`);
-                        }
-                    }
-
-                    team.total = calculateTeamTotal(team);
-                });
-
-                if (cambios > 0) {
-                    saveDataToLocal();
-                    setTimeout(() => { flashedKeys.clear(); }, 1300);
-                } else {
-                    renderPlantillas();
-                    renderJornada();
-                }
-
-                const horaLectura = new Date().toLocaleTimeString();
-                const numJug = Object.keys(jugadoresRaw).length;
-                const numEnt = Object.keys(entrenadoresRaw).length;
-
-                if (numJug > 0) {
-                    const eqRaw = dataRaw.jugadores_equipos || {};
-                    const addCat = {};
-                    for (const [nombreKey, val] of Object.entries(jugadoresRaw)) {
-                        const eqVal = (val && typeof val === 'object') ? (val.equipo || "") : "";
-                        addCat[nombreKey] = eqRaw[nombreKey] || eqVal || catalogoJugadores[nombreKey] || "";
-                    }
-                    guardarCatalogoLocal(addCat);
-                }
-
-                let infoOrigen = "";
-                if (dataRaw.actualizado_en) {
-                    infoOrigen = `Datos de las ${dataRaw.actualizado_en}`;
-                } else {
-                    const lastMod = res.headers.get("Last-Modified");
-                    infoOrigen = lastMod
-                        ? `Archivo de las ${new Date(lastMod).toLocaleTimeString()}`
-                        : `Leído a las ${horaLectura}`;
-                }
-
-                const fuenteTag = dataRaw.fuente === 'futbolfantasy' ? ' · FF' : '';
-                const jTag = dataRaw.jornada ? `J${dataRaw.jornada} · ` : '';
-                if (statusEl) statusEl.innerText = `${jTag}${infoOrigen} · Leído ${horaLectura} (${numJug} jug., ${numEnt} entr.${fuenteTag})`;
-            } catch (err) {
-                if (dotEl) dotEl.classList.add("offline");
-                if (statusEl) statusEl.innerText = `Sin conexión con puntos.json`;
-            }
-        }
-
-        (async () => {
-            actualizarDatalistCatalogo();
-            cargarConfigGitHubUI();
-            cargarConfigCronJobUI();
-            await cargarBackupInicialSiVacio();
-            await cargarJornadaActualEnInput();
+        if (imported && imported.partidos && imported.datos) {
+            partidosJornada = imported.partidos;
+            fantasyData = imported.datos;
+            initLegacyData();
+            saveDataToLocal();
             await sincronizarPuntosEnDirecto();
-            setInterval(sincronizarPuntosEnDirecto, 30000);
-        })();
-    </script>
+            if (manual) showToast("✅ Plantillas y datos actualizados desde GitHub");
+        } else if (manual) {
+            alert("No se pudo leer laliga_fantasy_backup.json desde GitHub.");
+        }
+    } catch (e) {
+        if (manual) alert("❌ Error al traer datos de GitHub: " + e.message);
+    }
+}
+
+async function cargarBackupInicialSiVacio() {
+    if (fantasyData.length === 0) {
+        await cargarBackupDesdeGitHub(false);
+    } else {
+        fantasyData.forEach(t => t.total = calculateTeamTotal(t));
+        renderAll();
+    }
+}
+
+async function cargarJornadaActualEnInput() {
+    const input = document.getElementById("jornadaNumeroInput");
+    if (!input || input.value) return;
+    try {
+        const res = await fetch("puntos.json?t=" + Date.now());
+        if (res.ok) {
+            const dataRaw = await res.json();
+            if (dataRaw.jornada) {
+                input.value = dataRaw.jornada;
+                const badge = document.getElementById("headerJornadaBadge");
+                if (badge) badge.innerText = `JORNADA ${dataRaw.jornada}`;
+            }
+        }
+    } catch (e) {}
+}
+
+async function cambiarJornadaEnGitHub() {
+    const cfg = getGitHubConfig();
+    const statusDiv = document.getElementById("jornadaGitHubStatus");
+    const jornadaVal = (document.getElementById("jornadaNumeroInput").value || "").trim();
+
+    if (!jornadaVal || isNaN(jornadaVal)) {
+        alert("Introduce un número de jornada válido (por ejemplo, 14).");
+        return;
+    }
+    if (!cfg.token) {
+        alert("Primero configura tu Token de GitHub en 'Sincronización Nube (PC ↔ Móvil)'.");
+        return;
+    }
+
+    const fileUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/config_jornada.json`;
+    const dispatchUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/actions/workflows/actualizar.yml/dispatches`;
+    const headers = {
+        "Authorization": `Bearer ${cfg.token}`,
+        "Accept": "application/vnd.github+json",
+        "Content-Type": "application/json"
+    };
+
+    try {
+        if (statusDiv) statusDiv.innerText = `⏳ Guardando Jornada ${jornadaVal} en GitHub...`;
+        let sha = null;
+        const getRes = await fetch(fileUrl + "?t=" + Date.now(), { headers });
+        if (getRes.ok) {
+            const info = await getRes.json();
+            sha = info.sha;
+        }
+
+        const contentB64 = utf8ToBase64(JSON.stringify({ jornada: String(jornadaVal) }, null, 2));
+        const putBody = { message: `Cambiar jornada activa a Jornada ${jornadaVal}`, content: contentB64 };
+        if (sha) putBody.sha = sha;
+
+        const putRes = await fetch(fileUrl, { method: "PUT", headers, body: JSON.stringify(putBody) });
+        if (!putRes.ok) {
+            const errData = await putRes.json();
+            throw new Error(errData.message || `HTTP ${putRes.status}`);
+        }
+
+        if (statusDiv) statusDiv.innerText = `⏳ Lanzando extractor para Jornada ${jornadaVal}...`;
+        const dispRes = await fetch(dispatchUrl, { method: "POST", headers, body: JSON.stringify({ ref: "main" }) });
+        if (!dispRes.ok && dispRes.status !== 204) {
+            throw new Error(`No se pudo disparar el workflow (HTTP ${dispRes.status})`);
+        }
+
+        if (statusDiv) statusDiv.innerText = `✅ Jornada ${jornadaVal} activada. Espera ~20 segundos y pulsa "📥 Cargar partidos de la jornada desde puntos.json".`;
+        showToast(`🚀 Jornada ${jornadaVal} enviada a GitHub y extractor lanzado`);
+    } catch (err) {
+        if (statusDiv) statusDiv.innerText = `❌ Error: ${err.message}`;
+        alert("❌ Error al cambiar jornada en GitHub: " + err.message);
+    }
+}
+
+async function cargarPartidosDesdePuntosJson() {
+    try {
+        const res = await fetch("puntos.json?t=" + Date.now());
+        if (!res.ok) throw new Error("No se pudo leer puntos.json");
+        const dataRaw = await res.json();
+        if (!Array.isArray(dataRaw.partidos) || dataRaw.partidos.length === 0) {
+            alert("puntos.json no contiene partidos todavía. Espera unos segundos a que termine GitHub Actions y vuelve a pulsar.");
+            return;
+        }
+        partidosJornada = dataRaw.partidos.map(p => ({ local: p.local, visitante: p.visitante }));
+        saveDataToLocal();
+        const jTxt = dataRaw.jornada ? ` (Jornada ${dataRaw.jornada})` : "";
+        showToast(`📥 ${partidosJornada.length} partidos cargados${jTxt}`);
+    } catch (err) {
+        alert("❌ Error al cargar partidos: " + err.message);
+    }
+}
+
+function normalizarTexto(texto) {
+    return (texto || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
+}
+
+let catalogoJugadores = JSON.parse(localStorage.getItem("lf_catalogo_jugadores")) || {};
+
+function guardarCatalogoLocal(nuevoCatalogo) {
+    catalogoJugadores = { ...catalogoJugadores, ...nuevoCatalogo };
+    localStorage.setItem("lf_catalogo_jugadores", JSON.stringify(catalogoJugadores));
+    actualizarDatalistCatalogo();
+}
+
+function actualizarDatalistCatalogo() {
+    const dl = document.getElementById("catalogoJugadoresList");
+    const st = document.getElementById("catalogoJugadoresStatus");
+    const nombres = Object.keys(catalogoJugadores).sort((a, b) => a.localeCompare(b, "es"));
+    if (dl) {
+        dl.innerHTML = nombres.map(n => `<option value="${escapeHtml(n)}"></option>`).join("");
+    }
+    if (st) {
+        st.innerText = nombres.length > 0
+            ? `📚 Catálogo: ${nombres.length} jugadores memorizados`
+            : "📚 Catálogo: vacío (se rellena con puntos.json)";
+    }
+}
+
+function buscarEquipoEnCatalogo(nombreJugador) {
+    const norm = normalizarTexto(nombreJugador);
+    if (!norm) return null;
+    for (const [nombreCanónico, eq] of Object.entries(catalogoJugadores)) {
+        if (normalizarTexto(nombreCanónico) === norm && eq) return eq;
+    }
+    return null;
+}
+
+function autocompletarEquipoJugador(mIndex, pIndex, valorNombre) {
+    const eq = buscarEquipoEnCatalogo(valorNombre);
+    if (!eq) return;
+    const sel = document.getElementById(`p-team-${mIndex}-${pIndex}`);
+    if (sel && equiposLaLiga.includes(eq)) sel.value = eq;
+}
+
+function aplicarPegadoRapidoPlantilla() {
+    const mIndex = document.getElementById("managerSelect").value;
+    if (mIndex === "") return;
+    const area = document.getElementById("quickPasteSquad");
+    if (!area) return;
+
+    const lineas = area.value
+        .split(/\r?\n/)
+        .map(l => l.trim())
+        .filter(Boolean)
+        .slice(0, 11);
+
+    if (lineas.length === 0) {
+        alert("Pega al menos un nombre de jugador en el cuadro de texto.");
+        return;
+    }
+
+    lineas.forEach((linea, idx) => {
+        let nombrePart = linea;
+        let equipoPart = null;
+        if (linea.includes(" - ")) {
+            const partes = linea.split(" - ");
+            nombrePart = partes[0].trim();
+            equipoPart = partes[1].trim();
+        }
+
+        const inputEl = document.getElementById(`p-name-${mIndex}-${idx}`);
+        const selectEl = document.getElementById(`p-team-${mIndex}-${idx}`);
+        if (inputEl) inputEl.value = nombrePart;
+
+        const eqAuto = equipoPart || buscarEquipoEnCatalogo(nombrePart);
+        if (selectEl && eqAuto) {
+            const matchEq = equiposLaLiga.find(e => normalizarTexto(e) === normalizarTexto(eqAuto));
+            if (matchEq) selectEl.value = matchEq;
+        }
+    });
+
+    showToast(`✨ ${lineas.length} huecos rellenados. Revisa y pulsa Guardar Plantilla.`);
+}
+
+async function cargarCatalogoJugadoresDesdePuntosJson(manual) {
+    try {
+        const res = await fetch("puntos.json?t=" + Date.now());
+        if (!res.ok) throw new Error("No se encontró puntos.json");
+        const dataRaw = await res.json();
+        const jugadoresRaw = dataRaw.jugadores || {};
+        const equiposRaw = dataRaw.jugadores_equipos || {};
+
+        const nuevo = {};
+        for (const [nombre, val] of Object.entries(jugadoresRaw)) {
+            const eqObj = (val && typeof val === "object") ? (val.equipo || "") : "";
+            nuevo[nombre] = equiposRaw[nombre] || eqObj || catalogoJugadores[nombre] || "";
+        }
+        for (const [nombre, eq] of Object.entries(equiposRaw)) {
+            if (eq) nuevo[nombre] = eq;
+        }
+
+        guardarCatalogoLocal(nuevo);
+        if (manual) showToast(`📚 Catálogo actualizado (${Object.keys(catalogoJugadores).length} jugadores)`);
+    } catch (e) {
+        if (manual) alert("No se pudo actualizar el catálogo desde puntos.json");
+    }
+}
+
+function buscarPuntosJugador(nombreBackup, mapaPuntos) {
+    const normBackup = normalizarTexto(nombreBackup);
+    if (!normBackup) return null;
+
+    if (Object.prototype.hasOwnProperty.call(mapaPuntos, normBackup)) {
+        return mapaPuntos[normBackup];
+    }
+
+    const claves = Object.keys(mapaPuntos);
+    const matchInicial = normBackup.match(/^([a-z])\.\s*(.+)$/);
+    if (matchInicial) {
+        const inicial = matchInicial[1];
+        const apellido = matchInicial[2];
+        const candidatos = claves.filter(k => {
+            const partes = k.split(" ");
+            return partes[0].startsWith(inicial) && partes[partes.length - 1] === apellido;
+        });
+        if (candidatos.length === 1) return mapaPuntos[candidatos[0]];
+    }
+
+    const palabrasBackup = normBackup.split(" ").filter(Boolean);
+    if (palabrasBackup.length === 1) {
+        const unico = palabrasBackup[0];
+        const exactasPalabra = claves.filter(k => k.split(" ").includes(unico));
+        if (exactasPalabra.length === 1) return mapaPuntos[exactasPalabra[0]];
+        if (exactasPalabra.length > 1) return null;
+
+        const prefijos = claves.filter(k => k.startsWith(unico + " "));
+        if (prefijos.length === 1) return mapaPuntos[prefijos[0]];
+        return null;
+    }
+
+    const subconjunto = claves.filter(k => {
+        const palabrasClave = k.split(" ");
+        return palabrasBackup.every(pb => palabrasClave.includes(pb));
+    });
+    if (subconjunto.length === 1) return mapaPuntos[subconjunto[0]];
+
+    return null;
+}
+
+async function sincronizarPuntosEnDirecto() {
+    const statusEl = document.getElementById("syncStatus");
+    const dotEl = document.getElementById("liveIndicatorDot");
+    const badgeEl = document.getElementById("headerJornadaBadge");
+    try {
+        const res = await fetch("puntos.json?t=" + Date.now());
+        if (!res.ok) throw new Error("No se encontró puntos.json");
+        const dataRaw = await res.json();
+
+        if (dataRaw.jornada && badgeEl) badgeEl.innerText = `JORNADA ${dataRaw.jornada}`;
+        if (dotEl) dotEl.classList.remove("offline");
+
+        const jugadoresRaw = dataRaw.jugadores ? dataRaw.jugadores : dataRaw;
+        const entrenadoresRaw = dataRaw.entrenadores ? dataRaw.entrenadores : {};
+        const partidosRaw = Array.isArray(dataRaw.partidos) ? dataRaw.partidos : [];
+        const numJugCheck = Object.keys(jugadoresRaw).length;
+
+        const nuevoMapaPartidos = {};
+        partidosRaw.forEach(pt => {
+            if (pt && pt.local && pt.visitante) {
+                nuevoMapaPartidos[`${pt.local}__${pt.visitante}`] = pt;
+            }
+        });
+        detallesPartidosLive = nuevoMapaPartidos;
+
+        if (numJugCheck > 0 && localStorage.getItem("lf_bloqueo_sincro_cerrada") === "1") {
+            const jCerrada = localStorage.getItem("lf_jornada_cerrada_num") || "";
+            if (jCerrada && String(dataRaw.jornada || "") === jCerrada) {
+                const horaLecturaSkip = new Date().toLocaleTimeString();
+                const jTagSkip = dataRaw.jornada ? `J${dataRaw.jornada} · ` : "";
+                const infoOrigenSkip = dataRaw.actualizado_en ? `Datos de las ${dataRaw.actualizado_en}` : `Leído ${horaLecturaSkip}`;
+                if (statusEl) statusEl.innerText = `${jTagSkip}${infoOrigenSkip} · Leído ${horaLecturaSkip} (Jornada cerrada en local)`;
+                return;
+            } else {
+                localStorage.removeItem("lf_bloqueo_sincro_cerrada");
+                localStorage.removeItem("lf_jornada_cerrada_num");
+            }
+        }
+
+        const mapaPuntos = {};
+        const nuevosDetalles = {};
+        for (const [nombre, val] of Object.entries(jugadoresRaw)) {
+            const normKey = normalizarTexto(nombre);
+            if (val !== null && typeof val === "object") {
+                if (val.jugo !== false) mapaPuntos[normKey] = val.puntos;
+                if (val.nombre) {
+                    const normCorto = normalizarTexto(val.nombre);
+                    if (val.jugo !== false && !Object.prototype.hasOwnProperty.call(mapaPuntos, normCorto)) {
+                        mapaPuntos[normCorto] = val.puntos;
+                    }
+                }
+                nuevosDetalles[normKey] = {
+                    nombre: val.nombre || nombre,
+                    nombre_completo: val.nombre_completo || nombre,
+                    equipo: val.equipo || "",
+                    posicion: val.posicion || "",
+                    puntos: val.puntos ?? 0,
+                    jugo: val.jugo !== false,
+                    relevo: val.relevo ?? null,
+                    desglose: Array.isArray(val.desglose) ? val.desglose : []
+                };
+            } else {
+                mapaPuntos[normKey] = val;
+                nuevosDetalles[normKey] = {
+                    nombre: nombre,
+                    nombre_completo: nombre,
+                    equipo: (dataRaw.jugadores_equipos && dataRaw.jugadores_equipos[nombre]) || "",
+                    posicion: "",
+                    puntos: val,
+                    jugo: true,
+                    relevo: null,
+                    desglose: []
+                };
+            }
+        }
+        detallesJugadoresLive = nuevosDetalles;
+
+        const mapaEntrenadores = {};
+        for (const [claveCoach, valCoach] of Object.entries(entrenadoresRaw)) {
+            if (valCoach !== null && typeof valCoach === "object") {
+                if (valCoach.equipo) mapaEntrenadores[normalizarTexto(valCoach.equipo)] = valCoach.puntos;
+                mapaEntrenadores[normalizarTexto(claveCoach)] = valCoach.puntos;
+            } else {
+                mapaEntrenadores[normalizarTexto(claveCoach)] = valCoach;
+            }
+        }
+
+        flashedKeys.clear();
+        let cambios = 0;
+        fantasyData.forEach((team, mIndex) => {
+            if (team.isRetired) return;
+
+            team.players.forEach((p, pIndex) => {
+                const pts = buscarPuntosJugador(p.n, mapaPuntos);
+                if (pts !== null && p.p !== pts) {
+                    p.p = pts;
+                    cambios++;
+                    flashedKeys.add(`p-${mIndex}-${pIndex}`);
+                }
+            });
+
+            if (team.coach) {
+                const normEquipo = normalizarTexto(team.coach.t);
+                const normNombreCoach = normalizarTexto(team.coach.n);
+                let ptsCoach = null;
+                if (normEquipo && Object.prototype.hasOwnProperty.call(mapaEntrenadores, normEquipo)) {
+                    ptsCoach = mapaEntrenadores[normEquipo];
+                } else if (normNombreCoach && Object.prototype.hasOwnProperty.call(mapaEntrenadores, normNombreCoach)) {
+                    ptsCoach = mapaEntrenadores[normNombreCoach];
+                }
+                if (ptsCoach !== null && team.coach.p !== ptsCoach) {
+                    team.coach.p = ptsCoach;
+                    cambios++;
+                    flashedKeys.add(`c-${mIndex}`);
+                }
+            }
+
+            team.total = calculateTeamTotal(team);
+        });
+
+        if (cambios > 0) {
+            saveDataToLocal();
+            setTimeout(() => { flashedKeys.clear(); }, 1300);
+        } else {
+            renderPlantillas();
+            renderJornada();
+        }
+
+        const horaLectura = new Date().toLocaleTimeString();
+        const numJug = Object.keys(jugadoresRaw).length;
+        const numEnt = Object.keys(entrenadoresRaw).length;
+
+        if (numJug > 0) {
+            const eqRaw = dataRaw.jugadores_equipos || {};
+            const addCat = {};
+            for (const [nombreKey, val] of Object.entries(jugadoresRaw)) {
+                const eqVal = (val && typeof val === "object") ? (val.equipo || "") : "";
+                addCat[nombreKey] = eqRaw[nombreKey] || eqVal || catalogoJugadores[nombreKey] || "";
+            }
+            guardarCatalogoLocal(addCat);
+        }
+
+        let infoOrigen = "";
+        if (dataRaw.actualizado_en) {
+            infoOrigen = `Datos de las ${dataRaw.actualizado_en}`;
+        } else {
+            const lastMod = res.headers.get("Last-Modified");
+            infoOrigen = lastMod
+                ? `Archivo de las ${new Date(lastMod).toLocaleTimeString()}`
+                : `Leído a las ${horaLectura}`;
+        }
+
+        const fuenteTag = dataRaw.fuente === "futbolfantasy" ? " · FF" : "";
+        const jTag = dataRaw.jornada ? `J${dataRaw.jornada} · ` : "";
+        if (statusEl) statusEl.innerText = `${jTag}${infoOrigen} · Leído ${horaLectura} (${numJug} jug., ${numEnt} entr.${fuenteTag})`;
+    } catch (err) {
+        if (dotEl) dotEl.classList.add("offline");
+        if (statusEl) statusEl.innerText = "Sin conexión con puntos.json";
+    }
+}
+
+(async () => {
+    actualizarDatalistCatalogo();
+    cargarConfigGitHubUI();
+    cargarConfigCronJobUI();
+    await cargarBackupInicialSiVacio();
+    await cargarJornadaActualEnInput();
+    await sincronizarPuntosEnDirecto();
+    setInterval(sincronizarPuntosEnDirecto, 30000);
+})();
+</script>
 </body>
 </html>
