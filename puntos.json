@@ -1,49 +1,1115 @@
 {
-  "jornada": "14",
-  "actualizado_en": "26/11 17:36:33",
-  "jugadores": {},
-  "jugadores_equipos": {},
-  "entrenadores": {},
+  "fuente": "futbolfantasy",
+  "jornada": 13,
   "partidos": [
     {
-      "local": "Levante",
-      "visitante": "Racing"
-    },
-    {
-      "local": "Betis",
-      "visitante": "Rayo"
-    },
-    {
-      "local": "Málaga",
-      "visitante": "Athletic"
-    },
-    {
-      "local": "Elche",
-      "visitante": "Atleti"
-    },
-    {
-      "local": "Real Madrid",
-      "visitante": "Alavés"
-    },
-    {
-      "local": "Valencia",
-      "visitante": "Osasuna"
-    },
-    {
-      "local": "Deportivo",
-      "visitante": "Barcelona"
-    },
-    {
-      "local": "Celta",
-      "visitante": "Villarreal"
-    },
-    {
-      "local": "Real Sociedad",
-      "visitante": "Sevilla"
-    },
-    {
-      "local": "Espanyol",
-      "visitante": "Getafe"
+      "partido": "Levante 1-1 Elche",
+      "url": "https://www.futbolfantasy.com/partidos/22547-levante-elche",
+      "relevo_listo": true
     }
-  ]
+  ],
+  "jugadores": {
+    "Mat Ryan": {
+      "nombre": "Ryan",
+      "nombre_completo": "Mat Ryan",
+      "equipo": null,
+      "posicion": "Portero",
+      "puntos": 4,
+      "jugo": true,
+      "relevo": 1,
+      "desglose": [
+        "90 Minutos jugados -> 2 p",
+        "7 Balones recuperados -> 1 p",
+        "Puntos DAZN -> 1 p"
+      ]
+    },
+    "Aissa Mandi": {
+      "nombre": "Mandi",
+      "nombre_completo": "Aissa Mandi",
+      "equipo": null,
+      "posicion": "Defensa",
+      "puntos": 1,
+      "jugo": true,
+      "relevo": 1,
+      "desglose": [
+        "90 Minutos jugados -> 2 p",
+        "1 Tarjetas amarillas -> -1 p",
+        "8 Posesiones perdidas -> -1 p",
+        "Puntos DAZN -> 1 p"
+      ]
+    },
+    "Jeremy Toljan": {
+      "nombre": "Toljan",
+      "nombre_completo": "Jeremy Toljan",
+      "equipo": null,
+      "posicion": "Defensa",
+      "puntos": 2,
+      "jugo": true,
+      "relevo": 1,
+      "desglose": [
+        "22 Minutos jugados -> 1 p",
+        "Puntos DAZN -> 1 p"
+      ]
+    },
+    "Adrian De La Fuente": {
+      "nombre": "De la Fuente",
+      "nombre_completo": "Adrian De La Fuente",
+      "equipo": null,
+      "posicion": "Defensa",
+      "puntos": 7,
+      "jugo": true,
+      "relevo": 3,
+      "desglose": [
+        "90 Minutos jugados -> 2 p",
+        "4 Despejes -> 1 p",
+        "12 Balones recuperados -> 2 p",
+        "13 Posesiones perdidas -> -1 p",
+        "Puntos DAZN -> 3 p"
+      ]
+    },
+    "Manu Sanchez": {
+      "nombre": "Manu Sánchez",
+      "nombre_completo": "Manu Sanchez",
+      "equipo": null,
+      "posicion": "Defensa",
+      "puntos": 3,
+      "jugo": true,
+      "relevo": 2,
+      "desglose": [
+        "56 Minutos jugados -> 1 p",
+        "Puntos DAZN -> 2 p"
+      ]
+    },
+    "Oriol Rey": {
+      "nombre": "Oriol Rey",
+      "nombre_completo": "Oriol Rey",
+      "equipo": null,
+      "posicion": "Mediocampista",
+      "puntos": 1,
+      "jugo": true,
+      "relevo": 0,
+      "desglose": [
+        "78 Minutos jugados -> 2 p",
+        "1 Tarjetas amarillas -> -1 p",
+        "Puntos DAZN -> 0 p"
+      ]
+    },
+    "Jon Ander Olasagasti": {
+      "nombre": "Olasagasti",
+      "nombre_completo": "Jon Ander Olasagasti",
+      "equipo": null,
+      "posicion": "Mediocampista",
+      "puntos": 8,
+      "jugo": true,
+      "relevo": 4,
+      "desglose": [
+        "90 Minutos jugados -> 2 p",
+        "1 Asistencias de gol -> 3 p",
+        "1 Asistencias sin gol -> 1 p",
+        "27 Posesiones perdidas -> -2 p",
+        "Puntos DAZN -> 4 p"
+      ]
+    },
+    "Dani Requena": {
+      "nombre": "Requena",
+      "nombre_completo": "Dani Requena",
+      "equipo": null,
+      "posicion": "Mediocampista",
+      "puntos": 10,
+      "jugo": true,
+      "relevo": 3,
+      "desglose": [
+        "90 Minutos jugados -> 2 p",
+        "1 Goles -> 5 p",
+        "1 Tarjetas amarillas -> -1 p",
+        "5 Balones recuperados -> 1 p",
+        "Puntos DAZN -> 3 p"
+      ]
+    },
+    "Thiago Fernandez": {
+      "nombre": "Thiago",
+      "nombre_completo": "Thiago Fernandez",
+      "equipo": null,
+      "posicion": "Mediocampista",
+      "puntos": 3,
+      "jugo": true,
+      "relevo": 2,
+      "desglose": [
+        "90 Minutos jugados -> 2 p",
+        "1 Tarjetas amarillas -> -1 p",
+        "10 Balones recuperados -> 2 p",
+        "24 Posesiones perdidas -> -2 p",
+        "Puntos DAZN -> 2 p"
+      ]
+    },
+    "Ivan Romero": {
+      "nombre": "Iván Romero",
+      "nombre_completo": "Ivan Romero",
+      "equipo": null,
+      "posicion": "Delantero",
+      "puntos": 5,
+      "jugo": true,
+      "relevo": 2,
+      "desglose": [
+        "78 Minutos jugados -> 2 p",
+        "2 Regates -> 1 p",
+        "5 Balones recuperados -> 1 p",
+        "15 Posesiones perdidas -> -1 p",
+        "Puntos DAZN -> 2 p"
+      ]
+    },
+    "Roger Brugue": {
+      "nombre": "Brugui",
+      "nombre_completo": "Roger Brugue",
+      "equipo": null,
+      "posicion": "Delantero",
+      "puntos": 4,
+      "jugo": true,
+      "relevo": 1,
+      "desglose": [
+        "90 Minutos jugados -> 2 p",
+        "6 Balones recuperados -> 1 p",
+        "Puntos DAZN -> 1 p"
+      ]
+    },
+    "Alejandro Primo": {
+      "nombre": "Primo",
+      "nombre_completo": "Alejandro Primo",
+      "equipo": null,
+      "posicion": "Portero",
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": [
+        "Puntos estadísticos -> 0 p",
+        "Puntos DAZN -> 0 p"
+      ]
+    },
+    "Pablo Campos": {
+      "nombre": "Cuñat Campos",
+      "nombre_completo": "Pablo Campos",
+      "equipo": null,
+      "posicion": "Portero",
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": [
+        "Puntos DAZN -> 0 p"
+      ]
+    },
+    "Victor Garcia 1": {
+      "nombre": "Víctor García",
+      "nombre_completo": "Victor Garcia 1",
+      "equipo": null,
+      "posicion": "Defensa",
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": [
+        "Puntos DAZN -> 0 p"
+      ]
+    },
+    "Jorge Cabello": {
+      "nombre": "Jorge Cabello",
+      "nombre_completo": "Jorge Cabello",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Nacho Perez 1": {
+      "nombre": "Nacho Pérez",
+      "nombre_completo": "Nacho Perez 1",
+      "equipo": null,
+      "posicion": "Defensa",
+      "puntos": 3,
+      "jugo": true,
+      "relevo": 1,
+      "desglose": [
+        "68 Minutos jugados -> 2 p",
+        "6 Balones recuperados -> 1 p",
+        "10 Posesiones perdidas -> -1 p",
+        "Puntos DAZN -> 1 p"
+      ]
+    },
+    "Marc Santos": {
+      "nombre": "Marc Santos",
+      "nombre_completo": "Marc Santos",
+      "equipo": null,
+      "posicion": "Defensa",
+      "puntos": 3,
+      "jugo": true,
+      "relevo": 1,
+      "desglose": [
+        "34 Minutos jugados -> 1 p",
+        "5 Balones recuperados -> 1 p",
+        "Puntos DAZN -> 1 p"
+      ]
+    },
+    "Ifeanyi Ndukwe": {
+      "nombre": "Ndukwe",
+      "nombre_completo": "Ifeanyi Ndukwe",
+      "equipo": null,
+      "posicion": "Defensa",
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": [
+        "Puntos DAZN -> 0 p"
+      ]
+    },
+    "Hugo Sotelo": {
+      "nombre": "Sotelo",
+      "nombre_completo": "Hugo Sotelo",
+      "equipo": null,
+      "posicion": "Mediocampista",
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": [
+        "Puntos DAZN -> 0 p"
+      ]
+    },
+    "Paco Cortes": {
+      "nombre": "Cortés",
+      "nombre_completo": "Paco Cortes",
+      "equipo": null,
+      "posicion": "Delantero",
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": [
+        "Puntos DAZN -> 0 p"
+      ]
+    },
+    "Enzo Bardelli": {
+      "nombre": "Bardeli",
+      "nombre_completo": "Enzo Bardelli",
+      "equipo": null,
+      "posicion": "Mediocampista",
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": [
+        "Puntos DAZN -> 0 p"
+      ]
+    },
+    "Etta Eyong": {
+      "nombre": "Etta Eyong",
+      "nombre_completo": "Etta Eyong",
+      "equipo": null,
+      "posicion": "Delantero",
+      "puntos": 2,
+      "jugo": true,
+      "relevo": 1,
+      "desglose": [
+        "12 Minutos jugados -> 1 p",
+        "Puntos DAZN -> 1 p"
+      ]
+    },
+    "Petar Ratkov": {
+      "nombre": "Ratkov",
+      "nombre_completo": "Petar Ratkov",
+      "equipo": null,
+      "posicion": "Delantero",
+      "puntos": 2,
+      "jugo": true,
+      "relevo": 1,
+      "desglose": [
+        "12 Minutos jugados -> 1 p",
+        "Puntos DAZN -> 1 p"
+      ]
+    },
+    "Yanis Musuayi": {
+      "nombre": "Musuayi",
+      "nombre_completo": "Yanis Musuayi",
+      "equipo": null,
+      "posicion": "Delantero",
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": [
+        "Puntos DAZN -> 0 p"
+      ]
+    },
+    "Matias Dituro": {
+      "nombre": "Dituro",
+      "nombre_completo": "Matias Dituro",
+      "equipo": null,
+      "posicion": "Portero",
+      "puntos": 3,
+      "jugo": true,
+      "relevo": 2,
+      "desglose": [
+        "90 Minutos jugados -> 2 p",
+        "6 Balones recuperados -> 1 p",
+        "18 Posesiones perdidas -> -2 p",
+        "Puntos DAZN -> 2 p"
+      ]
+    },
+    "Victor Chust": {
+      "nombre": "Chust",
+      "nombre_completo": "Victor Chust",
+      "equipo": null,
+      "posicion": "Defensa",
+      "puntos": 6,
+      "jugo": true,
+      "relevo": 2,
+      "desglose": [
+        "90 Minutos jugados -> 2 p",
+        "6 Despejes -> 2 p",
+        "9 Balones recuperados -> 1 p",
+        "9 Posesiones perdidas -> -1 p",
+        "Puntos DAZN -> 2 p"
+      ]
+    },
+    "Buba Sangare": {
+      "nombre": "Sangaré",
+      "nombre_completo": "Buba Sangare",
+      "equipo": null,
+      "posicion": "Defensa",
+      "puntos": 4,
+      "jugo": true,
+      "relevo": 2,
+      "desglose": [
+        "90 Minutos jugados -> 2 p",
+        "3 Regates -> 1 p",
+        "5 Balones recuperados -> 1 p",
+        "17 Posesiones perdidas -> -2 p",
+        "Puntos DAZN -> 2 p"
+      ]
+    },
+    "Roy Revivo": {
+      "nombre": "Revivo",
+      "nombre_completo": "Roy Revivo",
+      "equipo": null,
+      "posicion": "Defensa",
+      "puntos": 15,
+      "jugo": true,
+      "relevo": 4,
+      "desglose": [
+        "81 Minutos jugados -> 2 p",
+        "1 Goles -> 6 p",
+        "0 Goles en contra -> 3 p",
+        "3 Regates -> 1 p",
+        "8 Posesiones perdidas -> -1 p",
+        "Puntos DAZN -> 4 p"
+      ]
+    },
+    "Gonzalo Villar": {
+      "nombre": "Villar",
+      "nombre_completo": "Gonzalo Villar",
+      "equipo": null,
+      "posicion": "Mediocampista",
+      "puntos": 5,
+      "jugo": true,
+      "relevo": 1,
+      "desglose": [
+        "66 Minutos jugados -> 2 p",
+        "0 Goles en contra -> 2 p",
+        "Puntos DAZN -> 1 p"
+      ]
+    },
+    "German Valera": {
+      "nombre": "Valera",
+      "nombre_completo": "German Valera",
+      "equipo": null,
+      "posicion": "Mediocampista",
+      "puntos": 8,
+      "jugo": true,
+      "relevo": 3,
+      "desglose": [
+        "90 Minutos jugados -> 2 p",
+        "1 Asistencias de gol -> 3 p",
+        "Puntos DAZN -> 3 p"
+      ]
+    },
+    "Federico Redondo": {
+      "nombre": "Redondo",
+      "nombre_completo": "Federico Redondo",
+      "equipo": null,
+      "posicion": "Mediocampista",
+      "puntos": 6,
+      "jugo": true,
+      "relevo": 2,
+      "desglose": [
+        "90 Minutos jugados -> 2 p",
+        "6 Despejes -> 2 p",
+        "1 Tarjetas amarillas -> -1 p",
+        "8 Balones recuperados -> 1 p",
+        "Puntos DAZN -> 2 p"
+      ]
+    },
+    "Lucas Cepeda": {
+      "nombre": "Cepeda",
+      "nombre_completo": "Lucas Cepeda",
+      "equipo": null,
+      "posicion": "Delantero",
+      "puntos": 5,
+      "jugo": true,
+      "relevo": 2,
+      "desglose": [
+        "81 Minutos jugados -> 2 p",
+        "2 Balones al área -> 1 p",
+        "0 Goles en contra -> 1 p",
+        "16 Posesiones perdidas -> -1 p",
+        "Puntos DAZN -> 2 p"
+      ]
+    },
+    "Javi Morcillo": {
+      "nombre": "Morcillo",
+      "nombre_completo": "Javi Morcillo",
+      "equipo": null,
+      "posicion": "Mediocampista",
+      "puntos": 5,
+      "jugo": true,
+      "relevo": 2,
+      "desglose": [
+        "90 Minutos jugados -> 2 p",
+        "4 Despejes -> 1 p",
+        "Puntos DAZN -> 2 p"
+      ]
+    },
+    "Fernando Nino": {
+      "nombre": "Fer Niño",
+      "nombre_completo": "Fernando Nino",
+      "equipo": null,
+      "posicion": "Delantero",
+      "puntos": 4,
+      "jugo": true,
+      "relevo": 1,
+      "desglose": [
+        "90 Minutos jugados -> 2 p",
+        "4 Despejes -> 1 p",
+        "Puntos DAZN -> 1 p"
+      ]
+    },
+    "Abiel Osorio": {
+      "nombre": "Osorio",
+      "nombre_completo": "Abiel Osorio",
+      "equipo": null,
+      "posicion": "Delantero",
+      "puntos": 2,
+      "jugo": true,
+      "relevo": 1,
+      "desglose": [
+        "45 Minutos jugados -> 1 p",
+        "Puntos DAZN -> 1 p"
+      ]
+    },
+    "Alejandro Iturbe": {
+      "nombre": "Iturbe",
+      "nombre_completo": "Alejandro Iturbe",
+      "equipo": null,
+      "posicion": "Portero",
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": [
+        "Puntos DAZN -> 0 p"
+      ]
+    },
+    "Pedro Bigas": {
+      "nombre": "Bigas",
+      "nombre_completo": "Pedro Bigas",
+      "equipo": null,
+      "posicion": "Defensa",
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": [
+        "Puntos DAZN -> 0 p"
+      ]
+    },
+    "Matia Barzic": {
+      "nombre": "Barzic",
+      "nombre_completo": "Matia Barzic",
+      "equipo": null,
+      "posicion": "Defensa",
+      "puntos": 3,
+      "jugo": true,
+      "relevo": 1,
+      "desglose": [
+        "9 Minutos jugados -> 1 p",
+        "4 Despejes -> 1 p",
+        "Puntos DAZN -> 1 p"
+      ]
+    },
+    "Kevin Lomonaco": {
+      "nombre": "Lomónaco",
+      "nombre_completo": "Kevin Lomonaco",
+      "equipo": null,
+      "posicion": "Defensa",
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": [
+        "Puntos DAZN -> 0 p"
+      ]
+    },
+    "Josan": {
+      "nombre": "Josan",
+      "nombre_completo": "Josan",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Thomas Lemar": {
+      "nombre": "Lemar",
+      "nombre_completo": "Thomas Lemar",
+      "equipo": null,
+      "posicion": "Mediocampista",
+      "puntos": 2,
+      "jugo": true,
+      "relevo": 1,
+      "desglose": [
+        "44 Minutos jugados -> 1 p",
+        "Puntos DAZN -> 1 p"
+      ]
+    },
+    "Grady Diangana": {
+      "nombre": "Diangana",
+      "nombre_completo": "Grady Diangana",
+      "equipo": null,
+      "posicion": "Delantero",
+      "puntos": 4,
+      "jugo": true,
+      "relevo": 2,
+      "desglose": [
+        "1 Minutos jugados -> 1 p",
+        "1 Asistencias sin gol -> 1 p",
+        "Puntos DAZN -> 2 p"
+      ]
+    },
+    "Tete Morente": {
+      "nombre": "Tete Morente",
+      "nombre_completo": "Tete Morente",
+      "equipo": null,
+      "posicion": "Delantero",
+      "puntos": 1,
+      "jugo": true,
+      "relevo": 0,
+      "desglose": [
+        "9 Minutos jugados -> 1 p",
+        "Puntos DAZN -> 0 p"
+      ]
+    },
+    "Facundo Buonanotte": {
+      "nombre": "Buonanotte",
+      "nombre_completo": "Facundo Buonanotte",
+      "equipo": null,
+      "posicion": "Mediocampista",
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": [
+        "Puntos DAZN -> 0 p"
+      ]
+    },
+    "Martim Neto": {
+      "nombre": "Martim Neto",
+      "nombre_completo": "Martim Neto",
+      "equipo": null,
+      "posicion": "Mediocampista",
+      "puntos": 3,
+      "jugo": true,
+      "relevo": 1,
+      "desglose": [
+        "24 Minutos jugados -> 1 p",
+        "2 Regates -> 1 p",
+        "Puntos DAZN -> 1 p"
+      ]
+    },
+    "Alvaro Padilla": {
+      "nombre": "Padilla",
+      "nombre_completo": "Alvaro Padilla",
+      "equipo": null,
+      "posicion": "Delantero",
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": [
+        "Puntos DAZN -> 0 p"
+      ]
+    },
+    "Ezequiel Ponce": {
+      "nombre": "Ponce",
+      "nombre_completo": "Ezequiel Ponce",
+      "equipo": null,
+      "posicion": "Delantero",
+      "puntos": 0,
+      "jugo": false,
+      "relevo": 0,
+      "desglose": [
+        "Puntos DAZN -> 0 p"
+      ]
+    },
+    "Ryan": {
+      "nombre": "Ryan",
+      "nombre_completo": "Ryan",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Mandi": {
+      "nombre": "Mandi",
+      "nombre_completo": "Mandi",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Toljan 21'": {
+      "nombre": "Toljan 21'",
+      "nombre_completo": "Toljan 21'",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "De la Fuente": {
+      "nombre": "De la Fuente",
+      "nombre_completo": "De la Fuente",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Manu Sánchez 55'": {
+      "nombre": "Manu Sánchez 55'",
+      "nombre_completo": "Manu Sánchez 55'",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Oriol Rey 77'": {
+      "nombre": "Oriol Rey 77'",
+      "nombre_completo": "Oriol Rey 77'",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Olasagasti": {
+      "nombre": "Olasagasti",
+      "nombre_completo": "Olasagasti",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Requena": {
+      "nombre": "Requena",
+      "nombre_completo": "Requena",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Thiago": {
+      "nombre": "Thiago",
+      "nombre_completo": "Thiago",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Iván Romero 77'": {
+      "nombre": "Iván Romero 77'",
+      "nombre_completo": "Iván Romero 77'",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Brugui": {
+      "nombre": "Brugui",
+      "nombre_completo": "Brugui",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Primo": {
+      "nombre": "Primo",
+      "nombre_completo": "Primo",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Cuñat Campos": {
+      "nombre": "Cuñat Campos",
+      "nombre_completo": "Cuñat Campos",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Víctor García": {
+      "nombre": "Víctor García",
+      "nombre_completo": "Víctor García",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Nacho Pérez 21'": {
+      "nombre": "Nacho Pérez 21'",
+      "nombre_completo": "Nacho Pérez 21'",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Marc Santos 55'": {
+      "nombre": "Marc Santos 55'",
+      "nombre_completo": "Marc Santos 55'",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Ndukwe": {
+      "nombre": "Ndukwe",
+      "nombre_completo": "Ndukwe",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Sotelo": {
+      "nombre": "Sotelo",
+      "nombre_completo": "Sotelo",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Cortés": {
+      "nombre": "Cortés",
+      "nombre_completo": "Cortés",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Bardeli": {
+      "nombre": "Bardeli",
+      "nombre_completo": "Bardeli",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Etta Eyong 77'": {
+      "nombre": "Etta Eyong 77'",
+      "nombre_completo": "Etta Eyong 77'",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Ratkov 77'": {
+      "nombre": "Ratkov 77'",
+      "nombre_completo": "Ratkov 77'",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Musuayi": {
+      "nombre": "Musuayi",
+      "nombre_completo": "Musuayi",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Dituro": {
+      "nombre": "Dituro",
+      "nombre_completo": "Dituro",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Chust": {
+      "nombre": "Chust",
+      "nombre_completo": "Chust",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Sangaré": {
+      "nombre": "Sangaré",
+      "nombre_completo": "Sangaré",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Revivo 81'": {
+      "nombre": "Revivo 81'",
+      "nombre_completo": "Revivo 81'",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Villar 65'": {
+      "nombre": "Villar 65'",
+      "nombre_completo": "Villar 65'",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Valera": {
+      "nombre": "Valera",
+      "nombre_completo": "Valera",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Redondo": {
+      "nombre": "Redondo",
+      "nombre_completo": "Redondo",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Cepeda 80'": {
+      "nombre": "Cepeda 80'",
+      "nombre_completo": "Cepeda 80'",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Morcillo": {
+      "nombre": "Morcillo",
+      "nombre_completo": "Morcillo",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Fer Niño": {
+      "nombre": "Fer Niño",
+      "nombre_completo": "Fer Niño",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Osorio 45'": {
+      "nombre": "Osorio 45'",
+      "nombre_completo": "Osorio 45'",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Iturbe": {
+      "nombre": "Iturbe",
+      "nombre_completo": "Iturbe",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Bigas": {
+      "nombre": "Bigas",
+      "nombre_completo": "Bigas",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Barzic 81'": {
+      "nombre": "Barzic 81'",
+      "nombre_completo": "Barzic 81'",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Lomónaco": {
+      "nombre": "Lomónaco",
+      "nombre_completo": "Lomónaco",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Lemar 45' 89'": {
+      "nombre": "Lemar 45' 89'",
+      "nombre_completo": "Lemar 45' 89'",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Diangana 89'": {
+      "nombre": "Diangana 89'",
+      "nombre_completo": "Diangana 89'",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Tete Morente 80'": {
+      "nombre": "Tete Morente 80'",
+      "nombre_completo": "Tete Morente 80'",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Buonanotte": {
+      "nombre": "Buonanotte",
+      "nombre_completo": "Buonanotte",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Martim Neto 65'": {
+      "nombre": "Martim Neto 65'",
+      "nombre_completo": "Martim Neto 65'",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Padilla": {
+      "nombre": "Padilla",
+      "nombre_completo": "Padilla",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    },
+    "Ponce": {
+      "nombre": "Ponce",
+      "nombre_completo": "Ponce",
+      "equipo": null,
+      "posicion": null,
+      "puntos": 0,
+      "jugo": false,
+      "relevo": null,
+      "desglose": []
+    }
+  },
+  "entrenadores": {
+    "Luis Castro": {
+      "equipo": "Levante",
+      "resultado": "1-1",
+      "puntos": 2
+    },
+    "Martín Anselmi": {
+      "equipo": "Elche",
+      "resultado": "1-1",
+      "puntos": 2
+    }
+  }
 }
