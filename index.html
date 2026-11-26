@@ -36,12 +36,8 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        .app-shell {
-            max-width: 1440px;
-            margin: 0 auto;
-        }
+        .app-shell { max-width: 1440px; margin: 0 auto; }
 
-        /* Cabecera Broadcast */
         .broadcast-header {
             display: flex;
             flex-direction: column;
@@ -84,7 +80,6 @@
             text-transform: uppercase;
         }
 
-        /* Navegación Segmented Control */
         .nav {
             display: inline-flex;
             justify-content: center;
@@ -120,7 +115,6 @@
             box-shadow: 0 4px 14px rgba(224, 185, 75, 0.32);
         }
 
-        /* Barra de estado en vivo */
         .sync-bar {
             display: flex;
             align-items: center;
@@ -138,11 +132,7 @@
             flex-wrap: wrap;
         }
 
-        .sync-info-left {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .sync-info-left { display: flex; align-items: center; gap: 8px; }
 
         .live-dot {
             width: 8px;
@@ -154,10 +144,7 @@
             flex-shrink: 0;
         }
 
-        .live-dot.offline {
-            background: var(--danger);
-            animation: none;
-        }
+        .live-dot.offline { background: var(--danger); animation: none; }
 
         @keyframes pulseLive {
             0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.65); }
@@ -174,16 +161,12 @@
             font-size: 0.92em;
         }
 
-        .sync-refresh-btn:hover {
-            border-color: var(--accent);
-            color: var(--accent-bright);
-        }
+        .sync-refresh-btn:hover { border-color: var(--accent); color: var(--accent-bright); }
 
         .tab-content { display: none; animation: fadeIn 0.25s ease-out; }
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Tarjetas generales */
         .card {
             background: linear-gradient(180deg, rgba(31, 35, 46, 0.96) 0%, rgba(22, 25, 33, 0.98) 100%);
             border: 1px solid var(--border);
@@ -193,11 +176,8 @@
             transition: border-color 0.2s ease, transform 0.2s ease;
         }
 
-        .card:hover {
-            border-color: var(--border-strong);
-        }
+        .card:hover { border-color: var(--border-strong); }
 
-        /* Pestaña Plantillas / Puntos */
         .teams-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -265,7 +245,6 @@
             outline: none;
         }
 
-        /* Colores dinámicos según puntuación */
         .pts-high {
             border-color: rgba(224, 185, 75, 0.7) !important;
             background: rgba(224, 185, 75, 0.14) !important;
@@ -309,7 +288,6 @@
             background: rgba(224, 185, 75, 0.05);
         }
 
-        /* Partidos Broadcast Grid */
         .match-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
@@ -378,12 +356,7 @@
         .match-player:hover { opacity: 1; background: rgba(255, 255, 255, 0.065); }
         .match-player.coach { border-left: 2px solid var(--accent); background: rgba(224, 185, 75, 0.05); }
 
-        .match-player-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-            min-width: 0;
-        }
+        .match-player-stack { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
 
         .match-player-name-line {
             display: flex;
@@ -408,7 +381,6 @@
         .match-points-input { width: 38px; height: 28px; flex-shrink: 0; }
         .owner-tag { color: var(--text-muted); font-style: italic; font-size: 0.84em; padding: 4px 0; }
 
-        /* Controles de orden y modo */
         .sort-nav { display: flex; justify-content: center; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
         .sort-btn {
             padding: 7px 14px;
@@ -426,7 +398,6 @@
             border-color: rgba(224, 185, 75, 0.55);
         }
 
-        /* KPI Resumen General */
         .general-summary-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
@@ -459,7 +430,6 @@
             color: var(--accent-bright);
         }
 
-        /* Tablas de Clasificación */
         .table-wrap {
             max-width: 760px;
             margin: 0 auto;
@@ -470,12 +440,7 @@
             box-shadow: var(--shadow-card);
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 0 auto;
-            background: transparent;
-        }
+        table { width: 100%; border-collapse: collapse; margin: 0 auto; background: transparent; }
 
         th, td {
             padding: 11px 10px;
@@ -498,7 +463,6 @@
         .ranking-row { cursor: pointer; transition: background 0.16s ease; }
         .ranking-row:hover { background-color: rgba(255, 255, 255, 0.045); }
 
-        /* Zona de peligro / deudas */
         .bg-red { background: linear-gradient(90deg, rgba(239, 68, 68, 0.16) 0%, rgba(239, 68, 68, 0.06) 100%) !important; }
         .bg-red:hover { background: rgba(239, 68, 68, 0.24) !important; }
         .bg-dark-red { background: linear-gradient(90deg, rgba(239, 68, 68, 0.32) 0%, rgba(239, 68, 68, 0.14) 100%) !important; }
@@ -551,7 +515,6 @@
         .detail-item.played { border-left-color: var(--success); background: rgba(34, 197, 94, 0.08); }
         .detail-item.coach { border-left-color: var(--accent); }
 
-        /* Ajustes / Configuración */
         #configuracion { max-width: 780px; margin: 0 auto; }
 
         .config-section {
@@ -667,18 +630,15 @@
 
     <div id="toast" class="toast">Notificación</div>
 
-    <!-- Pestaña Jornada -->
     <div id="jornada" class="tab-content active">
         <p style="text-align:center; color:var(--text-muted); font-size: 0.86em; margin: 0 0 14px 0;">Introduce o edita los puntos directamente sobre cada partido.</p>
         <div class="match-grid" id="matchesContainer"></div>
     </div>
 
-    <!-- Pestaña Plantillas -->
     <div id="plantillas" class="tab-content">
         <div class="teams-grid" id="teamsContainer"></div>
     </div>
 
-    <!-- Pestaña Clasificación (Jornada Actual) -->
     <div id="clasificacion" class="tab-content">
         <p style="text-align:center; color:var(--text-muted); font-size: 0.86em; margin: 0 0 12px 0;">Clasificación de la jornada en curso · Pulsa en un mánager para ver su alineación.</p>
         <div class="sort-nav">
@@ -693,7 +653,6 @@
         </div>
     </div>
 
-    <!-- Pestaña Clasificación GENERAL -->
     <div id="general" class="tab-content">
         <p style="text-align:center; color:var(--text-muted); font-size: 0.86em; margin: 0 0 12px 0;">Clasificación histórica, deudas y balance neto acumulado.</p>
         <div class="sort-nav" style="margin-bottom:8px;">
@@ -713,9 +672,7 @@
         </div>
     </div>
 
-    <!-- Pestaña Configuración -->
     <div id="configuracion" class="tab-content">
-        
         <div class="config-section" style="border-color: rgba(253, 203, 110, 0.35); background: rgba(253, 203, 110, 0.04);">
             <h3 style="color:#fdcb6e; margin-top:0;">⏱️ Control Cron-job.org (Auto-puntos)</h3>
             <p style="font-size:0.85em; color:var(--text-muted); margin-top:0;">Actívalo durante la jornada para actualizar puntos automáticamente, o páusalo entre semana.</p>
@@ -1488,9 +1445,7 @@
         }
 
         function limpiarPuntosJornada() {
-            if (confirm("🧹 ¿Poner a cero/vacío todos los puntos de la jornada actual?
-
-No se sumarán puntos a la General ni se repartirán deudas.")) {
+            if (confirm("🧹 ¿Poner a cero/vacío todos los puntos de la jornada actual?\n\nNo se sumarán puntos a la General ni se repartirán deudas.")) {
                 fantasyData.forEach(team => {
                     team.players.forEach(p => p.p = "");
                     if (team.coach) team.coach.p = "";
@@ -1525,28 +1480,18 @@ No se sumarán puntos a la General ni se repartirán deudas.")) {
                 }))
                 .sort((a, b) => b.amount - a.amount || a.total - b.total)
                 .map(d => `• ${d.manager}: +${d.amount.toFixed(2)} € (${d.total} pts)`)
-                .join("
-");
+                .join("\n");
 
-            if (!confirm(`💸 PASO 1/2 — DEUDAS A SUMAR:
-
-${resumenDeudas || 'Nadie suma deuda'}
-
-¿Confirmas este reparto de deudas?`)) {
+            if (!confirm(`💸 PASO 1/2 — DEUDAS A SUMAR:\n\n${resumenDeudas || 'Nadie suma deuda'}\n\n¿Confirmas este reparto de deudas?`)) {
                 return;
             }
 
             const resumenPuntos = [...activeTeams]
                 .sort((a, b) => b.total - a.total)
                 .map(t => `• ${t.manager}: ${t.total} pts`)
-                .join("
-");
+                .join("\n");
 
-            if (!confirm(`🏆 PASO 2/2 — PUNTOS A SUMAR A LA GENERAL:
-
-${resumenPuntos}
-
-¿Confirmas sumar estos puntos y reiniciar los marcadores a 0?`)) {
+            if (!confirm(`🏆 PASO 2/2 — PUNTOS A SUMAR A LA GENERAL:\n\n${resumenPuntos}\n\n¿Confirmas sumar estos puntos y reiniciar los marcadores a 0?`)) {
                 return;
             }
 
@@ -1606,7 +1551,6 @@ ${resumenPuntos}
             reader.readAsText(file);
         }
 
-        // --- CONTROL CRON-JOB.ORG ---
         function getCronJobConfig() {
             return {
                 jobId: localStorage.getItem('lf_cj_jobid') || '8917104',
@@ -1654,9 +1598,7 @@ ${resumenPuntos}
                     body: JSON.stringify({ job: { enabled: activar } })
                 });
 
-                if (!res.ok) {
-                    throw new Error(`HTTP ${res.status}`);
-                }
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
                 const textoEstado = activar
                     ? "🟢 ACTIVO"
@@ -1671,7 +1613,6 @@ ${resumenPuntos}
             }
         }
 
-        // --- SINCRONIZACIÓN CON GITHUB ---
         function getGitHubConfig() {
             return {
                 owner: localStorage.getItem('lf_gh_owner') || 'blancomerenguesm',
@@ -1819,7 +1760,6 @@ ${resumenPuntos}
             }
         }
 
-        // --- CAMBIAR JORNADA EN GITHUB Y CARGAR PARTIDOS ---
         async function cargarJornadaActualEnInput() {
             const input = document.getElementById('jornadaNumeroInput');
             if (!input || input.value) return;
@@ -1925,12 +1865,11 @@ ${resumenPuntos}
             }
         }
 
-        // --- SINCRONIZACIÓN EN DIRECTO CON puntos.json ---
         function normalizarTexto(texto) {
             return (texto || "")
                 .toLowerCase()
                 .normalize("NFD")
-                .replace(/[̀-ͯ]/g, "")
+                .replace(/[\u0300-\u036f]/g, "")
                 .trim();
         }
 
@@ -1983,8 +1922,7 @@ ${resumenPuntos}
             if (!area) return;
 
             const lineas = area.value
-                .split(/?
-/)
+                .split(/\r?\n/)
                 .map(l => l.trim())
                 .filter(Boolean)
                 .slice(0, 11);
