@@ -313,16 +313,19 @@ function buscarDesgloseJugador(nombreJugador) {
     const norm = normalizarTexto(nombreJugador);
     if (!norm || !desglosesJugadoresLive) return null;
 
-    const mapaSinTildes = {};
+    const mapaNormalizado = {};
     for (const [claveRaw, val] of Object.entries(desglosesJugadoresLive)) {
-        mapaSinTildes[normalizarTexto(claveRaw)] = val;
+        const claveNorm = normalizarTexto(claveRaw);
+        if (claveNorm && !Object.prototype.hasOwnProperty.call(mapaNormalizado, claveNorm)) {
+            mapaNormalizado[claveNorm] = val;
+        }
     }
 
-    if (Object.prototype.hasOwnProperty.call(mapaSinTildes, norm)) {
-        return mapaSinTildes[norm];
+    if (Object.prototype.hasOwnProperty.call(mapaNormalizado, norm)) {
+        return mapaNormalizado[norm];
     }
 
-    const claves = Object.keys(mapaSinTildes);
+    const claves = Object.keys(mapaNormalizado);
     const matchInicial = norm.match(/^([a-z])\.\s*(.+)$/);
     if (matchInicial) {
         const inicial = matchInicial[1];
@@ -331,18 +334,18 @@ function buscarDesgloseJugador(nombreJugador) {
             const partes = k.split(" ");
             return partes[0].startsWith(inicial) && partes[partes.length - 1] === apellido;
         });
-        if (cand.length === 1) return mapaSinTildes[cand[0]];
+        if (cand.length === 1) return mapaNormalizado[cand[0]];
     }
 
     const palabras = norm.split(" ").filter(Boolean);
     if (palabras.length === 1) {
         const unico = palabras[0];
         const exactas = claves.filter(k => k.split(" ").includes(unico));
-        if (exactas.length === 1) return mapaSinTildes[exactas[0]];
+        if (exactas.length === 1) return mapaNormalizado[exactas[0]];
     }
 
     const sub = claves.filter(k => palabras.every(pb => k.split(" ").includes(pb)));
-    if (sub.length === 1) return mapaSinTildes[sub[0]];
+    if (sub.length === 1) return mapaNormalizado[sub[0]];
 
     return null;
 }
