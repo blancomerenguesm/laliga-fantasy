@@ -1,44 +1,44 @@
 {
   "partidos": [
     {
-      "local": "Athletic",
-      "visitante": "Espanyol"
+      "local": "Levante",
+      "visitante": "Racing"
     },
     {
-      "local": "Alavés",
-      "visitante": "Deportivo"
+      "local": "Betis",
+      "visitante": "Rayo"
     },
     {
-      "local": "Rayo",
-      "visitante": "Valencia"
+      "local": "Málaga",
+      "visitante": "Athletic"
     },
     {
-      "local": "Sevilla",
-      "visitante": "Betis"
-    },
-    {
-      "local": "Real Madrid",
-      "visitante": "Celta"
-    },
-    {
-      "local": "Barcelona",
-      "visitante": "Villarreal"
-    },
-    {
-      "local": "Racing",
-      "visitante": "Real Sociedad"
-    },
-    {
-      "local": "Osasuna",
-      "visitante": "Málaga"
-    },
-    {
-      "local": "Getafe",
+      "local": "Elche",
       "visitante": "Atleti"
     },
     {
-      "local": "Levante",
-      "visitante": "Elche"
+      "local": "Real Madrid",
+      "visitante": "Alavés"
+    },
+    {
+      "local": "Valencia",
+      "visitante": "Osasuna"
+    },
+    {
+      "local": "Deportivo",
+      "visitante": "Barcelona"
+    },
+    {
+      "local": "Celta",
+      "visitante": "Villarreal"
+    },
+    {
+      "local": "Real Sociedad",
+      "visitante": "Sevilla"
+    },
+    {
+      "local": "Espanyol",
+      "visitante": "Getafe"
     }
   ],
   "datos": [
