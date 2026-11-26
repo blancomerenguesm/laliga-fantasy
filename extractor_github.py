@@ -12,7 +12,6 @@ MAX_PARTIDOS_JORNADA = 10
 
 URL_AJAX = "https://www.comuniate.com/ajax/partidos/carga_puntos_relevo.php"
 URL_DESGLOSE = "https://www.comuniate.com/ajax/partidos/estadistica_jugador_partido_relevo.php"
-BACKUP_FILE = "laliga_fantasy_backup.json"
 CONFIG_JORNADA_FILE = "config_jornada.json"
 SALIDA_FILE = "puntos.json"
 
@@ -76,25 +75,6 @@ def obtener_jornada_configurada() -> str:
     return JORNADA_DEFECTO
 
 
-def obtener_jugadores_seguidos() -> set[str]:
-    seguidos = set()
-    if not os.path.exists(BACKUP_FILE):
-        return seguidos
-    try:
-        with open(BACKUP_FILE, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        for team in data.get("datos", []):
-            if team.get("isRetired"):
-                continue
-            for p in team.get("players", []):
-                nombre = normalizar_clave(p.get("n", ""))
-                if nombre:
-                    seguidos.add(nombre)
-    except Exception as e:
-        print(f"Aviso leyendo {BACKUP_FILE}: {e}")
-    return seguidos
-
-
 def normalizar_equipo(nombre: str) -> str:
     clave = limpiar_texto(nombre).lower().replace("-", " ")
     clave = re.sub(r"\s+", " ", clave).strip()
@@ -128,7 +108,10 @@ def parsear_equipos_desde_html(html: str, url_final: str) -> tuple[str, str]:
         candidatos.append(limpiar_texto(h1.get_text()))
 
     for txt in candidatos:
-        m = re.search(r"([A-Za-zÁÉÍÓÚÜÑáéíóúüñ .'-]+?)\s+(?:\d+\s*-\s*\d+|vs\.?|[-–])\s+([A-Za-zÁÉÍÓÚÜÑáéíóúüñ .'-]+?)(?:\s*[|–-]\s*Comuniate|$)", txt)
+        m = re.search(
+            r"([A-Za-zÁÉÍÓÚÜÑáéíóúüñ .'-]+?)\s+(?:\d+\s*-\s*\d+|vs\.?|[-–])\s+([A-Za-zÁÉÍÓÚÜÑáéíóúüñ .'-]+?)(?:\s*[|–-]\s*Comuniate|$)",
+            txt,
+        )
         if m:
             loc_raw = re.sub(r"\s+\d+$", "", m.group(1)).strip()
             vis_raw = re.sub(r"^\d+\s+", "", m.group(2)).strip()
@@ -335,7 +318,6 @@ def consultar_desglose_jugador(id_jugador: str, jornada: str, temporada: str) ->
 
 def ejecutar_una_vez():
     jornada_actual = obtener_jornada_configurada()
-    jugadores_seguidos = obtener_jugadores_seguidos()
     print(f"Extrayendo datos de Temporada {TEMPORADA}, Jornada {jornada_actual}...")
 
     partidos = descubrir_partidos_jornada(jornada_actual)
@@ -394,23 +376,15 @@ def ejecutar_una_vez():
                         jugadores_equipos[nombre] = equipo_detectado
 
                     norm_nombre = normalizar_clave(nombre)
-                    es_seguido = (not jugadores_seguidos) or any(
-                        norm_nombre in seg or seg in norm_nombre for seg in jugadores_seguidos
-                    )
-                    if es_seguido:
-                        id_jug = extraer_id_jugador_fila(fila)
-                        if not id_jug:
-                            print(f"Aviso: sin id_jugador en fila para {nombre}")
-                        elif id_jug not in ids_consultados:
-                            try:
-                                lineas = consultar_desglose_jugador(id_jug, jornada_actual, TEMPORADA)
-                                if lineas:
-                                    desgloses[norm_nombre] = lineas
-                                else:
-                                    print(f"Aviso: desglose vacío para {nombre} (id={id_jug})")
-                                ids_consultados.add(id_jug)
-                            except Exception as exc_d:
-                                print(f"Aviso desglose {nombre} ({id_jug}): {exc_d}")
+                    id_jug = extraer_id_jugador_fila(fila)
+                    if id_jug and id_jug not in ids_consultados:
+                        try:
+                            lineas = consultar_desglose_jugador(id_jug, jornada_actual, TEMPORADA)
+                            if lineas:
+                                desgloses[norm_nombre] = lineas
+                            ids_consultados.add(id_jug)
+                        except Exception as exc_d:
+                            print(f"Aviso desglose {nombre} ({id_jug}): {exc_d}")
 
             if len(columnas) >= 2:
                 gf_loc, gp_loc = contar_goles_columna(columnas[0])
