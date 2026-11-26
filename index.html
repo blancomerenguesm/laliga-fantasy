@@ -309,38 +309,43 @@
                 .trim();
         }
 
-        function buscarDesgloseJugador(nombreJugador) {
-            const norm = normalizarTexto(nombreJugador);
-            if (!norm || !desglosesJugadoresLive) return null;
+function buscarDesgloseJugador(nombreJugador) {
+    const norm = normalizarTexto(nombreJugador);
+    if (!norm || !desglosesJugadoresLive) return null;
 
-            if (Object.prototype.hasOwnProperty.call(desglosesJugadoresLive, norm)) {
-                return desglosesJugadoresLive[norm];
-            }
+    const mapaSinTildes = {};
+    for (const [claveRaw, val] of Object.entries(desglosesJugadoresLive)) {
+        mapaSinTildes[normalizarTexto(claveRaw)] = val;
+    }
 
-            const claves = Object.keys(desglosesJugadoresLive);
-            const matchInicial = norm.match(/^([a-z])\.\s*(.+)$/);
-            if (matchInicial) {
-                const inicial = matchInicial[1];
-                const apellido = matchInicial[2];
-                const cand = claves.filter(k => {
-                    const partes = k.split(" ");
-                    return partes[0].startsWith(inicial) && partes[partes.length - 1] === apellido;
-                });
-                if (cand.length === 1) return desglosesJugadoresLive[cand[0]];
-            }
+    if (Object.prototype.hasOwnProperty.call(mapaSinTildes, norm)) {
+        return mapaSinTildes[norm];
+    }
 
-            const palabras = norm.split(" ").filter(Boolean);
-            if (palabras.length === 1) {
-                const unico = palabras[0];
-                const exactas = claves.filter(k => k.split(" ").includes(unico));
-                if (exactas.length === 1) return desglosesJugadoresLive[exactas[0]];
-            }
+    const claves = Object.keys(mapaSinTildes);
+    const matchInicial = norm.match(/^([a-z])\.\s*(.+)$/);
+    if (matchInicial) {
+        const inicial = matchInicial[1];
+        const apellido = matchInicial[2];
+        const cand = claves.filter(k => {
+            const partes = k.split(" ");
+            return partes[0].startsWith(inicial) && partes[partes.length - 1] === apellido;
+        });
+        if (cand.length === 1) return mapaSinTildes[cand[0]];
+    }
 
-            const sub = claves.filter(k => palabras.every(pb => k.split(" ").includes(pb)));
-            if (sub.length === 1) return desglosesJugadoresLive[sub[0]];
+    const palabras = norm.split(" ").filter(Boolean);
+    if (palabras.length === 1) {
+        const unico = palabras[0];
+        const exactas = claves.filter(k => k.split(" ").includes(unico));
+        if (exactas.length === 1) return mapaSinTildes[exactas[0]];
+    }
 
-            return null;
-        }
+    const sub = claves.filter(k => palabras.every(pb => k.split(" ").includes(pb)));
+    if (sub.length === 1) return mapaSinTildes[sub[0]];
+
+    return null;
+}
 
         function abrirDesgloseJugador(nombreJugador, equipoJugador = "", puntosActuales = "") {
             if (!nombreJugador) return;
