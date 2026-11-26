@@ -56,6 +56,7 @@ MAPA_EQUIPOS = {
     "racing": "Racing",
     "real madrid": "Real Madrid",
     "real sociedad": "Real Sociedad",
+    "real-sociedad": "Real Sociedad",
     "sevilla": "Sevilla",
     "valencia": "Valencia",
     "villarreal": "Villarreal",
