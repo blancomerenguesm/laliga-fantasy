@@ -25,6 +25,8 @@
         .player-item { display: flex; justify-content: space-between; align-items: center; background: #2a2a2a; padding: 8px; margin-bottom: 5px; border-radius: 4px; }
         .player-info { display: flex; flex-direction: column; }
         .player-name { font-weight: bold; font-size: 0.9em; }
+        .player-name.clickable-player { cursor: pointer; text-decoration: underline dotted rgba(212, 175, 55, 0.55); text-underline-offset: 3px; }
+        .player-name.clickable-player:hover { color: var(--accent); }
         .player-team { font-size: 0.75em; color: var(--gray); }
         .points-container { display: flex; align-items: center; gap: 5px; }
         .points-input { width: 45px; padding: 5px; background: #121212; color: white; border: 1px solid #555; border-radius: 4px; text-align: center; font-weight: bold; }
@@ -81,6 +83,20 @@
 
         .toast { visibility: hidden; min-width: 250px; background-color: #333; color: #fff; text-align: center; border-radius: 8px; padding: 12px 20px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-weight: bold; box-shadow: 0px 4px 12px rgba(0,0,0,0.5); border: 1px solid var(--accent); opacity: 0; transition: opacity 0.3s, bottom 0.3s; }
         .toast.show { visibility: visible; opacity: 1; bottom: 40px; }
+
+        .modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); z-index: 2000; align-items: center; justify-content: center; padding: 15px; }
+        .modal-backdrop.open { display: flex; }
+        .modal-box { background: var(--panel); border: 1px solid var(--accent); border-radius: 10px; width: 100%; max-width: 420px; max-height: 85vh; overflow-y: auto; padding: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 12px; }
+        .modal-title { margin: 0; font-size: 1.2em; color: var(--accent); }
+        .modal-close { background: #2a2a2a; color: #fff; border: 1px solid #555; border-radius: 5px; padding: 5px 10px; font-size: 0.9em; }
+        .modal-close:hover { background: var(--danger); color: #fff; border-color: var(--danger); }
+        .desglose-row { display: flex; justify-content: space-between; align-items: center; background: #272727; border-radius: 6px; padding: 8px 12px; margin-bottom: 6px; font-size: 0.9em; border-left: 3px solid #555; }
+        .desglose-row.dazn { border-left-color: var(--accent); background: #2b2718; }
+        .desglose-pts { font-weight: bold; font-size: 1em; }
+        .desglose-pts.pos { color: #55efc4; }
+        .desglose-pts.neg { color: #ff7675; }
+        .desglose-pts.zero { color: var(--gray); }
     </style>
 </head>
 <body>
@@ -102,9 +118,22 @@
 
     <div id="toast" class="toast">Notificación</div>
 
+    <div id="desgloseModal" class="modal-backdrop" onclick="cerrarModalDesglose(event)">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div>
+                    <h3 id="modalJugadorTitulo" class="modal-title">Jugador</h3>
+                    <div id="modalJugadorSub" style="font-size:0.8em; color:var(--gray); margin-top:2px;"></div>
+                </div>
+                <button type="button" class="modal-close" onclick="cerrarModalDesglose()">✕</button>
+            </div>
+            <div id="modalDesgloseContenido"></div>
+        </div>
+    </div>
+
     <!-- Pestaña Jornada -->
     <div id="jornada" class="tab-content active">
-        <p style="text-align:center; color:var(--gray); font-size: 0.9em; margin-top: 0;">Introduce los puntos directamente durante el partido.</p>
+        <p style="text-align:center; color:var(--gray); font-size: 0.9em; margin-top: 0;">Introduce los puntos directamente durante el partido. Pulsa en un jugador para ver su desglose.</p>
         <div class="match-grid" id="matchesContainer"></div>
     </div>
 
@@ -264,12 +293,97 @@
 
         let partidosJornada = JSON.parse(localStorage.getItem('lf_partidos_v4')) || [];
         let fantasyData = JSON.parse(localStorage.getItem('lf_datos_v4')) || [];
+        let desglosesJugadoresLive = JSON.parse(localStorage.getItem('lf_desgloses_live')) || {};
         
         const coloresManagers = ['#ff7675', '#74b9ff', '#55efc4', '#ffeaa7', '#a29bfe', '#fdcb6e', '#00b894', '#e84393', '#00cec9', '#b2bec3'];
         
         let currentSortMode = 'points';
         let currentGeneralSortMode = 'points';
         let currentGeneralLiveMode = true;
+
+        function normalizarTexto(texto) {
+            return (texto || "")
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .trim();
+        }
+
+        function buscarDesgloseJugador(nombreJugador) {
+            const norm = normalizarTexto(nombreJugador);
+            if (!norm || !desglosesJugadoresLive) return null;
+
+            if (Object.prototype.hasOwnProperty.call(desglosesJugadoresLive, norm)) {
+                return desglosesJugadoresLive[norm];
+            }
+
+            const claves = Object.keys(desglosesJugadoresLive);
+            const matchInicial = norm.match(/^([a-z])\.\s*(.+)$/);
+            if (matchInicial) {
+                const inicial = matchInicial[1];
+                const apellido = matchInicial[2];
+                const cand = claves.filter(k => {
+                    const partes = k.split(" ");
+                    return partes[0].startsWith(inicial) && partes[partes.length - 1] === apellido;
+                });
+                if (cand.length === 1) return desglosesJugadoresLive[cand[0]];
+            }
+
+            const palabras = norm.split(" ").filter(Boolean);
+            if (palabras.length === 1) {
+                const unico = palabras[0];
+                const exactas = claves.filter(k => k.split(" ").includes(unico));
+                if (exactas.length === 1) return desglosesJugadoresLive[exactas[0]];
+            }
+
+            const sub = claves.filter(k => palabras.every(pb => k.split(" ").includes(pb)));
+            if (sub.length === 1) return desglosesJugadoresLive[sub[0]];
+
+            return null;
+        }
+
+        function abrirDesgloseJugador(nombreJugador, equipoJugador = "", puntosActuales = "") {
+            if (!nombreJugador) return;
+            const modal = document.getElementById("desgloseModal");
+            const tituloEl = document.getElementById("modalJugadorTitulo");
+            const subEl = document.getElementById("modalJugadorSub");
+            const bodyEl = document.getElementById("modalDesgloseContenido");
+
+            tituloEl.innerText = nombreJugador;
+            const ptsTexto = (puntosActuales !== "" && puntosActuales !== undefined && puntosActuales !== null)
+                ? `Total: ${puntosActuales} pts`
+                : "Sin puntos aún";
+            subEl.innerText = [equipoJugador || "", ptsTexto].filter(Boolean).join(" · ");
+
+            const items = buscarDesgloseJugador(nombreJugador);
+            if (!Array.isArray(items) || items.length === 0) {
+                bodyEl.innerHTML = `<p style="color:var(--gray); font-size:0.9em; margin:8px 0;">Aún no hay desglose disponible para este jugador en <code>puntos.json</code> (se rellena cuando el extractor consulta la estadística del partido).</p>`;
+            } else {
+                bodyEl.innerHTML = items.map(it => {
+                    const concepto = it.concepto || "";
+                    const ptsRaw = String(it.puntos ?? "");
+                    const num = parseFloat(ptsRaw.replace(",", "."));
+                    let clsPts = "zero";
+                    if (!Number.isNaN(num)) {
+                        if (num > 0) clsPts = "pos";
+                        else if (num < 0) clsPts = "neg";
+                    }
+                    const daznTag = it.dazn ? " 📺" : "";
+                    return `
+                        <div class="desglose-row ${it.dazn ? 'dazn' : ''}">
+                            <span>${concepto}${daznTag}</span>
+                            <span class="desglose-pts ${clsPts}">${ptsRaw}</span>
+                        </div>`;
+                }).join("");
+            }
+
+            modal.classList.add("open");
+        }
+
+        function cerrarModalDesglose(event) {
+            if (event && event.target !== document.getElementById("desgloseModal")) return;
+            document.getElementById("desgloseModal").classList.remove("open");
+        }
 
         function calcularDeudasProyectadasJornada() {
             let processed = [...fantasyData].map((t, i) => ({ ...t, originalIndex: i })).filter(t => !t.isRetired);
@@ -366,7 +480,9 @@
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.nav button').forEach(el => el.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
+            if (window.event && window.event.currentTarget) {
+                window.event.currentTarget.classList.add('active');
+            }
             
             if(tabId === 'plantillas') renderPlantillas();
             if(tabId === 'jornada') renderJornada();
@@ -393,16 +509,21 @@
             fantasyData.forEach((team, mIndex) => {
                 if (team.isRetired) return; 
 
-                let playersHtml = team.players.map((p, pIndex) => `
+                let playersHtml = team.players.map((p, pIndex) => {
+                    const safeName = (p.n || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                    const safeTeam = (p.t || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                    const ptsVal = p.p !== "" ? p.p : '';
+                    return `
                     <div class="player-item">
                         <div class="player-info">
-                            <span class="player-name">${p.n || 'Vacío'} ${p.c ? '<span class="captain-tag">C</span>' : ''}</span>
+                            <span class="player-name ${p.n ? 'clickable-player' : ''}" onclick="${p.n ? `abrirDesgloseJugador('${safeName}', '${safeTeam}', '${ptsVal}')` : ''}">${p.n || 'Vacío'} ${p.c ? '<span class="captain-tag">C</span>' : ''}</span>
                             <span class="player-team">${p.t || '-'}</span>
                         </div>
                         <div class="points-container">
-                            <input type="number" class="points-input" value="${p.p !== "" ? p.p : ''}" placeholder="-" oninput="updatePoints(${mIndex}, ${pIndex}, this.value)">
+                            <input type="number" class="points-input" value="${ptsVal}" placeholder="-" oninput="updatePoints(${mIndex}, ${pIndex}, this.value)">
                         </div>
-                    </div>`).join('');
+                    </div>`;
+                }).join('');
                 
                 let coachHtml = `
                     <div class="player-item coach-item">
@@ -548,12 +669,16 @@
                 <tr id="details-${t.originalIndex}" class="ranking-details" style="display:none;">
                     <td colspan="6">
                         <div class="detail-grid">
-                            ${t.players.map(p => `
-                                <div class="detail-item ${p.p !== "" ? 'played' : ''}">
-                                    <span>${p.n} ${p.c ? '<span class="captain-tag">C</span>' : ''}</span>
+                            ${t.players.map(p => {
+                                const safeName = (p.n || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                                const safeTeam = (p.t || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                                const ptsVal = p.p !== "" ? p.p : '';
+                                return `
+                                <div class="detail-item ${p.p !== "" ? 'played' : ''}" onclick="event.stopPropagation(); abrirDesgloseJugador('${safeName}', '${safeTeam}', '${ptsVal}')">
+                                    <span class="clickable-player">${p.n} ${p.c ? '<span class="captain-tag">C</span>' : ''}</span>
                                     <strong style="color: ${p.p !== "" ? '#fff' : 'var(--gray)'};">${p.p !== "" ? p.p : '-'}</strong>
-                                </div>
-                            `).join('')}
+                                </div>`;
+                            }).join('')}
                             <div class="detail-item coach ${t.coach.p !== "" ? 'played' : ''}">
                                 <span>👔 ${t.coach.n || 'Míster'}</span>
                                 <strong style="color: ${t.coach.p !== "" ? '#fff' : 'var(--gray)'};">${t.coach.p !== "" ? t.coach.p : '-'}</strong>
@@ -591,7 +716,6 @@
                 };
             });
 
-            // Ranking base (sin jornada en directo) para calcular variación de puestos
             const baseSorted = [...enriched].sort((a, b) => {
                 if (currentGeneralSortMode === 'points') {
                     return b.basePts - a.basePts;
@@ -602,7 +726,6 @@
             const basePosMap = {};
             baseSorted.forEach((item, i) => { basePosMap[item.originalIndex] = i + 1; });
 
-            // Ranking mostrado según esté en directo o sin directo
             const sorted = [...enriched].sort((a, b) => {
                 if (currentGeneralSortMode === 'points') {
                     const valA = currentGeneralLiveMode ? a.livePtsTotal : a.basePts;
@@ -615,7 +738,6 @@
                 }
             });
 
-            // Bote total de deudas (según modo activo) repartido a partes iguales entre los managers (10)
             const boteTotalDeudas = sorted.reduce((acc, item) => {
                 return acc + (currentGeneralLiveMode ? item.liveDebtTotal : item.baseDebt);
             }, 0);
@@ -625,7 +747,7 @@
             sorted.forEach((t, index) => {
                 const posActual = index + 1;
                 const posBase = basePosMap[t.originalIndex];
-                const diffPos = posBase - posActual; // >0 sube puestos, <0 baja puestos
+                const diffPos = posBase - posActual;
 
                 let trendHtml = '';
                 if (currentGeneralLiveMode) {
@@ -647,7 +769,6 @@
                     ? `<span class="debt-tag">${shownDebt.toFixed(2)} €</span>${extraDebtBadge}`
                     : `<span class="no-debt">0.00 €</span>`;
 
-                // Beneficio neto: parte igual del bote total menos su deuda acumulada
                 const beneficioNeto = repartoPorManager - shownDebt;
                 const benefColor = beneficioNeto >= 0 ? 'var(--success)' : 'var(--danger)';
                 const benefSign = beneficioNeto > 0 ? '+' : '';
@@ -686,14 +807,17 @@
                     if (team.isRetired) return; 
 
                     team.players.forEach((p, pIndex) => {
+                        const safeName = (p.n || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                        const safeTeam = (p.t || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                        const ptsVal = p.p !== "" ? p.p : '';
                         let playerHtml = `
                             <div class="match-player">
                                 <div class="match-player-info">
-                                    <span>${p.n}</span>
+                                    <span class="${p.n ? 'clickable-player' : ''}" onclick="${p.n ? `abrirDesgloseJugador('${safeName}', '${safeTeam}', '${ptsVal}')` : ''}">${p.n}</span>
                                     ${p.c ? '<span class="captain-tag" style="margin:0 2px;">C</span>' : ''}
                                     <span class="owner-tag" style="color: ${coloresManagers[mIndex]}; font-weight: bold; font-style: normal;">${team.manager}</span>
                                 </div>
-                                <input type="number" class="match-points-input" value="${p.p !== "" ? p.p : ''}" placeholder="-" oninput="updatePoints(${mIndex}, ${pIndex}, this.value)">
+                                <input type="number" class="match-points-input" value="${ptsVal}" placeholder="-" oninput="updatePoints(${mIndex}, ${pIndex}, this.value)">
                             </div>`;
                         if (p.t === partido.local) loc.push(playerHtml);
                         if (p.t === partido.visitante) vis.push(playerHtml);
@@ -886,8 +1010,8 @@
                     team.total = 0;
                 });
                 localStorage.setItem('lf_bloqueo_sincro_cerrada', '1');
-            const jInputVal = (document.getElementById('jornadaNumeroInput')?.value || '').trim();
-            if (jInputVal) localStorage.setItem('lf_jornada_cerrada_num', jInputVal);
+                const jInputVal = (document.getElementById('jornadaNumeroInput')?.value || '').trim();
+                if (jInputVal) localStorage.setItem('lf_jornada_cerrada_num', jInputVal);
                 saveDataToLocal();
                 showToast("🧹 Puntos de jornada limpiados a cero");
             }
@@ -904,7 +1028,6 @@
                 return;
             }
 
-            // Calcular reparto de deudas (3€, 2€, 2€ con reparto en empates)
             let scoreGroups = {};
             activeTeams.forEach(s => {
                 if(!scoreGroups[s.total]) scoreGroups[s.total] = [];
@@ -935,7 +1058,6 @@
                 });
             }
 
-            // Paso 1: Confirmar nombres y cantidades que se van a sumar en las deudas
             const resumenDeudas = Object.entries(debtChanges)
                 .map(([idx, amount]) => ({
                     manager: fantasyData[idx].manager,
@@ -950,7 +1072,6 @@
                 return;
             }
 
-            // Paso 2: Confirmar puntos que ha hecho cada mánager en la jornada
             const resumenPuntos = [...activeTeams]
                 .sort((a, b) => b.total - a.total)
                 .map(t => `• ${t.manager}: ${t.total} pts`)
@@ -960,7 +1081,6 @@
                 return;
             }
 
-            // Aplicar deudas, sumar puntos históricos y poner marcadores a 0
             Object.entries(debtChanges).forEach(([idx, amount]) => {
                 fantasyData[idx].debt += amount;
             });
@@ -1017,7 +1137,6 @@
             reader.readAsText(file);
         }
 
-        // --- CONTROL CRON-JOB.ORG ---
         function getCronJobConfig() {
             return {
                 jobId: localStorage.getItem('lf_cj_jobid') || '8917104',
@@ -1082,7 +1201,6 @@
             }
         }
 
-        // --- SINCRONIZACIÓN CON GITHUB ---
         function getGitHubConfig() {
             return {
                 owner: localStorage.getItem('lf_gh_owner') || 'blancomerenguesm',
@@ -1230,7 +1348,6 @@
             }
         }
 
-        // --- CAMBIAR JORNADA EN GITHUB Y CARGAR PARTIDOS ---
         async function cargarJornadaActualEnInput() {
             const input = document.getElementById('jornadaNumeroInput');
             if (!input || input.value) return;
@@ -1332,15 +1449,6 @@
             }
         }
 
-        // --- SINCRONIZACIÓN EN DIRECTO CON puntos.json ---
-        function normalizarTexto(texto) {
-            return (texto || "")
-                .toLowerCase()
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "")
-                .trim();
-        }
-
         let catalogoJugadores = JSON.parse(localStorage.getItem('lf_catalogo_jugadores')) || {};
 
         function guardarCatalogoLocal(nuevoCatalogo) {
@@ -1431,11 +1539,6 @@
                 const jugadoresRaw = dataRaw.jugadores || {};
                 const equiposRaw = dataRaw.jugadores_equipos || {};
 
-                const mapaEquipoPorJugadorNorm = {};
-                if (Array.isArray(dataRaw.partidos)) {
-                    // Fallback si no hay jugadores_equipos explícito
-                }
-
                 const nuevo = {};
                 for (const [nombre, _pts] of Object.entries(jugadoresRaw)) {
                     nuevo[nombre] = equiposRaw[nombre] || catalogoJugadores[nombre] || "";
@@ -1455,14 +1558,12 @@
             const normBackup = normalizarTexto(nombreBackup);
             if (!normBackup) return null;
 
-            // 1. Coincidencia exacta normalizada
             if (Object.prototype.hasOwnProperty.call(mapaPuntos, normBackup)) {
                 return mapaPuntos[normBackup];
             }
 
             const clavesComuniate = Object.keys(mapaPuntos);
 
-            // 2. Formato inicial + apellido (ej. "j. martin" o "f. valverde")
             const matchInicial = normBackup.match(/^([a-z])\.\s*(.+)$/);
             if (matchInicial) {
                 const inicial = matchInicial[1];
@@ -1476,20 +1577,17 @@
 
             const palabrasBackup = normBackup.split(" ").filter(Boolean);
 
-            // 3. Si el usuario escribió un solo término (ej. "mbappe" o "bellingham"), solo si hay match único exacto de palabra o prefijo único
             if (palabrasBackup.length === 1) {
                 const unico = palabrasBackup[0];
                 const exactasPalabra = clavesComuniate.filter(k => k.split(" ").includes(unico));
                 if (exactasPalabra.length === 1) return mapaPuntos[exactasPalabra[0]];
-                if (exactasPalabra.length > 1) return null; // Ambiguo (ej. varios García o López) -> evita falso positivo
+                if (exactasPalabra.length > 1) return null;
 
                 const prefijos = clavesComuniate.filter(k => k.startsWith(unico + " "));
                 if (prefijos.length === 1) return mapaPuntos[prefijos[0]];
                 return null;
             }
 
-            // 4. Si escribió nombre y apellido (2+ palabras), exigir que todas las palabras estén presentes en la clave
-            // y que NO haya ambigüedad. Nunca asignar por un apellido suelto si el nombre de pila no coincide.
             const subconjunto = clavesComuniate.filter(k => {
                 const palabrasClave = k.split(" ");
                 return palabrasBackup.every(pb => palabrasClave.includes(pb));
@@ -1510,10 +1608,14 @@
 
                 const jugadoresRaw = dataRaw.jugadores ? dataRaw.jugadores : dataRaw;
                 const entrenadoresRaw = dataRaw.entrenadores ? dataRaw.entrenadores : {};
+                if (dataRaw.desgloses && typeof dataRaw.desgloses === 'object') {
+                    desglosesJugadoresLive = dataRaw.desgloses;
+                    localStorage.setItem('lf_desgloses_live', JSON.stringify(desglosesJugadoresLive));
+                }
+
                 const numJugCheck = Object.keys(jugadoresRaw).length;
 
                 if (numJugCheck > 0 && localStorage.getItem('lf_bloqueo_sincro_cerrada') === '1') {
-                    // Si el JSON sigue siendo de la jornada cerrada, no volver a pisar los ceros hasta que haya jornada nueva
                     const jCerrada = localStorage.getItem('lf_jornada_cerrada_num') || '';
                     if (jCerrada && String(dataRaw.jornada || '') === jCerrada) {
                         const horaLecturaSkip = new Date().toLocaleTimeString();
@@ -1565,6 +1667,9 @@
 
                 if (cambios > 0) {
                     saveDataToLocal();
+                } else {
+                    renderPlantillas();
+                    renderJornada();
                 }
 
                 const horaLectura = new Date().toLocaleTimeString();
@@ -1609,3 +1714,8 @@
     </script>
 </body>
 </html>
+```[cite: 21]
+
+### Qué se ha añadido sobre `index_2.html`
+* **Modal de desglose (`#desgloseModal`):** al pulsar sobre un jugador en **📋 Puntos**, **⚽ Partidos** o en el desplegable de cada mánager en **📊 Jornada**, abre su desglose (`concepto` y `puntos`, destacando con `📺` las líneas con `dazn: true`) si `puntos.json` trae el campo `desgloses`[cite: 20, 21].
+* **Sincronización segura de `switchTab`:** evita errores si se llama a `switchTab(...)` sin evento de ratón directo[cite: 21].

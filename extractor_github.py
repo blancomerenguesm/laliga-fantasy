@@ -1,19 +1,24 @@
-import requests
-from bs4 import BeautifulSoup
 import json
-import re
 import os
+import re
 from datetime import datetime
 from zoneinfo import ZoneInfo
+from bs4 import BeautifulSoup
+import requests
 
 TEMPORADA = "26"
 JORNADA_DEFECTO = "13"
 URL_FALLBACK = "https://www.comuniate.com/partido/26/2/13/alaves-deportivo"
 
 URL_AJAX = "https://www.comuniate.com/ajax/partidos/carga_puntos_relevo.php"
+URL_DESGLOSE = "https://www.comuniate.com/ajax/partidos/estadistica_jugador_partido_relevo.php"
+BACKUP_FILE = "laliga_fantasy_backup.json"
+CONFIG_JORNADA_FILE = "config_jornada.json"
+SALIDA_FILE = "puntos.json"
+
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-    "Referer": "https://www.comuniate.com/"
+    "Referer": "https://www.comuniate.com/",
 }
 
 MAPA_EQUIPOS = {
@@ -46,10 +51,19 @@ MAPA_EQUIPOS = {
     "villarreal": "Villarreal",
 }
 
-def obtener_jornada_configurada():
-    if os.path.exists("config_jornada.json"):
+
+def limpiar_texto(txt: str) -> str:
+    return re.sub(r"\s+", " ", (txt or "")).strip()
+
+
+def normalizar_clave(txt: str) -> str:
+    return limpiar_texto(txt).lower()
+
+
+def obtener_jornada_configurada() -> str:
+    if os.path.exists(CONFIG_JORNADA_FILE):
         try:
-            with open("config_jornada.json", "r", encoding="utf-8") as f:
+            with open(CONFIG_JORNADA_FILE, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 j = str(data.get("jornada", "")).strip()
                 if j.isdigit():
@@ -58,11 +72,32 @@ def obtener_jornada_configurada():
             print(f"Aviso leyendo config_jornada.json: {e}")
     return JORNADA_DEFECTO
 
-def normalizar_equipo(nombre):
-    clave = nombre.strip().lower()
-    return MAPA_EQUIPOS.get(clave, nombre.strip())
 
-def extraer_id_sofascore(html):
+def obtener_jugadores_seguidos() -> set[str]:
+    seguidos = set()
+    if not os.path.exists(BACKUP_FILE):
+        return seguidos
+    try:
+        with open(BACKUP_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        for team in data.get("datos", []):
+            if team.get("isRetired"):
+                continue
+            for p in team.get("players", []):
+                nombre = normalizar_clave(p.get("n", ""))
+                if nombre:
+                    seguidos.add(nombre)
+    except Exception as e:
+        print(f"Aviso leyendo {BACKUP_FILE}: {e}")
+    return seguidos
+
+
+def normalizar_equipo(nombre: str) -> str:
+    clave = limpiar_texto(nombre).lower()
+    return MAPA_EQUIPOS.get(clave, limpiar_texto(nombre))
+
+
+def extraer_id_sofascore(html: str):
     patrones = [
         r"id_sofascore['\"]?\s*[:=]\s*['\"]?(\d+)",
         r'name=["\']id_sofascore["\'][^>]*value=["\'](\d+)["\']',
@@ -75,7 +110,33 @@ def extraer_id_sofascore(html):
             return m.group(1)
     return None
 
-def buscar_enlaces_jornada(soup, temporada, jornada):
+
+def extraer_id_jugador_fila(fila) -> str | None:
+    for attr in ("data-id-jugador", "data-id_jugador", "data-jugador", "data-id"):
+        val = fila.get(attr)
+        if val and str(val).strip().isdigit():
+            return str(val).strip()
+
+    for tag in fila.select("[onclick], [data-id-jugador], a[href]"):
+        onclick = tag.get("onclick") or ""
+        m = re.search(r"id_jugador['\"]?\s*[:=]\s*['\"]?(\d+)|estadistica_jugador_partido_relevo[^0-9]*(\d+)", onclick)
+        if m:
+            return m.group(1) or m.group(2)
+
+        for a_attr in ("data-id-jugador", "data-id"):
+            v = tag.get(a_attr)
+            if v and str(v).strip().isdigit():
+                return str(v).strip()
+
+        href = tag.get("href") or ""
+        m_href = re.search(r"/jugador(?:es)?/[^/]+-(\d+)", href)
+        if m_href:
+            return m_href.group(1)
+
+    return None
+
+
+def buscar_enlaces_jornada(soup, temporada: str, jornada: str) -> list[dict]:
     partidos = []
     urls_vistas = set()
     patron_url = re.compile(rf"/partido/{temporada}/\d+/{jornada}/[a-z0-9-]+", re.IGNORECASE)
@@ -94,23 +155,24 @@ def buscar_enlaces_jornada(soup, temporada, jornada):
                     "url": url_completa,
                     "local": normalizar_equipo(partes[0]),
                     "visitante": normalizar_equipo(partes[1]),
-                    "id_sofascore": None
+                    "id_sofascore": None,
                 })
     return partidos
 
-def descubrir_partidos_jornada(jornada):
+
+def descubrir_partidos_jornada(jornada: str) -> list[dict]:
     urls_exploracion = [
         f"https://www.comuniate.com/jornada/{TEMPORADA}/2/{jornada}",
         f"https://www.comuniate.com/jornada/{TEMPORADA}/1/{jornada}",
         "https://www.comuniate.com/partidos",
         "https://www.comuniate.com/",
-        URL_FALLBACK
+        URL_FALLBACK,
     ]
 
     partidos = []
     for url_idx in urls_exploracion:
         try:
-            r = requests.get(url_idx, headers=HEADERS, timeout=15)
+            r = requests.get(url_idx, headers=HEADERS, timeout=12)
             if r.status_code != 200:
                 continue
             soup = BeautifulSoup(r.text, "html.parser")
@@ -123,14 +185,15 @@ def descubrir_partidos_jornada(jornada):
 
     for p in partidos:
         try:
-            resp = requests.get(p["url"], headers=HEADERS, timeout=15)
+            resp = requests.get(p["url"], headers=HEADERS, timeout=12)
             p["id_sofascore"] = extraer_id_sofascore(resp.text)
         except Exception:
             pass
 
     return partidos
 
-def contar_goles_columna(columna):
+
+def contar_goles_columna(columna) -> tuple[int, int]:
     goles_favor = 0
     goles_propia = 0
     for hl in columna.select(".playerHighlights .hl"):
@@ -147,19 +210,52 @@ def contar_goles_columna(columna):
 
     return goles_favor, goles_propia
 
+
+def consultar_desglose_jugador(id_jugador: str, jornada: str, temporada: str) -> list[dict]:
+    payload = {
+        "id_jugador": id_jugador,
+        "jornada": jornada,
+        "temporada": temporada,
+    }
+    resp = requests.post(URL_DESGLOSE, data=payload, headers=HEADERS, timeout=10)
+    resp.raise_for_status()
+    soup = BeautifulSoup(resp.text, "html.parser")
+
+    items = []
+    for row in soup.select("div.row"):
+        label_el = row.select_one("strong")
+        val_el = row.select_one("[class*='col-xs-4']")
+        if not label_el or not val_el:
+            continue
+        concepto = limpiar_texto(label_el.get_text())
+        puntos_txt = limpiar_texto(val_el.get_text())
+        if concepto and puntos_txt:
+            es_dazn = bool(row.select_one("img[src*='dazn']")) or ("dazn" in concepto.lower())
+            items.append({
+                "concepto": concepto,
+                "puntos": puntos_txt,
+                "dazn": es_dazn,
+            })
+    return items
+
+
 def ejecutar_una_vez():
     jornada_actual = obtener_jornada_configurada()
+    jugadores_seguidos = obtener_jugadores_seguidos()
     print(f"Extrayendo datos de Temporada {TEMPORADA}, Jornada {jornada_actual}...")
+
     partidos = descubrir_partidos_jornada(jornada_actual)
     jugadores = {}
     jugadores_equipos = {}
     entrenadores = {}
+    desgloses = {}
     partidos_limpios = []
+    ids_consultados = set()
 
     for p in partidos:
         partidos_limpios.append({
             "local": p["local"],
-            "visitante": p["visitante"]
+            "visitante": p["visitante"],
         })
 
         if not p["id_sofascore"]:
@@ -168,7 +264,7 @@ def ejecutar_una_vez():
         payload = {
             "id_sofascore": p["id_sofascore"],
             "temporada": TEMPORADA,
-            "login": ""
+            "login": "",
         }
         try:
             r = requests.post(URL_AJAX, data=payload, headers=HEADERS, timeout=10)
@@ -178,18 +274,17 @@ def ejecutar_una_vez():
                 continue
 
             columnas = soup.select("div.col-md-6.col-xs-6")
-            for col_idx, fila in enumerate(filas):
+            for fila in filas:
                 nombre_el = fila.select_one(".playerName")
                 puntos_el = fila.select_one(".playerPoints")
                 if nombre_el and puntos_el:
-                    nombre = nombre_el.get_text(strip=True)
+                    nombre = limpiar_texto(nombre_el.get_text())
                     try:
-                        puntos = int(puntos_el.get_text(strip=True))
+                        puntos = int(limpiar_texto(puntos_el.get_text()))
                     except ValueError:
                         puntos = 0
                     jugadores[nombre] = puntos
 
-                    # Intentar detectar equipo de la fila o de la columna local/visitante
                     equipo_detectado = None
                     eq_el = fila.select_one(".playerTeam, .teamName, [data-team]")
                     if eq_el:
@@ -204,7 +299,21 @@ def ejecutar_una_vez():
                     if equipo_detectado:
                         jugadores_equipos[nombre] = equipo_detectado
 
-            columnas = soup.select("div.col-md-6.col-xs-6")
+                    norm_nombre = normalizar_clave(nombre)
+                    id_jug = extraer_id_jugador_fila(fila)
+                    if (
+                        id_jug
+                        and id_jug not in ids_consultados
+                        and (not jugadores_seguidos or any(norm_nombre in seg or seg in norm_nombre for seg in jugadores_seguidos))
+                    ):
+                        try:
+                            lineas = consultar_desglose_jugador(id_jug, jornada_actual, TEMPORADA)
+                            if lineas:
+                                desgloses[norm_nombre] = lineas
+                            ids_consultados.add(id_jug)
+                        except Exception as exc_d:
+                            print(f"Aviso desglose {nombre} ({id_jug}): {exc_d}")
+
             if len(columnas) >= 2:
                 gf_loc, gp_loc = contar_goles_columna(columnas[0])
                 gf_vis, gp_vis = contar_goles_columna(columnas[1])
@@ -231,13 +340,18 @@ def ejecutar_una_vez():
         "jugadores": jugadores,
         "jugadores_equipos": jugadores_equipos,
         "entrenadores": entrenadores,
-        "partidos": partidos_limpios
+        "desgloses": desgloses,
+        "partidos": partidos_limpios,
     }
 
-    with open("puntos.json", "w", encoding="utf-8") as f:
+    with open(SALIDA_FILE, "w", encoding="utf-8") as f:
         json.dump(salida, f, ensure_ascii=False, indent=2)
 
-    print(f"OK (J{jornada_actual}): {len(jugadores)} jugadores, {len(entrenadores)} entrenadores, {len(partidos_limpios)} partidos.")
+    print(
+        f"OK (J{jornada_actual}): {len(jugadores)} jugadores, "
+        f"{len(desgloses)} desgloses, {len(entrenadores)} entrenadores, {len(partidos_limpios)} partidos."
+    )
+
 
 if __name__ == "__main__":
     ejecutar_una_vez()
