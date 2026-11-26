@@ -8,7 +8,7 @@ import requests
 
 TEMPORADA = "26"
 JORNADA_DEFECTO = "14"
-URL_FALLBACK = "https://www.comuniate.com/partidos"
+MAX_PARTIDOS_JORNADA = 10
 
 URL_AJAX = "https://www.comuniate.com/ajax/partidos/carga_puntos_relevo.php"
 URL_DESGLOSE = "https://www.comuniate.com/ajax/partidos/estadistica_jugador_partido_relevo.php"
@@ -105,7 +105,7 @@ def parsear_equipos_desde_url(url: str) -> tuple[str, str]:
     m = re.search(r"/partido/\d+/\d+/\d+/([a-z0-9-]+)", url, re.IGNORECASE)
     if not m:
         return "Local", "Visitante"
-    slug = m.group(1).lower()
+    slug = m.group(1).lower().strip("-")
     claves_ordenadas = sorted(MAPA_EQUIPOS.keys(), key=len, reverse=True)
     for c in claves_ordenadas:
         slug_c = c.replace(" ", "-")
@@ -117,6 +117,28 @@ def parsear_equipos_desde_url(url: str) -> tuple[str, str]:
         partes = slug.split("-", 1)
         return normalizar_equipo(partes[0]), normalizar_equipo(partes[1])
     return "Local", "Visitante"
+
+
+def parsear_equipos_desde_html(html: str, url_final: str) -> tuple[str, str]:
+    soup = BeautifulSoup(html, "html.parser")
+    titulo = limpiar_texto(soup.title.get_text()) if soup.title else ""
+    # Busca patrones tipo "Getafe 0-3 Atlético" o "Getafe - Atlético" en el título o h1
+    candidatos = [titulo]
+    h1 = soup.find("h1")
+    if h1:
+        candidatos.append(limpiar_texto(h1.get_text()))
+
+    for txt in candidatos:
+        m = re.search(r"([A-Za-zÁÉÍÓÚÜÑáéíóúüñ .'-]+?)\s+(?:\d+\s*-\s*\d+|vs\.?|[-–])\s+([A-Za-zÁÉÍÓÚÜÑáéíóúüñ .'-]+?)(?:\s*[|–-]\s*Comuniate|$)", txt)
+        if m:
+            loc_raw = re.sub(r"\s+\d+$", "", m.group(1)).strip()
+            vis_raw = re.sub(r"^\d+\s+", "", m.group(2)).strip()
+            loc_norm = normalizar_equipo(loc_raw)
+            vis_norm = normalizar_equipo(vis_raw)
+            if loc_norm.lower() in MAPA_EQUIPOS and vis_norm.lower() in MAPA_EQUIPOS:
+                return loc_norm, vis_norm
+
+    return parsear_equipos_desde_url(url_final)
 
 
 def extraer_id_sofascore(html: str):
@@ -196,16 +218,20 @@ def buscar_enlaces_jornada(soup, temporada: str, jornada: str) -> list[dict]:
     return partidos
 
 
+def extraer_slot_partido(url: str) -> int | None:
+    m = re.search(r"/partido/\d+/(\d+)/\d+", url)
+    return int(m.group(1)) if m else None
+
+
 def descubrir_partidos_jornada(jornada: str) -> list[dict]:
     urls_exploracion = [
         f"https://www.comuniate.com/jornada/{TEMPORADA}/2/{jornada}",
         f"https://www.comuniate.com/jornada/{TEMPORADA}/1/{jornada}",
         "https://www.comuniate.com/partidos",
         "https://www.comuniate.com/",
-        URL_FALLBACK,
     ]
 
-    partidos_por_url = {}
+    partidos_por_slot = {}
     for url_idx in urls_exploracion:
         try:
             r = requests.get(url_idx, headers=HEADERS, timeout=12)
@@ -214,18 +240,50 @@ def descubrir_partidos_jornada(jornada: str) -> list[dict]:
             soup = BeautifulSoup(r.text, "html.parser")
             encontrados = buscar_enlaces_jornada(soup, TEMPORADA, jornada)
             for p in encontrados:
-                if p["url"] not in partidos_por_url:
-                    partidos_por_url[p["url"]] = p
-            if len(partidos_por_url) >= 10:
+                slot = extraer_slot_partido(p["url"])
+                if slot is not None and slot not in partidos_por_slot:
+                    partidos_por_slot[slot] = p
+            if len(partidos_por_slot) >= MAX_PARTIDOS_JORNADA:
                 break
         except Exception as e:
             print(f"Error explorando {url_idx}: {e}")
 
-    partidos = list(partidos_por_url.values())
+    # Completar slots faltantes (1..10) consultando directamente /partido/{TEMPORADA}/{slot}/{jornada}
+    for slot in range(1, MAX_PARTIDOS_JORNADA + 1):
+        if slot in partidos_por_slot:
+            continue
+        url_slot = f"https://www.comuniate.com/partido/{TEMPORADA}/{slot}/{jornada}"
+        try:
+            resp = requests.get(url_slot, headers=HEADERS, timeout=12, allow_redirects=True)
+            if resp.status_code != 200:
+                continue
+            url_final = resp.url or url_slot
+            # Verificar que la URL final sigue correspondiendo a la temporada y jornada pedidas
+            if not re.search(rf"/partido/{TEMPORADA}/\d+/{jornada}/", url_final):
+                continue
+            id_sofa = extraer_id_sofascore(resp.text)
+            if not id_sofa:
+                continue
+            local, visitante = parsear_equipos_desde_html(resp.text, url_final)
+            partidos_por_slot[slot] = {
+                "url": url_final,
+                "local": local,
+                "visitante": visitante,
+                "id_sofascore": id_sofa,
+                "_html_descargado": resp.text,
+            }
+        except Exception as e:
+            print(f"Error en slot {slot} ({url_slot}): {e}")
+
+    partidos = [partidos_por_slot[s] for s in sorted(partidos_por_slot.keys())]
     for p in partidos:
+        if p.get("id_sofascore"):
+            continue
         try:
             resp = requests.get(p["url"], headers=HEADERS, timeout=12)
             p["id_sofascore"] = extraer_id_sofascore(resp.text)
+            if p["local"] == "Local" or p["visitante"] == "Visitante":
+                p["local"], p["visitante"] = parsear_equipos_desde_html(resp.text, resp.url or p["url"])
         except Exception:
             pass
 
