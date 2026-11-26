@@ -26,16 +26,13 @@ jobs:
         run: pip install requests beautifulsoup4
 
       - name: Ejecutar extractor de puntos
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python -u extractor_github.py
+        run: python extractor_github.py
 
-      - name: Guardar cambios en puntos.json y estado_relevo.json
+      - name: Guardar cambios en puntos.json
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add puntos.json estado_relevo.json
+          git add puntos.json
           if ! git diff --staged --quiet; then
             git commit -m "Actualización automática de puntos"
             git pull --rebase origin main
