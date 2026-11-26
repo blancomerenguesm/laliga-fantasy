@@ -393,23 +393,27 @@ def ejecutar_una_vez():
                             equipo_detectado = p["local"]
                         elif fila in columnas[1].select(".playerRow"):
                             equipo_detectado = p["visitante"]
-                    if equipo_detectado:
+                if equipo_detectado:
                         jugadores_equipos[nombre] = equipo_detectado
 
                     norm_nombre = normalizar_clave(nombre)
-                    id_jug = extraer_id_jugador_fila(fila)
-                    if (
-                        id_jug
-                        and id_jug not in ids_consultados
-                        and (not jugadores_seguidos or any(norm_nombre in seg or seg in norm_nombre for seg in jugadores_seguidos))
-                    ):
-                        try:
-                            lineas = consultar_desglose_jugador(id_jug, jornada_actual, TEMPORADA)
-                            if lineas:
-                                desgloses[norm_nombre] = lineas
-                            ids_consultados.add(id_jug)
-                        except Exception as exc_d:
-                            print(f"Aviso desglose {nombre} ({id_jug}): {exc_d}")
+                    es_seguido = (not jugadores_seguidos) or any(
+                        norm_nombre in seg or seg in norm_nombre for seg in jugadores_seguidos
+                    )
+                    if es_seguido:
+                        id_jug = extraer_id_jugador_fila(fila)
+                        if not id_jug:
+                            print(f"Aviso: sin id_jugador en fila para {nombre}")
+                        elif id_jug not in ids_consultados:
+                            try:
+                                lineas = consultar_desglose_jugador(id_jug, jornada_actual, TEMPORADA)
+                                if lineas:
+                                    desgloses[norm_nombre] = lineas
+                                else:
+                                    print(f"Aviso: desglose vacío para {nombre} (id={id_jug})")
+                                ids_consultados.add(id_jug)
+                            except Exception as exc_d:
+                                print(f"Aviso desglose {nombre} ({id_jug}): {exc_d}")
 
             if len(columnas) >= 2:
                 gf_loc, gp_loc = contar_goles_columna(columnas[0])
