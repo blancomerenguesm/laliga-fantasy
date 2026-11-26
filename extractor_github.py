@@ -56,7 +56,6 @@ MAPA_EQUIPOS = {
     "racing": "Racing",
     "real madrid": "Real Madrid",
     "real sociedad": "Real Sociedad",
-    "real-sociedad": "Real Sociedad",
     "sevilla": "Sevilla",
     "valencia": "Valencia",
     "villarreal": "Villarreal",
@@ -104,8 +103,9 @@ def obtener_jugadores_seguidos() -> set[str]:
 
 
 def normalizar_equipo(nombre: str) -> str:
-    clave = limpiar_texto(nombre).lower()
-    return MAPA_EQUIPOS.get(clave, limpiar_texto(nombre).title())
+    clave = limpiar_texto(nombre).lower().replace("-", " ")
+    clave = re.sub(r"\s+", " ", clave).strip()
+    return MAPA_EQUIPOS.get(clave, limpiar_texto(nombre).replace("-", " ").title())
 
 
 def parsear_equipos_desde_url(url: str) -> tuple[str, str]:
@@ -148,7 +148,11 @@ def extraer_id_jugador_fila(fila) -> str | None:
 
     for tag in fila.select("[onclick], [data-id-jugador], a[href]"):
         onclick = tag.get("onclick") or ""
-        m = re.search(r"id_jugador['\"]?\s*[:=]\s*['\"]?(\d+)|estadistica_jugador_partido_relevo[^0-9]*(\d+)", onclick)
+        m_ver = re.search(r"ver_estadistica\(\s*['\"](\d+)['\"]", onclick, re.IGNORECASE)
+        if m_ver:
+            return m_ver.group(1)
+
+        m = re.search(r"id_jugador['\"]?\s*[:=]\s*['\"]?(\d+)|estadistica_jugador_partido_relevo[^0-9]*(\d+)", onclick, re.IGNORECASE)
         if m:
             return m.group(1) or m.group(2)
 
