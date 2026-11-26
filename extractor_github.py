@@ -10,6 +10,13 @@ TEMPORADA = "26"
 JORNADA_DEFECTO = "13"
 URL_FALLBACK = "https://www.comuniate.com/partido/26/2/13/alaves-deportivo"
 
+URLS_RESPALDO_POR_JORNADA = {
+    "13": [
+        "https://www.comuniate.com/partido/26/4/13/getafe-atletico",
+        "https://www.comuniate.com/partido/26/3/13/barcelona-villarreal",
+    ]
+}
+
 URL_AJAX = "https://www.comuniate.com/ajax/partidos/carga_puntos_relevo.php"
 URL_DESGLOSE = "https://www.comuniate.com/ajax/partidos/estadistica_jugador_partido_relevo.php"
 BACKUP_FILE = "laliga_fantasy_backup.json"
@@ -23,11 +30,14 @@ HEADERS = {
 
 MAPA_EQUIPOS = {
     "athletic club": "Athletic",
+    "athletic": "Athletic",
     "atletico": "Atleti",
     "atlético": "Atleti",
     "atletico de madrid": "Atleti",
     "atlético de madrid": "Atleti",
+    "atletico madrid": "Atleti",
     "rayo vallecano": "Rayo",
+    "rayo": "Rayo",
     "alaves": "Alavés",
     "alavés": "Alavés",
     "barcelona": "Barcelona",
@@ -94,7 +104,25 @@ def obtener_jugadores_seguidos() -> set[str]:
 
 def normalizar_equipo(nombre: str) -> str:
     clave = limpiar_texto(nombre).lower()
-    return MAPA_EQUIPOS.get(clave, limpiar_texto(nombre))
+    return MAPA_EQUIPOS.get(clave, limpiar_texto(nombre).title())
+
+
+def parsear_equipos_desde_url(url: str) -> tuple[str, str]:
+    m = re.search(r"/partido/\d+/\d+/\d+/([a-z0-9-]+)", url, re.IGNORECASE)
+    if not m:
+        return "Local", "Visitante"
+    slug = m.group(1).lower()
+    claves_ordenadas = sorted(MAPA_EQUIPOS.keys(), key=len, reverse=True)
+    for c in claves_ordenadas:
+        slug_c = c.replace(" ", "-")
+        if slug.startswith(slug_c + "-"):
+            resto = slug[len(slug_c) + 1 :]
+            if resto in MAPA_EQUIPOS:
+                return normalizar_equipo(c), normalizar_equipo(resto)
+    if "-" in slug:
+        partes = slug.split("-", 1)
+        return normalizar_equipo(partes[0]), normalizar_equipo(partes[1])
+    return "Local", "Visitante"
 
 
 def extraer_id_sofascore(html: str):
@@ -147,16 +175,22 @@ def buscar_enlaces_jornada(soup, temporada: str, jornada: str) -> list[dict]:
             url_completa = href if href.startswith("http") else "https://www.comuniate.com" + href
             if url_completa in urls_vistas:
                 continue
+            urls_vistas.add(url_completa)
+
             texto = a.get_text(" ", strip=True)
             if " - " in texto:
                 partes = texto.split(" - ", 1)
-                urls_vistas.add(url_completa)
-                partidos.append({
-                    "url": url_completa,
-                    "local": normalizar_equipo(partes[0]),
-                    "visitante": normalizar_equipo(partes[1]),
-                    "id_sofascore": None,
-                })
+                local = normalizar_equipo(partes[0])
+                visitante = normalizar_equipo(partes[1])
+            else:
+                local, visitante = parsear_equipos_desde_url(url_completa)
+
+            partidos.append({
+                "url": url_completa,
+                "local": local,
+                "visitante": visitante,
+                "id_sofascore": None,
+            })
     return partidos
 
 
@@ -182,6 +216,16 @@ def descubrir_partidos_jornada(jornada: str) -> list[dict]:
                 break
         except Exception as e:
             print(f"Error explorando {url_idx}: {e}")
+
+    if not partidos and jornada in URLS_RESPALDO_POR_JORNADA:
+        for u in URLS_RESPALDO_POR_JORNADA[jornada]:
+            loc, vis = parsear_equipos_desde_url(u)
+            partidos.append({
+                "url": u,
+                "local": loc,
+                "visitante": vis,
+                "id_sofascore": None,
+            })
 
     for p in partidos:
         try:
@@ -355,3 +399,22 @@ def ejecutar_una_vez():
 
 if __name__ == "__main__":
     ejecutar_una_vez()
+```[cite: 10, 14]
+
+### Cómo comprobarlo
+<Steps>
+  <Step subtitle="En el repositorio laliga-fantasy" title="Sube el extractor actualizado y ejecuta el workflow">
+    Guarda el nuevo `extractor_github.py` en la rama `main` (con `config_jornada.json` en `"13"`) y lanza **Actualizar Puntos LaLiga Fantasy** desde **Actions**[cite: 8, 9, 10].
+    *Verification:* El workflow termina en verde y el log muestra `OK (J13):` con un número de partidos mayor que `0`[cite: 8, 10].
+  </Step>
+  <Step subtitle="En puntos.json y en el panel web" title="Revisa jugadores, desgloses y abre el modal">
+    Abre `puntos.json` para verificar que `jugadores` y `desgloses` contienen datos de los partidos de la jornada 13, y en `blancomerenguesm.github.io/laliga-fantasy` pulsa **🔄 Actualizar ahora** y haz clic sobre un jugador para ver su desglose[cite: 11, 13].
+    *Verification:* Aparece el modal con los conceptos y puntos del jugador seleccionado.
+  </Step>
+  <Step subtitle="Al terminar la prueba" title="Devuelve config_jornada.json a 14">
+    Cambia `"jornada"` de nuevo a `"14"` en `config_jornada.json` para dejarlo listo para la próxima jornada[cite: 9].
+    *Verification:* `config_jornada.json` contiene `"jornada": "14"`[cite: 9].
+  </Step>
+</Steps>
+
+Si tras esta prueba `desgloses` sigue saliendo en `0` aunque sí haya `jugadores`, pega aquí el HTML de una fila `.playerRow` de `carga_puntos_relevo.php` para ver dónde guarda Comuniate el `id_jugador`.
