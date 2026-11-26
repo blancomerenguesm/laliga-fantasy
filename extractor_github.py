@@ -7,15 +7,8 @@ from bs4 import BeautifulSoup
 import requests
 
 TEMPORADA = "26"
-JORNADA_DEFECTO = "13"
-URL_FALLBACK = "https://www.comuniate.com/partido/26/2/13/alaves-deportivo"
-
-URLS_RESPALDO_POR_JORNADA = {
-    "13": [
-        "https://www.comuniate.com/partido/26/4/13/getafe-atletico",
-        "https://www.comuniate.com/partido/26/3/13/barcelona-villarreal",
-    ]
-}
+JORNADA_DEFECTO = "14"
+URL_FALLBACK = "https://www.comuniate.com/partidos"
 
 URL_AJAX = "https://www.comuniate.com/ajax/partidos/carga_puntos_relevo.php"
 URL_DESGLOSE = "https://www.comuniate.com/ajax/partidos/estadistica_jugador_partido_relevo.php"
@@ -152,7 +145,11 @@ def extraer_id_jugador_fila(fila) -> str | None:
         if m_ver:
             return m_ver.group(1)
 
-        m = re.search(r"id_jugador['\"]?\s*[:=]\s*['\"]?(\d+)|estadistica_jugador_partido_relevo[^0-9]*(\d+)", onclick, re.IGNORECASE)
+        m = re.search(
+            r"id_jugador['\"]?\s*[:=]\s*['\"]?(\d+)|estadistica_jugador_partido_relevo[^0-9]*(\d+)",
+            onclick,
+            re.IGNORECASE,
+        )
         if m:
             return m.group(1) or m.group(2)
 
@@ -208,7 +205,7 @@ def descubrir_partidos_jornada(jornada: str) -> list[dict]:
         URL_FALLBACK,
     ]
 
-    partidos = []
+    partidos_por_url = {}
     for url_idx in urls_exploracion:
         try:
             r = requests.get(url_idx, headers=HEADERS, timeout=12)
@@ -216,22 +213,15 @@ def descubrir_partidos_jornada(jornada: str) -> list[dict]:
                 continue
             soup = BeautifulSoup(r.text, "html.parser")
             encontrados = buscar_enlaces_jornada(soup, TEMPORADA, jornada)
-            if encontrados:
-                partidos = encontrados
+            for p in encontrados:
+                if p["url"] not in partidos_por_url:
+                    partidos_por_url[p["url"]] = p
+            if len(partidos_por_url) >= 10:
                 break
         except Exception as e:
             print(f"Error explorando {url_idx}: {e}")
 
-    if not partidos and jornada in URLS_RESPALDO_POR_JORNADA:
-        for u in URLS_RESPALDO_POR_JORNADA[jornada]:
-            loc, vis = parsear_equipos_desde_url(u)
-            partidos.append({
-                "url": u,
-                "local": loc,
-                "visitante": vis,
-                "id_sofascore": None,
-            })
-
+    partidos = list(partidos_por_url.values())
     for p in partidos:
         try:
             resp = requests.get(p["url"], headers=HEADERS, timeout=12)
