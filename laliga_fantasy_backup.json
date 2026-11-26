@@ -184,13 +184,13 @@
           "n": "Etta Eyong",
           "t": "Levante",
           "p": "",
-          "c": true
+          "c": false
         },
         {
           "n": "Williams",
           "t": "Athletic",
           "p": "",
-          "c": false
+          "c": true
         }
       ],
       "coach": {
