@@ -1,6 +1,6 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 21:44:29",
+  "actualizado_en": "27/11 21:46:31",
   "jugadores": {
     "Ryan": 0,
     "Nacho Pérez": 1,
@@ -12,7 +12,7 @@
     "Oriol Rey": 0,
     "Requena": 0,
     "Thiago Fernández": 0,
-    "Iván Romero": 0,
+    "Iván Romero": 4,
     "Agirrezabala": 0,
     "Pablo Ramón": 1,
     "Pedro Felipe": -1,
@@ -50,8 +50,8 @@
     "Zabiri": "Racing"
   },
   "entrenadores": {
-    "Levante": 2,
-    "Racing": 2
+    "Levante": 5,
+    "Racing": 0
   },
   "desgloses": {
     "nacho perez": [
@@ -96,6 +96,13 @@
       {
         "concepto": "Balones al área",
         "puntos": "1",
+        "dazn": false
+      }
+    ],
+    "ivan romero": [
+      {
+        "concepto": "Goles",
+        "puntos": "4",
         "dazn": false
       }
     ],
