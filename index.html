@@ -227,6 +227,7 @@
             <p style="font-size:0.85em; color:var(--gray);">Suma los puntos a la General, <b>calcula las deudas (3€, 2€, 2€)</b> de esta jornada y pone las plantillas a 0 para empezar la siguiente.</p>
             <button class="save-btn" style="background:var(--success); color:white; border: 1px solid #1e7e34;" onclick="cerrarJornada()">✅ Cerrar Jornada y Repartir Deudas</button>
             <button class="save-btn" style="background:#2a2a2a; color:#ff7675; border: 1px solid #dc3545; margin-top:8px; font-size:0.95em;" onclick="limpiarPuntosJornada()">🧹 Limpiar puntos de jornada a cero (sin sumar ni repartir)</button>
+            <button class="save-btn" style="background:#2a2a2a; color:var(--accent); border: 1px solid var(--accent); margin-top:8px; font-size:0.9em;" onclick="desbloquearSincroJornada()">🔓 Quitar bloqueo de jornada</button>
         </div>
 
         <div class="config-section">
@@ -1074,6 +1075,13 @@
             saveDataToLocal();
             showToast("✔️ Plantilla guardada en local (pulsa Subir a GitHub para compartir)");
             loadSquadEditor();
+            sincronizarPuntosEnDirecto();
+        }
+
+        function desbloquearSincroJornada() {
+            localStorage.removeItem('lf_bloqueo_sincro_cerrada');
+            localStorage.removeItem('lf_jornada_cerrada_num');
+            showToast("🔓 Bloqueo de jornada eliminado. Sincronizando...");
             sincronizarPuntosEnDirecto();
         }
 
