@@ -1,12 +1,12 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 22:34:31",
+  "actualizado_en": "27/11 22:36:30",
   "jugadores": {
     "Ryan": 2,
     "Nacho Pérez": 0,
     "Adrián de la Fuente": 1,
     "Aïssa Mandi": 1,
-    "Marc Santos": 1,
+    "Marc Santos": 2,
     "Víctor García": -3,
     "Olasagasti": 5,
     "Oriol Rey": 3,
@@ -14,6 +14,7 @@
     "Thiago Fernández": -1,
     "Iván Romero": 4,
     "Bardeli": 0,
+    "Etta Eyong": 0,
     "Brugui": 0,
     "Agirrezabala": 1,
     "Pablo Ramón": 3,
@@ -42,6 +43,7 @@
     "Thiago Fernández": "Levante",
     "Iván Romero": "Levante",
     "Bardeli": "Levante",
+    "Etta Eyong": "Levante",
     "Brugui": "Levante",
     "Agirrezabala": "Racing",
     "Pablo Ramón": "Racing",
@@ -111,6 +113,11 @@
       }
     ],
     "marc santos": [
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      },
       {
         "concepto": "Regates",
         "puntos": "1",
