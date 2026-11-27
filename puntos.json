@@ -1,6 +1,6 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 23:01:09",
+  "actualizado_en": "27/11 23:02:32",
   "jugadores": {
     "Ryan": 5,
     "Nacho Pérez": 3,
@@ -17,7 +17,7 @@
     "Etta Eyong": 0,
     "Brugui": 0,
     "Musuayi": 1,
-    "Agirrezabala": 3,
+    "Agirrezabala": 4,
     "Pablo Ramón": 5,
     "Pedro Felipe": 1,
     "Belocian": 5,
@@ -381,7 +381,7 @@
       },
       {
         "concepto": "Balones recuperados",
-        "puntos": "1",
+        "puntos": "2",
         "dazn": false
       },
       {
