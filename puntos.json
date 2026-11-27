@@ -1,10 +1,10 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 22:31:02",
+  "actualizado_en": "27/11 22:32:30",
   "jugadores": {
     "Ryan": 2,
     "Nacho Pérez": 0,
-    "Adrián de la Fuente": 2,
+    "Adrián de la Fuente": 1,
     "Aïssa Mandi": 1,
     "Marc Santos": 1,
     "Víctor García": -2,
@@ -21,12 +21,12 @@
     "Jorge Salinas": 1,
     "Prati": 0,
     "Canales": -1,
-    "Íñigo Vicente": 0,
+    "Íñigo Vicente": -1,
     "Iván Martín": 0,
     "Iker Luque": -1,
     "Zabiri": 0,
     "André Almeida": 3,
-    "Pablo García": 0
+    "Pablo García": 4
   },
   "jugadores_equipos": {
     "Ryan": "Levante",
@@ -93,6 +93,11 @@
       {
         "concepto": "Balones recuperados",
         "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
         "dazn": false
       }
     ],
@@ -242,7 +247,7 @@
       },
       {
         "concepto": "Posesiones perdidas",
-        "puntos": "-1",
+        "puntos": "-2",
         "dazn": false
       }
     ],
@@ -257,6 +262,13 @@
       {
         "concepto": "Asistencias de gol",
         "puntos": "3",
+        "dazn": false
+      }
+    ],
+    "pablo garcia": [
+      {
+        "concepto": "Goles",
+        "puntos": "4",
         "dazn": false
       }
     ]
