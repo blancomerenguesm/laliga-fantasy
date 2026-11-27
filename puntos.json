@@ -1,6 +1,6 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 21:46:31",
+  "actualizado_en": "27/11 21:48:28",
   "jugadores": {
     "Ryan": 0,
     "Nacho Pérez": 1,
@@ -8,8 +8,8 @@
     "Aïssa Mandi": 0,
     "Marc Santos": 2,
     "Víctor García": -2,
-    "Olasagasti": 3,
-    "Oriol Rey": 0,
+    "Olasagasti": 4,
+    "Oriol Rey": 3,
     "Requena": 0,
     "Thiago Fernández": 0,
     "Iván Romero": 4,
@@ -90,12 +90,19 @@
     "olasagasti": [
       {
         "concepto": "Asistencias sin gol",
-        "puntos": "2",
+        "puntos": "3",
         "dazn": false
       },
       {
         "concepto": "Balones al área",
         "puntos": "1",
+        "dazn": false
+      }
+    ],
+    "oriol rey": [
+      {
+        "concepto": "Asistencias de gol",
+        "puntos": "3",
         "dazn": false
       }
     ],
