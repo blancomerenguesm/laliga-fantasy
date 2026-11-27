@@ -1,6 +1,6 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 21:48:28",
+  "actualizado_en": "27/11 21:50:48",
   "jugadores": {
     "Ryan": 0,
     "Nacho Pérez": 1,
@@ -16,7 +16,7 @@
     "Agirrezabala": 0,
     "Pablo Ramón": 1,
     "Pedro Felipe": -1,
-    "Belocian": 2,
+    "Belocian": 3,
     "Jorge Salinas": 1,
     "Prati": 0,
     "Canales": 0,
@@ -130,7 +130,7 @@
     "belocian": [
       {
         "concepto": "Despejes",
-        "puntos": "2",
+        "puntos": "3",
         "dazn": false
       }
     ],
