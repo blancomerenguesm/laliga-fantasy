@@ -1,6 +1,6 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 22:46:32",
+  "actualizado_en": "27/11 22:48:34",
   "jugadores": {
     "Ryan": 1,
     "Nacho Pérez": -2,
@@ -16,6 +16,7 @@
     "Bardeli": -1,
     "Etta Eyong": 0,
     "Brugui": 0,
+    "Musuayi": 0,
     "Agirrezabala": 0,
     "Pablo Ramón": 3,
     "Pedro Felipe": -1,
@@ -26,7 +27,7 @@
     "Íñigo Vicente": 5,
     "Iván Martín": 1,
     "Iker Luque": -2,
-    "Zabiri": 5,
+    "Zabiri": 6,
     "André Almeida": 5,
     "Pablo García": 4,
     "Villalibre": 0
@@ -46,6 +47,7 @@
     "Bardeli": "Levante",
     "Etta Eyong": "Levante",
     "Brugui": "Levante",
+    "Musuayi": "Levante",
     "Agirrezabala": "Racing",
     "Pablo Ramón": "Racing",
     "Pedro Felipe": "Racing",
@@ -366,7 +368,7 @@
       },
       {
         "concepto": "Tiros a puerta",
-        "puntos": "1",
+        "puntos": "2",
         "dazn": false
       }
     ],
