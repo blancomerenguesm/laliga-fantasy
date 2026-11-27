@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import unicodedata
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from bs4 import BeautifulSoup
@@ -14,6 +15,7 @@ URL_AJAX = "https://www.comuniate.com/ajax/partidos/carga_puntos_relevo.php"
 URL_DESGLOSE = "https://www.comuniate.com/ajax/partidos/estadistica_jugador_partido_relevo.php"
 CONFIG_JORNADA_FILE = "config_jornada.json"
 SALIDA_FILE = "puntos.json"
+TELEGRAM_STATE_FILE = "telegram_notificados.json"
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
@@ -59,7 +61,10 @@ def limpiar_texto(txt: str) -> str:
 
 
 def normalizar_clave(txt: str) -> str:
-    return limpiar_texto(txt).lower()
+    s = limpiar_texto(txt).lower()
+    s = unicodedata.normalize("NFD", s)
+    s = "".join(ch for ch in s if unicodedata.category(ch) != "Mn")
+    return re.sub(r"\s+", " ", s).strip()
 
 
 def obtener_jornada_configurada() -> str:
@@ -104,6 +109,111 @@ def desglose_tiene_dazn(lineas: list[dict] | None) -> bool:
         if re.search(r"dazn|relevo", str(it.get("concepto") or ""), re.IGNORECASE):
             return True
     return False
+
+
+def cargar_notificados_telegram() -> dict:
+    if not os.path.exists(TELEGRAM_STATE_FILE):
+        return {"enviados": []}
+    try:
+        with open(TELEGRAM_STATE_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if isinstance(data, dict) and isinstance(data.get("enviados"), list):
+            return {"enviados": [str(x) for x in data["enviados"]]}
+    except Exception as e:
+        print(f"Aviso leyendo {TELEGRAM_STATE_FILE}: {e}")
+    return {"enviados": []}
+
+
+def guardar_notificados_telegram(estado: dict) -> None:
+    try:
+        unicos = sorted(set(str(x) for x in (estado.get("enviados") or [])))
+        with open(TELEGRAM_STATE_FILE, "w", encoding="utf-8") as f:
+            json.dump({"enviados": unicos}, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f"Aviso guardando {TELEGRAM_STATE_FILE}: {e}")
+
+
+def enviar_mensaje_telegram(session: requests.Session, texto: str) -> bool:
+    token = (os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
+    chat_id = (os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
+    if not token or not chat_id:
+        print("Telegram omitido: faltan TELEGRAM_BOT_TOKEN o TELEGRAM_CHAT_ID en el entorno.")
+        return False
+
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    payload = {
+        "chat_id": chat_id,
+        "text": texto,
+    }
+    try:
+        resp = session.post(url, data=payload, timeout=(4, 8))
+        resp.raise_for_status()
+        data = resp.json()
+        if not data.get("ok"):
+            print(f"Aviso Telegram API no ok: {data}")
+            return False
+        return True
+    except Exception as e:
+        print(f"Error enviando mensaje a Telegram: {e}")
+        return False
+
+
+def procesar_notificaciones_definitivas(
+    session: requests.Session,
+    jornada_actual: str,
+    jugadores: dict,
+    jugadores_equipos: dict,
+    desgloses: dict,
+) -> None:
+    estado = cargar_notificados_telegram()
+    enviados_set = set(estado.get("enviados") or [])
+    nuevos_avisos = []
+
+    desgloses_por_clave = {}
+    for k, v in (desgloses or {}).items():
+        nk = normalizar_clave(k)
+        if nk:
+            desgloses_por_clave[nk] = v
+
+    for nombre, puntos in jugadores.items():
+        nk = normalizar_clave(nombre)
+        if not nk:
+            continue
+        lineas = desgloses_por_clave.get(nk)
+        if not desglose_tiene_dazn(lineas):
+            continue
+
+        clave_unica = f"J{jornada_actual}:{nk}"
+        if clave_unica in enviados_set:
+            continue
+
+        equipo = jugadores_equipos.get(nombre) or ""
+        nuevos_avisos.append({
+            "clave_unica": clave_unica,
+            "nombre": nombre,
+            "equipo": equipo,
+            "puntos": puntos,
+        })
+
+    if not nuevos_avisos:
+        print("Telegram: sin nuevos puntos definitivos (DAZN) que notificar.")
+        return
+
+    lineas_msg = [f"✅ Puntos definitivos (DAZN) · Jornada {jornada_actual}:"]
+    for item in nuevos_avisos:
+        eq_txt = f" ({item['equipo']})" if item["equipo"] else ""
+        lineas_msg.append(f"• {item['nombre']}{eq_txt}: {item['puntos']} pts")
+
+    mensaje = "\n".join(lineas_msg)
+    if len(mensaje) > 3900:
+        mensaje = mensaje[:3880] + "\n• ... (más jugadores definitivos)"
+
+    if enviar_mensaje_telegram(session, mensaje):
+        for item in nuevos_avisos:
+            enviados_set.add(item["clave_unica"])
+        estado["enviados"] = sorted(enviados_set)
+        guardar_notificados_telegram(estado)
+        print(f"Telegram: notificados {len(nuevos_avisos)} jugadores definitivos.")
 
 
 def normalizar_equipo(nombre: str) -> str:
@@ -464,6 +574,14 @@ def ejecutar_una_vez():
 
     with open(SALIDA_FILE, "w", encoding="utf-8") as f:
         json.dump(salida, f, ensure_ascii=False, indent=2)
+
+    procesar_notificaciones_definitivas(
+        session=session,
+        jornada_actual=jornada_actual,
+        jugadores=jugadores,
+        jugadores_equipos=jugadores_equipos,
+        desgloses=desgloses,
+    )
 
     print(
         f"OK (J{jornada_actual}): {len(jugadores)} jugadores, "
