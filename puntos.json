@@ -1,6 +1,6 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 23:04:33",
+  "actualizado_en": "27/11 23:06:34",
   "jugadores": {
     "Ryan": 5,
     "Nacho Pérez": 3,
@@ -18,7 +18,7 @@
     "Brugui": 0,
     "Musuayi": 1,
     "Agirrezabala": 4,
-    "Pablo Ramón": 5,
+    "Pablo Ramón": 6,
     "Pedro Felipe": 1,
     "Belocian": 5,
     "Jorge Salinas": 7,
@@ -398,7 +398,7 @@
       },
       {
         "concepto": "Despejes",
-        "puntos": "2",
+        "puntos": "3",
         "dazn": false
       },
       {
