@@ -1,36 +1,36 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 22:58:32",
+  "actualizado_en": "27/11 23:01:09",
   "jugadores": {
-    "Ryan": 3,
-    "Nacho Pérez": 1,
-    "Adrián de la Fuente": -1,
-    "Aïssa Mandi": -1,
-    "Marc Santos": 1,
-    "Víctor García": -3,
-    "Olasagasti": 3,
-    "Oriol Rey": 3,
-    "Requena": -1,
-    "Thiago Fernández": -2,
-    "Iván Romero": 4,
-    "Bardeli": -1,
-    "Etta Eyong": -1,
-    "Brugui": -1,
-    "Musuayi": 0,
-    "Agirrezabala": 2,
-    "Pablo Ramón": 3,
-    "Pedro Felipe": -1,
-    "Belocian": 3,
-    "Jorge Salinas": 5,
-    "Prati": 0,
-    "Canales": -1,
-    "Íñigo Vicente": 5,
-    "Iván Martín": 1,
-    "Iker Luque": -2,
-    "Zabiri": 6,
-    "André Almeida": 5,
-    "Pablo García": 9,
-    "Villalibre": 0
+    "Ryan": 5,
+    "Nacho Pérez": 3,
+    "Adrián de la Fuente": 1,
+    "Aïssa Mandi": 1,
+    "Marc Santos": 3,
+    "Víctor García": -1,
+    "Olasagasti": 5,
+    "Oriol Rey": 4,
+    "Requena": 1,
+    "Thiago Fernández": 0,
+    "Iván Romero": 6,
+    "Bardeli": 0,
+    "Etta Eyong": 0,
+    "Brugui": 0,
+    "Musuayi": 1,
+    "Agirrezabala": 3,
+    "Pablo Ramón": 5,
+    "Pedro Felipe": 1,
+    "Belocian": 5,
+    "Jorge Salinas": 7,
+    "Prati": 2,
+    "Canales": 1,
+    "Íñigo Vicente": 7,
+    "Iván Martín": 3,
+    "Iker Luque": 0,
+    "Zabiri": 8,
+    "André Almeida": 6,
+    "Pablo García": 10,
+    "Villalibre": 1
   },
   "jugadores_equipos": {
     "Ryan": "Levante",
@@ -70,6 +70,11 @@
   "desgloses": {
     "ryan": [
       {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
         "concepto": "Paradas",
         "puntos": "2",
         "dazn": false
@@ -91,6 +96,11 @@
       }
     ],
     "nacho perez": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
       {
         "concepto": "Balones al área",
         "puntos": "1",
@@ -124,6 +134,11 @@
     ],
     "adrian de la fuente": [
       {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
         "concepto": "Despejes",
         "puntos": "1",
         "dazn": false
@@ -146,6 +161,11 @@
     ],
     "aissa mandi": [
       {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
         "concepto": "Goles en contra",
         "puntos": "-2",
         "dazn": false
@@ -157,6 +177,11 @@
       }
     ],
     "marc santos": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
       {
         "concepto": "Balones al área",
         "puntos": "1",
@@ -190,12 +215,22 @@
     ],
     "victor garcia": [
       {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
         "concepto": "Posesiones perdidas",
         "puntos": "-3",
         "dazn": false
       }
     ],
     "olasagasti": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
       {
         "concepto": "Asistencias sin gol",
         "puntos": "3",
@@ -229,12 +264,22 @@
     ],
     "oriol rey": [
       {
+        "concepto": "Minutos Jugados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
         "concepto": "Asistencias de gol",
         "puntos": "3",
         "dazn": false
       }
     ],
     "requena": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
       {
         "concepto": "Goles en contra",
         "puntos": "-1",
@@ -253,6 +298,11 @@
     ],
     "thiago fernandez": [
       {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
         "concepto": "Goles en contra",
         "puntos": "-1",
         "dazn": false
@@ -265,12 +315,22 @@
     ],
     "ivan romero": [
       {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
         "concepto": "Goles",
         "puntos": "4",
         "dazn": false
       }
     ],
     "bardeli": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "1",
+        "dazn": false
+      },
       {
         "concepto": "Goles en contra",
         "puntos": "-1",
@@ -279,6 +339,11 @@
     ],
     "etta eyong": [
       {
+        "concepto": "Minutos Jugados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
         "concepto": "Goles en contra",
         "puntos": "-1",
         "dazn": false
@@ -286,12 +351,29 @@
     ],
     "brugui": [
       {
+        "concepto": "Minutos Jugados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
         "concepto": "Goles en contra",
         "puntos": "-1",
         "dazn": false
       }
     ],
+    "musuayi": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "1",
+        "dazn": false
+      }
+    ],
     "agirrezabala": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
       {
         "concepto": "Paradas",
         "puntos": "1",
@@ -299,7 +381,7 @@
       },
       {
         "concepto": "Balones recuperados",
-        "puntos": "2",
+        "puntos": "1",
         "dazn": false
       },
       {
@@ -309,6 +391,11 @@
       }
     ],
     "pablo ramon": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
       {
         "concepto": "Despejes",
         "puntos": "2",
@@ -322,6 +409,11 @@
     ],
     "pedro felipe": [
       {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
         "concepto": "Tarjetas amarillas",
         "puntos": "-1",
         "dazn": false
@@ -329,12 +421,22 @@
     ],
     "belocian": [
       {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
         "concepto": "Despejes",
         "puntos": "3",
         "dazn": false
       }
     ],
     "jorge salinas": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
       {
         "concepto": "Asistencias de gol",
         "puntos": "3",
@@ -356,7 +458,19 @@
         "dazn": false
       }
     ],
+    "prati": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      }
+    ],
     "canales": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
       {
         "concepto": "Posesiones perdidas",
         "puntos": "-1",
@@ -364,6 +478,11 @@
       }
     ],
     "inigo vicente": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
       {
         "concepto": "Asistencias de gol",
         "puntos": "3",
@@ -397,12 +516,22 @@
     ],
     "ivan martin": [
       {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
         "concepto": "Balones recuperados",
         "puntos": "1",
         "dazn": false
       }
     ],
     "iker luque": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
       {
         "concepto": "Tarjetas amarillas",
         "puntos": "-1",
@@ -416,6 +545,11 @@
     ],
     "zabiri": [
       {
+        "concepto": "Minutos Jugados",
+        "puntos": "2",
+        "dazn": false
+      },
+      {
         "concepto": "Goles",
         "puntos": "4",
         "dazn": false
@@ -427,6 +561,11 @@
       }
     ],
     "andre almeida": [
+      {
+        "concepto": "Minutos Jugados",
+        "puntos": "1",
+        "dazn": false
+      },
       {
         "concepto": "Asistencias de gol",
         "puntos": "3",
@@ -445,12 +584,24 @@
     ],
     "pablo garcia": [
       {
+        "concepto": "Minutos Jugados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
         "concepto": "Goles",
         "puntos": "8",
         "dazn": false
       },
       {
         "concepto": "Tiros a puerta",
+        "puntos": "1",
+        "dazn": false
+      }
+    ],
+    "villalibre": [
+      {
+        "concepto": "Minutos Jugados",
         "puntos": "1",
         "dazn": false
       }
