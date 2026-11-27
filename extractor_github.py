@@ -75,6 +75,37 @@ def obtener_jornada_configurada() -> str:
     return JORNADA_DEFECTO
 
 
+def cargar_estado_previo_salida(jornada_actual: str) -> tuple[dict, dict]:
+    if not os.path.exists(SALIDA_FILE):
+        return {}, {}
+    try:
+        with open(SALIDA_FILE, "r", encoding="utf-8") as f:
+            prev = json.load(f)
+        if str(prev.get("jornada", "")) != str(jornada_actual):
+            return {}, {}
+        jugadores_prev = {
+            normalizar_clave(k): v
+            for k, v in (prev.get("jugadores") or {}).items()
+        }
+        desgloses_prev = prev.get("desgloses") or {}
+        return jugadores_prev, desgloses_prev
+    except Exception:
+        return {}, {}
+
+
+def desglose_tiene_dazn(lineas: list[dict] | None) -> bool:
+    if not isinstance(lineas, list) or not lineas:
+        return False
+    for it in lineas:
+        if not isinstance(it, dict):
+            continue
+        if it.get("dazn"):
+            return True
+        if re.search(r"dazn|relevo", str(it.get("concepto") or ""), re.IGNORECASE):
+            return True
+    return False
+
+
 def normalizar_equipo(nombre: str) -> str:
     clave = limpiar_texto(nombre).lower().replace("-", " ")
     clave = re.sub(r"\s+", " ", clave).strip()
@@ -205,7 +236,7 @@ def extraer_slot_partido(url: str) -> int | None:
     return int(m.group(1)) if m else None
 
 
-def descubrir_partidos_jornada(jornada: str) -> list[dict]:
+def descubrir_partidos_jornada(session: requests.Session, jornada: str) -> list[dict]:
     urls_exploracion = [
         f"https://www.comuniate.com/jornada/{TEMPORADA}/2/{jornada}",
         f"https://www.comuniate.com/jornada/{TEMPORADA}/1/{jornada}",
@@ -216,7 +247,7 @@ def descubrir_partidos_jornada(jornada: str) -> list[dict]:
     partidos_por_slot = {}
     for url_idx in urls_exploracion:
         try:
-            r = requests.get(url_idx, headers=HEADERS, timeout=12)
+            r = session.get(url_idx, timeout=(4, 8))
             if r.status_code != 200:
                 continue
             soup = BeautifulSoup(r.text, "html.parser")
@@ -235,7 +266,7 @@ def descubrir_partidos_jornada(jornada: str) -> list[dict]:
             continue
         url_slot = f"https://www.comuniate.com/partido/{TEMPORADA}/{slot}/{jornada}"
         try:
-            resp = requests.get(url_slot, headers=HEADERS, timeout=12, allow_redirects=True)
+            resp = session.get(url_slot, timeout=(4, 8), allow_redirects=True)
             if resp.status_code != 200:
                 continue
             url_final = resp.url or url_slot
@@ -250,7 +281,6 @@ def descubrir_partidos_jornada(jornada: str) -> list[dict]:
                 "local": local,
                 "visitante": visitante,
                 "id_sofascore": id_sofa,
-                "_html_descargado": resp.text,
             }
         except Exception as e:
             print(f"Error en slot {slot} ({url_slot}): {e}")
@@ -260,7 +290,7 @@ def descubrir_partidos_jornada(jornada: str) -> list[dict]:
         if p.get("id_sofascore"):
             continue
         try:
-            resp = requests.get(p["url"], headers=HEADERS, timeout=12)
+            resp = session.get(p["url"], timeout=(4, 8))
             p["id_sofascore"] = extraer_id_sofascore(resp.text)
             if p["local"] == "Local" or p["visitante"] == "Visitante":
                 p["local"], p["visitante"] = parsear_equipos_desde_html(resp.text, resp.url or p["url"])
@@ -288,13 +318,13 @@ def contar_goles_columna(columna) -> tuple[int, int]:
     return goles_favor, goles_propia
 
 
-def consultar_desglose_jugador(id_jugador: str, jornada: str, temporada: str) -> list[dict]:
+def consultar_desglose_jugador(session: requests.Session, id_jugador: str, jornada: str, temporada: str) -> list[dict]:
     payload = {
         "id_jugador": id_jugador,
         "jornada": jornada,
         "temporada": temporada,
     }
-    resp = requests.post(URL_DESGLOSE, data=payload, headers=HEADERS, timeout=10)
+    resp = session.post(URL_DESGLOSE, data=payload, timeout=(4, 8))
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
 
@@ -320,13 +350,20 @@ def ejecutar_una_vez():
     jornada_actual = obtener_jornada_configurada()
     print(f"Extrayendo datos de Temporada {TEMPORADA}, Jornada {jornada_actual}...")
 
-    partidos = descubrir_partidos_jornada(jornada_actual)
+    jugadores_prev, desgloses_prev = cargar_estado_previo_salida(jornada_actual)
+
+    session = requests.Session()
+    session.headers.update(HEADERS)
+
+    partidos = descubrir_partidos_jornada(session, jornada_actual)
     jugadores = {}
     jugadores_equipos = {}
     entrenadores = {}
     desgloses = {}
     partidos_limpios = []
     ids_consultados = set()
+    reutilizados = 0
+    consultados_red = 0
 
     for p in partidos:
         partidos_limpios.append({
@@ -343,7 +380,7 @@ def ejecutar_una_vez():
             "login": "",
         }
         try:
-            r = requests.post(URL_AJAX, data=payload, headers=HEADERS, timeout=10)
+            r = session.post(URL_AJAX, data=payload, timeout=(4, 8))
             soup = BeautifulSoup(r.text, "html.parser")
             filas = soup.select(".playerRow")
             if not filas:
@@ -376,13 +413,22 @@ def ejecutar_una_vez():
                         jugadores_equipos[nombre] = equipo_detectado
 
                     norm_nombre = normalizar_clave(nombre)
+                    prev_desglose = desgloses_prev.get(norm_nombre)
+                    prev_pts = jugadores_prev.get(norm_nombre)
+
+                    if prev_desglose and prev_pts == puntos and desglose_tiene_dazn(prev_desglose):
+                        desgloses[norm_nombre] = prev_desglose
+                        reutilizados += 1
+                        continue
+
                     id_jug = extraer_id_jugador_fila(fila)
                     if id_jug and id_jug not in ids_consultados:
                         try:
-                            lineas = consultar_desglose_jugador(id_jug, jornada_actual, TEMPORADA)
+                            lineas = consultar_desglose_jugador(session, id_jug, jornada_actual, TEMPORADA)
                             if lineas:
                                 desgloses[norm_nombre] = lineas
                             ids_consultados.add(id_jug)
+                            consultados_red += 1
                         except Exception as exc_d:
                             print(f"Aviso desglose {nombre} ({id_jug}): {exc_d}")
 
@@ -421,7 +467,8 @@ def ejecutar_una_vez():
 
     print(
         f"OK (J{jornada_actual}): {len(jugadores)} jugadores, "
-        f"{len(desgloses)} desgloses, {len(entrenadores)} entrenadores, {len(partidos_limpios)} partidos."
+        f"{len(desgloses)} desgloses ({consultados_red} red, {reutilizados} caché), "
+        f"{len(entrenadores)} entrenadores, {len(partidos_limpios)} partidos."
     )
 
 
