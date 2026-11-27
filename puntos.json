@@ -1,9 +1,9 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 22:52:30",
+  "actualizado_en": "27/11 22:54:31",
   "jugadores": {
     "Ryan": 3,
-    "Nacho Pérez": -2,
+    "Nacho Pérez": 0,
     "Adrián de la Fuente": -1,
     "Aïssa Mandi": -1,
     "Marc Santos": 1,
@@ -92,6 +92,11 @@
     ],
     "nacho perez": [
       {
+        "concepto": "Balones al área",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
         "concepto": "Despejes",
         "puntos": "1",
         "dazn": false
@@ -99,6 +104,11 @@
       {
         "concepto": "Goles en contra",
         "puntos": "-2",
+        "dazn": false
+      },
+      {
+        "concepto": "Regates",
+        "puntos": "1",
         "dazn": false
       },
       {
