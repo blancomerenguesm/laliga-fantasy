@@ -1,20 +1,20 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 21:32:31",
+  "actualizado_en": "27/11 21:34:33",
   "jugadores": {
     "Ryan": 0,
     "Nacho Pérez": 1,
     "Adrián de la Fuente": 1,
     "Aïssa Mandi": 0,
     "Marc Santos": 1,
-    "Víctor García": -1,
-    "Olasagasti": 2,
+    "Víctor García": -2,
+    "Olasagasti": 3,
     "Oriol Rey": 0,
     "Requena": 0,
     "Thiago Fernández": 0,
     "Iván Romero": 0,
     "Agirrezabala": 0,
-    "Pablo Ramón": 0,
+    "Pablo Ramón": 1,
     "Pedro Felipe": -1,
     "Belocian": 2,
     "Jorge Salinas": 1,
@@ -78,18 +78,25 @@
     "victor garcia": [
       {
         "concepto": "Posesiones perdidas",
-        "puntos": "-1",
+        "puntos": "-2",
         "dazn": false
       }
     ],
     "olasagasti": [
       {
         "concepto": "Asistencias sin gol",
-        "puntos": "1",
+        "puntos": "2",
         "dazn": false
       },
       {
         "concepto": "Balones al área",
+        "puntos": "1",
+        "dazn": false
+      }
+    ],
+    "pablo ramon": [
+      {
+        "concepto": "Despejes",
         "puntos": "1",
         "dazn": false
       }
