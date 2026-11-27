@@ -1,6 +1,6 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 22:16:30",
+  "actualizado_en": "27/11 22:18:29",
   "jugadores": {
     "Ryan": 1,
     "Nacho Pérez": 0,
@@ -8,7 +8,7 @@
     "Aïssa Mandi": 0,
     "Marc Santos": 2,
     "Víctor García": -2,
-    "Olasagasti": 4,
+    "Olasagasti": 3,
     "Oriol Rey": 3,
     "Requena": 1,
     "Thiago Fernández": -1,
@@ -18,9 +18,9 @@
     "Pablo Ramón": 1,
     "Pedro Felipe": -1,
     "Belocian": 3,
-    "Jorge Salinas": 0,
+    "Jorge Salinas": 1,
     "Prati": 0,
-    "Canales": 0,
+    "Canales": -1,
     "Íñigo Vicente": 0,
     "Iván Martín": 0,
     "Iker Luque": 0,
@@ -111,6 +111,11 @@
         "concepto": "Balones al área",
         "puntos": "1",
         "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
       }
     ],
     "oriol rey": [
@@ -172,9 +177,16 @@
     "jorge salinas": [
       {
         "concepto": "Despejes",
-        "puntos": "1",
+        "puntos": "2",
         "dazn": false
       },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      }
+    ],
+    "canales": [
       {
         "concepto": "Posesiones perdidas",
         "puntos": "-1",
