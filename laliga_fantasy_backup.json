@@ -44,7 +44,7 @@
   "datos": [
     {
       "manager": "Marcos",
-      "total": 0,
+      "total": 4,
       "players": [
         {
           "n": "M. Dituro",
@@ -53,20 +53,20 @@
           "c": false
         },
         {
-          "n": "Revivo",
-          "t": "Elche",
-          "p": "",
-          "c": false
-        },
-        {
-          "n": "Youssef",
-          "t": "Alavés",
-          "p": "",
-          "c": false
-        },
-        {
-          "n": "El Hilali",
+          "n": "Omar El Hilali",
           "t": "Espanyol",
+          "p": "",
+          "c": false
+        },
+        {
+          "n": "Hancko",
+          "t": "Atleti",
+          "p": "",
+          "c": false
+        },
+        {
+          "n": "Kike Salas",
+          "t": "Sevilla",
           "p": "",
           "c": false
         },
@@ -77,9 +77,9 @@
           "c": false
         },
         {
-          "n": "Mario Soriano",
-          "t": "Deportivo",
-          "p": "",
+          "n": "Canales",
+          "t": "Racing",
+          "p": 0,
           "c": false
         },
         {
@@ -89,33 +89,33 @@
           "c": true
         },
         {
-          "n": "Unai López",
-          "t": "Rayo",
+          "n": "Tchouameni",
+          "t": "Real Madrid",
           "p": "",
           "c": false
         },
         {
-          "n": "Diomande",
-          "t": "Real Madrid",
+          "n": "De jong",
+          "t": "Barcelona",
           "p": "",
           "c": false
         },
         {
           "n": "Ivan Romero",
           "t": "Levante",
-          "p": "",
+          "p": 4,
           "c": false
         },
         {
-          "n": "Iker Luque",
-          "t": "Racing",
-          "p": "",
+          "n": "Giuliano Simeone",
+          "t": "Atleti",
+          "p": 0,
           "c": false
         }
       ],
       "coach": {
-        "n": "Arrasate",
-        "t": "Osasuna",
+        "n": "Sarabia",
+        "t": "Espanyol",
         "p": ""
       },
       "historicPoints": 949,
@@ -127,14 +127,14 @@
       "total": 0,
       "players": [
         {
-          "n": "Oblak",
-          "t": "Atleti",
+          "n": "Radu",
+          "t": "Celta",
           "p": "",
-          "c": true
+          "c": false
         },
         {
-          "n": "Carlos Romero",
-          "t": "Villarreal",
+          "n": "Caceres",
+          "t": "Celta",
           "p": "",
           "c": false
         },
@@ -145,20 +145,8 @@
           "c": false
         },
         {
-          "n": "Junior",
-          "t": "Betis",
-          "p": "",
-          "c": false
-        },
-        {
-          "n": "Requena",
-          "t": "Levante",
-          "p": "",
-          "c": false
-        },
-        {
-          "n": "Sancet",
-          "t": "Athletic",
+          "n": "Jean Ives Valou",
+          "t": "Getafe",
           "p": "",
           "c": false
         },
@@ -169,8 +157,26 @@
           "c": false
         },
         {
-          "n": "Iván Martín",
-          "t": "Racing",
+          "n": "Requena",
+          "t": "Levante",
+          "p": 0,
+          "c": false
+        },
+        {
+          "n": "Sancet",
+          "t": "Athletic",
+          "p": "",
+          "c": false
+        },
+        {
+          "n": "Pepelu",
+          "t": "Valencia",
+          "p": "",
+          "c": false
+        },
+        {
+          "n": "Williams",
+          "t": "Athletic",
           "p": "",
           "c": false
         },
@@ -178,17 +184,11 @@
           "n": "Umar Sadiq",
           "t": "Valencia",
           "p": "",
-          "c": false
+          "c": true
         },
         {
-          "n": "Pere Milla",
-          "t": "Espanyol",
-          "p": "",
-          "c": false
-        },
-        {
-          "n": "Williams",
-          "t": "Athletic",
+          "n": "Etta Eyong",
+          "t": "Levante",
           "p": "",
           "c": false
         }
@@ -204,7 +204,7 @@
     },
     {
       "manager": "Roy",
-      "total": 0,
+      "total": 5,
       "players": [
         {
           "n": "Gulácsi",
@@ -249,8 +249,8 @@
           "c": false
         },
         {
-          "n": "Gonzalo Villar",
-          "t": "Elche",
+          "n": "Rubén García",
+          "t": "Osasuna",
           "p": "",
           "c": false
         },
@@ -261,8 +261,8 @@
           "c": false
         },
         {
-          "n": "Iñaki Williams",
-          "t": "Athletic",
+          "n": "Raba",
+          "t": "Valencia",
           "p": "",
           "c": false
         },
@@ -276,7 +276,7 @@
       "coach": {
         "n": "Luis Castro",
         "t": "Levante",
-        "p": ""
+        "p": 5
       },
       "historicPoints": 872,
       "debt": 5,
@@ -284,17 +284,17 @@
     },
     {
       "manager": "Humanes",
-      "total": 0,
+      "total": 8,
       "players": [
         {
           "n": "Ryan",
           "t": "Levante",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
-          "n": "Quagliata",
-          "t": "Deportivo",
+          "n": "Gaya",
+          "t": "Valencia",
           "p": "",
           "c": false
         },
@@ -317,9 +317,9 @@
           "c": false
         },
         {
-          "n": "Olasagasti",
-          "t": "Levante",
-          "p": "",
+          "n": "Hugo Rincón",
+          "t": "Athletic",
+          "p": 4,
           "c": false
         },
         {
@@ -335,16 +335,16 @@
           "c": false
         },
         {
-          "n": "Lamine",
+          "n": "Olasagasti",
+          "t": "Levante",
+          "p": 4,
+          "c": false
+        },
+        {
+          "n": "Lamine Yamal",
           "t": "Barcelona",
           "p": "",
           "c": true
-        },
-        {
-          "n": "T. Martínez",
-          "t": "Alavés",
-          "p": "",
-          "c": false
         },
         {
           "n": "Cepeda",
@@ -373,14 +373,14 @@
           "c": false
         },
         {
-          "n": "Gimenez",
-          "t": "Deportivo",
+          "n": "Mamadou Sarr",
+          "t": "Real Sociedad",
           "p": "",
           "c": false
         },
         {
-          "n": "Calero",
-          "t": "Málaga",
+          "n": "Gudelj",
+          "t": "Getafe",
           "p": "",
           "c": false
         },
@@ -397,14 +397,14 @@
           "c": false
         },
         {
-          "n": "Kike Salas",
-          "t": "Sevilla",
+          "n": "Swedberg",
+          "t": "Celta",
           "p": "",
           "c": false
         },
         {
-          "n": "Denis Suarez",
-          "t": "Alavés",
+          "n": "Alejandro Santiago",
+          "t": "Espanyol",
           "p": "",
           "c": false
         },
@@ -415,14 +415,14 @@
           "c": false
         },
         {
-          "n": "Fornals",
-          "t": "Betis",
+          "n": "Pepelu",
+          "t": "Valencia",
           "p": "",
           "c": false
         },
         {
-          "n": "Berenguer",
-          "t": "Athletic",
+          "n": "Mikautadze",
+          "t": "Villarreal",
           "p": "",
           "c": false
         },
@@ -444,7 +444,7 @@
     },
     {
       "manager": "Javi",
-      "total": 0,
+      "total": 1,
       "players": [
         {
           "n": "Herrera",
@@ -453,20 +453,20 @@
           "c": false
         },
         {
-          "n": "Catena",
-          "t": "Osasuna",
+          "n": "Maffeo",
+          "t": "Valencia",
           "p": "",
           "c": false
         },
         {
           "n": "Pablo Ramón",
           "t": "Racing",
-          "p": "",
+          "p": 1,
           "c": false
         },
         {
-          "n": "Eric",
-          "t": "Barcelona",
+          "n": "Ángel Recio",
+          "t": "Málaga",
           "p": "",
           "c": false
         },
@@ -483,8 +483,8 @@
           "c": false
         },
         {
-          "n": "Lemar",
-          "t": "Elche",
+          "n": "Pedro Díaz",
+          "t": "Rayo",
           "p": "",
           "c": false
         },
@@ -495,27 +495,27 @@
           "c": true
         },
         {
-          "n": "Pedro Diaz",
-          "t": "Rayo",
-          "p": "",
-          "c": false
-        },
-        {
-          "n": "Ángel Perez",
+          "n": "Ángel Pérez",
           "t": "Alavés",
           "p": "",
           "c": false
         },
         {
-          "n": "Danjuma",
-          "t": "Valencia",
+          "n": "Julián Álvarez",
+          "t": "Atleti",
           "p": "",
+          "c": false
+        },
+        {
+          "n": "Iker Luque",
+          "t": "Racing",
+          "p": 0,
           "c": false
         }
       ],
       "coach": {
-        "n": "Sánchez Flores",
-        "t": "Alavés",
+        "n": "Íñigo ",
+        "t": "Villarreal",
         "p": ""
       },
       "historicPoints": 768,
@@ -527,26 +527,26 @@
       "total": 0,
       "players": [
         {
-          "n": "Agirrezabala",
-          "t": "Racing",
-          "p": "",
+          "n": "Fortuño",
+          "t": "Espanyol",
+          "p": 0,
           "c": false
         },
         {
-          "n": "Cabrera",
+          "n": "De Haas",
           "t": "Espanyol",
           "p": "",
           "c": false
         },
         {
-          "n": "Ndukwe",
-          "t": "Levante",
+          "n": "Leandro Cabrera",
+          "t": "Espanyol",
           "p": "",
           "c": false
         },
         {
-          "n": "Chust",
-          "t": "Elche",
+          "n": "César Tárrega",
+          "t": "Valencia",
           "p": "",
           "c": false
         },
@@ -587,8 +587,8 @@
           "c": false
         },
         {
-          "n": "Julián Álvarez",
-          "t": "Atleti",
+          "n": "Nico Williams",
+          "t": "Athletic",
           "p": "",
           "c": true
         }
@@ -604,7 +604,7 @@
     },
     {
       "manager": "Poty",
-      "total": 0,
+      "total": -1,
       "players": [
         {
           "n": "Joan García",
@@ -615,13 +615,13 @@
         {
           "n": "Pedro Felipe",
           "t": "Racing",
-          "p": "",
+          "p": -1,
           "c": false
         },
         {
-          "n": "Jorge Salinas",
-          "t": "Racing",
-          "p": "",
+          "n": "Hartman",
+          "t": "Espanyol",
+          "p": 0,
           "c": false
         },
         {
@@ -637,8 +637,8 @@
           "c": false
         },
         {
-          "n": "Rubén García",
-          "t": "Osasuna",
+          "n": "Gorrotxategi",
+          "t": "Real Sociedad",
           "p": "",
           "c": false
         },
@@ -649,27 +649,27 @@
           "c": false
         },
         {
-          "n": "Gorrotxategi",
-          "t": "Real Sociedad",
+          "n": "Luis Rioja",
+          "t": "Valencia",
           "p": "",
           "c": false
         },
         {
-          "n": "Morcillo",
-          "t": "Elche",
-          "p": "",
+          "n": "Thiago Fernández",
+          "t": "Levante",
+          "p": 0,
           "c": false
         },
         {
           "n": "Íñigo Vicente",
           "t": "Racing",
-          "p": "",
+          "p": 0,
           "c": false
         },
         {
           "n": "Zabiri",
           "t": "Racing",
-          "p": "",
+          "p": 0,
           "c": false
         }
       ],
@@ -693,14 +693,14 @@
           "c": false
         },
         {
-          "n": "Juan Iglesias",
-          "t": "Sevilla",
+          "n": "Gerard Martín",
+          "t": "Barcelona",
           "p": "",
           "c": false
         },
         {
-          "n": "Hancko",
-          "t": "Atleti",
+          "n": "Juan Iglesias",
+          "t": "Sevilla",
           "p": "",
           "c": false
         },
@@ -714,11 +714,11 @@
           "n": "Cubarsí",
           "t": "Barcelona",
           "p": "",
-          "c": false
+          "c": true
         },
         {
-          "n": "Tchouameni",
-          "t": "Real Madrid",
+          "n": "Expósito",
+          "t": "Espanyol",
           "p": "",
           "c": false
         },
@@ -726,23 +726,23 @@
           "n": "Bernardo",
           "t": "Real Madrid",
           "p": "",
-          "c": true
+          "c": false
         },
         {
-          "n": "Camavinga",
-          "t": "Real Madrid",
+          "n": "Jon Moncayola",
+          "t": "Osasuna",
+          "p": "",
+          "c": false
+        },
+        {
+          "n": "Ramón Terrats",
+          "t": "Getafe",
           "p": "",
           "c": false
         },
         {
           "n": "Rafa Rodríguez",
           "t": "Málaga",
-          "p": "",
-          "c": false
-        },
-        {
-          "n": "Hjulmand",
-          "t": "Atleti",
           "p": "",
           "c": false
         },
