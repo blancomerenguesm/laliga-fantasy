@@ -1,35 +1,35 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 23:10:48",
+  "actualizado_en": "27/11 23:12:33",
   "jugadores": {
-    "Ryan": 5,
-    "Nacho Pérez": 3,
-    "Adrián de la Fuente": 1,
+    "Ryan": 7,
+    "Nacho Pérez": 4,
+    "Adrián de la Fuente": 2,
     "Aïssa Mandi": 1,
-    "Marc Santos": 3,
-    "Víctor García": -1,
-    "Olasagasti": 5,
-    "Oriol Rey": 4,
+    "Marc Santos": 5,
+    "Víctor García": 0,
+    "Olasagasti": 8,
+    "Oriol Rey": 7,
     "Requena": 1,
-    "Thiago Fernández": 0,
-    "Iván Romero": 6,
+    "Thiago Fernández": 1,
+    "Iván Romero": 7,
     "Bardeli": 0,
     "Etta Eyong": 0,
-    "Brugui": 0,
+    "Brugui": 1,
     "Musuayi": 1,
-    "Agirrezabala": 4,
-    "Pablo Ramón": 6,
+    "Agirrezabala": 7,
+    "Pablo Ramón": 8,
     "Pedro Felipe": 1,
-    "Belocian": 5,
-    "Jorge Salinas": 7,
+    "Belocian": 6,
+    "Jorge Salinas": 9,
     "Prati": 2,
-    "Canales": 1,
-    "Íñigo Vicente": 7,
-    "Iván Martín": 3,
+    "Canales": 2,
+    "Íñigo Vicente": 11,
+    "Iván Martín": 5,
     "Iker Luque": 0,
-    "Zabiri": 8,
-    "André Almeida": 6,
-    "Pablo García": 10,
+    "Zabiri": 11,
+    "André Almeida": 10,
+    "Pablo García": 14,
     "Villalibre": 1
   },
   "jugadores_equipos": {
@@ -93,6 +93,11 @@
         "concepto": "Balones recuperados",
         "puntos": "2",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
       }
     ],
     "nacho perez": [
@@ -130,6 +135,11 @@
         "concepto": "Posesiones perdidas",
         "puntos": "-1",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
       }
     ],
     "adrian de la fuente": [
@@ -157,6 +167,11 @@
         "concepto": "Posesiones perdidas",
         "puntos": "-1",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
       }
     ],
     "aissa mandi": [
@@ -211,6 +226,11 @@
         "concepto": "Posesiones perdidas",
         "puntos": "-1",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
       }
     ],
     "victor garcia": [
@@ -223,6 +243,11 @@
         "concepto": "Posesiones perdidas",
         "puntos": "-3",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
       }
     ],
     "olasagasti": [
@@ -260,6 +285,11 @@
         "concepto": "Posesiones perdidas",
         "puntos": "-1",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "3",
+        "dazn": true
       }
     ],
     "oriol rey": [
@@ -272,6 +302,11 @@
         "concepto": "Asistencias de gol",
         "puntos": "3",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "3",
+        "dazn": true
       }
     ],
     "requena": [
@@ -311,6 +346,11 @@
         "concepto": "Posesiones perdidas",
         "puntos": "-1",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
       }
     ],
     "ivan romero": [
@@ -323,6 +363,11 @@
         "concepto": "Goles",
         "puntos": "4",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
       }
     ],
     "bardeli": [
@@ -359,6 +404,11 @@
         "concepto": "Goles en contra",
         "puntos": "-1",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
       }
     ],
     "musuayi": [
@@ -388,6 +438,11 @@
         "concepto": "Posesiones perdidas",
         "puntos": "-1",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "3",
+        "dazn": true
       }
     ],
     "pablo ramon": [
@@ -405,6 +460,11 @@
         "concepto": "Regates",
         "puntos": "1",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
       }
     ],
     "pedro felipe": [
@@ -429,6 +489,11 @@
         "concepto": "Despejes",
         "puntos": "3",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
       }
     ],
     "jorge salinas": [
@@ -456,6 +521,11 @@
         "concepto": "Posesiones perdidas",
         "puntos": "-1",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
       }
     ],
     "prati": [
@@ -475,6 +545,11 @@
         "concepto": "Posesiones perdidas",
         "puntos": "-1",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "1",
+        "dazn": true
       }
     ],
     "inigo vicente": [
@@ -512,6 +587,11 @@
         "concepto": "Posesiones perdidas",
         "puntos": "-2",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "4",
+        "dazn": true
       }
     ],
     "ivan martin": [
@@ -524,6 +604,11 @@
         "concepto": "Balones recuperados",
         "puntos": "1",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "2",
+        "dazn": true
       }
     ],
     "iker luque": [
@@ -558,6 +643,11 @@
         "concepto": "Tiros a puerta",
         "puntos": "2",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "3",
+        "dazn": true
       }
     ],
     "andre almeida": [
@@ -580,6 +670,11 @@
         "concepto": "Balones recuperados",
         "puntos": "1",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "4",
+        "dazn": true
       }
     ],
     "pablo garcia": [
@@ -597,6 +692,11 @@
         "concepto": "Tiros a puerta",
         "puntos": "1",
         "dazn": false
+      },
+      {
+        "concepto": "Puntos DAZN",
+        "puntos": "4",
+        "dazn": true
       }
     ],
     "villalibre": [
