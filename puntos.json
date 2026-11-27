@@ -1,10 +1,10 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 21:20:47",
+  "actualizado_en": "27/11 21:22:30",
   "jugadores": {
     "Ryan": 0,
     "Nacho Pérez": 0,
-    "Adrián de la Fuente": 0,
+    "Adrián de la Fuente": 1,
     "Aïssa Mandi": 0,
     "Marc Santos": 0,
     "Víctor García": -1,
@@ -54,6 +54,13 @@
     "Racing": 2
   },
   "desgloses": {
+    "adrian de la fuente": [
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      }
+    ],
     "victor garcia": [
       {
         "concepto": "Posesiones perdidas",
