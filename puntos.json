@@ -1,6 +1,6 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 22:36:30",
+  "actualizado_en": "27/11 22:38:30",
   "jugadores": {
     "Ryan": 2,
     "Nacho Pérez": 0,
@@ -23,12 +23,13 @@
     "Jorge Salinas": 2,
     "Prati": 0,
     "Canales": -1,
-    "Íñigo Vicente": -1,
+    "Íñigo Vicente": 1,
     "Iván Martín": 0,
     "Iker Luque": -2,
     "Zabiri": 0,
-    "André Almeida": 3,
-    "Pablo García": 4
+    "André Almeida": 4,
+    "Pablo García": 4,
+    "Villalibre": 0
   },
   "jugadores_equipos": {
     "Ryan": "Levante",
@@ -57,7 +58,8 @@
     "Iker Luque": "Racing",
     "Zabiri": "Racing",
     "André Almeida": "Racing",
-    "Pablo García": "Racing"
+    "Pablo García": "Racing",
+    "Villalibre": "Racing"
   },
   "entrenadores": {
     "Levante": 2,
@@ -260,6 +262,16 @@
         "dazn": false
       },
       {
+        "concepto": "Regates",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
         "concepto": "Posesiones perdidas",
         "puntos": "-2",
         "dazn": false
@@ -281,6 +293,11 @@
       {
         "concepto": "Asistencias de gol",
         "puntos": "3",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
         "dazn": false
       }
     ],
