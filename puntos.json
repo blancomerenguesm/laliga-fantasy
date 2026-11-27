@@ -1,12 +1,12 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 21:38:28",
+  "actualizado_en": "27/11 21:40:51",
   "jugadores": {
     "Ryan": 0,
     "Nacho Pérez": 1,
     "Adrián de la Fuente": 1,
     "Aïssa Mandi": 0,
-    "Marc Santos": 1,
+    "Marc Santos": 2,
     "Víctor García": -2,
     "Olasagasti": 3,
     "Oriol Rey": 0,
@@ -69,6 +69,11 @@
       }
     ],
     "marc santos": [
+      {
+        "concepto": "Regates",
+        "puntos": "1",
+        "dazn": false
+      },
       {
         "concepto": "Balones recuperados",
         "puntos": "1",
