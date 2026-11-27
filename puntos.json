@@ -1,29 +1,30 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 22:32:30",
+  "actualizado_en": "27/11 22:34:31",
   "jugadores": {
     "Ryan": 2,
     "Nacho Pérez": 0,
     "Adrián de la Fuente": 1,
     "Aïssa Mandi": 1,
     "Marc Santos": 1,
-    "Víctor García": -2,
+    "Víctor García": -3,
     "Olasagasti": 5,
     "Oriol Rey": 3,
     "Requena": 0,
     "Thiago Fernández": -1,
     "Iván Romero": 4,
     "Bardeli": 0,
+    "Brugui": 0,
     "Agirrezabala": 1,
-    "Pablo Ramón": 2,
+    "Pablo Ramón": 3,
     "Pedro Felipe": -1,
     "Belocian": 3,
-    "Jorge Salinas": 1,
+    "Jorge Salinas": 2,
     "Prati": 0,
     "Canales": -1,
     "Íñigo Vicente": -1,
     "Iván Martín": 0,
-    "Iker Luque": -1,
+    "Iker Luque": -2,
     "Zabiri": 0,
     "André Almeida": 3,
     "Pablo García": 4
@@ -41,6 +42,7 @@
     "Thiago Fernández": "Levante",
     "Iván Romero": "Levante",
     "Bardeli": "Levante",
+    "Brugui": "Levante",
     "Agirrezabala": "Racing",
     "Pablo Ramón": "Racing",
     "Pedro Felipe": "Racing",
@@ -128,7 +130,7 @@
     "victor garcia": [
       {
         "concepto": "Posesiones perdidas",
-        "puntos": "-2",
+        "puntos": "-3",
         "dazn": false
       }
     ],
@@ -197,7 +199,7 @@
     "pablo ramon": [
       {
         "concepto": "Despejes",
-        "puntos": "1",
+        "puntos": "2",
         "dazn": false
       },
       {
@@ -227,6 +229,11 @@
         "dazn": false
       },
       {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
         "concepto": "Posesiones perdidas",
         "puntos": "-1",
         "dazn": false
@@ -252,6 +259,11 @@
       }
     ],
     "iker luque": [
+      {
+        "concepto": "Tarjetas amarillas",
+        "puntos": "-1",
+        "dazn": false
+      },
       {
         "concepto": "Posesiones perdidas",
         "puntos": "-1",
