@@ -44,7 +44,7 @@
   "datos": [
     {
       "manager": "Marcos",
-      "total": 4,
+      "total": 3,
       "players": [
         {
           "n": "M. Dituro",
@@ -79,7 +79,7 @@
         {
           "n": "Canales",
           "t": "Racing",
-          "p": 0,
+          "p": -1,
           "c": false
         },
         {
@@ -109,7 +109,7 @@
         {
           "n": "Giuliano Simeone",
           "t": "Atleti",
-          "p": 0,
+          "p": "",
           "c": false
         }
       ],
@@ -284,12 +284,12 @@
     },
     {
       "manager": "Humanes",
-      "total": 8,
+      "total": 5,
       "players": [
         {
           "n": "Ryan",
           "t": "Levante",
-          "p": 0,
+          "p": 1,
           "c": false
         },
         {
@@ -319,7 +319,7 @@
         {
           "n": "Hugo Rincón",
           "t": "Athletic",
-          "p": 4,
+          "p": "",
           "c": false
         },
         {
@@ -461,7 +461,7 @@
         {
           "n": "Pablo Ramón",
           "t": "Racing",
-          "p": 1,
+          "p": 2,
           "c": false
         },
         {
@@ -509,7 +509,7 @@
         {
           "n": "Iker Luque",
           "t": "Racing",
-          "p": 0,
+          "p": -1,
           "c": false
         }
       ],
@@ -529,7 +529,7 @@
         {
           "n": "Fortuño",
           "t": "Espanyol",
-          "p": 0,
+          "p": "",
           "c": false
         },
         {
@@ -604,7 +604,7 @@
     },
     {
       "manager": "Poty",
-      "total": -1,
+      "total": -2,
       "players": [
         {
           "n": "Joan García",
@@ -621,7 +621,7 @@
         {
           "n": "Hartman",
           "t": "Espanyol",
-          "p": 0,
+          "p": "",
           "c": false
         },
         {
@@ -657,7 +657,7 @@
         {
           "n": "Thiago Fernández",
           "t": "Levante",
-          "p": 0,
+          "p": -1,
           "c": false
         },
         {
