@@ -1,6 +1,6 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 22:38:30",
+  "actualizado_en": "27/11 22:40:46",
   "jugadores": {
     "Ryan": 2,
     "Nacho Pérez": 0,
@@ -16,7 +16,7 @@
     "Bardeli": 0,
     "Etta Eyong": 0,
     "Brugui": 0,
-    "Agirrezabala": 1,
+    "Agirrezabala": 0,
     "Pablo Ramón": 3,
     "Pedro Felipe": -1,
     "Belocian": 3,
@@ -62,8 +62,8 @@
     "Villalibre": "Racing"
   },
   "entrenadores": {
-    "Levante": 2,
-    "Racing": 2
+    "Levante": 0,
+    "Racing": 5
   },
   "desgloses": {
     "ryan": [
@@ -202,6 +202,11 @@
       {
         "concepto": "Balones recuperados",
         "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
         "dazn": false
       }
     ],
