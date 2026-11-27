@@ -1,14 +1,14 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 22:54:31",
+  "actualizado_en": "27/11 22:56:34",
   "jugadores": {
     "Ryan": 3,
-    "Nacho Pérez": 0,
+    "Nacho Pérez": 1,
     "Adrián de la Fuente": -1,
     "Aïssa Mandi": -1,
     "Marc Santos": 1,
     "Víctor García": -3,
-    "Olasagasti": 4,
+    "Olasagasti": 3,
     "Oriol Rey": 3,
     "Requena": -1,
     "Thiago Fernández": -2,
@@ -112,6 +112,11 @@
         "dazn": false
       },
       {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
         "concepto": "Posesiones perdidas",
         "puntos": "-1",
         "dazn": false
@@ -203,6 +208,11 @@
       },
       {
         "concepto": "Goles en contra",
+        "puntos": "-1",
+        "dazn": false
+      },
+      {
+        "concepto": "Tarjetas amarillas",
         "puntos": "-1",
         "dazn": false
       },
