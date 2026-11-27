@@ -1,8 +1,8 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 22:08:30",
+  "actualizado_en": "27/11 22:10:47",
   "jugadores": {
-    "Ryan": 0,
+    "Ryan": 1,
     "Nacho Pérez": 0,
     "Adrián de la Fuente": 1,
     "Aïssa Mandi": 0,
@@ -10,9 +10,10 @@
     "Víctor García": -2,
     "Olasagasti": 4,
     "Oriol Rey": 3,
-    "Requena": 0,
+    "Requena": 1,
     "Thiago Fernández": 0,
     "Iván Romero": 4,
+    "Bardeli": 0,
     "Agirrezabala": 0,
     "Pablo Ramón": 1,
     "Pedro Felipe": -1,
@@ -37,6 +38,7 @@
     "Requena": "Levante",
     "Thiago Fernández": "Levante",
     "Iván Romero": "Levante",
+    "Bardeli": "Levante",
     "Agirrezabala": "Racing",
     "Pablo Ramón": "Racing",
     "Pedro Felipe": "Racing",
@@ -54,6 +56,13 @@
     "Racing": 0
   },
   "desgloses": {
+    "ryan": [
+      {
+        "concepto": "Paradas",
+        "puntos": "1",
+        "dazn": false
+      }
+    ],
     "nacho perez": [
       {
         "concepto": "Despejes",
@@ -108,6 +117,13 @@
       {
         "concepto": "Asistencias de gol",
         "puntos": "3",
+        "dazn": false
+      }
+    ],
+    "requena": [
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
         "dazn": false
       }
     ],
