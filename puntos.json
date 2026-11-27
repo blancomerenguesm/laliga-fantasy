@@ -1,6 +1,6 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 22:56:34",
+  "actualizado_en": "27/11 22:58:32",
   "jugadores": {
     "Ryan": 3,
     "Nacho Pérez": 1,
@@ -14,14 +14,14 @@
     "Thiago Fernández": -2,
     "Iván Romero": 4,
     "Bardeli": -1,
-    "Etta Eyong": 0,
-    "Brugui": 0,
+    "Etta Eyong": -1,
+    "Brugui": -1,
     "Musuayi": 0,
-    "Agirrezabala": 1,
+    "Agirrezabala": 2,
     "Pablo Ramón": 3,
     "Pedro Felipe": -1,
     "Belocian": 3,
-    "Jorge Salinas": 2,
+    "Jorge Salinas": 5,
     "Prati": 0,
     "Canales": -1,
     "Íñigo Vicente": 5,
@@ -29,7 +29,7 @@
     "Iker Luque": -2,
     "Zabiri": 6,
     "André Almeida": 5,
-    "Pablo García": 4,
+    "Pablo García": 9,
     "Villalibre": 0
   },
   "jugadores_equipos": {
@@ -277,6 +277,20 @@
         "dazn": false
       }
     ],
+    "etta eyong": [
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-1",
+        "dazn": false
+      }
+    ],
+    "brugui": [
+      {
+        "concepto": "Goles en contra",
+        "puntos": "-1",
+        "dazn": false
+      }
+    ],
     "agirrezabala": [
       {
         "concepto": "Paradas",
@@ -285,7 +299,7 @@
       },
       {
         "concepto": "Balones recuperados",
-        "puntos": "1",
+        "puntos": "2",
         "dazn": false
       },
       {
@@ -321,6 +335,11 @@
       }
     ],
     "jorge salinas": [
+      {
+        "concepto": "Asistencias de gol",
+        "puntos": "3",
+        "dazn": false
+      },
       {
         "concepto": "Despejes",
         "puntos": "2",
@@ -427,7 +446,12 @@
     "pablo garcia": [
       {
         "concepto": "Goles",
-        "puntos": "4",
+        "puntos": "8",
+        "dazn": false
+      },
+      {
+        "concepto": "Tiros a puerta",
+        "puntos": "1",
         "dazn": false
       }
     ]
