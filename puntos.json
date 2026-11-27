@@ -1,13 +1,13 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 21:12:31",
+  "actualizado_en": "27/11 21:14:32",
   "jugadores": {
     "Ryan": 0,
     "Nacho Pérez": 0,
     "Adrián de la Fuente": 0,
     "Aïssa Mandi": 0,
     "Marc Santos": 0,
-    "Víctor García": 0,
+    "Víctor García": -1,
     "Olasagasti": 0,
     "Oriol Rey": 0,
     "Requena": 0,
@@ -53,7 +53,15 @@
     "Levante": 2,
     "Racing": 2
   },
-  "desgloses": {},
+  "desgloses": {
+    "victor garcia": [
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      }
+    ]
+  },
   "partidos": [
     {
       "local": "Celta",
