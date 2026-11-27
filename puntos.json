@@ -1,9 +1,9 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 21:56:30",
+  "actualizado_en": "27/11 21:58:32",
   "jugadores": {
     "Ryan": 0,
-    "Nacho Pérez": 1,
+    "Nacho Pérez": 0,
     "Adrián de la Fuente": 1,
     "Aïssa Mandi": 0,
     "Marc Santos": 2,
@@ -17,7 +17,7 @@
     "Pablo Ramón": 1,
     "Pedro Felipe": -1,
     "Belocian": 3,
-    "Jorge Salinas": 1,
+    "Jorge Salinas": 0,
     "Prati": 0,
     "Canales": 0,
     "Íñigo Vicente": 0,
@@ -58,6 +58,11 @@
       {
         "concepto": "Despejes",
         "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
         "dazn": false
       }
     ],
@@ -138,6 +143,11 @@
       {
         "concepto": "Despejes",
         "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
         "dazn": false
       }
     ],
