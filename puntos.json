@@ -1,6 +1,6 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 22:12:38",
+  "actualizado_en": "27/11 22:14:30",
   "jugadores": {
     "Ryan": 1,
     "Nacho Pérez": 0,
@@ -11,10 +11,10 @@
     "Olasagasti": 4,
     "Oriol Rey": 3,
     "Requena": 1,
-    "Thiago Fernández": 0,
+    "Thiago Fernández": -1,
     "Iván Romero": 4,
     "Bardeli": 0,
-    "Agirrezabala": 0,
+    "Agirrezabala": 1,
     "Pablo Ramón": 1,
     "Pedro Felipe": -1,
     "Belocian": 3,
@@ -127,10 +127,24 @@
         "dazn": false
       }
     ],
+    "thiago fernandez": [
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      }
+    ],
     "ivan romero": [
       {
         "concepto": "Goles",
         "puntos": "4",
+        "dazn": false
+      }
+    ],
+    "agirrezabala": [
+      {
+        "concepto": "Balones recuperados",
+        "puntos": "1",
         "dazn": false
       }
     ],
