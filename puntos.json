@@ -1,6 +1,6 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 21:34:33",
+  "actualizado_en": "27/11 21:36:29",
   "jugadores": {
     "Ryan": 0,
     "Nacho Pérez": 1,
@@ -20,7 +20,7 @@
     "Jorge Salinas": 1,
     "Prati": 0,
     "Canales": 0,
-    "Íñigo Vicente": -1,
+    "Íñigo Vicente": 0,
     "Iván Martín": 0,
     "Iker Luque": 0,
     "Zabiri": 0
@@ -123,6 +123,11 @@
       }
     ],
     "inigo vicente": [
+      {
+        "concepto": "Balones al área",
+        "puntos": "1",
+        "dazn": false
+      },
       {
         "concepto": "Posesiones perdidas",
         "puntos": "-1",
