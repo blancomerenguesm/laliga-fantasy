@@ -1,6 +1,6 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 22:26:36",
+  "actualizado_en": "27/11 22:28:38",
   "jugadores": {
     "Ryan": 2,
     "Nacho Pérez": 0,
@@ -25,7 +25,7 @@
     "Iván Martín": 0,
     "Iker Luque": -1,
     "Zabiri": 0,
-    "André Almeida": 0,
+    "André Almeida": 3,
     "Pablo García": 0
   },
   "jugadores_equipos": {
@@ -250,6 +250,13 @@
       {
         "concepto": "Posesiones perdidas",
         "puntos": "-1",
+        "dazn": false
+      }
+    ],
+    "andre almeida": [
+      {
+        "concepto": "Asistencias de gol",
+        "puntos": "3",
         "dazn": false
       }
     ]
