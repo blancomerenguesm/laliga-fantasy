@@ -130,7 +130,7 @@
           "n": "Oblak",
           "t": "Atleti",
           "p": "",
-          "c": false
+          "c": true
         },
         {
           "n": "Carlos Romero",
@@ -145,8 +145,8 @@
           "c": false
         },
         {
-          "n": "Cáceres",
-          "t": "Celta",
+          "n": "Junior",
+          "t": "Betis",
           "p": "",
           "c": false
         },
@@ -181,8 +181,8 @@
           "c": false
         },
         {
-          "n": "Etta Eyong",
-          "t": "Levante",
+          "n": "Pere Milla",
+          "t": "Espanyol",
           "p": "",
           "c": false
         },
@@ -190,7 +190,7 @@
           "n": "Williams",
           "t": "Athletic",
           "p": "",
-          "c": true
+          "c": false
         }
       ],
       "coach": {
