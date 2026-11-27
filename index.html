@@ -24,14 +24,15 @@
         
         .player-item { display: flex; justify-content: space-between; align-items: center; background: #2a2a2a; padding: 8px; margin-bottom: 5px; border-radius: 4px; }
         .player-info { display: flex; flex-direction: column; }
-        .player-name { font-weight: bold; font-size: 0.9em; }
+        .player-name { font-weight: bold; font-size: 0.9em; display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
         .player-name.clickable-player { cursor: pointer; text-decoration: underline dotted rgba(212, 175, 55, 0.55); text-underline-offset: 3px; }
         .player-name.clickable-player:hover { color: var(--accent); }
         .player-team { font-size: 0.75em; color: var(--gray); }
         .points-container { display: flex; align-items: center; gap: 5px; }
         .points-input { width: 45px; padding: 5px; background: #121212; color: white; border: 1px solid #555; border-radius: 4px; text-align: center; font-weight: bold; }
         .points-input:focus { border-color: var(--accent); outline: none; }
-        .captain-tag { color: var(--accent); font-weight: bold; font-size: 0.8em; border: 1px solid var(--accent); border-radius: 50%; width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; margin-left: 5px; }
+        .captain-tag { color: var(--accent); font-weight: bold; font-size: 0.8em; border: 1px solid var(--accent); border-radius: 50%; width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; margin-left: 3px; }
+        .definitivo-tag { color: #55efc4; font-weight: bold; font-size: 0.68em; background: rgba(40, 167, 69, 0.16); border: 1px solid rgba(85, 239, 196, 0.45); border-radius: 4px; padding: 1px 5px; letter-spacing: 0.3px; white-space: nowrap; }
         .coach-item { border-left: 3px solid var(--accent); margin-top: 10px; background: #222; }
 
         .sort-nav { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; }
@@ -52,7 +53,7 @@
 
         .ranking-details { background-color: #161616; border-bottom: 2px solid var(--accent); }
         .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 5px; font-size: 0.85em; }
-        .detail-item { display: flex; justify-content: space-between; padding: 6px 10px; background: #222; border-radius: 4px; border-left: 3px solid #555; align-items: center;}
+        .detail-item { display: flex; justify-content: space-between; padding: 6px 10px; background: #222; border-radius: 4px; border-left: 3px solid #555; align-items: center; gap: 6px; }
         .detail-item.played { border-left-color: #4caf50; background: #1e2b1e; } 
         .detail-item.coach { border-left-color: var(--accent); }
         
@@ -60,7 +61,7 @@
         .match-teams { display: flex; justify-content: space-between; gap: 10px; margin-top: 10px; }
         .match-half { width: 50%; }
         .match-half h4 { color: var(--accent); margin: 0 0 5px 0; font-size: 0.9em; }
-        .match-player { display: flex; justify-content: space-between; align-items: center; font-size: 0.85em; background: #2a2a2a; padding: 6px; margin-bottom: 5px; border-radius: 4px; }
+        .match-player { display: flex; justify-content: space-between; align-items: center; font-size: 0.85em; background: #2a2a2a; padding: 6px; margin-bottom: 5px; border-radius: 4px; gap: 4px; }
         .match-player.coach { border-left: 2px solid var(--accent); }
         .match-player-info { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
         .match-points-input { width: 35px; padding: 4px; background: #121212; color: white; border: 1px solid #555; border-radius: 4px; text-align: center; font-weight: bold; }
@@ -81,16 +82,19 @@
         .debt-tag { color: var(--danger); font-weight: bold; background: rgba(220, 53, 69, 0.15); padding: 2px 5px; border-radius: 4px; border: 1px solid var(--danger); white-space: nowrap; }
         .no-debt { color: var(--success); font-weight: bold; }
 
-        .toast { visibility: hidden; min-width: 250px; background-color: #333; color: #fff; text-align: center; border-radius: 8px; padding: 12px 20px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-weight: bold; box-shadow: 0px 4px 12px rgba(0,0,0,0.5); border: 1px solid var(--accent); opacity: 0; transition: opacity 0.3s, bottom 0.3s; }
+        .toast { visibility: hidden; min-width: 260px; max-width: 92vw; background-color: #23272b; color: #fff; text-align: center; border-radius: 8px; padding: 12px 18px; position: fixed; z-index: 3000; left: 50%; bottom: 30px; transform: translateX(-50%); font-weight: bold; box-shadow: 0px 6px 18px rgba(0,0,0,0.65); border: 1px solid var(--accent); opacity: 0; transition: opacity 0.3s, bottom 0.3s; }
         .toast.show { visibility: visible; opacity: 1; bottom: 40px; }
 
         .modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); z-index: 2000; align-items: center; justify-content: center; padding: 15px; }
         .modal-backdrop.open { display: flex; }
         .modal-box { background: var(--panel); border: 1px solid var(--accent); border-radius: 10px; width: 100%; max-width: 420px; max-height: 85vh; overflow-y: auto; padding: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 12px; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 12px; gap: 8px; }
         .modal-title { margin: 0; font-size: 1.2em; color: var(--accent); }
         .modal-close { background: #2a2a2a; color: #fff; border: 1px solid #555; border-radius: 5px; padding: 5px 10px; font-size: 0.9em; }
         .modal-close:hover { background: var(--danger); color: #fff; border-color: var(--danger); }
+        .modal-estado { display: inline-block; font-size: 0.78em; font-weight: bold; padding: 3px 8px; border-radius: 5px; margin-bottom: 10px; }
+        .modal-estado.definitivo { color: #55efc4; background: rgba(40, 167, 69, 0.16); border: 1px solid rgba(85, 239, 196, 0.45); }
+        .modal-estado.provisional { color: #fdcb6e; background: rgba(253, 203, 110, 0.14); border: 1px solid rgba(253, 203, 110, 0.45); }
         .desglose-row { display: flex; justify-content: space-between; align-items: center; background: #272727; border-radius: 6px; padding: 8px 12px; margin-bottom: 6px; font-size: 0.9em; border-left: 3px solid #555; }
         .desglose-row.dazn { border-left-color: var(--accent); background: #2b2718; }
         .desglose-pts { font-weight: bold; font-size: 1em; }
@@ -127,6 +131,7 @@
                 </div>
                 <button type="button" class="modal-close" onclick="cerrarModalDesglose()">✕</button>
             </div>
+            <div id="modalEstadoPuntos"></div>
             <div id="modalDesgloseContenido"></div>
         </div>
     </div>
@@ -294,6 +299,7 @@
         let partidosJornada = JSON.parse(localStorage.getItem('lf_partidos_v4')) || [];
         let fantasyData = JSON.parse(localStorage.getItem('lf_datos_v4')) || [];
         let desglosesJugadoresLive = JSON.parse(localStorage.getItem('lf_desgloses_live')) || {};
+        let definitivosNotificados = JSON.parse(localStorage.getItem('lf_definitivos_notificados')) || {};
         
         const coloresManagers = ['#ff7675', '#74b9ff', '#55efc4', '#ffeaa7', '#a29bfe', '#fdcb6e', '#00b894', '#e84393', '#00cec9', '#b2bec3'];
         
@@ -350,11 +356,56 @@
             return null;
         }
 
+        function tienePuntosDefinitivos(nombreJugador) {
+            const items = buscarDesgloseJugador(nombreJugador);
+            if (!Array.isArray(items) || items.length === 0) return false;
+            return items.some(it =>
+                Boolean(it && it.dazn) ||
+                /dazn|relevo/i.test(String((it && it.concepto) || ""))
+            );
+        }
+
+        function comprobarYNotificarPuntosDefinitivos(jornadaActual = "") {
+            const prefijoJornada = jornadaActual ? `J${jornadaActual}:` : "J:";
+            const nuevosDefinitivos = [];
+
+            fantasyData.forEach(team => {
+                if (team.isRetired) return;
+                team.players.forEach(p => {
+                    if (!p || !p.n) return;
+                    if (!tienePuntosDefinitivos(p.n)) return;
+
+                    const claveAviso = `${prefijoJornada}${normalizarTexto(p.n)}`;
+                    if (!definitivosNotificados[claveAviso]) {
+                        definitivosNotificados[claveAviso] = true;
+                        nuevosDefinitivos.push({
+                            nombre: p.n,
+                            pts: p.p !== "" && p.p !== undefined ? p.p : null
+                        });
+                    }
+                });
+            });
+
+            if (nuevosDefinitivos.length > 0) {
+                localStorage.setItem('lf_definitivos_notificados', JSON.stringify(definitivosNotificados));
+                if (nuevosDefinitivos.length === 1) {
+                    const j = nuevosDefinitivos[0];
+                    const ptsTxt = j.pts !== null ? ` (${j.pts} pts)` : "";
+                    showToast(`✅ Puntos definitivos DAZN: ${j.nombre}${ptsTxt}`);
+                } else {
+                    const nombres = nuevosDefinitivos.slice(0, 4).map(x => x.nombre).join(", ");
+                    const extra = nuevosDefinitivos.length > 4 ? ` +${nuevosDefinitivos.length - 4}` : "";
+                    showToast(`✅ Puntos definitivos DAZN: ${nombres}${extra}`);
+                }
+            }
+        }
+
         function abrirDesgloseJugador(nombreJugador, equipoJugador = "", puntosActuales = "") {
             if (!nombreJugador) return;
             const modal = document.getElementById("desgloseModal");
             const tituloEl = document.getElementById("modalJugadorTitulo");
             const subEl = document.getElementById("modalJugadorSub");
+            const estadoEl = document.getElementById("modalEstadoPuntos");
             const bodyEl = document.getElementById("modalDesgloseContenido");
 
             tituloEl.innerText = nombreJugador;
@@ -364,6 +415,18 @@
             subEl.innerText = [equipoJugador || "", ptsTexto].filter(Boolean).join(" · ");
 
             const items = buscarDesgloseJugador(nombreJugador);
+            const esDefinitivo = tienePuntosDefinitivos(nombreJugador);
+
+            if (estadoEl) {
+                if (!Array.isArray(items) || items.length === 0) {
+                    estadoEl.innerHTML = `<span class="modal-estado provisional">⏳ Sin desglose aún</span>`;
+                } else if (esDefinitivo) {
+                    estadoEl.innerHTML = `<span class="modal-estado definitivo">✅ Puntos definitivos (DAZN asignado)</span>`;
+                } else {
+                    estadoEl.innerHTML = `<span class="modal-estado provisional">🕒 Puntos provisionales (pendiente DAZN)</span>`;
+                }
+            }
+
             if (!Array.isArray(items) || items.length === 0) {
                 bodyEl.innerHTML = `<p style="color:var(--gray); font-size:0.9em; margin:8px 0;">Aún no hay desglose disponible para este jugador en <code>puntos.json</code> (se rellena cuando el extractor consulta la estadística del partido).</p>`;
             } else {
@@ -521,10 +584,11 @@
                     const safeName = (p.n || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
                     const safeTeam = (p.t || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
                     const ptsVal = p.p !== "" ? p.p : '';
+                    const esDef = p.n ? tienePuntosDefinitivos(p.n) : false;
                     return `
                     <div class="player-item">
                         <div class="player-info">
-                            <span class="player-name ${p.n ? 'clickable-player' : ''}" onclick="${p.n ? `abrirDesgloseJugador('${safeName}', '${safeTeam}', '${ptsVal}')` : ''}">${p.n || 'Vacío'} ${p.c ? '<span class="captain-tag">C</span>' : ''}</span>
+                            <span class="player-name ${p.n ? 'clickable-player' : ''}" onclick="${p.n ? `abrirDesgloseJugador('${safeName}', '${safeTeam}', '${ptsVal}')` : ''}">${p.n || 'Vacío'} ${p.c ? '<span class="captain-tag">C</span>' : ''} ${esDef ? '<span class="definitivo-tag">DAZN</span>' : ''}</span>
                             <span class="player-team">${p.t || '-'}</span>
                         </div>
                         <div class="points-container">
@@ -681,9 +745,10 @@
                                 const safeName = (p.n || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
                                 const safeTeam = (p.t || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
                                 const ptsVal = p.p !== "" ? p.p : '';
+                                const esDef = p.n ? tienePuntosDefinitivos(p.n) : false;
                                 return `
                                 <div class="detail-item ${p.p !== "" ? 'played' : ''}" onclick="event.stopPropagation(); abrirDesgloseJugador('${safeName}', '${safeTeam}', '${ptsVal}')">
-                                    <span class="clickable-player">${p.n} ${p.c ? '<span class="captain-tag">C</span>' : ''}</span>
+                                    <span class="clickable-player" style="display:flex; align-items:center; flex-wrap:wrap; gap:3px;">${p.n} ${p.c ? '<span class="captain-tag">C</span>' : ''} ${esDef ? '<span class="definitivo-tag">DAZN</span>' : ''}</span>
                                     <strong style="color: ${p.p !== "" ? '#fff' : 'var(--gray)'};">${p.p !== "" ? p.p : '-'}</strong>
                                 </div>`;
                             }).join('')}
@@ -818,11 +883,13 @@
                         const safeName = (p.n || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
                         const safeTeam = (p.t || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
                         const ptsVal = p.p !== "" ? p.p : '';
+                        const esDef = p.n ? tienePuntosDefinitivos(p.n) : false;
                         let playerHtml = `
                             <div class="match-player">
                                 <div class="match-player-info">
                                     <span class="${p.n ? 'clickable-player' : ''}" onclick="${p.n ? `abrirDesgloseJugador('${safeName}', '${safeTeam}', '${ptsVal}')` : ''}">${p.n}</span>
                                     ${p.c ? '<span class="captain-tag" style="margin:0 2px;">C</span>' : ''}
+                                    ${esDef ? '<span class="definitivo-tag">DAZN</span>' : ''}
                                     <span class="owner-tag" style="color: ${coloresManagers[mIndex]}; font-weight: bold; font-style: normal;">${team.manager}</span>
                                 </div>
                                 <input type="number" class="match-points-input" value="${ptsVal}" placeholder="-" oninput="updatePoints(${mIndex}, ${pIndex}, this.value)">
@@ -1671,6 +1738,7 @@
                         const jTagSkip = dataRaw.jornada ? `J${dataRaw.jornada} · ` : '';
                         const infoOrigenSkip = dataRaw.actualizado_en ? `Datos de las ${dataRaw.actualizado_en}` : `Leído ${horaLecturaSkip}`;
                         if (statusEl) statusEl.innerText = `🟢 ${jTagSkip}${infoOrigenSkip} · Leído ${horaLecturaSkip} (Jornada cerrada en local)`;
+                        comprobarYNotificarPuntosDefinitivos(dataRaw.jornada || "");
                         return;
                     } else {
                         localStorage.removeItem('lf_bloqueo_sincro_cerrada');
@@ -1720,6 +1788,8 @@
                     renderPlantillas();
                     renderJornada();
                 }
+
+                comprobarYNotificarPuntosDefinitivos(dataRaw.jornada || "");
 
                 const horaLectura = new Date().toLocaleTimeString();
                 const numJug = Object.keys(jugadoresRaw).length;
