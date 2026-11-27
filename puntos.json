@@ -1,12 +1,12 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 22:50:51",
+  "actualizado_en": "27/11 22:52:30",
   "jugadores": {
     "Ryan": 3,
     "Nacho Pérez": -2,
     "Adrián de la Fuente": -1,
     "Aïssa Mandi": -1,
-    "Marc Santos": 0,
+    "Marc Santos": 1,
     "Víctor García": -3,
     "Olasagasti": 4,
     "Oriol Rey": 3,
@@ -142,6 +142,11 @@
       }
     ],
     "marc santos": [
+      {
+        "concepto": "Balones al área",
+        "puntos": "1",
+        "dazn": false
+      },
       {
         "concepto": "Despejes",
         "puntos": "1",
