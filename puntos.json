@@ -1,14 +1,14 @@
 {
   "jornada": "14",
-  "actualizado_en": "27/11 21:26:32",
+  "actualizado_en": "27/11 21:28:40",
   "jugadores": {
     "Ryan": 0,
-    "Nacho Pérez": 0,
+    "Nacho Pérez": 1,
     "Adrián de la Fuente": 1,
     "Aïssa Mandi": 0,
     "Marc Santos": 1,
     "Víctor García": -1,
-    "Olasagasti": 0,
+    "Olasagasti": 2,
     "Oriol Rey": 0,
     "Requena": 0,
     "Thiago Fernández": 0,
@@ -17,10 +17,10 @@
     "Pablo Ramón": 0,
     "Pedro Felipe": 0,
     "Belocian": 0,
-    "Jorge Salinas": 0,
+    "Jorge Salinas": 1,
     "Prati": 0,
     "Canales": 0,
-    "Íñigo Vicente": 0,
+    "Íñigo Vicente": -1,
     "Iván Martín": 0,
     "Iker Luque": 0,
     "Zabiri": 0
@@ -54,6 +54,13 @@
     "Racing": 2
   },
   "desgloses": {
+    "nacho perez": [
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      }
+    ],
     "adrian de la fuente": [
       {
         "concepto": "Despejes",
@@ -69,6 +76,32 @@
       }
     ],
     "victor garcia": [
+      {
+        "concepto": "Posesiones perdidas",
+        "puntos": "-1",
+        "dazn": false
+      }
+    ],
+    "olasagasti": [
+      {
+        "concepto": "Asistencias sin gol",
+        "puntos": "1",
+        "dazn": false
+      },
+      {
+        "concepto": "Balones al área",
+        "puntos": "1",
+        "dazn": false
+      }
+    ],
+    "jorge salinas": [
+      {
+        "concepto": "Despejes",
+        "puntos": "1",
+        "dazn": false
+      }
+    ],
+    "inigo vicente": [
       {
         "concepto": "Posesiones perdidas",
         "puntos": "-1",
