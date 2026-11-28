@@ -1,6 +1,6 @@
 {
   "jornada": "14",
-  "actualizado_en": "28/11 14:22:35",
+  "actualizado_en": "28/11 14:24:35",
   "jugadores": {
     "Ryan": 7,
     "Nacho Pérez": 4,
@@ -39,7 +39,7 @@
     "Fornals": 0,
     "Antony": 0,
     "Marc Roca": 0,
-    "Isco": 0,
+    "Isco": 1,
     "Abde Ezzalzouli": 0,
     "Cucho Hernández": 0,
     "Emil Audero": 0,
@@ -748,6 +748,13 @@
     "villalibre": [
       {
         "concepto": "Minutos Jugados",
+        "puntos": "1",
+        "dazn": false
+      }
+    ],
+    "isco": [
+      {
+        "concepto": "Regates",
         "puntos": "1",
         "dazn": false
       }
