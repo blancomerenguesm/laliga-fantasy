@@ -1,6 +1,6 @@
 {
   "jornada": "14",
-  "actualizado_en": "28/11 14:04:38",
+  "actualizado_en": "28/11 14:06:31",
   "jugadores": {
     "Ryan": 7,
     "Nacho Pérez": 4,
@@ -30,7 +30,29 @@
     "Zabiri": 11,
     "André Almeida": 10,
     "Pablo García": 14,
-    "Villalibre": 1
+    "Villalibre": 1,
+    "Álvaro Valles": 0,
+    "Héctor Bellerín": 0,
+    "Marc Bartra": 0,
+    "Natan": 0,
+    "Junior Firpo": 0,
+    "Fornals": 0,
+    "Antony": 0,
+    "Marc Roca": 0,
+    "Isco": 0,
+    "Abde Ezzalzouli": 0,
+    "Cucho Hernández": 0,
+    "Emil Audero": 0,
+    "Ratiu": 0,
+    "Lejeune": 0,
+    "Adrià Pedrosa": 0,
+    "Jorge de Frutos": 0,
+    "Isi Palazón": 0,
+    "Bouaré": 0,
+    "Álvaro García": 0,
+    "Unai López": 0,
+    "Pathé Ciss": 0,
+    "Sergio Camello": 0
   },
   "jugadores_equipos": {
     "Ryan": "Levante",
@@ -61,11 +83,35 @@
     "Zabiri": "Racing",
     "André Almeida": "Racing",
     "Pablo García": "Racing",
-    "Villalibre": "Racing"
+    "Villalibre": "Racing",
+    "Álvaro Valles": "Betis",
+    "Héctor Bellerín": "Betis",
+    "Marc Bartra": "Betis",
+    "Natan": "Betis",
+    "Junior Firpo": "Betis",
+    "Fornals": "Betis",
+    "Antony": "Betis",
+    "Marc Roca": "Betis",
+    "Isco": "Betis",
+    "Abde Ezzalzouli": "Betis",
+    "Cucho Hernández": "Betis",
+    "Emil Audero": "Rayo",
+    "Ratiu": "Rayo",
+    "Lejeune": "Rayo",
+    "Adrià Pedrosa": "Rayo",
+    "Jorge de Frutos": "Rayo",
+    "Isi Palazón": "Rayo",
+    "Bouaré": "Rayo",
+    "Álvaro García": "Rayo",
+    "Unai López": "Rayo",
+    "Pathé Ciss": "Rayo",
+    "Sergio Camello": "Rayo"
   },
   "entrenadores": {
     "Levante": 0,
-    "Racing": 5
+    "Racing": 5,
+    "Betis": 2,
+    "Rayo": 2
   },
   "desgloses": {
     "ryan": [
